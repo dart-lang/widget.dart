@@ -3,20 +3,9 @@
 <html lang="en"><head><style>template { display: none; }</style>
     <meta charset="utf-8">
     <title>Dart Widgets</title>
-    
-    
-    
-    
-    
-    
-    
-    
-    <script src="packages/browser/dart.js"></script>
-
     <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/css/bootstrap.min.css" rel="stylesheet">
     <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/css/bootstrap-responsive.min.css" rel="stylesheet">
     <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/3.0.2/css/font-awesome.min.css" rel="stylesheet">
-
     <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" type="text/css" href="index.html.css"></head>
   <body>
@@ -35,7 +24,6 @@
           <ul class="nav nav-list affix">
           <li><a href="#dart_widgets" class="h1">Dart Widgets</a></li><li><a href="#components" class="h1">Components</a></li><li><a href="#accordion" class="h2">Accordion</a></li><li><a href="#alert" class="h2">Alert</a></li><li><a href="#carousel" class="h2">Carousel</a></li><li><a href="#collapse" class="h2">Collapse</a></li><li><a href="#dropdown" class="h2">Dropdown</a></li><li><a href="#modal" class="h2">Modal</a></li><li><a href="#swap" class="h2">Swap</a></li><li><a href="#tabs" class="h2">Tabs</a></li><li><a href="#effects" class="h1">Effects</a></li><li><a href="#modalmanager" class="h2">ModalManager</a></li><li><a href="#showhide" class="h2">ShowHide</a></li><li><a href="#swapper" class="h2">Swapper</a></li></ul>
         </div>
-
     <div class="span9">
       <header>
         <h1 id="components">Components</h1>
@@ -49,7 +37,6 @@
         <blockquote class="comments"><p><strong>Accordion</strong> wraps a set of <a href="#collapse">Collapse</a> elements and ensures only one is visible
 at a time.</p>
 <p>See <a href="#collapse">Collapse</a> for details on how content is interpreted.</p></blockquote>
-
         <div class="demo">
           <div is="x-accordion">
             <div is="x-collapse">
@@ -72,7 +59,6 @@ at a time.</p>
             </div>
           </div>
         </div>
-
         <pre class="code">&lt;x-accordion&gt;
   &lt;x-collapse&gt;
     &lt;div class="accordion-heading"&gt;
@@ -94,7 +80,6 @@ at a time.</p>
   &lt;/x-collapse&gt;
 &lt;/x-accordion&gt;</pre>
       </section>
-
       <section class="component">
         <h2 id="alert">Alert</h2>
         <blockquote class="comments"><p><strong>Alert</strong> follows the same convention as <a href="http://twitter.github.com/bootstrap/javascript.html#alerts">its inspiration</a> in Bootstrap.</p>
@@ -105,41 +90,33 @@ at a time.</p>
             <strong>Holy guacamole!</strong> Best check yo self, you're not looking too good.
           </div>
         </div>
-
         <pre class="code">&lt;x-alert&gt;
   &lt;button type="button" class="close" data-dismiss="alert"&gt;×&lt;/button&gt;
   &lt;strong&gt;Holy guacamole!&lt;/strong&gt; Best check yo self, you're not looking too good.
 &lt;/x-alert&gt;</pre>
-
       </section>
-
       <section class="component">
         <h2 id="carousel">Carousel</h2>
         <blockquote class="comments"><p><strong>Carousel</strong> allows moving back and forth through a set of child elements.</p>
 <p>It is based on a <a href="http://twitter.github.com/bootstrap/javascript.html#carousel">similar component</a>
 in Bootstrap.</p>
 <p><strong>Carousel</strong> leverages the <a href="#swap">Swap</a> component to render the transition between items.</p></blockquote>
-
         <div class="demo">
           <div is="x-carousel">
             <figure>
               <img src="//twitter.github.com/bootstrap/assets/img/bootstrap-mdo-sfmoma-01.jpg">
               <figcaption>A description of the first image.</figcaption>
             </figure>
-
             <figure class="active">
               <img src="//twitter.github.com/bootstrap/assets/img/bootstrap-mdo-sfmoma-02.jpg">
               <figcaption>A description of the second image.</figcaption>
             </figure>
-
             <figure>
               <img src="//twitter.github.com/bootstrap/assets/img/bootstrap-mdo-sfmoma-03.jpg">
               <figcaption>A description of the third image.</figcaption>
             </figure>
-
           </div>
         </div>
-
         <pre class="code">&lt;x-carousel&gt;
   &lt;figure&gt;
     &lt;img src="//twitter.github.com/bootstrap/assets/img/bootstrap-mdo-sfmoma-01.jpg"&gt;
@@ -155,7 +132,6 @@ in Bootstrap.</p>
   &lt;/figure&gt;
 &lt;/x-carousel&gt;</pre>
       </section>
-
       <section class="component">
         <h2 id="collapse">Collapse</h2>
         <blockquote class="comments"><p><strong>Collapse</strong> uses a content model similar to <a href="http://twitter.github.com/bootstrap/javascript.html#collapse">collapse functionality</a> in Bootstrap.</p>
@@ -163,7 +139,6 @@ in Bootstrap.</p>
 <p>The rest of the children are rendered as content.</p>
 <p><strong>Collapse</strong> listens for <code>click</code> events and toggles visibility of content if the
 click target has attribute <code>data-toggle="collapse"</code>.</p></blockquote>
-
         <div class="demo">
           <div is="x-collapse">
             <div class="accordion-heading">
@@ -175,7 +150,6 @@ click target has attribute <code>data-toggle="collapse"</code>.</p></blockquote>
             </ul>
           </div>
         </div>
-
         <pre class="code">&lt;x-collapse&gt;
   &lt;div class="accordion-heading"&gt;
     &lt;a class="accordion-toggle" data-toggle="collapse"&gt;Click to toggle expand/collapse&lt;/a&gt;
@@ -186,7 +160,6 @@ click target has attribute <code>data-toggle="collapse"</code>.</p></blockquote>
   &lt;/ul&gt;
 &lt;/x-collapse&gt;</pre>
       </section>
-
       <section class="component">
         <h2 id="dropdown">Dropdown</h2>
         <blockquote class="comments"><p><strong>Dropdown</strong> aligns closely with the model provided by the
@@ -201,7 +174,6 @@ click target has attribute <code>data-toggle="dropdown"</code>.</p>
 matching <code>.open &gt; .dropdown-menu</code>. When <strong>Dropdown</strong> opens, the class <code>open</code> is
 added to the inner element wrapping all content. Causing child elements with
 class <code>dropdown-menu</code> to become visible.</p></blockquote>
-
         <div class="demo">
           <h3>A a button</h3>
           <div is="x-dropdown">
@@ -214,14 +186,12 @@ class <code>dropdown-menu</code> to become visible.</p></blockquote>
               <li><a>Separated link</a></li>
             </ul>
           </div>
-
           <h3>In a nav</h3>
           <!-- Because Bootstrap css assumes a certain hierarchy of items in a nav
           .navbar .nav > li > a
           To use a DropDown element, one has to copy and modify Bootstrap styles to
           apply to x-dropdown
           -->
-
           <div class="navbar">
             <div class="navbar-inner">
               <div class="container">
@@ -248,9 +218,7 @@ class <code>dropdown-menu</code> to become visible.</p></blockquote>
               </div>
             </div>
           </div>
-
         </div>
-
         <pre class="code">&lt;h3&gt;A a button&lt;/h3&gt;
 &lt;x-dropdown&gt;
   &lt;button class="btn" data-toggle="dropdown"&gt;Click me!&lt;/button&gt;
@@ -295,7 +263,6 @@ apply to x-dropdown
   &lt;/div&gt;
 &lt;/div&gt;</pre>
       </section>
-
       <section class="component">
         <h2 id="modal">Modal</h2>
         <blockquote class="comments"><p>When added to a page, <strong>Modal</strong> is hidden. It can be displayed by calling the <code>show</code> method.</p>
@@ -305,7 +272,6 @@ apply to x-dropdown
         <div class="demo">
           <!-- Button to trigger modal -->
           <a role="button" class="btn btn-primary">Launch demo modal</a>
-
           <!-- Modal -->
           <div is="x-modal" id="modal_example">
             <div class="modal-header">
@@ -321,7 +287,6 @@ apply to x-dropdown
             </div>
           </div>
         </div>
-
         <pre class="code">&lt;!-- Button to trigger modal --&gt;
 &lt;a role="button" class="btn btn-primary" on-click="query('#modal_example').xtag.show();"&gt;Launch demo modal&lt;/a&gt;
 &lt;!-- Modal --&gt;
@@ -339,7 +304,6 @@ apply to x-dropdown
   &lt;/div&gt;
 &lt;/x-modal&gt;</pre>
       </section>
-
       <section class="component">
         <h2 id="swap">Swap</h2>
         <blockquote class="comments"><p><strong>Swap</strong> is a low-level component designed to be composed by other components.
@@ -347,7 +311,6 @@ It exposes the functionality of the <a href="#swapper">Swapper</a> effect as a s
 <code>swap</code> between child elements via code.</p>
 <p><a href="#tabs">Tabs</a> and <a href="#carousel">Carousel</a> both use this component.</p></blockquote>
       </section>
-
       <section class="component">
         <h2 id="tabs">Tabs</h2>
         <blockquote class="comments"><p><strong>Tabs</strong> is based on the <a href="http://twitter.github.com/bootstrap/javascript.html#tabs">analogous feature</a> in Bootstrap.</p>
@@ -356,7 +319,6 @@ The rest of the child elements are considered tab content.</p>
 <p><strong>Tabs</strong> responds to click events from any child with <code>data-toggle="tab"</code> or <code>data-toggle="pill"</code>.</p>
 <p>The target content id is either the value of <code>data-target</code> on the clicked element or the anchor
 in <code>href</code>.</p></blockquote>
-
         <div class="demo">
           <div is="x-tabs">
             <li class="active">
@@ -368,13 +330,11 @@ in <code>href</code>.</p></blockquote>
             <li>
               <a href="#tab3" data-toggle="tab">Tab 3</a>
             </li>
-
             <p id="tab1" class="active">Tab 1 content - Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
             <p id="tab2">Tab 2 content - Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
             <p id="tab3">Tab 3 content - Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
           </div>
         </div>
-
         <pre class="code">&lt;x-tabs&gt;
   &lt;li class="active"&gt;
     &lt;a href="#tab1" data-toggle="tab"&gt;Tab 1&lt;/a&gt;
@@ -389,9 +349,7 @@ in <code>href</code>.</p></blockquote>
   &lt;p id="tab2"&gt;Tab 2 content - Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.&lt;/p&gt;
   &lt;p id="tab3"&gt;Tab 3 content - Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.&lt;/p&gt;
 &lt;/x-tabs&gt;</pre>
-
       </section>
-
       <header>
         <h1 id="effects">Effects</h1>
         <blockquote>
@@ -400,7 +358,6 @@ in <code>href</code>.</p></blockquote>
           declarative access to these features.</p>
         </blockquote>
       </header>
-
       <section class="effect">
         <h2 id="modalmanager">ModalManager</h2>
         <blockquote class="comments"><p><strong>ModalManager</strong> is inspired by the <a href="http://twitter.github.com/bootstrap/javascript.html#modals">modal helper</a> in Bootstrap.</p>
@@ -408,7 +365,6 @@ in <code>href</code>.</p></blockquote>
 <p><strong>ModalManager</strong> controls the display of the provided element while also creating a dark backdrop on the page.
 Any element used should have a fixed position, a z-index greater than 1040, and an initial display of none.</p></blockquote>
       </section>
-
       <section class="effect">
         <h2 id="showhide">ShowHide</h2>
         <blockquote class="comments"><p><strong>ShowHide</strong> is an effect inspired by the <a href="http://api.jquery.com/category/effects/basics/">basic effects in jQuery</a>.
@@ -433,11 +389,9 @@ target child element and <strong>Swapper</strong> will display the target while 
 visible elements using the provided effects, duration, and timing.</p>
 <p><strong>Swapper</strong> is encapsulated into a component by <a href="#swap">Swap</a>.</p></blockquote>
       </section>
-
     </div>
       </div>
     </div>
-
   <footer class="footer">
     <div class="container">
       <p>Dart code and samples built by <a href="https://plus.google.com/110066012384188006594?rel=author" rel="author" target="_blank">Kevin Moore</a>.</p>
@@ -454,17 +408,13 @@ visible elements using the provided effects, duration, and timing.</p>
     </div>
   </footer>
 <script type="text/javascript">
-
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-3441863-8']);
   _gaq.push(['_trackPageview']);
-
   (function() {
     var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
-
 </script>
-
-<script type="application/dart" src="index.html_bootstrap.dart"></script></body></html>
+<script type="text/javascript" src="index.html_bootstrap.dart.js"></script></body></html>
