@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html>
   <body>
-    <element name="x-swap" extends="div" constructor="Swap">
+    <element name="x-swap" extends="div" constructor="Swap" apply-author-styles>
       <template>
-        <style>
-          [is=x-swap] {
+        <style scoped>
+          x-swap {
             display: block;
           }
-          [is=x-swap] > .content {
+          x-swap > .content {
             position: relative;
             overflow: hidden;
           }
-          [is=x-swap] > .content > * {
+          x-swap > .content > * {
             position: absolute;
             top: 0;
             left: 0;
@@ -19,11 +19,11 @@
             margin: 0 auto;
             width: 100%;
           }
-          [is=x-swap] > .content > .active {
+          x-swap > .content > .active {
             position: relative;
             display: block;
           }
-          [is=x-swap] > .content > .prev {
+          x-swap > .content > .prev {
             display: block;
           }
         </style>
