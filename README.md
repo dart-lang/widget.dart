@@ -1,3 +1,5 @@
+# NOTE: Web UI is deprecated. widget.dart only works with Web UI, not Polymer.dart
+
 # Dart Widgets
 ## A set of reusable Web Components for Dart applications
 
