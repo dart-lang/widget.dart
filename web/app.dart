@@ -1,8 +1,11 @@
 import 'dart:async';
 import 'dart:html';
+import 'package:polymer/polymer.dart';
 import 'package:widget/effects.dart';
 
 void main() {
+  initPolymer();
+
   window.onHashChange.listen(_onNavigate);
 
   //
