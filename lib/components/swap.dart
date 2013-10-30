@@ -2,7 +2,6 @@ library x_swap;
 
 import 'dart:async';
 import 'dart:html';
-import 'package:meta/meta.dart';
 import 'package:polymer/polymer.dart';
 import 'package:bot/bot.dart';
 import 'package:widget/effects.dart';
