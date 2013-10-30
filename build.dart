@@ -5,12 +5,13 @@ import 'dart:io';
 import 'package:html5lib/dom.dart';
 import 'package:html5lib/parser.dart';
 import 'package:html5lib/dom_parsing.dart';
-import 'package:polymer/component_build.dart' as build_utils;
+// import 'package:polymer/component_build.dart' as build_utils;
 import 'package:bot/bot.dart';
 
 final _whitespaceRegex = new RegExp(r'\s+');
 
 void main() {
+  /*
   final args = new Options().arguments;
   log('** ARGS: $args');
 
@@ -55,6 +56,8 @@ void main() {
       '--warnings_as_errors', '--verbose']);
 
   // build_utils.build(args, [output]);
+
+   */
 }
 
 void log(value) {
