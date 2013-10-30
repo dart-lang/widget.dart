@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'dart:html';
-import 'package:bot/bot.dart';
 import 'package:polymer/polymer.dart';
 import 'package:widget/effects.dart';
 import 'package:widget/widget.dart';
@@ -19,7 +18,7 @@ import 'package:widget/widget.dart';
 class CollapseWidget extends PolymerElement implements ShowHideComponent {
   static const String _collapseDivSelector = '.collapse-body-x';
   static final ShowHideEffect _effect = new ShrinkEffect();
-  
+
   bool get applyAuthorStyles => true;
 
   bool _isShown = false;
@@ -38,6 +37,10 @@ class CollapseWidget extends PolymerElement implements ShowHideComponent {
     }
   }
 
+  CollapseWidget.created() : super.created() {
+    this.onClick.listen(_onClick);
+  }
+
   Stream<Event> get onToggle => ShowHideComponent.toggleEvent.forTarget(this);
 
   void hide() {
@@ -52,16 +55,10 @@ class CollapseWidget extends PolymerElement implements ShowHideComponent {
     isShown = !isShown;
   }
 
-  @protected
-  void created() {
-    super.created();
-    this.onClick.listen(_onClick);
-  }
+  @override
+  void enteredView() {
+    super.enteredView();
 
-  @protected
-  void inserted() {
-    super.inserted();
-    
     // TODO(jacobr): find a way to prevent animations upon calls to the isShown
     // setter that occur from the intial web_ui template binding that do not
     // require manually tracking _insertedCalled. If this.parent was null
