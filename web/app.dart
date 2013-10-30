@@ -9,6 +9,7 @@ void main() {
   /*
 
   window.onHashChange.listen(_onNavigate);
+  */
 
   //
   // ShowHide Demo
@@ -33,7 +34,7 @@ void main() {
       ..onClick.listen((_) => _showHideDemo_toggle(effect));
     effectsDiv.append(button);
   });
-*/
+
   querySelectorAll('#modalOpenButton').onClick.listen(_show);
 }
 
