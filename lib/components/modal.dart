@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'dart:html';
 import 'package:polymer/polymer.dart';
-import 'package:bot/bot.dart';
 import 'package:widget/effects.dart';
 import 'package:widget/widget.dart';
 
@@ -63,22 +62,22 @@ class ModalWidget extends PolymerElement implements ShowHideComponent {
     isShown = !isShown;
   }
 
-  @protected
-  void created() {
-    super.created();
+  ModalWidget.created() : super.created() {
     this.onClick.listen(_onClick);
   }
 
-  @protected
-  void inserted() {
-    super.inserted();
+  @override
+  void enteredView() {
+    super.enteredView();
     final modal = _getModalElement();
+
     if(modal != null && !isShown) {
       ModalManager.hide(modal);
     }
   }
 
-  Element _getModalElement() => getShadowRoot('modal-widget').query('.modal');
+  Element _getModalElement() => getShadowRoot('modal-widget')
+      .querySelector('.modal');
 
   void _onClick(MouseEvent event) {
 

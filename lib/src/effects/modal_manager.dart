@@ -14,7 +14,7 @@ class ModalManager {
   static Future show(Element element,
                    {ShowHideEffect effect, int duration, EffectTiming effectTiming, Action0 backdropClickHandler}) {
 
-    final backDropElement = _getBackdrop(element.document, true);
+    final backDropElement = _getBackdrop(element.ownerDocument, true);
 
     if(backdropClickHandler != null) {
       backDropElement.onClick.listen((args) => backdropClickHandler());
@@ -24,7 +24,7 @@ class ModalManager {
     backDropElement.classes
       ..add('fade')
       ..remove('in');
-    runAsync(() => backDropElement.classes.add('in'));
+    scheduleMicrotask(() => backDropElement.classes.add('in'));
     return Future.wait([showElement, Tools.onTransitionEnd(backDropElement)]);
   }
 
@@ -32,7 +32,7 @@ class ModalManager {
                    {ShowHideEffect effect, int duration, EffectTiming effectTiming}) {
     assert(element != null);
 
-    final backDropElement = _getBackdrop(element.document, false);
+    final backDropElement = _getBackdrop(element.ownerDocument, false);
 
     final futures = [ShowHide.hide(element, effect: effect, duration: duration, effectTiming: effectTiming)];
 
@@ -45,7 +45,7 @@ class ModalManager {
         .catchError((err) {
           print(err);
         }, test: (v) => false)
-        ..whenComplete(() => _clearOutBackdrop(element.document));
+        ..whenComplete(() => _clearOutBackdrop(element.ownerDocument));
   }
 
   static void _clearOutBackdrop(HtmlDocument doc) {

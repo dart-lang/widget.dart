@@ -34,11 +34,11 @@ void main() {
     effectsDiv.append(button);
   });
 */
-  //query('#modalOpenButton').onClick.listen(_show);
+  querySelectorAll('#modalOpenButton').onClick.listen(_show);
 }
 
 void _show(event) {
-  query('#modal_example').xtag.show();
+  querySelector('#modal_example').xtag.show();
 }
 
 void _showHideDemo_toggle(ShowHideEffect effect) {
