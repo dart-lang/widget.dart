@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'dart:html';
 import 'package:polymer/polymer.dart';
-import 'package:bot/bot.dart';
 import 'package:widget/effects.dart';
 import 'package:widget/widget.dart';
 
@@ -12,7 +11,11 @@ import 'package:widget/widget.dart';
  */
 @CustomTag('alert-widget')
 class AlertWidget extends PolymerElement implements ShowHideComponent {
-  
+
+  AlertWidget.created(): super.created()  {
+    this.onClick.listen(_onClick);
+  }
+
   bool get applyAuthorStyles => true;
 
   bool _isShown = true;
@@ -42,12 +45,6 @@ class AlertWidget extends PolymerElement implements ShowHideComponent {
 
   void toggle() {
     isShown = !isShown;
-  }
-
-  @protected
-  void created() {
-    super.created();
-    this.onClick.listen(_onClick);
   }
 
   void _onClick(MouseEvent event) {
