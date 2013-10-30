@@ -6,6 +6,8 @@ import 'package:widget/effects.dart';
 void main() {
   initPolymer();
 
+  /*
+
   window.onHashChange.listen(_onNavigate);
 
   //
@@ -31,8 +33,8 @@ void main() {
       ..onClick.listen((_) => _showHideDemo_toggle(effect));
     effectsDiv.append(button);
   });
-
-  query('#modalOpenButton').onClick.listen(_show);
+*/
+  //query('#modalOpenButton').onClick.listen(_show);
 }
 
 void _show(event) {
