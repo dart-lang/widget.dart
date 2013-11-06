@@ -59,7 +59,7 @@ class ModalManager {
     assert(parentDocument != null);
 
 
-    Element element = parentDocument.body.query('.$_backdropClass');
+    Element element = parentDocument.body.querySelector('.$_backdropClass');
     if(element == null && addIfMissing) {
       element = new DivElement()
         ..classes.add(_backdropClass);
