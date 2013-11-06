@@ -3,7 +3,7 @@ import 'package:hop/hop_tasks.dart';
 
 import '../test/harness_console.dart' as test;
 
-void main() {
+void main(List<String> args) {
   addTask('build', createProcessTask('dart', args: ['build.dart'],
       description: "execute the project's build.dart file"));
 
@@ -28,5 +28,5 @@ void main() {
   addAsyncTask('copy_components', (ctx) =>
       startProcess(ctx, './bin/copy_out.sh'));
 
-  runHop();
+  runHop(args);
 }
