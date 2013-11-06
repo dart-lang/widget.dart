@@ -16,11 +16,11 @@ import 'package:html5lib/dom.dart' as dom;
 import 'package:html5lib/parser.dart';
 import 'util.dart' as util;
 
-const _libPath = r'/usr/local/Cellar/dart-editor/29892/dart-sdk/';
-const _htmlToHack = r'web/index_source.html';
+const _LIB_PATH = r'/usr/local/Cellar/dart-editor/29892/dart-sdk/';
+const _SOURCE_HTML_FILE = r'web/index_source.html';
 
 void main() {
-  final htmlFile = new File(_htmlToHack);
+  final htmlFile = new File(_SOURCE_HTML_FILE);
   assert(htmlFile.existsSync());
 
   List<mirrors.ClassMirror> classes;
@@ -53,20 +53,20 @@ void main() {
     }
 
     // Now document has been updated
-    final updatedContent = document.outerHtml;
+    final updatedContent = document.outerHtml + '\n';
     if(updatedContent != originalContent) {
       // we should write!
-      print("+ Updating $_htmlToHack");
+      print("+ Updating $_SOURCE_HTML_FILE");
       return htmlFile.writeAsString(updatedContent);
     } else {
-      print('- No changes to $_htmlToHack');
+      print('- No changes to $_SOURCE_HTML_FILE');
     }
   });
 }
 
 Future<List<mirrors.ClassMirror>> _getTargetClasses() {
   final currentLibraryPath = Directory.current.path;
-  final libPath = new Uri.file(_libPath);
+  final libPath = new Uri.file(_LIB_PATH);
   final packageRoot = Uri.base.resolve(r'packages/');
 
   final componentPaths = util.getDartLibraryPaths()
