@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'dart:html';
-import 'package:bot/bot.dart';
 import 'package:polymer/polymer.dart';
 import 'package:widget/effects.dart';
 import 'package:widget/widget.dart';
@@ -30,6 +29,11 @@ class DropdownWidget extends PolymerElement implements ShowHideComponent {
   static const int _duration = 100;
 
   bool _isShown = false;
+
+  DropdownWidget.created() : super.created() {
+    this.onClick.listen(_onClick);
+    this.onKeyDown.listen(_onKeyDown);
+  }
 
   bool get isShown => _isShown;
 
@@ -84,12 +88,6 @@ class DropdownWidget extends PolymerElement implements ShowHideComponent {
       .where((e) => e.xtag is DropdownWidget)
       .map((e) => e.xtag as DropdownWidget)
       .forEach((dd) => dd.hide());
-  }
-
-  @protected
-  void created() {
-    this.onClick.listen(_onClick);
-    this.onKeyDown.listen(_onKeyDown);
   }
 
   void _onKeyDown(KeyboardEvent e) {

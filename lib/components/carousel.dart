@@ -16,10 +16,12 @@ import 'package:widget/widget.dart';
 @CustomTag('carousel-widget')
 class CarouselWidget extends PolymerElement {
 
-  static const _duration = 1000;
+  static const _DURATION = 1000;
 
   final ShowHideEffect _fromTheLeft = new SlideEffect(xStart: HorizontalAlignment.LEFT);
   final ShowHideEffect _fromTheRight = new SlideEffect(xStart: HorizontalAlignment.RIGHT);
+
+  CarouselWidget.created() : super.created();
 
   bool get applyAuthorStyles => true;
 
@@ -70,7 +72,7 @@ class CarouselWidget extends PolymerElement {
     final newIndex = (activeIndex + delta) % _swap.items.length;
 
     _pendingAction = _swap.showItemAtIndex(newIndex, effect: showEffect,
-        hideEffect: hideEffect, duration: _duration);
+        hideEffect: hideEffect, duration: _DURATION);
     _pendingAction.whenComplete(() { _pendingAction = null; });
     return _pendingAction;
   }

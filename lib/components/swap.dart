@@ -1,4 +1,4 @@
-library x_swap;
+library widget.swap;
 
 import 'dart:async';
 import 'dart:html';
@@ -24,20 +24,18 @@ class SwapWidget extends PolymerElement implements SwapComponent {
   // should only be accessed via the [_contentElement] property
   Element _contentElementField;
 
-  @override
+  SwapWidget.created() : super.created();
+
   int get activeItemIndex {
     return items.indexOf(activeItem);
   }
 
-  @override
   Element get activeItem {
     return $(items).singleWhere((e) => e.classes.contains(_activeClass));
   }
 
-  @override
   List<Element> get items => _contentElement.children;
 
-  @override
   Future<bool> showItemAtIndex(int index, {ShowHideEffect effect, int duration, EffectTiming effectTiming, ShowHideEffect hideEffect}) {
     // TODO: support hide all if index == null
 
@@ -45,7 +43,6 @@ class SwapWidget extends PolymerElement implements SwapComponent {
     return showItem(newActive, effect: effect, duration: duration, effectTiming: effectTiming, hideEffect: hideEffect);
   }
 
-  @override
   Future<bool> showItem(Element item, {ShowHideEffect effect, int duration, EffectTiming effectTiming, ShowHideEffect hideEffect}) {
     assert(items.contains(item));
 
@@ -67,13 +64,13 @@ class SwapWidget extends PolymerElement implements SwapComponent {
         });
   }
 
-  @protected
-  void inserted() {
+  @override
+  void enteredView() {
     _initialize();
   }
 
-  @protected
-  void removed() {
+  @override
+  void leftView() {
     _contentElementField = null;
   }
 

@@ -1,3 +1,5 @@
+library widget.tabs;
+
 import 'dart:html';
 import 'package:polymer/polymer.dart';
 import 'package:bot/bot.dart';
@@ -27,15 +29,13 @@ class TabsWidget extends PolymerElement {
 
   bool get applyAuthorStyles => true;
 
-  @protected
-  void created() {
-    super.created();
+  TabsWidget.created() : super.created() {
     this.onClick.listen(_clickListener);
   }
 
-  @protected
-  void inserted() {
-    super.inserted();
+  @override
+  void enteredView() {
+    super.enteredView();
     _ensureAtMostOneTabActive();
   }
 
@@ -98,7 +98,9 @@ class TabsWidget extends PolymerElement {
     return target;
   }
 
-  List<Element> _getAllTabs() => this.querySelectorAll('x-tabs .nav-tabs > li');
+  List<Element> _getAllTabs() =>
+      (shadowRoot.querySelector('.nav-tabs > content') as ContentElement)
+      .getDistributedNodes();
 
   void _ensureAtMostOneTabActive() {
     final tabs = _getAllTabs();
@@ -119,19 +121,8 @@ class TabsWidget extends PolymerElement {
     }
   }
 
-  SwapComponent _getSwap() {
-    final Element element = this.querySelector('x-tabs [is=x-swap]');
-    if(element != null) {
-      if(element is SwapComponent) {
-        // Analyzer
-        // DARTBUG: https://code.google.com/p/dart/issues/detail?id=9666
-        return element;
-      } else if(element.xtag is SwapComponent) {
-        return element.xtag;
-      }
-    }
-    return null;
-  }
+  SwapComponent _getSwap() =>
+      shadowRoot.querySelector('swap-widget') as SwapComponent;
 
   void _updateContent(String target) {
     final swap = _getSwap();
