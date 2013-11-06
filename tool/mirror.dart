@@ -7,17 +7,16 @@
 
 import 'dart:async';
 import 'dart:io';
-import 'dart:uri';
 import 'package:bot/bot.dart';
-import '/usr/local/Cellar/dart-editor/22378/dart-sdk/lib/_internal/compiler/implementation/mirrors/mirrors.dart' as mirrors;
-import '/usr/local/Cellar/dart-editor/22378/dart-sdk/lib/_internal/compiler/implementation/mirrors/dart2js_mirror.dart' as dart2js;
-import '/usr/local/Cellar/dart-editor/22378/dart-sdk/lib/_internal/dartdoc/lib/markdown.dart' as md;
+import '/usr/local/Cellar/dart-editor/29892/dart-sdk/lib/_internal/compiler/implementation/mirrors/mirrors.dart' as mirrors;
+import '/usr/local/Cellar/dart-editor/29892/dart-sdk/lib/_internal/compiler/implementation/mirrors/dart2js_mirror.dart' as dart2js;
+import '/usr/local/Cellar/dart-editor/29892/dart-sdk/lib/_internal/compiler/implementation/source_file_provider.dart' as sfp;
+import '/usr/local/Cellar/dart-editor/29892/dart-sdk/lib/_internal/dartdoc/lib/markdown.dart' as md;
 import 'package:html5lib/dom.dart' as dom;
 import 'package:html5lib/parser.dart';
-import 'package:html5lib/dom_parsing.dart';
 import 'util.dart' as util;
 
-const _libPath = r'/usr/local/Cellar/dart-editor/22378/dart-sdk/';
+const _libPath = r'/usr/local/Cellar/dart-editor/29892/dart-sdk/';
 const _htmlToHack = r'web/index_source.html';
 
 void main() {
@@ -67,13 +66,19 @@ void main() {
 
 Future<List<mirrors.ClassMirror>> _getTargetClasses() {
   final currentLibraryPath = Directory.current.path;
-  final libPath = new Uri(_libPath);
-  final packageRoot = new Uri(r'packages/');
+  final libPath = new Uri.file(_libPath);
+  final packageRoot = Uri.base.resolve(r'packages/');
 
-  final componentPaths = util.getDartLibraryPaths().toList();
+  final componentPaths = util.getDartLibraryPaths()
+      .map((String path) => new Uri.file(path))
+      .toList();
 
-  return dart2js.analyze(componentPaths, libPath, packageRoot, null, null,
-      ['--preserve-comments'])
+  var provider = new sfp.CompilerSourceFileProvider();
+  var diagnosticHandler =
+        new sfp.FormattingDiagnosticHandler(provider).diagnosticHandler;
+
+  return dart2js.analyze(componentPaths, libPath, packageRoot,
+      provider.readStringFromUri, diagnosticHandler, ['--preserve-comments'])
       .then((mirrors.MirrorSystem mirrors) {
 
         final componentLibraries = mirrors.libraries.values.where((lm) {
