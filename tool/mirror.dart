@@ -12,29 +12,31 @@ import '/usr/local/Cellar/dart-editor/29892/dart-sdk/lib/_internal/compiler/impl
 import '/usr/local/Cellar/dart-editor/29892/dart-sdk/lib/_internal/compiler/implementation/mirrors/dart2js_mirror.dart' as dart2js;
 import '/usr/local/Cellar/dart-editor/29892/dart-sdk/lib/_internal/compiler/implementation/source_file_provider.dart' as sfp;
 import '/usr/local/Cellar/dart-editor/29892/dart-sdk/lib/_internal/dartdoc/lib/markdown.dart' as md;
+import 'package:hop/src/hop_experimental.dart' as hop_exp;
 import 'package:html5lib/dom.dart' as dom;
-import 'package:html5lib/parser.dart';
 import 'util.dart' as util;
 
 const _LIB_PATH = r'/usr/local/Cellar/dart-editor/29892/dart-sdk/';
 const _SOURCE_HTML_FILE = r'web/index_source.html';
 
 void main() {
-  final htmlFile = new File(_SOURCE_HTML_FILE);
-  assert(htmlFile.existsSync());
+  hop_exp.transformHtml(_SOURCE_HTML_FILE, _transform)
+    .then((bool changed) {
+      if(changed) {
+        print("+ Updating $_SOURCE_HTML_FILE");
+      } else {
+        print('- No changes to $_SOURCE_HTML_FILE');
+      }
+    });
+}
+
+Future<dom.Document> _transform(dom.Document document) {
 
   List<mirrors.ClassMirror> classes;
 
-  _getTargetClasses()
+  return _getTargetClasses()
   .then((List<mirrors.ClassMirror> value) {
     classes = value;
-
-    return htmlFile.readAsString();
-  })
-  .then((String originalContent) {
-
-    final parser = new HtmlParser(originalContent, generateSpans: true);
-    final document = parser.parse();
 
     for(final componentClass in classes) {
 
@@ -52,15 +54,7 @@ void main() {
       }
     }
 
-    // Now document has been updated
-    final updatedContent = document.outerHtml + '\n';
-    if(updatedContent != originalContent) {
-      // we should write!
-      print("+ Updating $_SOURCE_HTML_FILE");
-      return htmlFile.writeAsString(updatedContent);
-    } else {
-      print('- No changes to $_SOURCE_HTML_FILE');
-    }
+    return document;
   });
 }
 
