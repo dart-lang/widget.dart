@@ -79,7 +79,7 @@ class CollapseWidget extends PolymerElement implements ShowHideComponent {
   }
 
   void _updateElements([bool skipAnimation = false]) {
-    final collapseDiv = getShadowRoot('collapse-widget').query(_collapseDivSelector);
+    final collapseDiv = getShadowRoot('collapse-widget').querySelector(_collapseDivSelector);
     if(collapseDiv != null) {
       final action = _isShown ? ShowHideAction.SHOW : ShowHideAction.HIDE;
       final effect = skipAnimation ? null : _effect;

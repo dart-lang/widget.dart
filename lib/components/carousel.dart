@@ -20,7 +20,7 @@ class CarouselWidget extends PolymerElement {
 
   final ShowHideEffect _fromTheLeft = new SlideEffect(xStart: HorizontalAlignment.LEFT);
   final ShowHideEffect _fromTheRight = new SlideEffect(xStart: HorizontalAlignment.RIGHT);
-  
+
   bool get applyAuthorStyles => true;
 
   Future<bool> _pendingAction = null;
@@ -38,7 +38,7 @@ class CarouselWidget extends PolymerElement {
   }
 
   SwapComponent get _swap =>
-      getShadowRoot('carousel-widget').query('.carousel > swap-widget').xtag;
+      getShadowRoot('carousel-widget').querySelector('.carousel > swap-widget').xtag;
 
   Future<bool> _moveDelta(bool doNext) {
     if (_pendingAction != null) {

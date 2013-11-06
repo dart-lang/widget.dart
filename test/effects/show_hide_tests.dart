@@ -29,7 +29,7 @@ void _registerTest(String tag, String sheetStyle, String inlineStyle) {
 
     test('initial state', () {
 
-      final sampleElement = query('.sample');
+      final sampleElement = querySelector('.sample');
 
       final tuple = _getValues(tag, sheetStyle, inlineStyle, sampleElement);
 
@@ -53,7 +53,7 @@ void _registerTest(String tag, String sheetStyle, String inlineStyle) {
     for(final a1 in actions) {
 
       test(a1.name, () {
-        final element = query('.sample');
+        final element = querySelector('.sample');
 
         String initialCalculatedValue;
 
@@ -78,7 +78,7 @@ void _registerTest(String tag, String sheetStyle, String inlineStyle) {
 
       for(final a2 in actions) {
         test('$a1 then $a2', () {
-          final element = query('.sample');
+          final element = querySelector('.sample');
 
           String initialCalculatedValue;
 

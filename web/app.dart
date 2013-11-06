@@ -26,7 +26,7 @@ void main() {
      'Spin': new SpinEffect()
   };
 
-  final effectsDiv = query('.demo.showhide .effects');
+  final effectsDiv = querySelector('.demo.showhide .effects');
   effects.forEach((name, effect) {
     final button = new ButtonElement()
       ..appendText(name)
@@ -43,7 +43,7 @@ void _show(event) {
 }
 
 void _showHideDemo_toggle(ShowHideEffect effect) {
-  queryAll('.demo.showhide .logo_wrapper > img').forEach((Element e) {
+  querySelectorAll('.demo.showhide .logo_wrapper > img').forEach((Element e) {
     ShowHide.toggle(e, effect: effect);
   });
 }
@@ -53,7 +53,7 @@ void _onNavigate(HashChangeEvent e) {
   if(matches != null) {
     final elementId = matches[1];
 
-    final element = query('#$elementId');
+    final element = querySelector('#$elementId');
     if(element != null) {
       _flashElement(element);
     }

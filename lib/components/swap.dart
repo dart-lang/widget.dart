@@ -84,7 +84,7 @@ class SwapWidget extends PolymerElement implements SwapComponent {
 
   void _initialize() {
     if(_contentElementField == null) {
-      _contentElementField = getShadowRoot('swap-widget').query('.content');
+      _contentElementField = getShadowRoot('swap-widget').querySelector('.content');
       if(_contentElementField == null) {
         throw 'Could not find the content element. Either the template has changed or state was accessed too early in the component lifecycle.';
       }

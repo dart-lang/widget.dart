@@ -29,7 +29,7 @@ div.foo { background: red; $css }
 <div class='foo'>content</div>
         ''');
 
-        final element = pg.query('div.foo');
+        final element = pg.querySelector('div.foo');
 
         final style = element.getComputedStyle('');
         final size = Tools.getOuterSize(style);

@@ -98,7 +98,7 @@ class TabsWidget extends PolymerElement {
     return target;
   }
 
-  List<Element> _getAllTabs() => this.queryAll('x-tabs .nav-tabs > li');
+  List<Element> _getAllTabs() => this.querySelectorAll('x-tabs .nav-tabs > li');
 
   void _ensureAtMostOneTabActive() {
     final tabs = _getAllTabs();
@@ -120,7 +120,7 @@ class TabsWidget extends PolymerElement {
   }
 
   SwapComponent _getSwap() {
-    final Element element = this.query('x-tabs [is=x-swap]');
+    final Element element = this.querySelector('x-tabs [is=x-swap]');
     if(element != null) {
       if(element is SwapComponent) {
         // Analyzer
