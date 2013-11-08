@@ -8,15 +8,15 @@
 import 'dart:async';
 import 'dart:io';
 import 'package:bot/bot.dart';
-import '/usr/local/Cellar/dart-editor/30036/dart-sdk/lib/_internal/compiler/implementation/mirrors/mirrors.dart' as mirrors;
-import '/usr/local/Cellar/dart-editor/30036/dart-sdk/lib/_internal/compiler/implementation/mirrors/dart2js_mirror.dart' as dart2js;
-import '/usr/local/Cellar/dart-editor/30036/dart-sdk/lib/_internal/compiler/implementation/source_file_provider.dart' as sfp;
-import '/usr/local/Cellar/dart-editor/30036/dart-sdk/lib/_internal/dartdoc/lib/markdown.dart' as md;
+import '/usr/local/Cellar/dart-editor/30107/dart-sdk/lib/_internal/compiler/implementation/mirrors/mirrors.dart' as mirrors;
+import '/usr/local/Cellar/dart-editor/30107/dart-sdk/lib/_internal/compiler/implementation/mirrors/dart2js_mirror.dart' as dart2js;
+import '/usr/local/Cellar/dart-editor/30107/dart-sdk/lib/_internal/compiler/implementation/source_file_provider.dart' as sfp;
+import '/usr/local/Cellar/dart-editor/30107/dart-sdk/lib/_internal/dartdoc/lib/markdown.dart' as md;
 import 'package:hop/src/hop_experimental.dart' as hop_exp;
 import 'package:html5lib/dom.dart' as dom;
 import 'util.dart' as util;
 
-const _LIB_PATH = r'/usr/local/Cellar/dart-editor/30036/dart-sdk/';
+const _LIB_PATH = r'/usr/local/Cellar/dart-editor/30107/dart-sdk/';
 const _SOURCE_HTML_FILE = r'web/index_source.html';
 
 void main() {
