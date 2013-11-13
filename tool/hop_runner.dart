@@ -19,13 +19,13 @@ void main(List<String> args) {
   //
   // gh_pages
   //
-  addAsyncTask('pages', (ctx) =>
+  addTask('pages', (ctx) =>
       branchForDir(ctx, 'master', 'example', 'gh-pages'));
 
   //
   // populate components into example dir
   //
-  addAsyncTask('copy_components', (ctx) =>
+  addTask('copy_components', (ctx) =>
       startProcess(ctx, './bin/copy_out.sh'));
 
   runHop(args);
