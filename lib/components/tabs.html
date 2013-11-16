@@ -1,6 +1,42 @@
 <link rel="import" href="swap.html">
 <polymer-element name="tabs-widget">
   <template>
+    <style>
+    content[select="li"]::content > li {
+      position: relative;
+      display: block;
+      float: left;
+      margin-bottom: -1px;
+    }
+
+    content[select="li"]::content > li > a {
+      position: relative;
+      display: block;
+      padding: 10px 15px;
+      margin-right: 2px;
+      line-height: 1.428571429;
+      border: 1px solid transparent;
+      border-radius: 4px 4px 0 0;
+    }
+
+    content[select="li"]::content > li.active > a,
+    content[select="li"]::content > li.active > a:hover,
+    content[select="li"]::content > li.active > a:focus {
+      color: #555555;
+      background-color: #ffffff;
+      border: 1px solid #dddddd;
+      border-bottom-color: transparent;
+      cursor: default;
+    }
+
+    swap-widget > content::content > * {
+      display: none;
+    }    
+
+    swap-widget > content::content > .active {
+      display: block;
+    }    
+    </style>
     <ul class='nav nav-tabs'>
       <content select='li'></content>
     </ul>
