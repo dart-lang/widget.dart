@@ -23,6 +23,14 @@
     * The class name corresponds to the web-ui library convention: `FooBar`
     * File names correspond to Dart convention: `foo_bar.[dart|html]`
 
+# Running in Dartium
+
+* At the moment, a Chrome flag must be set to enable some features
+    * <chrome://flags/#enable-experimental-web-platform-features>
+    * Needed for Chrome 31. Not sure when this will be mainstreamed.
+    * Used for `::content` style selectors in:
+        * Tab
+
 # Versioning
 
 Our goal is to follow [Semantic Versioning](http://semver.org/).
