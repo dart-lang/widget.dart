@@ -3,13 +3,13 @@
 
 [![Build Status](https://drone.io/github.com/dart-lang/widget.dart/status.png)](https://drone.io/github.com/dart-lang/widget.dart/latest)
 
-# Web UI
+# Polymer.dart
 
-**Dart Widgets** leverages the [Web UI](https://github.com/dart-lang/web-ui) Dart project, sponsored by the [Google Dart](http://www.dartlang.org/) team.
+**Dart Widgets** leverages the [Polymer.dart](https://www.dartlang.org/polymer-dart/) Dart project, sponsored by the [Google Dart](http://www.dartlang.org/) team.
 
-* **Web UI** is in heavy development, as is **Dart**.
-* Read up on the **WEB UI** project before trying to use the code in this project.
-* Pay attention to the current version of **WEB UI** being used by looking at `pubspec.yaml`.
+* **Polymer.dart** is in heavy development, as is **Dart**.
+* Read up on the **Polymer.dart** project before trying to use the code in this project.
+* Pay attention to the current version of **Polymer.dart** being used by looking at `pubspec.yaml`.
 
 # Conventions
 
