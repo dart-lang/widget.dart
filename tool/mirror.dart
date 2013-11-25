@@ -1,8 +1,7 @@
 /**
  * Note: there is a LOT of hard-coded paths here. Ideally, mirrors and markdown
  * would be available without linking into Dart SDK internals
- * DARTBUG: TBD!!!
- * TODO: file a dart bug on accessing these guys...
+ * DARTBUG: https://code.google.com/p/dart/issues/detail?id=13679
  */
 
 import 'dart:async';
