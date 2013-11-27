@@ -1,3 +1,5 @@
+library widget.dropdown;
+
 import 'dart:async';
 import 'dart:html';
 import 'package:polymer/polymer.dart';
@@ -24,6 +26,7 @@ import 'package:widget/widget.dart';
  * added to the inner element wrapping all content. Causing child elements with
  * class `dropdown-menu` to become visible.
  */
+@CustomTag('dropdown-widget')
 class DropdownWidget extends PolymerElement implements ShowHideComponent {
   static final ShowHideEffect _effect = new FadeEffect();
   static const int _duration = 100;
@@ -31,7 +34,7 @@ class DropdownWidget extends PolymerElement implements ShowHideComponent {
   bool _isShown = false;
 
   DropdownWidget.created() : super.created() {
-    this.onClick.listen(_onClick);
+    this.querySelectorAll('[data-toggle=dropdown]').onClick.listen(_onClick);
     this.onKeyDown.listen(_onKeyDown);
   }
 
@@ -51,14 +54,10 @@ class DropdownWidget extends PolymerElement implements ShowHideComponent {
 
       final action = _isShown ? ShowHideAction.SHOW : ShowHideAction.HIDE;
 
-      final headerElement = this.querySelector('[is=x-dropdown] > .dropdown');
-
-      if(headerElement != null) {
-        if(_isShown) {
-          headerElement.classes.add('open');
-        } else {
-          headerElement.classes.remove('open');
-        }
+      if(_isShown) {
+        this.classes.add('open');
+      } else {
+        this.classes.remove('open');
       }
 
       final contentDiv = this.querySelector('[is=x-dropdown] > .dropdown-menu');
