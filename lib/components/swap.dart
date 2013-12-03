@@ -21,7 +21,7 @@ class SwapWidget extends PolymerElement implements SwapComponent {
   static const _DIR_CLASS_PREV = 'prev';
 
   // should only be accessed via the [_contentElement] property
-  Element _contentElementField;
+  ContentElement _contentElementField;
 
   SwapWidget.created() : super.created();
 
@@ -30,7 +30,9 @@ class SwapWidget extends PolymerElement implements SwapComponent {
   Element get activeItem =>
     items.singleWhere((e) => e.classes.contains(_ACTIVE_CLASS));
 
-  List<Element> get items => _contentElement.children;
+  List<Element> get items => _contentElement.getDistributedNodes()
+      .where((e) => e is Element)
+      .toList(growable: false);
 
   Future<bool> showItemAtIndex(int index, {ShowHideEffect effect, int duration, EffectTiming effectTiming, ShowHideEffect hideEffect}) {
     // TODO: support hide all if index == null
@@ -70,22 +72,22 @@ class SwapWidget extends PolymerElement implements SwapComponent {
     _contentElementField = null;
   }
 
-  Element get _contentElement {
+  ContentElement get _contentElement {
     _initialize();
     return _contentElementField;
   }
 
   void _initialize() {
     if(_contentElementField == null) {
-      _contentElementField = getShadowRoot('swap-widget').querySelector('.content');
+      _contentElementField = shadowRoot.querySelector('content');
       if(_contentElementField == null) {
         throw 'Could not find the content element. Either the template has changed or state was accessed too early in the component lifecycle.';
       }
 
-      final theItems = _contentElementField.children;
+      var theItems = items;
 
       // if there are any elements, make sure one and only one is 'active'
-      final activeFigures = new List<Element>.from(theItems.where((e) => e.classes.contains(_ACTIVE_CLASS)).toList());
+      var activeFigures = new List<Element>.from(theItems.where((e) => e.classes.contains(_ACTIVE_CLASS)).toList());
       if(activeFigures.length == 0) {
         if(theItems.length > 0) {
           // marke the first of the figures as active

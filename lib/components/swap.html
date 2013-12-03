@@ -4,31 +4,29 @@
 <polymer-element name="swap-widget">
   <template>
     <style>
-      @host {
-        * {
-          display: block;
-        }
+      :host {
+        display: block;
       }
+
       .content {
         position: relative;
         overflow: hidden;
       }
 
-      .content > * {
+      .content > content::content > * {
         position: absolute;
         top: 0;
         left: 0;
         display: none;
         margin: 0 auto;
-        width: 100%;
       }
 
-      .content > .active {
+      .content > content::content > .active {
         position: relative;
         display: block;
       }
 
-      .content > .prev {
+      .content > content::content > .prev {
         display: block;
       }
 
