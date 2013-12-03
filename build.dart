@@ -5,24 +5,21 @@ import 'dart:io';
 import 'package:html5lib/dom.dart';
 import 'package:html5lib/parser.dart';
 import 'package:html5lib/dom_parsing.dart';
-// import 'package:polymer/component_build.dart' as build_utils;
 import 'package:bot/bot.dart';
 
 final _whitespaceRegex = new RegExp(r'\s+');
 
-void main() {
-  /*
-  final args = new Options().arguments;
-  log('** ARGS: $args');
+void main(List<String> args) {
+  _log('** ARGS: $args');
 
-  final changes = getChangedFiles(args);
+  final changes = _getChangedFiles(args);
 
-  if(!args.isEmpty && onlyOutputFiles(changes)) {
-    log(' ** Nothing interesting changed');
+  if(!args.isEmpty && _onlyOutputFiles(changes)) {
+    _log(' ** Nothing interesting changed');
     return;
   }
 
-  log('** CHANGES: $changes');
+  _log('** CHANGES: $changes');
 
   final input = 'web/index_source.html';
   final output = 'web/index.html';
@@ -30,37 +27,17 @@ void main() {
   if(changes.contains(input)) {
     _transform(input, output).then((bool value) {
       if(value) {
-        log('updated $output');
+        _log('updated $output');
       } else {
-        log('no change to $output');
+        _log('no change to $output');
       }
     });
   } else {
-    log(" - skipping transform");
+    _log(" - skipping transform");
   }
-
-  if(changes.any((c) => c.startsWith(r'web/'))) {
-    Process.run('./bin/copy_assets.sh', [])
-      .then((ProcessResult pr) {
-        if(pr.exitCode == 0) {
-          log('copy of assets from web dir completed');
-        } else {
-          log(pr.stderr);
-        }
-      });
-  } else {
-    log(' - skipping copy assets');
-  }
-
-  args.addAll(['--', '--no-rewrite-urls',
-      '--warnings_as_errors', '--verbose']);
-
-  // build_utils.build(args, [output]);
-
-   */
 }
 
-void log(value) {
+void _log(value) {
   if(value != null) {
     print(value);
     /*
@@ -74,11 +51,11 @@ void log(value) {
   }
 }
 
-bool onlyOutputFiles(List<String> files) {
+bool _onlyOutputFiles(List<String> files) {
   return files.every((value) => value.startsWith(r'web/out/'));
 }
 
-List<String> getChangedFiles(List<String> args) {
+List<String> _getChangedFiles(List<String> args) {
   return args.where((value) => value.contains('='))
       .map((value) {
         final indexOfEqu = value.indexOf('=');
@@ -88,7 +65,7 @@ List<String> getChangedFiles(List<String> args) {
 }
 
 Future<bool> _transform(String input, String output) {
-  log('doing big page transform');
+  _log('doing big page transform');
   final file = new File(input);
   assert(file.existsSync());
   return file.readAsString()
