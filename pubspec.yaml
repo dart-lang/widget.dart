@@ -4,14 +4,14 @@ author: Kevin Moore <kevin@thinkpixellab.com>
 description: A set of reusable Web Components for Dart applications
 homepage: https://github.com/dart-lang/widget.dart
 environment:
-  sdk: '>=0.8.10+6 <2.0.0'
+  sdk: '>=1.0.0 <2.0.0'
 dependencies:
-  bot: '>=0.25.1'
+  bot: '>=0.25.3'
   bot_web: '>=0.21.0'
-  polymer: '>=0.9.0 <0.10.0'
+  polymer: '>=0.9.1+1 <0.10.0'
 dev_dependencies:
   bot_test: '>=0.1.5'
   csslib: '>=0.9.0 <0.10.0'
-  hop: '>=0.27.1'
-  html5lib: '>=0.9.0 <0.10.0'
+  hop: '>=0.28.1+2'
+  html5lib: '>=0.9.1 <0.10.0'
   unittest: '>=0.9.0 <0.10.0'
