@@ -3,7 +3,6 @@ library widget.swap;
 import 'dart:async';
 import 'dart:html';
 import 'package:polymer/polymer.dart';
-import 'package:bot/bot.dart';
 import 'package:widget/effects.dart';
 import 'package:widget/widget.dart';
 
@@ -18,21 +17,18 @@ import 'package:widget/widget.dart';
  */
 @CustomTag('swap-widget')
 class SwapWidget extends PolymerElement implements SwapComponent {
-  static const _activeClass = 'active';
-  static const _dirClassPrev = 'prev';
+  static const _ACTIVE_CLASS = 'active';
+  static const _DIR_CLASS_PREV = 'prev';
 
   // should only be accessed via the [_contentElement] property
   Element _contentElementField;
 
   SwapWidget.created() : super.created();
 
-  int get activeItemIndex {
-    return items.indexOf(activeItem);
-  }
+  int get activeItemIndex => items.indexOf(activeItem);
 
-  Element get activeItem {
-    return $(items).singleWhere((e) => e.classes.contains(_activeClass));
-  }
+  Element get activeItem =>
+    items.singleWhere((e) => e.classes.contains(_ACTIVE_CLASS));
 
   List<Element> get items => _contentElement.children;
 
@@ -51,16 +47,16 @@ class SwapWidget extends PolymerElement implements SwapComponent {
       return new Future<bool>.value(true);
     }
 
-    [oldActiveChild, item].forEach((e) => e.classes.remove(_dirClassPrev));
+    [oldActiveChild, item].forEach((e) => e.classes.remove(_DIR_CLASS_PREV));
 
-    oldActiveChild.classes.remove(_activeClass);
-    oldActiveChild.classes.add(_dirClassPrev);
+    oldActiveChild.classes.remove(_ACTIVE_CLASS);
+    oldActiveChild.classes.add(_DIR_CLASS_PREV);
 
-    item.classes.add(_activeClass);
+    item.classes.add(_ACTIVE_CLASS);
 
     return Swapper.swap(_contentElement, item, effect: effect, duration: duration, effectTiming: effectTiming, hideEffect: hideEffect)
         .whenComplete(() {
-          oldActiveChild.classes.remove(_dirClassPrev);
+          oldActiveChild.classes.remove(_DIR_CLASS_PREV);
         });
   }
 
@@ -89,15 +85,15 @@ class SwapWidget extends PolymerElement implements SwapComponent {
       final theItems = _contentElementField.children;
 
       // if there are any elements, make sure one and only one is 'active'
-      final activeFigures = new List<Element>.from(theItems.where((e) => e.classes.contains(_activeClass)).toList());
+      final activeFigures = new List<Element>.from(theItems.where((e) => e.classes.contains(_ACTIVE_CLASS)).toList());
       if(activeFigures.length == 0) {
         if(theItems.length > 0) {
           // marke the first of the figures as active
-          theItems[0].classes.add(_activeClass);
+          theItems[0].classes.add(_ACTIVE_CLASS);
         }
       } else {
         activeFigures.sublist(1)
-          .forEach((e) => e.classes.remove(_activeClass));
+          .forEach((e) => e.classes.remove(_ACTIVE_CLASS));
       }
 
       // A bit of a hack. Because we call Swap w/ two displayed items:
