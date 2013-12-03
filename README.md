@@ -1,5 +1,5 @@
 # Dart Widgets
-## A set of reusable Polymer Components for Dart applications
+### A set of reusable Polymer Components for Dart applications
 
 [![Build Status](https://drone.io/github.com/dart-lang/widget.dart/status.png)](https://drone.io/github.com/dart-lang/widget.dart/latest)
 
