@@ -6,16 +6,12 @@ import 'package:widget/effects.dart';
 void main() {
   initPolymer();
 
-  /*
-
   window.onHashChange.listen(_onNavigate);
-  */
 
   //
   // ShowHide Demo
   //
-  final effects =
-    {
+  var effects = {
      'Default' : null,
      'Door': new DoorEffect(),
      'Fade': new FadeEffect(),
@@ -26,20 +22,21 @@ void main() {
      'Spin': new SpinEffect()
   };
 
-  final effectsDiv = querySelector('.demo.showhide .effects');
+  var effectsDiv = querySelector('.demo.showhide .effects');
   effects.forEach((name, effect) {
-    final button = new ButtonElement()
+    var button = new ButtonElement()
       ..appendText(name)
       ..classes.add('btn')
       ..onClick.listen((_) => _showHideDemo_toggle(effect));
     effectsDiv.append(button);
   });
 
-  querySelectorAll('#modalOpenButton').onClick.listen(_show);
+  querySelector('#modalOpenButton').onClick.listen(_show);
 }
 
 void _show(event) {
-  querySelector('#modal_example').xtag.show();
+  var modal = querySelector('#modal_example');
+  modal.show();
 }
 
 void _showHideDemo_toggle(ShowHideEffect effect) {
@@ -61,11 +58,11 @@ void _onNavigate(HashChangeEvent e) {
 }
 
 void _flashElement(Element element) {
-  element.classes.add(_highlightedClass);
-  new Timer(const Duration(seconds: 1), () => element.classes.remove(_highlightedClass));
+  element.classes.add(_HIGHLIGHTED_CLASS);
+  new Timer(const Duration(seconds: 1), () => element.classes.remove(_HIGHLIGHTED_CLASS));
 }
 
-const _highlightedClass = 'highlighted';
+const _HIGHLIGHTED_CLASS = 'highlighted';
 
 // these are the rules applied by build.dart
 final _hashBitRegEx = new RegExp(r'.*#([a-z_]+)');
