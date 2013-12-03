@@ -1,41 +1,41 @@
 /**
  * Note: there is a LOT of hard-coded paths here. Ideally, mirrors and markdown
  * would be available without linking into Dart SDK internals
- * DARTBUG: TBD!!!
- * TODO: file a dart bug on accessing these guys...
+ * DARTBUG: https://code.google.com/p/dart/issues/detail?id=13679
  */
 
 import 'dart:async';
 import 'dart:io';
-import 'dart:uri';
 import 'package:bot/bot.dart';
-import '/usr/local/Cellar/dart-editor/22378/dart-sdk/lib/_internal/compiler/implementation/mirrors/mirrors.dart' as mirrors;
-import '/usr/local/Cellar/dart-editor/22378/dart-sdk/lib/_internal/compiler/implementation/mirrors/dart2js_mirror.dart' as dart2js;
-import '/usr/local/Cellar/dart-editor/22378/dart-sdk/lib/_internal/dartdoc/lib/markdown.dart' as md;
+import '/usr/local/Cellar/dart-editor/30657/dart-sdk/lib/_internal/compiler/implementation/mirrors/mirrors.dart' as mirrors;
+import '/usr/local/Cellar/dart-editor/30657/dart-sdk/lib/_internal/compiler/implementation/mirrors/dart2js_mirror.dart' as dart2js;
+import '/usr/local/Cellar/dart-editor/30657/dart-sdk/lib/_internal/compiler/implementation/source_file_provider.dart' as sfp;
+import '/usr/local/Cellar/dart-editor/30657/dart-sdk/lib/_internal/dartdoc/lib/markdown.dart' as md;
+import 'package:hop/src/hop_experimental.dart' as hop_exp;
 import 'package:html5lib/dom.dart' as dom;
-import 'package:html5lib/parser.dart';
-import 'package:html5lib/dom_parsing.dart';
 import 'util.dart' as util;
 
-const _libPath = r'/usr/local/Cellar/dart-editor/22378/dart-sdk/';
-const _htmlToHack = r'web/index_source.html';
+const _LIB_PATH = r'/usr/local/Cellar/dart-editor/30657/dart-sdk/';
+const _SOURCE_HTML_FILE = r'web/index_source.html';
 
 void main() {
-  final htmlFile = new File(_htmlToHack);
-  assert(htmlFile.existsSync());
+  hop_exp.transformHtml(_SOURCE_HTML_FILE, _transform)
+    .then((bool changed) {
+      if(changed) {
+        print("+ Updating $_SOURCE_HTML_FILE");
+      } else {
+        print('- No changes to $_SOURCE_HTML_FILE');
+      }
+    });
+}
+
+Future<dom.Document> _transform(dom.Document document) {
 
   List<mirrors.ClassMirror> classes;
 
-  _getTargetClasses()
+  return _getTargetClasses()
   .then((List<mirrors.ClassMirror> value) {
     classes = value;
-
-    return htmlFile.readAsString();
-  })
-  .then((String originalContent) {
-
-    final parser = new HtmlParser(originalContent, generateSpans: true);
-    final document = parser.parse();
 
     for(final componentClass in classes) {
 
@@ -53,27 +53,25 @@ void main() {
       }
     }
 
-    // Now document has been updated
-    final updatedContent = document.outerHtml;
-    if(updatedContent != originalContent) {
-      // we should write!
-      print("+ Updating $_htmlToHack");
-      return htmlFile.writeAsString(updatedContent);
-    } else {
-      print('- No changes to $_htmlToHack');
-    }
+    return document;
   });
 }
 
 Future<List<mirrors.ClassMirror>> _getTargetClasses() {
   final currentLibraryPath = Directory.current.path;
-  final libPath = new Uri(_libPath);
-  final packageRoot = new Uri(r'packages/');
+  final libPath = new Uri.file(_LIB_PATH);
+  final packageRoot = Uri.base.resolve(r'packages/');
 
-  final componentPaths = util.getDartLibraryPaths().toList();
+  final componentPaths = util.getDartLibraryPaths()
+      .map((String path) => new Uri.file(path))
+      .toList();
 
-  return dart2js.analyze(componentPaths, libPath, packageRoot, null, null,
-      ['--preserve-comments'])
+  var provider = new sfp.CompilerSourceFileProvider();
+  var diagnosticHandler =
+        new sfp.FormattingDiagnosticHandler(provider).diagnosticHandler;
+
+  return dart2js.analyze(componentPaths, libPath, packageRoot,
+      provider.readStringFromUri, diagnosticHandler, ['--preserve-comments'])
       .then((mirrors.MirrorSystem mirrors) {
 
         final componentLibraries = mirrors.libraries.values.where((lm) {

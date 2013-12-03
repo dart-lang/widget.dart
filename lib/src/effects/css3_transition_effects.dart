@@ -2,7 +2,7 @@ part of effects;
 
 class FadeEffect extends Css3TransitionEffect {
   FadeEffect() : super('opacity');
-  
+
   String computePropertyValue(num fractionComplete, Element element) =>
       '$fractionComplete';
 
@@ -20,7 +20,7 @@ class ShrinkEffect extends Css3TransitionEffect {
   String computePropertyValue(num fractionComplete, Element element) =>
       fractionComplete <= 0 ?
           '0' : '${element.scrollHeight * fractionComplete}px';
-  
+
   num computeFractionComplete(Element element) {
     num scrollHeight = element.scrollHeight;
     if (scrollHeight > 0) {
@@ -31,7 +31,7 @@ class ShrinkEffect extends Css3TransitionEffect {
 
 class ScaleEffect extends Css3TransitionEffect {
   Orientation orientation;
-  
+
   static Map<String, String> _computeValues(HorizontalAlignment xOffset,
       VerticalAlignment yOffset) {
     if(xOffset == null) {
@@ -67,14 +67,14 @@ class ScaleEffect extends Css3TransitionEffect {
 
 class SpinEffect extends Css3TransitionEffect {
   SpinEffect() : super('-webkit-transform');
-  
+
   String computePropertyValue(num fractionComplete, Element element) =>
       'perspective(600px) rotateX(${(1-fractionComplete) * 90}deg)';
 }
 
 class DoorEffect extends Css3TransitionEffect {
   DoorEffect() : super('-webkit-transform', {'-webkit-transform-origin': '0% 50%'});
-  
+
   String computePropertyValue(num fractionComplete, Element element) =>
       'perspective(600px) rotateX(${(1-fractionComplete) * 90}deg)';
 }
@@ -83,7 +83,7 @@ class SlideEffect extends Css3TransitionEffect {
   final HorizontalAlignment xStart;
   final VerticalAlignment yStart;
 
-  SlideEffect({this.xStart, this.yStart}) : super('-webkit-transform'); 
+  SlideEffect({this.xStart, this.yStart}) : super('-webkit-transform');
 
   String computePropertyValue(num fractionComplete, Element _) {
     if (fractionComplete >= 1) {

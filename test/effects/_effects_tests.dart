@@ -57,4 +57,4 @@ void _cleanUpPlayground() {
   existing.remove();
 }
 
-DivElement _getPlayground() => query('div.playground');
+DivElement _getPlayground() => querySelector('div.playground');

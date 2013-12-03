@@ -1,9 +1,15 @@
 import 'dart:async';
 import 'dart:html';
+import 'package:polymer/polymer.dart';
 import 'package:widget/effects.dart';
 
 void main() {
+  initPolymer();
+
+  /*
+
   window.onHashChange.listen(_onNavigate);
+  */
 
   //
   // ShowHide Demo
@@ -20,7 +26,7 @@ void main() {
      'Spin': new SpinEffect()
   };
 
-  final effectsDiv = query('.demo.showhide .effects');
+  final effectsDiv = querySelector('.demo.showhide .effects');
   effects.forEach((name, effect) {
     final button = new ButtonElement()
       ..appendText(name)
@@ -28,10 +34,16 @@ void main() {
       ..onClick.listen((_) => _showHideDemo_toggle(effect));
     effectsDiv.append(button);
   });
+
+  querySelectorAll('#modalOpenButton').onClick.listen(_show);
+}
+
+void _show(event) {
+  querySelector('#modal_example').xtag.show();
 }
 
 void _showHideDemo_toggle(ShowHideEffect effect) {
-  queryAll('.demo.showhide .logo_wrapper > img').forEach((Element e) {
+  querySelectorAll('.demo.showhide .logo_wrapper > img').forEach((Element e) {
     ShowHide.toggle(e, effect: effect);
   });
 }
@@ -41,7 +53,7 @@ void _onNavigate(HashChangeEvent e) {
   if(matches != null) {
     final elementId = matches[1];
 
-    final element = query('#$elementId');
+    final element = querySelector('#$elementId');
     if(element != null) {
       _flashElement(element);
     }

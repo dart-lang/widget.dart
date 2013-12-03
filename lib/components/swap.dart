@@ -1,9 +1,8 @@
-library x_swap;
+library widget.swap;
 
 import 'dart:async';
 import 'dart:html';
-import 'package:meta/meta.dart';
-import 'package:web_ui/web_ui.dart';
+import 'package:polymer/polymer.dart';
 import 'package:bot/bot.dart';
 import 'package:widget/effects.dart';
 import 'package:widget/widget.dart';
@@ -11,35 +10,32 @@ import 'package:widget/widget.dart';
 // TODO: cleaner about having requests pile up...handle the pending change cleanly
 
 /**
- * [Swap] is a low-level component designed to be composed by other components.
+ * [SwapWidget] is a low-level component designed to be composed by other components.
  * It exposes the functionality of the [Swapper] effect as a simple container element with corresponding methods to
  * `swap` between child elements via code.
  *
  * [Tabs] and [Carousel] both use this component.
  */
-class Swap extends WebComponent implements SwapComponent {
+@CustomTag('swap-widget')
+class SwapWidget extends PolymerElement implements SwapComponent {
   static const _activeClass = 'active';
   static const _dirClassPrev = 'prev';
-
-  ScopedCssMapper get __css => getScopedCss("x-swap");
 
   // should only be accessed via the [_contentElement] property
   Element _contentElementField;
 
-  @override
+  SwapWidget.created() : super.created();
+
   int get activeItemIndex {
     return items.indexOf(activeItem);
   }
 
-  @override
   Element get activeItem {
     return $(items).singleWhere((e) => e.classes.contains(_activeClass));
   }
 
-  @override
   List<Element> get items => _contentElement.children;
 
-  @override
   Future<bool> showItemAtIndex(int index, {ShowHideEffect effect, int duration, EffectTiming effectTiming, ShowHideEffect hideEffect}) {
     // TODO: support hide all if index == null
 
@@ -47,7 +43,6 @@ class Swap extends WebComponent implements SwapComponent {
     return showItem(newActive, effect: effect, duration: duration, effectTiming: effectTiming, hideEffect: hideEffect);
   }
 
-  @override
   Future<bool> showItem(Element item, {ShowHideEffect effect, int duration, EffectTiming effectTiming, ShowHideEffect hideEffect}) {
     assert(items.contains(item));
 
@@ -69,13 +64,13 @@ class Swap extends WebComponent implements SwapComponent {
         });
   }
 
-  @protected
-  void inserted() {
+  @override
+  void enteredView() {
     _initialize();
   }
 
-  @protected
-  void removed() {
+  @override
+  void leftView() {
     _contentElementField = null;
   }
 
@@ -86,8 +81,7 @@ class Swap extends WebComponent implements SwapComponent {
 
   void _initialize() {
     if(_contentElementField == null) {
-      _contentElementField =
-          this.query('${__css["x-swap"]} ${__css.getSelector(".content")}');
+      _contentElementField = getShadowRoot('swap-widget').querySelector('.content');
       if(_contentElementField == null) {
         throw 'Could not find the content element. Either the template has changed or state was accessed too early in the component lifecycle.';
       }

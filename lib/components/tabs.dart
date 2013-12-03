@@ -1,5 +1,7 @@
+library widget.tabs;
+
 import 'dart:html';
-import 'package:web_ui/web_ui.dart';
+import 'package:polymer/polymer.dart';
 import 'package:bot/bot.dart';
 import 'package:widget/effects.dart';
 import 'package:widget/widget.dart';
@@ -12,26 +14,28 @@ import 'package:widget/widget.dart';
 // TODO: support click on child elements with data-toggle="tab"
 
 /**
- * [Tabs] is based on the [analogous feature](http://twitter.github.com/bootstrap/javascript.html#tabs) in Bootstrap.
+ * [TabsWidget] is based on the [analogous feature](http://twitter.github.com/bootstrap/javascript.html#tabs) in Bootstrap.
  *
  * The tab headers are processed as all child `<li>` elements in content.
  * The rest of the child elements are considered tab content.
  *
- * [Tabs] responds to click events from any child with `data-toggle="tab"` or `data-toggle="pill"`.
+ * [TabsWidget] responds to click events from any child with `data-toggle="tab"` or `data-toggle="pill"`.
  *
  * The target content id is either the value of `data-target` on the clicked element or the anchor
  * in `href`.
  */
-class Tabs extends WebComponent {
-  ScopedCssMapper get __css => getScopedCss("x-tabs");
+@CustomTag('tabs-widget')
+class TabsWidget extends PolymerElement {
 
-  @protected
-  void created() {
+  bool get applyAuthorStyles => true;
+
+  TabsWidget.created() : super.created() {
     this.onClick.listen(_clickListener);
   }
 
-  @protected
-  void inserted() {
+  @override
+  void enteredView() {
+    super.enteredView();
     _ensureAtMostOneTabActive();
   }
 
@@ -94,7 +98,9 @@ class Tabs extends WebComponent {
     return target;
   }
 
-  List<Element> _getAllTabs() => this.queryAll('${__css["x-tabs"]} .nav-tabs > li');
+  List<Element> _getAllTabs() =>
+      (shadowRoot.querySelector('.nav-tabs > content') as ContentElement)
+      .getDistributedNodes();
 
   void _ensureAtMostOneTabActive() {
     final tabs = _getAllTabs();
@@ -115,19 +121,8 @@ class Tabs extends WebComponent {
     }
   }
 
-  SwapComponent _getSwap() {
-    final Element element = this.query('${__css["x-tabs"]} [is=x-swap]');
-    if(element != null) {
-      if(element is SwapComponent) {
-        // Analyzer
-        // DARTBUG: https://code.google.com/p/dart/issues/detail?id=9666
-        return element;
-      } else if(element.xtag is SwapComponent) {
-        return element.xtag;
-      }
-    }
-    return null;
-  }
+  SwapComponent _getSwap() =>
+      shadowRoot.querySelector('swap-widget') as SwapComponent;
 
   void _updateContent(String target) {
     final swap = _getSwap();

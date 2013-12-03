@@ -1,16 +1,22 @@
 import 'dart:async';
 import 'dart:html';
-import 'package:web_ui/web_ui.dart';
-import 'package:bot/bot.dart';
+import 'package:polymer/polymer.dart';
 import 'package:widget/effects.dart';
 import 'package:widget/widget.dart';
 
 /**
- * [Alert] follows the same convention as [its inspiration](http://twitter.github.com/bootstrap/javascript.html#alerts) in Bootstrap.
+ * [AlertWidget] follows the same convention as [its inspiration](http://twitter.github.com/bootstrap/javascript.html#alerts) in Bootstrap.
  *
- * Clicking on a nested element with the attribute `data-dismiss='alert'` will cause [Alert] to close.
+ * Clicking on a nested element with the attribute `data-dismiss='alert'` will cause [AlertWidget] to close.
  */
-class Alert extends WebComponent implements ShowHideComponent {
+@CustomTag('alert-widget')
+class AlertWidget extends PolymerElement implements ShowHideComponent {
+
+  AlertWidget.created(): super.created()  {
+    this.onClick.listen(_onClick);
+  }
+
+  bool get applyAuthorStyles => true;
 
   bool _isShown = true;
 
@@ -39,11 +45,6 @@ class Alert extends WebComponent implements ShowHideComponent {
 
   void toggle() {
     isShown = !isShown;
-  }
-
-  @protected
-  void created() {
-    this.onClick.listen(_onClick);
   }
 
   void _onClick(MouseEvent event) {

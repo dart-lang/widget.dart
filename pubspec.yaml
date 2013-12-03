@@ -1,17 +1,17 @@
 name: widget
-version: 0.2.7
+version: 0.3.0-dev
 author: Kevin Moore <kevin@thinkpixellab.com>
 description: A set of reusable Web Components for Dart applications
 homepage: https://github.com/dart-lang/widget.dart
 environment:
-  sdk: '>=0.6.15+1'
+  sdk: '>=1.0.0 <2.0.0'
 dependencies:
-  bot: '>=0.23.0'
-  bot_web: '>=0.20.4'
-  html5lib: '>=0.4.4'
-  meta: '>=0.6.15'
-  web_ui: '>=0.4.17+3'
+  bot: '>=0.25.3'
+  bot_web: '>=0.21.0'
+  polymer: '>=0.9.1+1 <0.10.0'
 dev_dependencies:
-  bot_test: any
-  hop: '>=0.24.1+1'
-  unittest: '>=0.6.15'
+  bot_test: '>=0.1.5'
+  csslib: '>=0.9.0 <0.10.0'
+  hop: '>=0.28.1+2'
+  html5lib: '>=0.9.1 <0.10.0'
+  unittest: '>=0.9.0 <0.10.0'

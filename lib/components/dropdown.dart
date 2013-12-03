@@ -1,7 +1,8 @@
+library widget.dropdown;
+
 import 'dart:async';
 import 'dart:html';
-import 'package:bot/bot.dart';
-import 'package:web_ui/web_ui.dart';
+import 'package:polymer/polymer.dart';
 import 'package:widget/effects.dart';
 import 'package:widget/widget.dart';
 
@@ -9,27 +10,33 @@ import 'package:widget/widget.dart';
 // https://github.com/kevmoo/widget.dart/issues/14
 
 /**
- * [Dropdown] aligns closely with the model provided by the
+ * [DropdownWidget] aligns closely with the model provided by the
  * [dropdown functionality](http://twitter.github.com/bootstrap/javascript.html#dropdowns)
  * in Bootstrap.
  *
- * [Dropdown] content is inferred from all child elements that have
+ * [DropdownWidget] content is inferred from all child elements that have
  * class `dropdown-menu`. Bootstrap defines a CSS selector for `.dropdown-menu`
  * with an initial display of `none`.
  *
- * [Dropdown] listens for `click` events and toggles visibility of content if the
+ * [DropdownWidget] listens for `click` events and toggles visibility of content if the
  * click target has attribute `data-toggle="dropdown"`.
  *
  * Bootstrap also defines a CSS selector which sets `display: block;` for elements
- * matching `.open > .dropdown-menu`. When [Dropdown] opens, the class `open` is
+ * matching `.open > .dropdown-menu`. When [DropdownWidget] opens, the class `open` is
  * added to the inner element wrapping all content. Causing child elements with
  * class `dropdown-menu` to become visible.
  */
-class Dropdown extends WebComponent implements ShowHideComponent {
+@CustomTag('dropdown-widget')
+class DropdownWidget extends PolymerElement implements ShowHideComponent {
   static final ShowHideEffect _effect = new FadeEffect();
   static const int _duration = 100;
 
   bool _isShown = false;
+
+  DropdownWidget.created() : super.created() {
+    this.querySelectorAll('[data-toggle=dropdown]').onClick.listen(_onClick);
+    this.onKeyDown.listen(_onKeyDown);
+  }
 
   bool get isShown => _isShown;
 
@@ -47,17 +54,13 @@ class Dropdown extends WebComponent implements ShowHideComponent {
 
       final action = _isShown ? ShowHideAction.SHOW : ShowHideAction.HIDE;
 
-      final headerElement = this.query('[is=x-dropdown] > .dropdown');
-
-      if(headerElement != null) {
-        if(_isShown) {
-          headerElement.classes.add('open');
-        } else {
-          headerElement.classes.remove('open');
-        }
+      if(_isShown) {
+        this.classes.add('open');
+      } else {
+        this.classes.remove('open');
       }
 
-      final contentDiv = this.query('[is=x-dropdown] > .dropdown-menu');
+      final contentDiv = this.querySelector('[is=x-dropdown] > .dropdown-menu');
       if(contentDiv != null) {
         ShowHide.begin(action, contentDiv, effect: _effect);
       }
@@ -80,16 +83,10 @@ class Dropdown extends WebComponent implements ShowHideComponent {
   }
 
   static void closeDropdowns() {
-    document.queryAll('[is=x-dropdown]')
-      .where((e) => e.xtag is Dropdown)
-      .map((e) => e.xtag as Dropdown)
+    document.querySelectorAll('[is=x-dropdown]')
+      .where((e) => e.xtag is DropdownWidget)
+      .map((e) => e.xtag as DropdownWidget)
       .forEach((dd) => dd.hide());
-  }
-
-  @protected
-  void created() {
-    this.onClick.listen(_onClick);
-    this.onKeyDown.listen(_onKeyDown);
   }
 
   void _onKeyDown(KeyboardEvent e) {

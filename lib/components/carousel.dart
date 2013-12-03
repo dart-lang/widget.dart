@@ -1,26 +1,29 @@
 import 'dart:async';
-import 'dart:html';
-import 'package:web_ui/web_ui.dart';
+import 'package:polymer/polymer.dart';
 import 'package:widget/effects.dart';
 import 'package:widget/widget.dart';
 
 // TODO: option to enable/disable wrapping. Disable buttons if the end is hit...
 
 /**
- * [Carousel] allows moving back and forth through a set of child elements.
+ * [CarouselWidget] allows moving back and forth through a set of child elements.
  *
  * It is based on a [similar component](http://twitter.github.com/bootstrap/javascript.html#carousel)
  * in Bootstrap.
  *
- * [Carousel] leverages the [Swap] component to render the transition between items.
+ * [CarouselWidget] leverages the [Swap] component to render the transition between items.
  */
-class Carousel extends WebComponent {
-  ScopedCssMapper get __css => getScopedCss("x-swap");
+@CustomTag('carousel-widget')
+class CarouselWidget extends PolymerElement {
+
+  static const _DURATION = 1000;
 
   final ShowHideEffect _fromTheLeft = new SlideEffect(xStart: HorizontalAlignment.LEFT);
   final ShowHideEffect _fromTheRight = new SlideEffect(xStart: HorizontalAlignment.RIGHT);
 
-  static const _duration = 1000;
+  CarouselWidget.created() : super.created();
+
+  bool get applyAuthorStyles => true;
 
   Future<bool> _pendingAction = null;
 
@@ -28,8 +31,16 @@ class Carousel extends WebComponent {
 
   Future<bool> previous() => _moveDelta(false);
 
+  void _next(event, detail, target) {
+    next();
+  }
+
+  void _previous(event, detail, target) {
+    previous();
+  }
+
   SwapComponent get _swap =>
-      this.query('${__css["x-carousel"]} ${__css.getSelector(".carousel")} > [is=x-swap]').xtag;
+      getShadowRoot('carousel-widget').querySelector('.carousel > swap-widget').xtag;
 
   Future<bool> _moveDelta(bool doNext) {
     if (_pendingAction != null) {
@@ -61,7 +72,7 @@ class Carousel extends WebComponent {
     final newIndex = (activeIndex + delta) % _swap.items.length;
 
     _pendingAction = _swap.showItemAtIndex(newIndex, effect: showEffect,
-        hideEffect: hideEffect, duration: _duration);
+        hideEffect: hideEffect, duration: _DURATION);
     _pendingAction.whenComplete(() { _pendingAction = null; });
     return _pendingAction;
   }

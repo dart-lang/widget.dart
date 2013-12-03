@@ -3,7 +3,6 @@ library effects;
 import 'dart:async';
 import 'dart:html';
 import 'dart:math' as math;
-import 'package:meta/meta.dart';
 import 'package:bot/bot.dart';
 
 part 'src/effects/_enum.dart';

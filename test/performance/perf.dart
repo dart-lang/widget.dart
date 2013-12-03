@@ -5,7 +5,7 @@ import 'package:widget/effects.dart';
 void main() {
 
   _initialize();
-  query('#do-swap').onClick.listen(_doSwap);
+  querySelector('#do-swap').onClick.listen(_doSwap);
 
 }
 
@@ -86,7 +86,7 @@ Future<bool> showItem(Element item, {ShowHideEffect effect, int duration, Effect
 
 void _initialize() {
   if(_contentElementField == null) {
-    _contentElementField = query('.content');
+    _contentElementField = querySelector('.content');
     if(_contentElementField == null) {
       throw 'Could not find the content element. Either the template has changed or state was accessed too early in the component lifecycle.';
     }

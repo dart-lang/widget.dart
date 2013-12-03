@@ -18,7 +18,7 @@ void registerElementAnimationTests() {
 
       pg.appendHtml('<strong>this is strong!</strong>');
 
-      final fooDiv = query('div.playground div.foo');
+      final fooDiv = querySelector('div.playground div.foo');
       expect(fooDiv, isNotNull);
 
       final style = fooDiv.getComputedStyle('');
