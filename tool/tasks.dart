@@ -1,11 +1,14 @@
 library tool.tasks;
 
 import 'dart:async';
+import 'dart:io';
+
 import 'package:args/args.dart';
 import 'package:html5lib/dom.dart' as dom;
 import 'package:hop/hop_core.dart';
 import 'package:hop/hop_tasks.dart';
 import 'package:hop/src/hop_experimental.dart';
+import 'package:path/path.dart' as pathos;
 
 const _MODE = 'mode';
 const _VERBOSE = 'verbose';
@@ -25,7 +28,9 @@ Task getBuildTask() =>
     });
 
 // NOTE: assuming we're in build/index.html
-const _PAGE_PATH = 'build/index.html';
+const _BUILD_PATH = 'build';
+const _PAGE_PATH = '$_BUILD_PATH/index.html';
+const _JS_PATH = 'script';
 
 Future cleanHtml(TaskContext ctx) {
 
@@ -63,7 +68,31 @@ Future _fixPackageScriptTag(dom.Element packageJsScriptElement) {
   var name = url.pathSegments.last;
   assert(name.endsWith('.js'));
 
-  packageJsScriptElement.attributes['src'] = name;
+  var newUrl = new Uri(pathSegments: [_JS_PATH, name]);
+
+  packageJsScriptElement.attributes['src'] = newUrl.toString();
+
+  return _copyScriptFile(url);
+}
+
+Future _copyScriptFile(Uri sourcePath) {
+  var sourceScript = new File(sourcePath.toFilePath());
+
+  if(!sourceScript.existsSync()) {
+    throw new ArgumentError('$sourcePath does not exist!');
+  }
+
+  var targetName = sourcePath.pathSegments.last;
+  assert(targetName.endsWith('.js'));
+
+  var targetPath = pathos.join(_BUILD_PATH, _JS_PATH, targetName);
+
+  var targetFile = new File(targetPath);
+
+  return targetFile.create(recursive: true)
+      .then((_) =>
+        targetFile.openWrite(mode: FileMode.WRITE)
+            .addStream(sourceScript.openRead()));
 }
 
 List<dom.Element> _getPackageJSScriptElements(dom.Document doc) {
