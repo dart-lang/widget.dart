@@ -13,8 +13,25 @@
     body {
       margin: 25px;
     }
+
     swap-widget, tabs-widget {
       margin: 25px;
+    }
+
+    swap-widget.swap {
+      width: 250px;
+      height: 250px;
+    }
+
+    swap-widget.swap > div {
+      background: gray;
+      align-items: center;
+      text-align: center;
+      font-size: 50px;
+      line-height: 50px;
+      width: 150px;
+      height: 150px;
+      padding: 50px;
     }
   </style>
 
@@ -24,10 +41,10 @@
 
   <h1>Swap</h1>
 
-  <swap-widget>
-    <div class='sample'>A</div>
-    <div class='sample'>B</div>
-    <div class='sample'>C</div>
+  <swap-widget class='swap'>
+    <div>A</div>
+    <div>B</div>
+    <div>C</div>
   </swap-widget>
 
   <h1>Tabs</h1>
