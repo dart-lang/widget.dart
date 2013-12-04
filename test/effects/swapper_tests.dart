@@ -98,20 +98,18 @@ void _swapperTest(int childCount,
     if(!expectedResult) {
       expect(() => Swapper.swap(pg, toShowElement), throws);
     } else {
-      Swapper.swap(pg, toShowElement)
-        .then(expectAsync1((bool actualResult) {
+      return Swapper.swap(pg, toShowElement)
+        .then((bool actualResult) {
           expect(actualResult, expectedResult);
-        }))
+        })
         .then((_) => _getDisplayedIndicies(pg))
-        .then(expectAsync1((List<int> displayedIndicies) {
+        .then((List<int> displayedIndicies) {
           if(expectedDisplayed == null) {
             expect(displayedIndicies, isEmpty, reason: 'There are no items to display');
           } else {
             expect(displayedIndicies.length, 1, reason: 'there should only be one displayed item');
             expect(displayedIndicies[0], expectedDisplayed);
           }
-        }), onError: (error, trace) {
-          registerException(error, trace);
         });
     }
   });
