@@ -32,7 +32,7 @@ Future cleanHtml(TaskContext ctx) {
   return transformHtml(_PAGE_PATH, _process)
       .then((bool changes) {
         if(changes) {
-          ctx.info('Thing changed!');
+          ctx.info('Things changed!');
         } else {
           ctx.info('Nothing changed...');
         }
@@ -46,7 +46,35 @@ Future<dom.Document> _process(dom.Document doc) {
 
   // find all package imports and put them somewhere else
 
-  print(doc.hashCode);
+  var elements = _getPackageJSScriptElements(doc);
 
-  return new Future.value(doc);
+  return Future.forEach(elements, _fixPackageScriptTag)
+      .then((_) => doc);
+}
+
+Future _fixPackageScriptTag(dom.Element packageJsScriptElement) {
+  String src = packageJsScriptElement.attributes['src'];
+
+  var url = new Uri(path: src);
+
+  print(url.pathSegments);
+  assert(url.pathSegments.first == 'packages');
+
+  var name = url.pathSegments.last;
+  assert(name.endsWith('.js'));
+
+  packageJsScriptElement.attributes['src'] = name;
+}
+
+List<dom.Element> _getPackageJSScriptElements(dom.Document doc) {
+  return doc.queryAll('script')
+      .where((dom.Element e) {
+        assert(e.tagName == 'script');
+        String src = e.attributes['src'];
+
+        if(src == null) return false;
+
+        return src.startsWith('packages/') && src.endsWith('.js');
+      })
+      .toList();
 }
