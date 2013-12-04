@@ -208,21 +208,7 @@ $$.Closure$3 = [P, {
   $is_args1: true
 }];
 
-$$.Closure$47 = [Y, {
-  "": "Closure;call$4$duration$effect$effectTiming,$name",
-  call$1: function(p0) {
-    return this.call$4$duration$effect$effectTiming(p0, null, null, null);
-  },
-  "+call:1:0": 0,
-  call$catchAll: function() {
-    return {duration: null, effect: null, effectTiming: null};
-  },
-  $is_Object__Object: true,
-  $is_args1: true
-}];
-
-init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors", get$_cachedDeclarations: "_cachedDeclarations", get$_cachedFields: "_cachedFields", get$_cachedGetters: "_cachedGetters", get$_cachedMembers: "_cachedMembers", get$_cachedMetadata: "_cachedMetadata", get$_cachedMethods: "_cachedMethods", get$_cachedMethodsMap: "_cachedMethodsMap", get$_cachedSetters: "_cachedSetters", get$_cachedSuperinterfaces: "_cachedSuperinterfaces", get$_cachedTypeVariables: "_cachedTypeVariables", get$_cachedVariables: "_cachedVariables", get$_collapse$_isShown: "_isShown", get$_contentElementField: "_contentElementField", get$_dropdown$_isShown: "_isShown", get$_fieldsDescriptor: "_fieldsDescriptor", get$_fieldsMetadata: "_fieldsMetadata", get$_fromTheLeft: "_fromTheLeft", get$_fromTheRight: "_fromTheRight", get$_insertedCalled: "_insertedCalled", get$_isShown: "_isShown", get$_jsConstructorCache: "_jsConstructorCache", get$_jsConstructorOrInterceptor: "_jsConstructorOrInterceptor", get$_mangledName: "_mangledName", get$_metadata: "_metadata", get$_modal$_isShown: "_isShown", get$_owner: "_owner", get$_pendingAction: "_pendingAction", get$_superclass: "_superclass", get$activatedTab_1: "activatedTab_1", get$box_0: "box_0", get$clickAncestors_0: "clickAncestors_0", get$effect: "effect", get$hash: "hash", get$index: "index", get$isShown: "isShown", get$length: "length", get$next: "next", get$oldActiveChild_0: "oldActiveChild_0", get$owner_0: "owner_0", get$result_0: "result_0", get$result_1: "result_1", get$shc_0: "shc_0", get$staticBackdrop: "staticBackdrop", get$target_0: "target_0", get$this_0: "this_0", get$value: "value"};
-init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget__collapseDivSelector: "_collapseDivSelector", CollapseWidget__effect: "_effect", DropdownWidget__duration: "_duration", DropdownWidget__effect: "_effect", SwapWidget__ACTIVE_CLASS: "_ACTIVE_CLASS", SwapWidget__DIR_CLASS_PREV: "_DIR_CLASS_PREV"};
+init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors", get$_cachedDeclarations: "_cachedDeclarations", get$_cachedFields: "_cachedFields", get$_cachedGetters: "_cachedGetters", get$_cachedMembers: "_cachedMembers", get$_cachedMetadata: "_cachedMetadata", get$_cachedMethods: "_cachedMethods", get$_cachedMethodsMap: "_cachedMethodsMap", get$_cachedSetters: "_cachedSetters", get$_cachedSuperinterfaces: "_cachedSuperinterfaces", get$_cachedTypeVariables: "_cachedTypeVariables", get$_cachedVariables: "_cachedVariables", get$_fieldsDescriptor: "_fieldsDescriptor", get$_fieldsMetadata: "_fieldsMetadata", get$_jsConstructorCache: "_jsConstructorCache", get$_jsConstructorOrInterceptor: "_jsConstructorOrInterceptor", get$_mangledName: "_mangledName", get$_metadata: "_metadata", get$_owner: "_owner", get$_superclass: "_superclass", get$hash: "hash", get$index: "index", get$length: "length", get$owner_0: "owner_0", get$result_0: "result_0", get$result_1: "result_1", get$value: "value"};
 (function (reflectionData) {
   function map(x){x={x:x};delete x.x;return x}
   if (!init.libraries) init.libraries = [];
@@ -558,9 +544,6 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
     any$1: function(receiver, f) {
       return H.IterableMixinWorkaround_any(receiver, f);
     },
-    every$1: function(receiver, f) {
-      return H.IterableMixinWorkaround_every(receiver, f);
-    },
     indexOf$2: function(receiver, element, start) {
       return H.Arrays_indexOf(receiver, element, start, receiver.length);
     },
@@ -736,7 +719,7 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
     },
     $add: function(receiver, other) {
       if (typeof other !== "number")
-        throw H.wrapException(P.ArgumentError$(other));
+        throw H.wrapException(new P.ArgumentError(other));
       return receiver + other;
     },
     $sub: function(receiver, other) {
@@ -753,17 +736,6 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
       if (typeof other !== "number")
         throw H.wrapException(new P.ArgumentError(other));
       return receiver * other;
-    },
-    $mod: function(receiver, other) {
-      var result = receiver % other;
-      if (result === 0)
-        return 0;
-      if (result > 0)
-        return result;
-      if (other < 0)
-        return result - other;
-      else
-        return result + other;
     },
     $tdiv: function(receiver, other) {
       if ((receiver | 0) === receiver && (other | 0) === other && 0 !== other && -1 !== other)
@@ -875,7 +847,7 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
     },
     $add: function(receiver, other) {
       if (typeof other !== "string")
-        throw H.wrapException(P.ArgumentError$(other));
+        throw H.wrapException(new P.ArgumentError(other));
       return receiver + other;
     },
     endsWith$1: function(receiver, other) {
@@ -929,9 +901,6 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
     },
     toLowerCase$0: function(receiver) {
       return receiver.toLowerCase();
-    },
-    toUpperCase$0: function(receiver) {
-      return receiver.toUpperCase();
     },
     trim$0: function(receiver) {
       var endIndex, startIndex, codeUnit, endIndex0, endIndex1;
@@ -3830,7 +3799,7 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
   _showHideDemo_toggle_closure: {
     "": "Closure;effect_0",
     call$1: function(e) {
-      Y.ShowHide_begin(C.ShowHideAction_toggle, e, null, this.effect_0, null);
+      Y.ShowHide__requestEffect(Y.ShowHide__getToggleState(C.ShowHideAction_toggle, Y.ShowHide__populateState(e)), e, null, this.effect_0, null);
     },
     "+call:1:0": 0,
     $isFunction: true,
@@ -3847,53 +3816,11 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
     $isFunction: true,
     $is_void_: true
   }
-}],
-["app_bootstrap", "file:///Users/kevin/source/github/widget.dart/web/index.html_bootstrap.dart", , E, {
-  main0: function() {
-    $._librariesToLoad = ["package:widget/components/accordion.dart", "package:widget/components/alert.dart", "package:widget/components/carousel.dart", "package:widget/components/collapse.dart", "package:widget/components/dropdown.dart", "package:widget/components/modal.dart", "package:widget/components/swap.dart", "package:widget/components/tabs.dart", "app.dart"];
-    $._useDirtyChecking = false;
-    S.main();
-  }
 },
 1],
 ["bot", "package:bot/bot.dart", , X, {
-  $$: function(source) {
-    var t1 = J.getInterceptor(source);
-    if (!!t1.$isEnumerable)
-      return source;
-    else {
-      t1 = new X._SimpleEnumerable(source);
-      H.setRuntimeTypeInfo(t1, [null]);
-      return t1;
-    }
-  },
-  "+$:1:0": 0,
   _Protected: {
     "": "Object;"
-  },
-  Enumerable: {
-    "": "IterableBase;",
-    map$1: function(_, f) {
-      return X.$$(P.IterableBase.prototype.map$1.call(this, this, f));
-    },
-    where$1: function(_, f) {
-      return X.$$(P.IterableBase.prototype.where$1.call(this, this, f));
-    },
-    toString$0: function(_) {
-      return "[" + this.join$1(this, ", ") + "]";
-    },
-    "+toString:0:0": 0,
-    $isEnumerable: true,
-    $asIterableBase: null,
-    $asIterable: null
-  },
-  _SimpleEnumerable: {
-    "": "Enumerable;_bot$_source",
-    get$iterator: function(_) {
-      return J.get$iterator$ax(this._bot$_source);
-    },
-    $asEnumerable: null,
-    $asIterable: null
   },
   DetailedArgumentError: {
     "": "ArgumentError;argument<,details,message",
@@ -4008,42 +3935,17 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
         return true;
     return false;
   },
-  IterableMixinWorkaround_every: function(iterable, f) {
-    var t1;
-    for (t1 = new H.ListIterator(iterable, iterable.length, 0, null), H.setRuntimeTypeInfo(t1, [H.getTypeArgumentByIndex(iterable, 0)]); t1.moveNext$0();)
-      if (f.call$1(t1._current) !== true)
-        return false;
-    return true;
-  },
   IterableMixinWorkaround_fold: function(iterable, initialValue, combine) {
     var t1;
     for (t1 = new H.ListIterator(iterable, iterable.length, 0, null), H.setRuntimeTypeInfo(t1, [H.getTypeArgumentByIndex(iterable, 0)]); t1.moveNext$0();)
       initialValue = combine.call$2(initialValue, t1._current);
     return initialValue;
   },
-  IterableMixinWorkaround_singleWhere: function(iterable, test) {
-    var t1, result, foundMatching, element;
-    for (t1 = new H.ListIterator(iterable, iterable.length, 0, null), H.setRuntimeTypeInfo(t1, [H.getTypeArgumentByIndex(iterable, 0)]), result = null, foundMatching = false; t1.moveNext$0();) {
-      element = t1._current;
-      if (test.call$1(element) === true) {
-        if (foundMatching)
-          throw H.wrapException(new P.StateError("More than one matching element"));
-        result = element;
-        foundMatching = true;
-      }
-    }
-    if (foundMatching)
-      return result;
-    throw H.wrapException(new P.StateError("No matching element"));
-  },
   IterableMixinWorkaround_toStringIterable: function(iterable, leftDelimiter, rightDelimiter) {
-    var result, i, t1, t2;
-    for (i = 0; t1 = $.get$IterableMixinWorkaround__toStringList(), i < t1.length; ++i) {
-      t1 = t1[i];
-      t2 = iterable;
-      if (t1 == null ? t2 == null : t1 === t2)
+    var result, i, t1;
+    for (i = 0; t1 = $.get$IterableMixinWorkaround__toStringList(), i < t1.length; ++i)
+      if (t1[i] === iterable)
         return H.S(leftDelimiter) + "..." + H.S(rightDelimiter);
-    }
     result = P.StringBuffer$("");
     try {
       $.get$IterableMixinWorkaround__toStringList().push(iterable);
@@ -4139,20 +4041,6 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
           throw H.wrapException(P.ConcurrentModificationError$(this));
       }
       return false;
-    },
-    every$1: function(_, test) {
-      var $length, i;
-      $length = this.get$length(this);
-      if (typeof $length !== "number")
-        throw H.iae($length);
-      i = 0;
-      for (; i < $length; ++i) {
-        if (test.call$1(this.elementAt$1(this, i)) !== true)
-          return false;
-        if ($length !== this.get$length(this))
-          throw H.wrapException(P.ConcurrentModificationError$(this));
-      }
-      return true;
     },
     any$1: function(_, test) {
       var $length, i;
@@ -4992,7 +4880,7 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
           library = t1.get$current();
           result.$indexSet(result, library.get$uri(), library);
         }
-      t1 = new H.UnmodifiableMapView(result);
+      t1 = new H.UnmodifiableMapView0(result);
       H.setRuntimeTypeInfo(t1, [P.Uri, P.LibraryMirror]);
       this._cachedLibraries = t1;
       return t1;
@@ -5170,7 +5058,7 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
           cls._owner = this;
         }
       }
-      t1 = new H.UnmodifiableMapView(result);
+      t1 = new H.UnmodifiableMapView0(result);
       H.setRuntimeTypeInfo(t1, [P.Symbol, P.ClassMirror]);
       this._cachedClasses = t1;
       return t1;
@@ -5216,7 +5104,7 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
       return H.reflect(mirror._invoke$2(positionalArguments, namedArguments));
     },
     "+invoke:3:0": 0,
-    "*invoke": [9],
+    "*invoke": [14],
     invoke$2: function(memberName, positionalArguments) {
       return this.invoke$3(memberName, positionalArguments, null);
     },
@@ -5281,7 +5169,7 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
         if (!mirror.get$isConstructor())
           result.$indexSet(result, mirror.get$simpleName(), mirror);
       }
-      t1 = new H.UnmodifiableMapView(result);
+      t1 = new H.UnmodifiableMapView0(result);
       H.setRuntimeTypeInfo(t1, [P.Symbol, P.MethodMirror]);
       this._cachedFunctions = t1;
       return t1;
@@ -5290,7 +5178,7 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
       var t1 = this._cachedGetters;
       if (t1 != null)
         return t1;
-      t1 = new H.UnmodifiableMapView(P.LinkedHashMap_LinkedHashMap(null, null, null, null, null));
+      t1 = new H.UnmodifiableMapView0(P.LinkedHashMap_LinkedHashMap(null, null, null, null, null));
       H.setRuntimeTypeInfo(t1, [P.Symbol, P.MethodMirror]);
       this._cachedGetters = t1;
       return t1;
@@ -5299,7 +5187,7 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
       var t1 = this._cachedSetters;
       if (t1 != null)
         return t1;
-      t1 = new H.UnmodifiableMapView(P.LinkedHashMap_LinkedHashMap(null, null, null, null, null));
+      t1 = new H.UnmodifiableMapView0(P.LinkedHashMap_LinkedHashMap(null, null, null, null, null));
       H.setRuntimeTypeInfo(t1, [P.Symbol, P.MethodMirror]);
       this._cachedSetters = t1;
       return t1;
@@ -5314,7 +5202,7 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
         mirror = t2._current;
         result.$indexSet(result, mirror.get$simpleName(), mirror);
       }
-      t1 = new H.UnmodifiableMapView(result);
+      t1 = new H.UnmodifiableMapView0(result);
       H.setRuntimeTypeInfo(t1, [P.Symbol, P.VariableMirror]);
       this._cachedVariables = t1;
       return t1;
@@ -5336,7 +5224,7 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
       t2.forEach$1(t2, t1);
       t2 = this.get$variables().__js_mirrors$_source;
       t2.forEach$1(t2, t1);
-      t1 = new H.UnmodifiableMapView(result);
+      t1 = new H.UnmodifiableMapView0(result);
       H.setRuntimeTypeInfo(t1, [P.Symbol, P.Mirror]);
       this._cachedMembers = t1;
       return t1;
@@ -5349,7 +5237,7 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
       result = P.LinkedHashMap_LinkedHashMap(null, null, null, P.Symbol, P.DeclarationMirror);
       t1 = this.get$members().__js_mirrors$_source;
       t1.forEach$1(t1, new H.JsLibraryMirror_declarations_addToResult(result));
-      t1 = new H.UnmodifiableMapView(result);
+      t1 = new H.UnmodifiableMapView0(result);
       H.setRuntimeTypeInfo(t1, [P.Symbol, P.DeclarationMirror]);
       this._cachedDeclarations = t1;
       return t1;
@@ -5423,9 +5311,6 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
     get$qualifiedName: function() {
       return this.get$simpleName();
     },
-    get$variables: function() {
-      return this.mixin.get$variables();
-    },
     get$declarations: function() {
       return this.mixin.get$declarations();
     },
@@ -5434,7 +5319,7 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
       throw H.wrapException(P.NoSuchMethodError$(this, memberName, positionalArguments, namedArguments, null));
     },
     "+invoke:3:0": 0,
-    "*invoke": [9],
+    "*invoke": [14],
     invoke$2: function(memberName, positionalArguments) {
       return this.invoke$3(memberName, positionalArguments, null);
     },
@@ -5487,7 +5372,7 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
       return this._invoke$4(memberName, 0, reflectiveName, positionalArguments);
     },
     "+invoke:3:0": 0,
-    "*invoke": [9],
+    "*invoke": [14],
     invoke$2: function(memberName, positionalArguments) {
       return this.invoke$3(memberName, positionalArguments, null);
     },
@@ -5648,7 +5533,7 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
       var t1 = this._cachedConstructors;
       if (t1 != null)
         return t1;
-      t1 = new H.UnmodifiableMapView(H.filterConstructors(this.get$_methods()));
+      t1 = new H.UnmodifiableMapView0(H.filterConstructors(this.get$_methods()));
       H.setRuntimeTypeInfo(t1, [P.Symbol, P.MethodMirror]);
       this._cachedConstructors = t1;
       return t1;
@@ -5663,7 +5548,7 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
         mirror = t2._current;
         result.$indexSet(result, mirror.get$simpleName(), mirror);
       }
-      t1 = new H.UnmodifiableMapView(result);
+      t1 = new H.UnmodifiableMapView0(result);
       H.setRuntimeTypeInfo(t1, [P.Symbol, P.VariableMirror]);
       this._cachedVariables = t1;
       return t1;
@@ -5672,7 +5557,7 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
       var t1 = this._cachedMembers;
       if (t1 != null)
         return t1;
-      t1 = new H.UnmodifiableMapView(H.filterMembers(this.get$_methods(), this.get$variables()));
+      t1 = new H.UnmodifiableMapView0(H.filterMembers(this.get$_methods(), this.get$variables()));
       H.setRuntimeTypeInfo(t1, [P.Symbol, P.DeclarationMirror]);
       this._cachedMembers = t1;
       return t1;
@@ -5686,7 +5571,7 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
       result.addAll$1(result, this.get$members());
       result.addAll$1(result, this.get$constructors());
       J.forEach$1$ax(this._class.get$typeVariables(), new H.JsTypeBoundClassMirror_declarations_closure(result));
-      t1 = new H.UnmodifiableMapView(result);
+      t1 = new H.UnmodifiableMapView0(result);
       H.setRuntimeTypeInfo(t1, [P.Symbol, P.DeclarationMirror]);
       this._cachedDeclarations = t1;
       return t1;
@@ -5718,7 +5603,7 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
       return this._class.invoke$3(memberName, positionalArguments, namedArguments);
     },
     "+invoke:3:0": 0,
-    "*invoke": [9],
+    "*invoke": [14],
     invoke$2: function(memberName, positionalArguments) {
       return this.invoke$3(memberName, positionalArguments, null);
     },
@@ -5805,7 +5690,7 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
     $is_args1: true
   },
   JsClassMirror: {
-    "": "JsTypeMirror_JsObjectMirror0;_mangledName<-7,_jsConstructorOrInterceptor<-9,_fieldsDescriptor<-7,_fieldsMetadata<-25,_jsConstructorCache<-9,_metadata@-25,_superclass@-26,_cachedMethods@-27,_cachedFields@-28,_cachedConstructors@-29,_cachedMethodsMap@-29,_cachedGetters@-29,_cachedSetters@-29,_cachedVariables@-30,_cachedMembers@-31,_cachedDeclarations@-32,_cachedMetadata@-33,_cachedSuperinterfaces@-34,_cachedTypeVariables@-35,_owner@-36,simpleName",
+    "": "JsTypeMirror_JsObjectMirror0;_mangledName<-7,_jsConstructorOrInterceptor<-14,_fieldsDescriptor<-7,_fieldsMetadata<-15,_jsConstructorCache<-14,_metadata@-15,_superclass@-16,_cachedMethods@-17,_cachedFields@-18,_cachedConstructors@-19,_cachedMethodsMap@-19,_cachedGetters@-19,_cachedSetters@-19,_cachedVariables@-20,_cachedMembers@-21,_cachedDeclarations@-22,_cachedMetadata@-23,_cachedSuperinterfaces@-24,_cachedTypeVariables@-25,_owner@-26,simpleName",
     get$_prettyName: function() {
       return "ClassMirror";
       "7";
@@ -5819,18 +5704,18 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
         return t1.constructor;
       else
         return t1;
-      "9";
+      "14";
     },
     "+_jsConstructor": 1,
     get$constructors: function() {
       var t1 = this._cachedConstructors;
       if (t1 != null)
         return t1;
-      t1 = new H.UnmodifiableMapView(H.filterConstructors(this.get$_methods()));
+      t1 = new H.UnmodifiableMapView0(H.filterConstructors(this.get$_methods()));
       H.setRuntimeTypeInfo(t1, [P.Symbol, P.MethodMirror]);
       this._cachedConstructors = t1;
       return t1;
-      "37";
+      "27";
     },
     "+constructors": 1,
     _getMethodsWithOwner$1: function(methodOwner) {
@@ -5882,7 +5767,7 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
         mirror._owner = methodOwner;
       }
       return result;
-      "27,38,39";
+      "17,28,29";
     },
     "+_getMethodsWithOwner:1:0": 1,
     get$_methods: function() {
@@ -5892,7 +5777,7 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
       t1 = this._getMethodsWithOwner$1(this);
       this._cachedMethods = t1;
       return t1;
-      "27";
+      "17";
     },
     "+_methods": 1,
     _getFieldsWithOwner$1: function(fieldOwner) {
@@ -5913,7 +5798,7 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
       if (staticDescriptor != null)
         H.parseCompactFieldSpecification(fieldOwner, staticDescriptor[""], true, result);
       return result;
-      "28,40,39";
+      "18,30,29";
     },
     "+_getFieldsWithOwner:1:0": 1,
     get$_fields: function() {
@@ -5923,18 +5808,18 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
       t1 = this._getFieldsWithOwner$1(this);
       this._cachedFields = t1;
       return t1;
-      "28";
+      "18";
     },
     "+_fields": 1,
     get$methods: function() {
       var t1 = this._cachedMethodsMap;
       if (t1 != null)
         return t1;
-      t1 = new H.UnmodifiableMapView(H.filterMethods(this.get$_methods()));
+      t1 = new H.UnmodifiableMapView0(H.filterMethods(this.get$_methods()));
       H.setRuntimeTypeInfo(t1, [P.Symbol, P.MethodMirror]);
       this._cachedMethodsMap = t1;
       return t1;
-      "37";
+      "27";
     },
     "+methods": 1,
     get$variables: function() {
@@ -5947,22 +5832,22 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
         mirror = t1.get$current();
         result.$indexSet(result, mirror.get$simpleName(), mirror);
       }
-      t1 = new H.UnmodifiableMapView(result);
+      t1 = new H.UnmodifiableMapView0(result);
       H.setRuntimeTypeInfo(t1, [P.Symbol, P.VariableMirror]);
       this._cachedVariables = t1;
       return t1;
-      "41";
+      "31";
     },
     "+variables": 1,
     get$members: function() {
       var t1 = this._cachedMembers;
       if (t1 != null)
         return t1;
-      t1 = new H.UnmodifiableMapView(H.filterMembers(this.get$_methods(), this.get$variables()));
+      t1 = new H.UnmodifiableMapView0(H.filterMembers(this.get$_methods(), this.get$variables()));
       H.setRuntimeTypeInfo(t1, [P.Symbol, P.Mirror]);
       this._cachedMembers = t1;
       return t1;
-      "42";
+      "32";
     },
     "+members": 1,
     get$declarations: function() {
@@ -5975,11 +5860,11 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
       J.forEach$1$ax(this.get$members(), t1);
       J.forEach$1$ax(this.get$constructors(), t1);
       J.forEach$1$ax(this.get$typeVariables(), new H.JsClassMirror_declarations_closure(result));
-      t1 = new H.UnmodifiableMapView(result);
+      t1 = new H.UnmodifiableMapView0(result);
       H.setRuntimeTypeInfo(t1, [P.Symbol, P.DeclarationMirror]);
       this._cachedDeclarations = t1;
       return t1;
-      "43";
+      "33";
     },
     "+declarations": 1,
     setField$2: function(fieldName, arg) {
@@ -5993,7 +5878,7 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
         return H.reflect(arg);
       }
       throw H.wrapException(P.NoSuchMethodError$(this, H.setterSymbol(fieldName), [arg], null, null));
-      "44,45,46,47,0";
+      "34,35,36,37,0";
     },
     "+setField:2:0": 1,
     getField$1: function(fieldName) {
@@ -6009,7 +5894,7 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
           return H.reflect($[jsName]);
       }
       throw H.wrapException(P.NoSuchMethodError$(this, fieldName, null, null, null));
-      "44,45,46";
+      "34,35,36";
     },
     "+getField:1:0": 1,
     get$owner: function() {
@@ -6037,7 +5922,7 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
           throw H.wrapException(new P.StateError("Class \"" + H.S(J.get$_name$x(this.simpleName)) + "\" has no owner"));
       }
       return t1;
-      "36";
+      "26";
     },
     "+owner": 1,
     get$metadata: function() {
@@ -6053,7 +5938,7 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
       H.setRuntimeTypeInfo(t1, [P.InstanceMirror]);
       this._cachedMetadata = t1;
       return t1;
-      "48";
+      "38";
     },
     "+metadata": 1,
     get$superclass: function() {
@@ -6085,7 +5970,7 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
         }
       }
       return J.$eq(t1, this) ? null : this._superclass;
-      "26";
+      "16";
     },
     "+superclass": 1,
     invoke$3: function(memberName, positionalArguments, namedArguments) {
@@ -6098,22 +5983,22 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
       if (!mirror.canInvokeReflectively$0())
         H.throwInvalidReflectionError(J.get$_name$x(memberName));
       return H.reflect(mirror._invoke$2(positionalArguments, namedArguments));
-      "44,49,46,50,25,51,52";
+      "34,39,36,40,15,41,42";
     },
     "+invoke:3:0": 1,
-    "*invoke": [9],
+    "*invoke": [14],
     invoke$2: function(memberName, positionalArguments) {
       return this.invoke$3(memberName, positionalArguments, null);
     },
     "+invoke:2:0": 1,
     get$isOriginalDeclaration: function() {
       return true;
-      "53";
+      "43";
     },
     "+isOriginalDeclaration": 1,
     get$originalDeclaration: function() {
       return this;
-      "26";
+      "16";
     },
     "+originalDeclaration": 1,
     _getSuperinterfacesWithOwner$1: function(owner) {
@@ -6128,7 +6013,7 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
       t1 = new P.UnmodifiableListView(result);
       H.setRuntimeTypeInfo(t1, [P.ClassMirror]);
       return t1;
-      "54,55,39";
+      "44,45,29";
     },
     "+_getSuperinterfacesWithOwner:1:0": 1,
     get$superinterfaces: function() {
@@ -6138,7 +6023,7 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
       t1 = this._getSuperinterfacesWithOwner$1(this);
       this._cachedSuperinterfaces = t1;
       return t1;
-      "54";
+      "44";
     },
     "+superinterfaces": 1,
     get$typeVariables: function() {
@@ -6158,12 +6043,12 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
       H.setRuntimeTypeInfo(t1, [null]);
       this._cachedTypeVariables = t1;
       return t1;
-      "56";
+      "46";
     },
     "+typeVariables": 1,
     get$typeArguments: function() {
       return C.List_empty1;
-      "57";
+      "47";
     },
     "+typeArguments": 1,
     $isJsClassMirror: true,
@@ -6172,55 +6057,55 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
     $isTypeMirror: true,
     $isDeclarationMirror: true
   },
-  "+JsClassMirror": [58, 26],
+  "+JsClassMirror": [48, 16],
   JsTypeMirror_JsObjectMirror0: {
     "": "JsTypeMirror+JsObjectMirror;",
     $isMirror: true
   },
   JsClassMirror_declarations_addToResult: {
-    "": "Closure;result_0-9",
+    "": "Closure;result_0-14",
     call$2: function(key, value) {
       J.$indexSet$ax(this.result_0, key, value);
-      "9,59,46,13,60";
+      "14,49,36,12,50";
     },
     "+call:2:0": 1,
     $isFunction: true,
     $is_args2: true
   },
-  "+JsClassMirror_declarations_addToResult": [61],
+  "+JsClassMirror_declarations_addToResult": [51],
   JsClassMirror_declarations_closure: {
-    "": "Closure;result_1-9",
+    "": "Closure;result_1-14",
     call$1: function(tv) {
       J.$indexSet$ax(this.result_1, tv.get$simpleName(), tv);
       return tv;
-      "9,62,9";
+      "14,52,14";
     },
     "+call:1:0": 1,
     $isFunction: true,
     $is_Object__Object: true,
     $is_args1: true
   },
-  "+JsClassMirror_declarations_closure": [61],
+  "+JsClassMirror_declarations_closure": [51],
   JsClassMirror__getSuperinterfacesWithOwner_lookupType: {
-    "": "Closure;owner_0-39",
+    "": "Closure;owner_0-29",
     call$1: function(i) {
       return H.typeMirrorFromRuntimeTypeRepresentation(this.owner_0, init.metadata[i]);
-      "26,63,12";
+      "16,53,11";
     },
     "+call:1:0": 1,
     $isFunction: true,
     $is_Object__Object: true,
     $is_args1: true
   },
-  "+JsClassMirror__getSuperinterfacesWithOwner_lookupType": [61],
+  "+JsClassMirror__getSuperinterfacesWithOwner_lookupType": [51],
   JsVariableMirror: {
-    "": "JsDeclarationMirror;_jsName<,isFinal<,isStatic<,_metadataFunction,_owner,__js_mirrors$_type,_metadata,simpleName",
+    "": "JsDeclarationMirror;_jsName<,isFinal<,isStatic<,_metadataFunction,_owner,_type,_metadata,simpleName",
     get$_prettyName: function() {
       return "VariableMirror";
     },
     "+_prettyName": 0,
     get$type: function(_) {
-      return H.typeMirrorFromRuntimeTypeRepresentation(this._owner, init.metadata[this.__js_mirrors$_type]);
+      return H.typeMirrorFromRuntimeTypeRepresentation(this._owner, init.metadata[this._type]);
     },
     get$owner: function() {
       return this._owner;
@@ -6440,13 +6325,13 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
       }}
   },
   JsParameterMirror: {
-    "": "JsDeclarationMirror;owner<,__js_mirrors$_type,simpleName",
+    "": "JsDeclarationMirror;owner<,_type,simpleName",
     get$_prettyName: function() {
       return "ParameterMirror";
     },
     "+_prettyName": 0,
     get$type: function(_) {
-      return H.typeMirrorFromRuntimeTypeRepresentation(this.owner, this.__js_mirrors$_type);
+      return H.typeMirrorFromRuntimeTypeRepresentation(this.owner, this._type);
     },
     get$isStatic: function() {
       return false;
@@ -6585,7 +6470,7 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
     $is_Object__Object: true,
     $is_args1: true
   },
-  UnmodifiableMapView: {
+  UnmodifiableMapView0: {
     "": "Object;__js_mirrors$_source",
     get$length: function(_) {
       return this.__js_mirrors$_source._collection$_length;
@@ -6630,17 +6515,17 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
     },
     "+values": 0,
     $indexSet: function(_, key, value) {
-      return H.UnmodifiableMapView__throw();
+      return H.UnmodifiableMapView__throw0();
     },
     "+[]=:2:0": 0,
     addAll$1: function(_, other) {
-      return H.UnmodifiableMapView__throw();
+      return H.UnmodifiableMapView__throw0();
     },
     remove$1: function(_, key) {
-      H.UnmodifiableMapView__throw();
+      H.UnmodifiableMapView__throw0();
     },
     $isMap: true,
-    static: {UnmodifiableMapView__throw: function() {
+    static: {UnmodifiableMapView__throw0: function() {
         throw H.wrapException(P.UnsupportedError$("Cannot modify an unmodifiable Map"));
       }}
   },
@@ -6728,7 +6613,7 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
     t1.error_3 = null;
     t1.stackTrace_4 = null;
     t2 = new P.Future_wait_handleError(t1, eagerError);
-    for (t3 = J.get$iterator$ax(futures); t3.moveNext$0();) {
+    for (t3 = new H.ListIterator(futures, futures.length, 0, null), H.setRuntimeTypeInfo(t3, [H.getTypeArgumentByIndex(futures, 0)]); t3.moveNext$0();) {
       future = t3._current;
       pos = t1.remaining_2;
       t1.remaining_2 = pos + 1;
@@ -7267,7 +7152,7 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
         if (remaining === 0) {
           t1 = t1.completer_0.future;
           if (t1._state !== 0)
-            H.throwExpression(P.StateError$("Future already completed"));
+            H.throwExpression(new P.StateError("Future already completed"));
           t1._asyncComplete$1(t2);
         }
       } else if (remaining === 0 && !this.eagerError_2)
@@ -7298,7 +7183,7 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
         throw H.wrapException(new P.ArgumentError("Error must not be null"));
       t1 = this.future;
       if (t1._state !== 0)
-        throw H.wrapException(P.StateError$("Future already completed"));
+        throw H.wrapException(new P.StateError("Future already completed"));
       t1._asyncCompleteError$2(error, stackTrace);
     },
     $as_Completer: null
@@ -7416,7 +7301,7 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
     },
     _asyncCompleteError$2: function(error, stackTrace) {
       if (this._state !== 0)
-        H.throwExpression(P.StateError$("Future already completed"));
+        H.throwExpression(new P.StateError("Future already completed"));
       this._state = 1;
       this._zone.scheduleMicrotask$1(new P._Future__asyncCompleteError_closure(this, error, stackTrace));
     },
@@ -7551,7 +7436,7 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
       this.target_1._completeError$2(error, stackTrace);
     },
     "+call:2:0": 0,
-    "*call": [9],
+    "*call": [14],
     call$1: function(error) {
       return this.call$2(error, null);
     },
@@ -7684,7 +7569,7 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
       P._Future__propagateToListeners(t1.completeResult_0, this.listener_7);
     },
     "+call:2:0": 0,
-    "*call": [9],
+    "*call": [14],
     call$1: function(error) {
       return this.call$2(error, null);
     },
@@ -7730,14 +7615,6 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
       future = P._Future$(null);
       t1.subscription_0 = null;
       t1.subscription_0 = this.listen$4$cancelOnError$onDone$onError(new P.Stream_forEach_closure(t1, this, action, future), true, new P.Stream_forEach_closure0(future), future.get$_completeError());
-      return future;
-    },
-    every$1: function(_, test) {
-      var t1, future;
-      t1 = {};
-      future = P._Future$(J.JSBool);
-      t1.subscription_0 = null;
-      t1.subscription_0 = this.listen$4$cancelOnError$onDone$onError(new P.Stream_every_closure(t1, this, test, future), true, new P.Stream_every_closure0(future), future.get$_completeError());
       return future;
     },
     any$1: function(_, test) {
@@ -7927,48 +7804,6 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
     "": "Closure;future_6",
     call$0: function() {
       this.future_6._complete$1(null);
-    },
-    "+call:0:0": 0,
-    $isFunction: true,
-    $is_void_: true
-  },
-  Stream_every_closure: {
-    "": "Closure;box_0,this_1,test_2,future_3",
-    call$1: function(element) {
-      var t1, t2;
-      t1 = this.box_0;
-      t2 = this.future_3;
-      P._runUserCode(new P.Stream_every__closure(this.test_2, element), new P.Stream_every__closure0(t1, t2), P._cancelAndErrorClosure(t1.subscription_0, t2));
-    },
-    "+call:1:0": 0,
-    $isFunction: true,
-    $is_Object__Object: true,
-    $is_args1: true
-  },
-  Stream_every__closure: {
-    "": "Closure;test_4,element_5",
-    call$0: function() {
-      return this.test_4.call$1(this.element_5);
-    },
-    "+call:0:0": 0,
-    $isFunction: true,
-    $is_void_: true
-  },
-  Stream_every__closure0: {
-    "": "Closure;box_0,future_6",
-    call$1: function(isMatch) {
-      if (isMatch !== true)
-        P._cancelAndValue(this.box_0.subscription_0, this.future_6, false);
-    },
-    "+call:1:0": 0,
-    $isFunction: true,
-    $is_Object__Object: true,
-    $is_args1: true
-  },
-  Stream_every_closure0: {
-    "": "Closure;future_7",
-    call$0: function() {
-      this.future_7._complete$1(true);
     },
     "+call:0:0": 0,
     $isFunction: true,
@@ -8702,10 +8537,7 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
     $asStream: null
   },
   _DelayedEvent: {
-    "": "Object;next*",
-    next$0: function($receiver) {
-      return this.next.call$0();
-    }
+    "": "Object;next@"
   },
   _DelayedData: {
     "": "_DelayedEvent;value>,next",
@@ -8724,17 +8556,12 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
     perform$1: function(dispatch) {
       dispatch._sendDone$0();
     },
-    get$next: function(_) {
+    get$next: function() {
       return;
     },
-    "+next": 0,
-    next$0: function($receiver) {
-      return this.get$next($receiver).call$0();
-    },
-    set$next: function(_, _0) {
+    set$next: function(_) {
       throw H.wrapException(new P.StateError("No events after a done."));
-    },
-    "+next=": 0
+    }
   },
   _PendingEvents: {
     "": "Object;",
@@ -8781,14 +8608,14 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
         this.lastPendingEvent = $event;
         this.firstPendingEvent = $event;
       } else {
-        J.set$next$x(t1, $event);
+        t1.set$next($event);
         this.lastPendingEvent = $event;
       }
     },
     handleNext$1: function(dispatch) {
       var $event, t1;
       $event = this.firstPendingEvent;
-      t1 = J.get$next$x($event);
+      t1 = $event.get$next();
       this.firstPendingEvent = t1;
       if (t1 == null)
         this.lastPendingEvent = null;
@@ -9491,7 +9318,7 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
     return t1._contents;
   },
   _iterablePartsToStrings: function(iterable, parts) {
-    var it, $length, count, next, ultimateString, penultimateString, penultimate, ultimate, ultimate0, t1, elision;
+    var it, $length, count, next, ultimateString, penultimateString, penultimate, ultimate, ultimate0, elision;
     it = iterable.get$iterator(iterable);
     $length = 0;
     count = 0;
@@ -9539,10 +9366,7 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
                 break;
               if (0 >= parts.length)
                 throw H.ioore(parts, 0);
-              t1 = J.$add$ns(J.get$length$asx(parts.pop()), 2);
-              if (typeof t1 !== "number")
-                throw H.iae(t1);
-              $length -= t1;
+              $length -= parts.pop().length + 2;
               --count;
             }
             parts.push("...");
@@ -9564,10 +9388,7 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
         break;
       if (0 >= parts.length)
         throw H.ioore(parts, 0);
-      t1 = J.$add$ns(J.get$length$asx(parts.pop()), 2);
-      if (typeof t1 !== "number")
-        throw H.iae(t1);
-      $length -= t1;
+      $length -= parts.pop().length + 2;
       if (elision == null) {
         $length += 5;
         elision = "...";
@@ -9604,14 +9425,11 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
     return t1;
   },
   Maps_mapToString: function(m) {
-    var t1, result, i, t2, t3;
+    var t1, result, i, t2;
     t1 = {};
-    for (i = 0; t2 = $.get$Maps__toStringList(), i < t2.length; ++i) {
-      t2 = t2[i];
-      t3 = m;
-      if (t2 == null ? t3 == null : t2 === t3)
+    for (i = 0; t2 = $.get$Maps__toStringList(), i < t2.length; ++i)
+      if (t2[i] === m)
         return "{...}";
-    }
     result = P.StringBuffer$("");
     try {
       $.get$Maps__toStringList().push(m);
@@ -10998,13 +10816,6 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
       for (t1 = this.get$iterator(this); t1.moveNext$0();)
         f.call$1(t1.get$current());
     },
-    every$1: function(_, f) {
-      var t1;
-      for (t1 = this.get$iterator(this); t1.moveNext$0();)
-        if (f.call$1(t1.get$current()) !== true)
-          return false;
-      return true;
-    },
     join$1: function(_, separator) {
       var iterator, buffer, t1;
       iterator = this.get$iterator(this);
@@ -11081,8 +10892,6 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
         if (test.call$1(element) === true)
           return element;
       }
-      if (orElse != null)
-        return orElse.call$0();
       throw H.wrapException(new P.StateError("No matching element"));
     },
     firstWhere$1: function($receiver, test) {
@@ -11165,20 +10974,6 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
       }
       return false;
     },
-    every$1: function(receiver, test) {
-      var $length, i;
-      $length = this.get$length(receiver);
-      if (typeof $length !== "number")
-        throw H.iae($length);
-      i = 0;
-      for (; i < $length; ++i) {
-        if (test.call$1(this.$index(receiver, i)) !== true)
-          return false;
-        if ($length !== this.get$length(receiver))
-          throw H.wrapException(P.ConcurrentModificationError$(receiver));
-      }
-      return true;
-    },
     any$1: function(receiver, test) {
       var $length, i;
       $length = this.get$length(receiver);
@@ -11192,21 +10987,6 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
           throw H.wrapException(P.ConcurrentModificationError$(receiver));
       }
       return false;
-    },
-    firstWhere$2$orElse: function(receiver, test, orElse) {
-      var $length, i, element;
-      $length = this.get$length(receiver);
-      if (typeof $length !== "number")
-        throw H.iae($length);
-      i = 0;
-      for (; i < $length; ++i) {
-        element = this.$index(receiver, i);
-        if (test.call$1(element) === true)
-          return element;
-        if ($length !== this.get$length(receiver))
-          throw H.wrapException(P.ConcurrentModificationError$(receiver));
-      }
-      return orElse.call$0();
     },
     join$1: function(receiver, separator) {
       var $length, t1, first, buffer, i, str;
@@ -11874,9 +11654,9 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
         --end;
       for (t1 = this._buffer, t2 = t1.length, t3 = str.length, stringIndex = start; stringIndex < end; ++stringIndex) {
         if (stringIndex < 0)
-          H.throwExpression(new P.RangeError("value " + stringIndex));
+          H.throwExpression(P.RangeError$value(stringIndex));
         if (stringIndex >= t3)
-          H.throwExpression(new P.RangeError("value " + stringIndex));
+          H.throwExpression(P.RangeError$value(stringIndex));
         codeUnit = str.charCodeAt(stringIndex);
         if (codeUnit <= 127) {
           t4 = this._bufferIndex;
@@ -11891,9 +11671,9 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
             break;
           stringIndex0 = stringIndex + 1;
           if (stringIndex0 < 0)
-            H.throwExpression(new P.RangeError("value " + stringIndex0));
+            H.throwExpression(P.RangeError$value(stringIndex0));
           if (stringIndex0 >= t3)
-            H.throwExpression(new P.RangeError("value " + stringIndex0));
+            H.throwExpression(P.RangeError$value(stringIndex0));
           if (this._writeSurrogate$2(codeUnit, str.charCodeAt(stringIndex0)))
             stringIndex = stringIndex0;
         } else if (codeUnit <= 2047) {
@@ -12256,12 +12036,12 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
     $is_args1: true
   },
   Duration: {
-    "": "Object;_duration>",
+    "": "Object;_duration<",
     $add: function(_, other) {
-      return P.Duration$(0, 0, this._duration + J.get$_duration$x(other), 0, 0, 0);
+      return P.Duration$(0, 0, this._duration + other.get$_duration(), 0, 0, 0);
     },
     $sub: function(_, other) {
-      return P.Duration$(0, 0, this._duration - J.get$_duration$x(other), 0, 0, 0);
+      return P.Duration$(0, 0, this._duration - other.get$_duration(), 0, 0, 0);
     },
     $mul: function(_, factor) {
       if (typeof factor !== "number")
@@ -12269,16 +12049,16 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
       return P.Duration$(0, 0, C.JSNumber_methods.toInt$0(C.JSNumber_methods.roundToDouble$0(this._duration * factor)), 0, 0, 0);
     },
     $lt: function(_, other) {
-      return this._duration < J.get$_duration$x(other);
+      return this._duration < other.get$_duration();
     },
     $gt: function(_, other) {
-      return this._duration > J.get$_duration$x(other);
+      return this._duration > other.get$_duration();
     },
     $le: function(_, other) {
-      return this._duration <= J.get$_duration$x(other);
+      return this._duration <= other.get$_duration();
     },
     $ge: function(_, other) {
-      return this._duration >= J.get$_duration$x(other);
+      return this._duration >= other.get$_duration();
     },
     get$inMilliseconds: function() {
       return C.JSNumber_methods.$tdiv(this._duration, 1000);
@@ -13154,7 +12934,7 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
             t3 = C.JSInt_methods.$shr(ch, 4);
             if (t3 < 0 || t3 >= 8)
               throw H.ioore(canonicalTable, t3);
-            t3 = J.$and$n(canonicalTable[t3], C.JSInt_methods.$shl(1, ch & 15)) !== 0;
+            t3 = (canonicalTable[t3] & C.JSInt_methods.$shl(1, ch & 15)) >>> 0 !== 0;
           } else
             t3 = false;
           if (t3) {
@@ -13195,7 +12975,7 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
         t2 = t1.$shr(ch, 4);
         if (t2 < 0 || t2 >= 8)
           throw H.ioore(C.List_6Pr, t2);
-        t1 = J.$and$n(C.List_6Pr[t2], C.JSInt_methods.$shl(1, t1.$and(ch, 15))) !== 0;
+        t1 = (C.List_6Pr[t2] & C.JSInt_methods.$shl(1, t1.$and(ch, 15))) >>> 0 !== 0;
       } else
         t1 = false;
       return t1;
@@ -13214,7 +12994,7 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
         t2 = t1.$shr(ch, 4);
         if (t2 < 0 || t2 >= 8)
           throw H.ioore(C.List_JYB, t2);
-        t1 = J.$and$n(C.List_JYB[t2], C.JSInt_methods.$shl(1, t1.$and(ch, 15))) !== 0;
+        t1 = (C.List_JYB[t2] & C.JSInt_methods.$shl(1, t1.$and(ch, 15))) >>> 0 !== 0;
       } else
         t1 = false;
       return t1;
@@ -13290,7 +13070,7 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
         t2 = t1.$shr(ch, 4);
         if (t2 < 0 || t2 >= 8)
           throw H.ioore(C.List_nxB, t2);
-        t1 = J.$and$n(C.List_nxB[t2], C.JSInt_methods.$shl(1, t1.$and(ch, 15))) !== 0;
+        t1 = (C.List_nxB[t2] & C.JSInt_methods.$shl(1, t1.$and(ch, 15))) >>> 0 !== 0;
       } else
         t1 = false;
       return t1;
@@ -13469,11 +13249,6 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
   _ElementFactoryProvider_createElement_tag: function(tag, typeExtension) {
     return document.createElement(tag);
   },
-  Event_Event$eventType: function(type, $name, canBubble, cancelable) {
-    var e = document.createEvent(type);
-    e.initEvent($name, canBubble, cancelable);
-    return e;
-  },
   InputElement_InputElement: function(type) {
     var e, exception;
     e = document.createElement("input", null);
@@ -13588,7 +13363,7 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
   },
   HtmlElement: {
     "": "Element;",
-    "%": "HTMLAppletElement|HTMLBRElement|HTMLBaseFontElement|HTMLBodyElement|HTMLCanvasElement|HTMLDListElement|HTMLDataListElement|HTMLDetailsElement|HTMLDirectoryElement|HTMLDivElement|HTMLFontElement|HTMLFrameElement|HTMLFrameSetElement|HTMLHRElement|HTMLHeadElement|HTMLHeadingElement|HTMLHtmlElement|HTMLMarqueeElement|HTMLMenuElement|HTMLModElement|HTMLOptGroupElement|HTMLParagraphElement|HTMLPreElement|HTMLQuoteElement|HTMLShadowElement|HTMLSpanElement|HTMLTableCaptionElement|HTMLTableCellElement|HTMLTableColElement|HTMLTableDataCellElement|HTMLTableElement|HTMLTableHeaderCellElement|HTMLTableRowElement|HTMLTableSectionElement|HTMLTitleElement|HTMLUListElement|HTMLUnknownElement;HTMLElement;PolymerDeclaration|HtmlElement_Polymer|HtmlElement_Polymer_ChangeNotifier|PolymerElement|AccordionWidget|AlertWidget|CarouselWidget|CollapseWidget|DropdownWidget|ModalWidget|SwapWidget|TabsWidget"
+    "%": "HTMLAppletElement|HTMLBRElement|HTMLBaseFontElement|HTMLBodyElement|HTMLCanvasElement|HTMLContentElement|HTMLDListElement|HTMLDataListElement|HTMLDetailsElement|HTMLDirectoryElement|HTMLDivElement|HTMLFontElement|HTMLFrameElement|HTMLFrameSetElement|HTMLHRElement|HTMLHeadElement|HTMLHeadingElement|HTMLHtmlElement|HTMLMarqueeElement|HTMLMenuElement|HTMLModElement|HTMLOptGroupElement|HTMLParagraphElement|HTMLPreElement|HTMLQuoteElement|HTMLShadowElement|HTMLSpanElement|HTMLTableCaptionElement|HTMLTableCellElement|HTMLTableColElement|HTMLTableDataCellElement|HTMLTableElement|HTMLTableHeaderCellElement|HTMLTableRowElement|HTMLTableSectionElement|HTMLTitleElement|HTMLUListElement|HTMLUnknownElement;HTMLElement;PolymerDeclaration|HtmlElement_Polymer|HtmlElement_Polymer_ChangeNotifier|PolymerElement"
   },
   _EntryArray: {
     "": "Interceptor;",
@@ -13633,14 +13408,6 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
     $isInterceptor: true,
     "%": "Comment;CharacterData"
   },
-  ContentElement: {
-    "": "HtmlElement;",
-    getDistributedNodes$0: function(receiver) {
-      return receiver.getDistributedNodes();
-    },
-    $isContentElement: true,
-    "%": "HTMLContentElement"
-  },
   CssStyleDeclaration: {
     "": "Interceptor_CssStyleDeclarationBase;length=",
     getPropertyValue$1: function(receiver, propertyName) {
@@ -13684,7 +13451,6 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
     show$0: function(receiver) {
       return receiver.show();
     },
-    "+show:0:0": 0,
     "%": "HTMLDialogElement"
   },
   Document: {
@@ -13694,9 +13460,6 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
     },
     getElementById$1: function(receiver, elementId) {
       return receiver.getElementById(elementId);
-    },
-    querySelector$1: function(receiver, selectors) {
-      return receiver.querySelector(selectors);
     },
     get$onChange: function(receiver) {
       return C.EventStreamProvider_change.forTarget$1(receiver);
@@ -13717,19 +13480,10 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
       return W._FrozenElementList$_wrap(receiver.querySelectorAll(relativeSelectors), null);
     },
     $isDocument: true,
-    "%": "SVGDocument;Document"
+    "%": "Document|HTMLDocument|SVGDocument"
   },
   DocumentFragment: {
     "": "Node;",
-    get$children: function(receiver) {
-      var t1;
-      if (receiver._children == null) {
-        t1 = new P.FilteredElementList(receiver, new W._ChildNodeListLazy(receiver));
-        H.setRuntimeTypeInfo(t1, [null]);
-        receiver._children = t1;
-      }
-      return receiver._children;
-    },
     querySelectorAll$1: function(receiver, selectors) {
       return W._FrozenElementList$_wrap(receiver.querySelectorAll(selectors), null);
     },
@@ -13738,9 +13492,6 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
     },
     queryAll$1: function(receiver, relativeSelectors) {
       return W._FrozenElementList$_wrap(receiver.querySelectorAll(relativeSelectors), null);
-    },
-    querySelector$1: function(receiver, selectors) {
-      return receiver.querySelector(selectors);
     },
     $isInterceptor: true,
     "%": ";DocumentFragment"
@@ -13776,9 +13527,6 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
     get$attributes: function(receiver) {
       return new W._ElementAttributeMap(receiver);
     },
-    get$children: function(receiver) {
-      return new W._ChildrenElementList(receiver, receiver.children);
-    },
     querySelectorAll$1: function(receiver, selectors) {
       return W._FrozenElementList$_wrap(receiver.querySelectorAll(selectors), null);
     },
@@ -13791,9 +13539,6 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
     get$classes: function(receiver) {
       return new W._ElementCssClassSet(receiver);
     },
-    get$dataset: function(receiver) {
-      return new W._DataAttributeMap(new W._ElementAttributeMap(receiver));
-    },
     getComputedStyle$1: function(receiver, pseudoElement) {
       if (pseudoElement == null)
         pseudoElement = "";
@@ -13804,15 +13549,9 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
     },
     enteredView$0: function(receiver) {
     },
-    "+enteredView:0:0": 0,
     leftView$0: function(receiver) {
     },
-    "+leftView:0:0": 0,
     attributeChanged$3: function(receiver, $name, oldValue, newValue) {
-    },
-    get$xtag: function(receiver) {
-      var t1 = receiver._xtag;
-      return t1 != null ? t1 : receiver;
     },
     get$localName: function(receiver) {
       return receiver.localName;
@@ -13884,12 +13623,6 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
     get$on: function(receiver) {
       return new W.ElementEvents(receiver, receiver);
     },
-    focus$0: function(receiver) {
-      return receiver.focus();
-    },
-    querySelector$1: function(receiver, selectors) {
-      return receiver.querySelector(selectors);
-    },
     get$onChange: function(receiver) {
       return C.EventStreamProvider_change.forElement$1(receiver);
     },
@@ -13914,12 +13647,9 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
     "%": "ErrorEvent"
   },
   Event: {
-    "": "Interceptor;_selector},bubbles=,defaultPrevented=,path=,type=",
+    "": "Interceptor;_selector},bubbles=,path=,type=",
     get$target: function(receiver) {
       return W._convertNativeToDart_EventTarget(receiver.target);
-    },
-    preventDefault$0: function(receiver) {
-      return receiver.preventDefault();
     },
     $isEvent: true,
     "%": "AudioProcessingEvent|AutocompleteErrorEvent|BeforeLoadEvent|BeforeUnloadEvent|CSSFontFaceLoadEvent|CloseEvent|DeviceMotionEvent|DeviceOrientationEvent|IDBVersionChangeEvent|MIDIConnectionEvent|MIDIMessageEvent|MediaKeyNeededEvent|MediaStreamEvent|MediaStreamTrackEvent|MessageEvent|MutationEvent|OfflineAudioCompletionEvent|OverflowEvent|PageTransitionEvent|PopStateEvent|ProgressEvent|RTCDTMFToneChangeEvent|RTCDataChannelEvent|RTCIceCandidateEvent|ResourceProgressEvent|SecurityPolicyViolationEvent|SpeechInputEvent|SpeechRecognitionEvent|TrackEvent|WebGLContextEvent|WebKitAnimationEvent|XMLHttpRequestProgressEvent;Event"
@@ -13998,10 +13728,6 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
     $isJavaScriptIndexingBehavior: true,
     "%": "HTMLCollection|HTMLFormControlsCollection|HTMLOptionsCollection"
   },
-  HtmlDocument: {
-    "": "Document;body=",
-    "%": "HTMLDocument"
-  },
   HttpRequest: {
     "": "HttpRequestEventTarget;",
     open$5$async$password$user: function(receiver, method, url, async, password, user) {
@@ -14049,10 +13775,6 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
   },
   KeyboardEvent: {
     "": "UIEvent;location=",
-    get$keyCode: function(receiver) {
-      return receiver.keyCode;
-    },
-    $isKeyboardEvent: true,
     "%": "KeyboardEvent"
   },
   KeygenElement: {
@@ -14158,17 +13880,6 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
       if (t1 != null)
         t1.removeChild(receiver);
     },
-    replaceWith$1: function(receiver, otherNode) {
-      var $parent, exception;
-      try {
-        $parent = receiver.parentNode;
-        J._replaceChild$2$x($parent, otherNode, receiver);
-      } catch (exception) {
-        H.unwrapException(exception);
-      }
-
-      return receiver;
-    },
     toString$0: function(receiver) {
       var t1 = receiver.nodeValue;
       return t1 == null ? J.Interceptor.prototype.toString$0.call(this, receiver) : t1;
@@ -14185,9 +13896,6 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
     },
     insertBefore$2: function(receiver, newChild, refChild) {
       return receiver.insertBefore(newChild, refChild);
-    },
-    _replaceChild$2: function(receiver, newChild, oldChild) {
-      return receiver.replaceChild(newChild, oldChild);
     },
     $isNode: true,
     "%": "Entity|Notation;Node"
@@ -14280,7 +13988,7 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
     "%": "HTMLSelectElement"
   },
   ShadowRoot: {
-    "": "DocumentFragment;applyAuthorStyles=",
+    "": "DocumentFragment;",
     clone$1: function(receiver, deep) {
       return receiver.cloneNode(deep);
     },
@@ -14545,79 +14253,6 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
     },
     set$transitionTimingFunction: function(receiver, value) {
       this.setProperty$3(receiver, P.Device_cssPrefix() + "transition-timing-function", value, "");
-    },
-    set$zIndex: function(receiver, value) {
-      this.setProperty$3(receiver, "z-index", value, "");
-    }
-  },
-  _ChildrenElementList: {
-    "": "ListBase;_element,_childElements",
-    contains$1: function(_, element) {
-      return J.contains$1$asx(this._childElements, element);
-    },
-    get$isEmpty: function(_) {
-      return this._element.firstElementChild == null;
-    },
-    "+isEmpty": 0,
-    get$length: function(_) {
-      return this._childElements.length;
-    },
-    "+length": 0,
-    $index: function(_, index) {
-      var t1 = this._childElements;
-      if (index >>> 0 !== index || index >= t1.length)
-        throw H.ioore(t1, index);
-      return t1[index];
-    },
-    "+[]:1:0": 0,
-    $indexSet: function(_, index, value) {
-      var t1 = this._childElements;
-      if (index >>> 0 !== index || index >= t1.length)
-        throw H.ioore(t1, index);
-      this._element.replaceChild(value, t1[index]);
-    },
-    "+[]=:2:0": 0,
-    set$length: function(_, newLength) {
-      throw H.wrapException(P.UnsupportedError$("Cannot resize element lists"));
-    },
-    "+length=": 0,
-    add$1: function(_, value) {
-      this._element.appendChild(value);
-      return value;
-    },
-    get$iterator: function(_) {
-      var t1, t2;
-      t1 = this.toList$0(this);
-      t2 = new H.ListIterator(t1, t1.length, 0, null);
-      H.setRuntimeTypeInfo(t2, [H.getTypeArgumentByIndex(t1, 0)]);
-      return t2;
-    },
-    addAll$1: function(_, iterable) {
-      var t1, t2;
-      iterable = P.List_List$from(iterable, true, null);
-      for (t1 = new H.ListIterator(iterable, iterable.length, 0, null), H.setRuntimeTypeInfo(t1, [H.getTypeArgumentByIndex(iterable, 0)]), t2 = this._element; t1.moveNext$0();)
-        t2.appendChild(t1._current);
-    },
-    setRange$4: function(_, start, end, iterable, skipCount) {
-      throw H.wrapException(P.UnimplementedError$(null));
-    },
-    remove$1: function(_, object) {
-      return false;
-    },
-    get$last: function(_) {
-      var result = this._element.lastElementChild;
-      if (result == null)
-        throw H.wrapException(new P.StateError("No elements"));
-      return result;
-    },
-    $asListBase: function() {
-      return [W.Element];
-    },
-    $asList: function() {
-      return [W.Element];
-    },
-    $asIterable: function() {
-      return [W.Element];
     }
   },
   _FrozenElementList: {
@@ -14856,11 +14491,6 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
       return false;
     },
     "+containsValue:1:0": 0,
-    putIfAbsent$2: function(key, ifAbsent) {
-      if (this.containsKey$1(key) !== true)
-        this.$indexSet(this, key, ifAbsent.call$0());
-      return this.$index(this, key);
-    },
     forEach$1: function(_, f) {
       var t1, t2, key;
       for (t1 = this.get$keys(), t2 = new H.ListIterator(t1, t1.length, 0, null), H.setRuntimeTypeInfo(t2, [H.getTypeArgumentByIndex(t1, 0)]); t2.moveNext$0();) {
@@ -14941,149 +14571,6 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
     _matches$1: function(node) {
       return node.namespaceURI == null;
     }
-  },
-  _DataAttributeMap: {
-    "": "Object;_attributes",
-    containsValue$1: function(value) {
-      return H.IterableMixinWorkaround_any(this.get$values(this), new W._DataAttributeMap_containsValue_closure(value));
-    },
-    "+containsValue:1:0": 0,
-    containsKey$1: function(key) {
-      return this._attributes._element.hasAttribute("data-" + this._toHyphenedName$1(key));
-    },
-    "+containsKey:1:0": 0,
-    $index: function(_, key) {
-      return this._attributes._element.getAttribute("data-" + this._toHyphenedName$1(key));
-    },
-    "+[]:1:0": 0,
-    $indexSet: function(_, key, value) {
-      this._attributes._element.setAttribute("data-" + this._toHyphenedName$1(key), value);
-    },
-    "+[]=:2:0": 0,
-    remove$1: function(_, key) {
-      var t1, t2, value;
-      t1 = "data-" + this._toHyphenedName$1(key);
-      t2 = this._attributes._element;
-      value = t2.getAttribute(t1);
-      t2.removeAttribute(t1);
-      return value;
-    },
-    forEach$1: function(_, f) {
-      var t1 = this._attributes;
-      t1.forEach$1(t1, new W._DataAttributeMap_forEach_closure(this, f));
-    },
-    get$keys: function() {
-      var keys, t1;
-      keys = P.List_List(null, J.JSString);
-      t1 = this._attributes;
-      t1.forEach$1(t1, new W._DataAttributeMap_keys_closure(this, keys));
-      return keys;
-    },
-    "+keys": 0,
-    get$values: function(_) {
-      var values, t1;
-      values = P.List_List(null, J.JSString);
-      t1 = this._attributes;
-      t1.forEach$1(t1, new W._DataAttributeMap_values_closure(this, values));
-      return values;
-    },
-    "+values": 0,
-    get$length: function(_) {
-      return this.get$keys().length;
-    },
-    "+length": 0,
-    get$isEmpty: function(_) {
-      return this.get$keys().length === 0;
-    },
-    "+isEmpty": 0,
-    get$isNotEmpty: function(_) {
-      return this.get$keys().length !== 0;
-    },
-    "+isNotEmpty": 0,
-    _toCamelCase$2$startUppercase: function(hyphenedName, startUppercase) {
-      var segments, start, i, segment, t1;
-      segments = hyphenedName.split("-");
-      start = startUppercase ? 0 : 1;
-      for (i = start; i < segments.length; ++i) {
-        segment = segments[i];
-        t1 = J.getInterceptor$asx(segment);
-        if (J.$gt$n(t1.get$length(segment), 0)) {
-          t1 = J.toUpperCase$0$s(t1.$index(segment, 0)) + t1.substring$1(segment, 1);
-          if (i >= segments.length)
-            throw H.ioore(segments, i);
-          segments[i] = t1;
-        }
-      }
-      return C.JSArray_methods.join$1(segments, "");
-    },
-    _toCamelCase$1: function(hyphenedName) {
-      return this._toCamelCase$2$startUppercase(hyphenedName, false);
-    },
-    _toHyphenedName$1: function(word) {
-      var sb, t1, i, t2, lower;
-      sb = P.StringBuffer$("");
-      t1 = J.getInterceptor$asx(word);
-      i = 0;
-      while (true) {
-        t2 = t1.get$length(word);
-        if (typeof t2 !== "number")
-          throw H.iae(t2);
-        if (!(i < t2))
-          break;
-        lower = J.toLowerCase$0$s(t1.$index(word, i));
-        if (!J.$eq(t1.$index(word, i), lower) && i > 0)
-          sb._contents = sb._contents + "-";
-        sb._contents = sb._contents + lower;
-        ++i;
-      }
-      return sb._contents;
-    },
-    $isMap: true,
-    $asMap: function() {
-      return [J.JSString, J.JSString];
-    }
-  },
-  _DataAttributeMap_containsValue_closure: {
-    "": "Closure;value_0",
-    call$1: function(v) {
-      return J.$eq(v, this.value_0);
-    },
-    "+call:1:0": 0,
-    $isFunction: true,
-    $is_Object__Object: true,
-    $is_args1: true
-  },
-  _DataAttributeMap_forEach_closure: {
-    "": "Closure;this_0,f_1",
-    call$2: function(key, value) {
-      var t1 = J.getInterceptor$s(key);
-      if (t1.startsWith$1(key, "data-"))
-        this.f_1.call$2(this.this_0._toCamelCase$1(t1.substring$1(key, 5)), value);
-    },
-    "+call:2:0": 0,
-    $isFunction: true,
-    $is_args2: true
-  },
-  _DataAttributeMap_keys_closure: {
-    "": "Closure;this_0,keys_1",
-    call$2: function(key, value) {
-      var t1 = J.getInterceptor$s(key);
-      if (t1.startsWith$1(key, "data-"))
-        this.keys_1.push(this.this_0._toCamelCase$1(t1.substring$1(key, 5)));
-    },
-    "+call:2:0": 0,
-    $isFunction: true,
-    $is_args2: true
-  },
-  _DataAttributeMap_values_closure: {
-    "": "Closure;this_0,values_1",
-    call$2: function(key, value) {
-      if (J.startsWith$1$s(key, "data-"))
-        this.values_1.push(value);
-    },
-    "+call:2:0": 0,
-    $isFunction: true,
-    $is_args2: true
   },
   _MultiElementCssClassSet: {
     "": "CssClassSetImpl;_elementIterable,_elementCssClassSetIterable",
@@ -15741,11 +15228,6 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
       if (receiver._cssClassSet == null)
         receiver._cssClassSet = new P._AttributeClassSet(receiver);
       return receiver._cssClassSet;
-    },
-    get$children: function(receiver) {
-      var t1 = new P.FilteredElementList(receiver, new W._ChildNodeListLazy(receiver));
-      H.setRuntimeTypeInfo(t1, [W.Element]);
-      return t1;
     },
     insertAdjacentText$2: function(receiver, where, text) {
       throw H.wrapException(P.UnsupportedError$("Cannot invoke insertAdjacentText on SVG."));
@@ -16800,66 +16282,6 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
     }
     return map;
   },
-  ModalManager_show: function(element, backdropClickHandler, duration, effect, effectTiming) {
-    var backDropElement, t1, t2, showElement;
-    backDropElement = Y.ModalManager__getBackdrop(element.ownerDocument, true);
-    backDropElement.toString;
-    t1 = C.EventStreamProvider_click.forElement$1(backDropElement);
-    t2 = new W._EventStreamSubscription(0, t1._target, t1._eventType, W._wrapZone(new Y.ModalManager_show_closure(backdropClickHandler)), t1._useCapture);
-    H.setRuntimeTypeInfo(t2, [H.getTypeArgumentByIndex(t1, 0)]);
-    t2._tryResume$0();
-    showElement = Y.ShowHide_begin(C.ShowHideAction_show, element, duration, effect, effectTiming);
-    t1 = J.get$classes$x(backDropElement);
-    t1.add$1(t1, "fade");
-    t1.remove$1(t1, "in");
-    P.scheduleMicrotask(new Y.ModalManager_show_closure0(backDropElement));
-    return P.Future_wait([showElement, Y.Tools_onTransitionEnd(backDropElement)], false);
-  },
-  "+show:1:4:backdropClickHandler:duration:effect:effectTiming": 0,
-  "*show": [9, 9, 9, 9],
-  ModalManager_hide: function(element, duration, effect, effectTiming) {
-    var backDropElement, futures, t1, t2, t3, result;
-    backDropElement = Y.ModalManager__getBackdrop(element.ownerDocument, false);
-    futures = [Y.ShowHide_begin(C.ShowHideAction_hide, element, duration, effect, effectTiming)];
-    if (backDropElement != null) {
-      t1 = J.get$classes$x(backDropElement);
-      t1.remove$1(t1, "in");
-      futures.push(Y.Tools_onTransitionEnd(backDropElement));
-    }
-    t1 = P.Future_wait(futures, false);
-    t2 = $.Zone__current;
-    t3 = P._registerErrorHandler(new Y.ModalManager_hide_closure(), t2);
-    result = new P._Future(0, t2, null, null, null, $.Zone__current.registerUnaryCallback$1(new Y.ModalManager_hide_closure0()), t3, null);
-    H.setRuntimeTypeInfo(result, [null]);
-    t1._addListener$1(result);
-    result.whenComplete$1(new Y.ModalManager_hide_closure1(element));
-    return result;
-  },
-  "+hide:1:3:duration:effect:effectTiming": 0,
-  "*hide": [9, 9, 9],
-  ModalManager__getBackdrop: function(parentDocument, addIfMissing) {
-    var t1, element, t2;
-    t1 = J.getInterceptor$x(parentDocument);
-    element = t1.get$body(parentDocument).querySelector(".modal-backdrop");
-    if (element == null && addIfMissing) {
-      element = document.createElement("div", null);
-      t2 = J.get$classes$x(element);
-      t2.add$1(t2, "modal-backdrop");
-      t1.get$body(parentDocument).appendChild(element);
-    }
-    return element;
-  },
-  ShowHide_getState: function(element) {
-    return Y.ShowHide__populateState(element);
-  },
-  ShowHide_hide: function(element, duration, effect, effectTiming) {
-    return Y.ShowHide_begin(C.ShowHideAction_hide, element, duration, effect, effectTiming);
-  },
-  "+hide:1:3:duration:effect:effectTiming": 0,
-  "*hide": [9, 9, 9],
-  ShowHide_begin: function(action, element, duration, effect, effectTiming) {
-    return Y.ShowHide__requestEffect(Y.ShowHide__getToggleState(action, Y.ShowHide__populateState(element)), element, duration, effect, effectTiming);
-  },
   ShowHide__populateState: function(element) {
     var t1, currentValues, t2, computedStyle, tagDefaultDisplay, localDisplay, computedDisplay, inferredState;
     t1 = $.get$ShowHide__values();
@@ -16898,18 +16320,13 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
     }
   },
   ShowHide__requestEffect: function(doShow, element, desiredDuration, effect, effectTiming) {
-    if (desiredDuration == null)
-      desiredDuration = 218;
-    else if (J.$lt$n(desiredDuration, 0))
-      desiredDuration = 0;
     if (effect == null)
       effect = C.C__NoOpShowHideEffect;
-    if (effectTiming == null)
-      effectTiming = $.get$EffectTiming_ease();
+    effectTiming = $.get$EffectTiming_ease();
     if (doShow)
-      return Y.ShowHide__requestShow(element, desiredDuration, effect, effectTiming);
+      return Y.ShowHide__requestShow(element, 218, effect, effectTiming);
     else
-      return Y.ShowHide__requestHide(element, desiredDuration, effect, effectTiming);
+      return Y.ShowHide__requestHide(element, 218, effect, effectTiming);
   },
   ShowHide__requestShow: function(element, desiredDuration, effect, effectTiming) {
     var t1, values, fractionComplete, durationMS, t2, t3, value;
@@ -17009,58 +16426,6 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
     else
       return values.get$initialComputedDisplay();
   },
-  Swapper_swap: function(children, child, duration, effect, effectTiming, hideEffect) {
-    var t1, t2;
-    t1 = {};
-    t1.hideEffect_0 = hideEffect;
-    if (hideEffect == null) {
-      t1.hideEffect_0 = effect;
-      t2 = effect;
-    } else
-      t2 = hideEffect;
-    if (child == null)
-      return Y.Swapper__hideEverything(children, t2, duration, effectTiming);
-    if (!C.JSArray_methods.contains$1(children, child))
-      throw H.wrapException(new P.ArgumentError("child is not one of children"));
-    return Y.Swapper__ensureOneShown(children).then$1(new Y.Swapper_swap_closure(t1, child, effect, duration, effectTiming));
-  },
-  Swapper__hideEverything: function(children, effect, duration, effectTiming) {
-    var futures = new H.MappedListIterable(children, new Y.Swapper__hideEverything_closure(effect, duration, effectTiming));
-    H.setRuntimeTypeInfo(futures, [null, null]);
-    return P.Future_wait(futures, false).then$1(new Y.Swapper__hideEverything_closure0());
-  },
-  Swapper__ensureOneShown: function(children) {
-    var t1, t2, child, theStates;
-    t1 = {};
-    t2 = children.length;
-    if (t2 === 0)
-      return P._Future$immediate(null, null);
-    else if (t2 === 1) {
-      if (0 >= t2)
-        throw H.ioore(children, 0);
-      child = children[0];
-      return Y.ShowHide_begin(C.ShowHideAction_show, child, null, null, null).then$1(new Y.Swapper__ensureOneShown_closure(child));
-    }
-    t2 = new H.MappedListIterable(children, Y.ShowHide_getState$closure);
-    H.setRuntimeTypeInfo(t2, [null, null]);
-    theStates = t2.toList$0(t2);
-    t1.shownIndex_0 = null;
-    return P._Future$immediate(theStates, null).then$1(new Y.Swapper__ensureOneShown_closure0(t1, children)).then$1(new Y.Swapper__ensureOneShown_closure1(t1, children));
-  },
-  Swapper__hideAll: function(children) {
-    var t1 = new H.MappedListIterable(children, Y.ShowHide_hide$closure);
-    H.setRuntimeTypeInfo(t1, [null, null]);
-    return P.Future_wait(t1, false).then$1(new Y.Swapper__hideAll_closure());
-  },
-  Tools_getAncestors: function(source, includeSelf) {
-    var ancestors = P.List_List(null, W.Element);
-    source = includeSelf ? source : J.get$parent$x(source);
-    for (; source != null;) {
-      ancestors.push(source);
-      source = J.get$parent$x(source);
-    }
-    return ancestors;
-  },
   Tools_getDefaultDisplay: function(nodeName) {
     var t1, storedValue, elem, value;
     t1 = $.get$Tools__elemDisplay();
@@ -17083,10 +16448,6 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
   },
   Tools__defaultDisplayHard: function(nodeName) {
     throw H.wrapException("Not sure how to calculate display of: " + nodeName);
-  },
-  Tools_onTransitionEnd: function(e) {
-    var t1 = C._CustomEventStreamProvider__determineTransitionEventType.forElement$1(e);
-    return t1.get$first(t1).then$1(new Y.Tools_onTransitionEnd_closure());
   },
   _Enum: {
     "": "Object;name>",
@@ -17150,7 +16511,9 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
         animationFractionLeft = 1 - fractionComplete;
       } else
         animationFractionLeft = fractionComplete;
-      actualDuration = J.round$0$n(J.$mul$n(desiredDuration, animationFractionLeft));
+      if (typeof animationFractionLeft !== "number")
+        throw H.iae(animationFractionLeft);
+      actualDuration = C.JSNumber_methods.toInt$0(C.JSNumber_methods.roundToDouble$0(desiredDuration * animationFractionLeft));
       J.setProperty$2$x(t3.get$style(element), t1, startValue);
       Y._css3TransitionEffectValues_delayStart(element, localValues, new Y.Css3TransitionEffect__startAnimation_closure(this, element, timing, endValue, actualDuration));
       return actualDuration;
@@ -17287,42 +16650,6 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
       return "perspective(600px) rotateX(" + H.S((1 - fractionComplete) * 90) + "deg)";
     }
   },
-  SlideEffect: {
-    "": "Css3TransitionEffect;xStart,yStart,_property,_animatingOverrides",
-    computePropertyValue$2: function(fractionComplete, _) {
-      var offset, xComponent, yComponent;
-      if (J.$ge$n(fractionComplete, 1))
-        return "translate3d(0,0,0)";
-      if (typeof fractionComplete !== "number")
-        throw H.iae(fractionComplete);
-      offset = H.S((1 - fractionComplete) * 100);
-      switch (this.xStart) {
-        case C.HorizontalAlignment_left:
-          xComponent = "-" + offset + "%";
-          break;
-        case C.HorizontalAlignment_right:
-          xComponent = offset + "%";
-          break;
-        case C.HorizontalAlignment_center:
-        default:
-          xComponent = "0";
-          break;
-      }
-      switch (this.yStart) {
-        case C.VerticalAlignment_top:
-          yComponent = "-" + offset + "%";
-          break;
-        case C.VerticalAlignment_bottom:
-          yComponent = offset + "%";
-          break;
-        case C.VerticalAlignment_middle:
-        default:
-          yComponent = "0";
-          break;
-      }
-      return "translate3d(" + xComponent + ", " + yComponent + ", 0)";
-    }
-  },
   EffectTiming: {
     "": "Object;"
   },
@@ -17337,67 +16664,12 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
           return "";
       }}
   },
-  ModalManager_show_closure: {
-    "": "Closure;backdropClickHandler_0",
-    call$1: function(args) {
-      return this.backdropClickHandler_0.call$0();
-    },
-    "+call:1:0": 0,
-    $isFunction: true,
-    $is_Object__Object: true,
-    $is_args1: true
-  },
-  ModalManager_show_closure0: {
-    "": "Closure;backDropElement_1",
-    call$0: function() {
-      var t1 = J.get$classes$x(this.backDropElement_1);
-      return t1.add$1(t1, "in");
-    },
-    "+call:0:0": 0,
-    $isFunction: true,
-    $is_void_: true
-  },
-  ModalManager_hide_closure: {
-    "": "Closure;",
-    call$1: function(err) {
-      P.print(err);
-    },
-    "+call:1:0": 0,
-    $isFunction: true,
-    $is_Object__Object: true,
-    $is_args1: true
-  },
-  ModalManager_hide_closure0: {
-    "": "Closure;",
-    call$1: function(v) {
-      return false;
-    },
-    "+call:1:0": 0,
-    $isFunction: true,
-    $is_Object__Object: true,
-    $is_args1: true
-  },
-  ModalManager_hide_closure1: {
-    "": "Closure;element_0",
-    call$0: function() {
-      var backdrop = Y.ModalManager__getBackdrop(this.element_0.ownerDocument, false);
-      if (backdrop != null)
-        J.remove$0$ax(backdrop);
-      return;
-    },
-    "+call:0:0": 0,
-    $isFunction: true,
-    $is_void_: true
-  },
   ShowHideAction: {
     "": "_Enum;name",
     static: {"": "ShowHideAction_SHOW,ShowHideAction_HIDE,ShowHideAction_TOGGLE"}
   },
   ShowHideResult: {
     "": "_Enum;name",
-    get$isSuccess: function() {
-      return this !== C.ShowHideResult_canceled;
-    },
     $isShowHideResult: true,
     static: {"": "ShowHideResult_ANIMATED,ShowHideResult_NOOP,ShowHideResult_IMMEDIATE,ShowHideResult_CANCELED"}
   },
@@ -17480,229 +16752,7 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
   },
   ShowHideState: {
     "": "_Enum;name",
-    get$isShow: function() {
-      return this === C.ShowHideState_shown || this === C.ShowHideState_showing;
-    },
     static: {"": "ShowHideState_SHOWN,ShowHideState_HIDDEN,ShowHideState_SHOWING,ShowHideState_HIDING"}
-  },
-  Swapper_swap_closure: {
-    "": "Closure;box_0,child_1,effect_2,duration_3,effectTiming_4",
-    call$1: function(currentlyVisible) {
-      var t1, t2, t3, t4, showFuture;
-      if (currentlyVisible == null)
-        return P._Future$immediate(false, null);
-      else {
-        t1 = this.child_1;
-        t2 = J.getInterceptor(currentlyVisible);
-        if (t2.$eq(currentlyVisible, t1))
-          return P._Future$immediate(true, null);
-      }
-      J.set$zIndex$x(J.get$style$x(t1), "2");
-      t3 = this.duration_3;
-      t4 = this.effectTiming_4;
-      showFuture = Y.ShowHide_begin(C.ShowHideAction_show, t1, t3, this.effect_2, t4);
-      J.set$zIndex$x(t2.get$style(currentlyVisible), "1");
-      return P.Future_wait([showFuture, Y.ShowHide_begin(C.ShowHideAction_hide, currentlyVisible, t3, this.box_0.hideEffect_0, t4)], false).then$1(new Y.Swapper_swap__closure(t1, currentlyVisible));
-    },
-    "+call:1:0": 0,
-    $isFunction: true,
-    $is_Object__Object: true,
-    $is_args1: true
-  },
-  Swapper_swap__closure: {
-    "": "Closure;child_5,currentlyVisible_6",
-    call$1: function(results) {
-      H.IterableMixinWorkaround_forEach([this.child_5, this.currentlyVisible_6], new Y.Swapper_swap___closure());
-      return J.every$1$ax(results, new Y.Swapper_swap___closure0());
-    },
-    "+call:1:0": 0,
-    $isFunction: true,
-    $is_Object__Object: true,
-    $is_args1: true
-  },
-  Swapper_swap___closure: {
-    "": "Closure;",
-    call$1: function(e) {
-      J.set$zIndex$x(J.get$style$x(e), "");
-      return "";
-    },
-    "+call:1:0": 0,
-    $isFunction: true,
-    $is_Object__Object: true,
-    $is_args1: true
-  },
-  Swapper_swap___closure0: {
-    "": "Closure;",
-    call$1: function(a) {
-      return a.get$isSuccess();
-    },
-    "+call:1:0": 0,
-    $isFunction: true,
-    $is_Object__Object: true,
-    $is_args1: true
-  },
-  Swapper__hideEverything_closure: {
-    "": "Closure;effect_0,duration_1,effectTiming_2",
-    call$1: function(e) {
-      return Y.ShowHide_begin(C.ShowHideAction_hide, e, this.duration_1, this.effect_0, this.effectTiming_2);
-    },
-    "+call:1:0": 0,
-    $isFunction: true,
-    $is_Object__Object: true,
-    $is_args1: true
-  },
-  Swapper__hideEverything_closure0: {
-    "": "Closure;",
-    call$1: function(successList) {
-      return J.every$1$ax(successList, new Y.Swapper__hideEverything__closure());
-    },
-    "+call:1:0": 0,
-    $isFunction: true,
-    $is_Object__Object: true,
-    $is_args1: true
-  },
-  Swapper__hideEverything__closure: {
-    "": "Closure;",
-    call$1: function(v) {
-      return v.get$isSuccess();
-    },
-    "+call:1:0": 0,
-    $isFunction: true,
-    $is_Object__Object: true,
-    $is_args1: true
-  },
-  Swapper__ensureOneShown_closure: {
-    "": "Closure;child_1",
-    call$1: function(result) {
-      if (result.get$isSuccess())
-        return this.child_1;
-      else
-        return;
-    },
-    "+call:1:0": 0,
-    $isFunction: true,
-    $is_Object__Object: true,
-    $is_args1: true
-  },
-  Swapper__ensureOneShown_closure0: {
-    "": "Closure;box_0,children_2",
-    call$1: function(states) {
-      var showIndicies, t1, i, t2, shownIndex, toHide, t3;
-      showIndicies = P.List_List(null, J.JSInt);
-      t1 = J.getInterceptor$asx(states);
-      i = 0;
-      while (true) {
-        t2 = t1.get$length(states);
-        if (typeof t2 !== "number")
-          throw H.iae(t2);
-        if (!(i < t2))
-          break;
-        if (t1.$index(states, i).get$isShow())
-          showIndicies.push(i);
-        ++i;
-      }
-      t1 = showIndicies.length;
-      if (t1 === 0) {
-        t1 = this.children_2;
-        t2 = t1.length;
-        shownIndex = t2 - 1;
-        this.box_0.shownIndex_0 = shownIndex;
-        if (shownIndex < 0)
-          throw H.ioore(t1, shownIndex);
-        return Y.ShowHide_begin(C.ShowHideAction_show, t1[shownIndex], null, null, null).then$1(new Y.Swapper__ensureOneShown__closure());
-      } else {
-        t2 = this.box_0;
-        if (t1 > 1) {
-          t1 = new H.MappedListIterable(C.JSArray_methods.sublist$2(showIndicies, 0, t1 - 1), new Y.Swapper__ensureOneShown__closure0(this.children_2));
-          H.setRuntimeTypeInfo(t1, [null, null]);
-          toHide = t1.toList$0(t1);
-          t1 = showIndicies.length;
-          t3 = t1 - 1;
-          if (t3 < 0)
-            throw H.ioore(showIndicies, t3);
-          t2.shownIndex_0 = showIndicies[t3];
-          return Y.Swapper__hideAll(toHide);
-        } else {
-          t2.shownIndex_0 = showIndicies[0];
-          return true;
-        }
-      }
-    },
-    "+call:1:0": 0,
-    $isFunction: true,
-    $is_Object__Object: true,
-    $is_args1: true
-  },
-  Swapper__ensureOneShown__closure: {
-    "": "Closure;",
-    call$1: function(r) {
-      return r.get$isSuccess();
-    },
-    "+call:1:0": 0,
-    $isFunction: true,
-    $is_Object__Object: true,
-    $is_args1: true
-  },
-  Swapper__ensureOneShown__closure0: {
-    "": "Closure;children_3",
-    call$1: function(index) {
-      var t1 = this.children_3;
-      if (index >>> 0 !== index || index >= t1.length)
-        throw H.ioore(t1, index);
-      return t1[index];
-    },
-    "+call:1:0": 0,
-    $isFunction: true,
-    $is_Object__Object: true,
-    $is_args1: true
-  },
-  Swapper__ensureOneShown_closure1: {
-    "": "Closure;box_0,children_4",
-    call$1: function(success) {
-      var t1, t2;
-      if (success === true) {
-        t1 = this.children_4;
-        t2 = this.box_0.shownIndex_0;
-        if (t2 >>> 0 !== t2 || t2 >= t1.length)
-          throw H.ioore(t1, t2);
-        return t1[t2];
-      } else
-        return;
-    },
-    "+call:1:0": 0,
-    $isFunction: true,
-    $is_Object__Object: true,
-    $is_args1: true
-  },
-  Swapper__hideAll_closure: {
-    "": "Closure;",
-    call$1: function(successValues) {
-      return J.every$1$ax(successValues, new Y.Swapper__hideAll__closure());
-    },
-    "+call:1:0": 0,
-    $isFunction: true,
-    $is_Object__Object: true,
-    $is_args1: true
-  },
-  Swapper__hideAll__closure: {
-    "": "Closure;",
-    call$1: function(v) {
-      return v.get$isSuccess();
-    },
-    "+call:1:0": 0,
-    $isFunction: true,
-    $is_Object__Object: true,
-    $is_args1: true
-  },
-  Tools_onTransitionEnd_closure: {
-    "": "Closure;",
-    call$1: function(_) {
-      return;
-    },
-    "+call:1:0": 0,
-    $isFunction: true,
-    $is_Object__Object: true,
-    $is_args1: true
   }
 }],
 ["html_common", "dart:html_common", , P, {
@@ -17889,10 +16939,6 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
       H.setRuntimeTypeInfo(t2, [H.getRuntimeTypeArgument(t1, "IterableBase", 0)]);
       return t2;
     },
-    every$1: function(_, f) {
-      var t1 = this.readClasses$0();
-      return t1.every$1(t1, f);
-    },
     any$1: function(_, f) {
       var t1 = this.readClasses$0();
       return t1.any$1(t1, f);
@@ -17983,101 +17029,11 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
     $isFunction: true,
     $is_Object__Object: true,
     $is_args1: true
-  },
-  FilteredElementList: {
-    "": "ListBase;_html_common$_node,_childNodes",
-    get$_filtered: function() {
-      var t1 = this._childNodes;
-      return P.List_List$from(t1.where$1(t1, new P.FilteredElementList__filtered_closure()), true, W.Element);
-    },
-    forEach$1: function(_, f) {
-      H.IterableMixinWorkaround_forEach(this.get$_filtered(), f);
-    },
-    $indexSet: function(_, index, value) {
-      var t1 = this.get$_filtered();
-      if (index >>> 0 !== index || index >= t1.length)
-        throw H.ioore(t1, index);
-      J.replaceWith$1$x(t1[index], value);
-    },
-    "+[]=:2:0": 0,
-    set$length: function(_, newLength) {
-      var len, t1;
-      len = this.get$_filtered().length;
-      t1 = J.getInterceptor$n(newLength);
-      if (t1.$ge(newLength, len))
-        return;
-      else if (t1.$lt(newLength, 0))
-        throw H.wrapException(new P.ArgumentError("Invalid list length"));
-      this.removeRange$2(this, newLength, len);
-    },
-    "+length=": 0,
-    add$1: function(_, value) {
-      this._childNodes._this.appendChild(value);
-    },
-    addAll$1: function(_, iterable) {
-      var t1, t2;
-      for (t1 = iterable.get$iterator(iterable), t1.moveNext$0(), t2 = this._childNodes._this; false;)
-        t2.appendChild(t1.get$current());
-    },
-    contains$1: function(_, needle) {
-      return false;
-    },
-    setRange$4: function(_, start, end, iterable, skipCount) {
-      throw H.wrapException(P.UnsupportedError$("Cannot setRange on filtered list"));
-    },
-    removeRange$2: function(_, start, end) {
-      H.IterableMixinWorkaround_forEach(C.JSArray_methods.sublist$2(this.get$_filtered(), start, end), new P.FilteredElementList_removeRange_closure());
-    },
-    remove$1: function(_, element) {
-      return false;
-    },
-    get$length: function(_) {
-      return this.get$_filtered().length;
-    },
-    "+length": 0,
-    $index: function(_, index) {
-      var t1 = this.get$_filtered();
-      if (index >>> 0 !== index || index >= t1.length)
-        throw H.ioore(t1, index);
-      return t1[index];
-    },
-    "+[]:1:0": 0,
-    get$iterator: function(_) {
-      var t1, t2;
-      t1 = this.get$_filtered();
-      t2 = new H.ListIterator(t1, t1.length, 0, null);
-      H.setRuntimeTypeInfo(t2, [H.getTypeArgumentByIndex(t1, 0)]);
-      return t2;
-    },
-    $asListBase: null,
-    $asList: null,
-    $asIterable: null
-  },
-  FilteredElementList__filtered_closure: {
-    "": "Closure;",
-    call$1: function(n) {
-      var t1 = J.getInterceptor(n);
-      return typeof n === "object" && n !== null && !!t1.$isElement;
-    },
-    "+call:1:0": 0,
-    $isFunction: true,
-    $is_Object__Object: true,
-    $is_args1: true
-  },
-  FilteredElementList_removeRange_closure: {
-    "": "Closure;",
-    call$1: function(el) {
-      return J.remove$0$ax(el);
-    },
-    "+call:1:0": 0,
-    $isFunction: true,
-    $is_Object__Object: true,
-    $is_args1: true
   }
 }],
 ["logging", "package:logging/logging.dart", , N, {
   Logger: {
-    "": "Object;name>,parent>,_level,_children>,children>,_logging$_controller",
+    "": "Object;name>,parent>,_level,_children>,children,_logging$_controller",
     get$fullName: function() {
       var t1, t2, t3;
       t1 = this.parent;
@@ -18108,11 +17064,11 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
         if ($.hierarchicalLoggingEnabled)
           for (target = this; target != null;) {
             t1 = J.getInterceptor$x(target);
-            t1._logging$_publish$1(target, record);
+            t1._publish$1(target, record);
             target = t1.get$parent(target);
           }
         else
-          J._logging$_publish$1$x(N.Logger_Logger(""), record);
+          J._publish$1$x(N.Logger_Logger(""), record);
       }
     },
     finer$3: function(message, error, stackTrace) {
@@ -18139,7 +17095,7 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
     warning$1: function(message) {
       return this.warning$3(message, null, null);
     },
-    _logging$_publish$1: function(_, record) {
+    _publish$1: function(_, record) {
     },
     Logger$_internal$3: function($name, $parent, children) {
       var t1 = this.parent;
@@ -18168,7 +17124,7 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
         thisName = C.JSString_methods.substring$1(thisName, dot + 1);
       }
       t1 = P.LinkedHashMap_LinkedHashMap(null, null, null, J.JSString, N.Logger);
-      t2 = new F.UnmodifiableMapView0(t1);
+      t2 = new F.UnmodifiableMapView(t1);
       H.setRuntimeTypeInfo(t2, [null, null]);
       t2 = new N.Logger(thisName, $parent, null, t1, t2, null);
       t2.Logger$_internal$3(thisName, $parent, t1);
@@ -18355,7 +17311,7 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
     "+length": 0,
     get$value: function(_) {
       return this._compound_path_observer$_value;
-      "9,64";
+      "14,54";
     },
     "+value": 1,
     start$0: function(_) {
@@ -18455,9 +17411,10 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
       $._allObservables = t1;
       for (t1 = debugLoop != null, anyChanged = false, i = 0; i < toCheck.length; ++i) {
         observer = toCheck[i];
-        t2 = J.getInterceptor$x(observer);
-        if (t2.get$hasObservers(observer)) {
-          if (t2.deliverChanges$0(observer)) {
+        t2 = observer._observable$_changes;
+        t2 = t2._async$_next !== t2;
+        if (t2) {
+          if (observer.deliverChanges$0(observer)) {
             if (t1)
               debugLoop.push([i, observer]);
             anyChanged = true;
@@ -18563,7 +17520,7 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
       if (i >= t1)
         throw H.ioore(distances, i);
       distances[i] = t2;
-      if (0 < 0 || 0 >= t2.length)
+      if (0 >= t2.length)
         throw H.ioore(t2, 0);
       t2[0] = i;
     }
@@ -18573,7 +17530,10 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
     for (; j < columnCount; ++j) {
       if (0 >= t1)
         throw H.ioore(distances, 0);
-      J.$indexSet$ax(distances[0], j, j);
+      t2 = distances[0];
+      if (j >= t2.length)
+        throw H.ioore(t2, j);
+      t2[j] = j;
     }
     for (t2 = J.getInterceptor$asx(old), t3 = J.getInterceptor$asx(current), i = 1; i < rowCount; ++i)
       for (t4 = i - 1, t5 = oldStart + i - 1, j = 1; j < columnCount; ++j) {
@@ -18586,53 +17546,79 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
           t6 = distances[i];
           if (t4 >= t1)
             throw H.ioore(distances, t4);
-          J.$indexSet$ax(t6, j, J.$index$asx(t7, t8));
+          if (t8 >= t7.length)
+            throw H.ioore(t7, t8);
+          t8 = t7[t8];
+          if (j >= t6.length)
+            throw H.ioore(t6, j);
+          t6[j] = t8;
         } else {
           if (t4 >= t1)
             throw H.ioore(distances, t4);
-          north = J.$add$ns(J.$index$asx(t7, j), 1);
+          if (j >= t7.length)
+            throw H.ioore(t7, j);
+          north = J.$add$ns(t7[j], 1);
           if (i >= t1)
             throw H.ioore(distances, i);
-          west = J.$add$ns(J.$index$asx(distances[i], t8), 1);
-          J.$indexSet$ax(distances[i], j, P.min(north, west));
+          t6 = distances[i];
+          if (t8 >= t6.length)
+            throw H.ioore(t6, t8);
+          west = J.$add$ns(t6[t8], 1);
+          t8 = distances[i];
+          t6 = P.min(north, west);
+          if (j >= t8.length)
+            throw H.ioore(t8, j);
+          t8[j] = t6;
         }
       }
     return distances;
   },
   _spliceOperationsFromEditDistances: function(distances) {
-    var t1, i, j, current, edits, t2, t3, northWest, west, north, min;
+    var t1, i, j, t2, current, edits, t3, t4, t5, northWest, west, north, min;
     t1 = distances.length;
     i = t1 - 1;
     if (0 >= t1)
       throw H.ioore(distances, 0);
-    j = J.$sub$n(J.get$length$asx(distances[0]), 1);
+    j = distances[0].length - 1;
     if (i < 0)
       throw H.ioore(distances, i);
-    current = J.$index$asx(distances[i], j);
+    t2 = distances[i];
+    if (j < 0 || j >= t2.length)
+      throw H.ioore(t2, j);
+    current = t2[j];
     edits = [];
     while (true) {
-      if (!(i > 0 || J.$gt$n(j, 0)))
+      if (!(i > 0 || j > 0))
         break;
       c$0: {
         if (i === 0) {
           edits.push(2);
-          j = J.$sub$n(j, 1);
+          --j;
           break c$0;
         }
-        t2 = J.getInterceptor(j);
-        if (t2.$eq(j, 0)) {
+        if (j === 0) {
           edits.push(3);
           --i;
           break c$0;
         }
-        t3 = i - 1;
-        if (t3 < 0)
-          throw H.ioore(distances, t3);
-        northWest = J.$index$asx(distances[t3], t2.$sub(j, 1));
-        west = J.$index$asx(distances[t3], j);
+        t2 = i - 1;
+        if (t2 < 0)
+          throw H.ioore(distances, t2);
+        t3 = distances[t2];
+        t4 = j - 1;
+        t5 = t3.length;
+        if (t4 < 0 || t4 >= t5)
+          throw H.ioore(t3, t4);
+        northWest = t3[t4];
+        if (j < 0 || j >= t5)
+          throw H.ioore(t3, j);
+        west = t3[j];
         if (i < 0)
           throw H.ioore(distances, i);
-        north = J.$index$asx(distances[i], t2.$sub(j, 1));
+        t3 = distances[i];
+        if (t4 >= t3.length)
+          throw H.ioore(t3, t4);
+        north = t3[t4];
         min = P.min(P.min(west, north), northWest);
         if (min === northWest) {
           if (J.$eq(northWest, current))
@@ -18641,16 +17627,16 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
             edits.push(1);
             current = northWest;
           }
-          j = t2.$sub(j, 1);
-          i = t3;
+          j = t4;
+          i = t2;
         } else if (min === west) {
           edits.push(3);
           current = west;
-          i = t3;
+          i = t2;
         } else {
           edits.push(2);
-          j = t2.$sub(j, 1);
           current = north;
+          j = t4;
         }
       }
     }
@@ -18855,12 +17841,12 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
     "": "ChangeNotifier;",
     get$value: function(_) {
       return this._observable_box$_value;
-      "65,64";
+      "55,54";
     },
     "+value": 1,
     set$value: function(_, newValue) {
       this._observable_box$_value = F.notifyPropertyChangeHelper(this, C.Symbol_value, this._observable_box$_value, newValue);
-      "9,66,65,64";
+      "14,56,55,54";
     },
     "+value=": 1,
     toString$0: function(_) {
@@ -18887,47 +17873,47 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
     "": "ChangeNotifier;_observable_map$_map,change_notifier$ChangeNotifier$_changes,change_notifier$ChangeNotifier$_records",
     get$keys: function() {
       return this._observable_map$_map.get$keys();
-      "67,64";
+      "57,54";
     },
     "+keys": 1,
     get$values: function(_) {
       var t1 = this._observable_map$_map;
       return t1.get$values(t1);
-      "68,64";
+      "58,54";
     },
     "+values": 1,
     get$length: function(_) {
       var t1 = this._observable_map$_map;
       return t1.get$length(t1);
-      "12,64";
+      "11,54";
     },
     "+length": 1,
     get$isEmpty: function(_) {
       var t1 = this._observable_map$_map;
       return t1.get$length(t1) === 0;
-      "53,64";
+      "43,54";
     },
     "+isEmpty": 1,
     get$isNotEmpty: function(_) {
       var t1 = this._observable_map$_map;
       return t1.get$length(t1) !== 0;
-      "53,64";
+      "43,54";
     },
     "+isNotEmpty": 1,
     containsValue$1: function(value) {
       return this._observable_map$_map.containsValue$1(value);
-      "53,13,0,64";
+      "43,12,0,54";
     },
     "+containsValue:1:0": 1,
     containsKey$1: function(key) {
       return this._observable_map$_map.containsKey$1(key);
-      "53,59,0,64";
+      "43,49,0,54";
     },
     "+containsKey:1:0": 1,
     $index: function(_, key) {
       var t1 = this._observable_map$_map;
       return t1.$index(t1, key);
-      "69,59,0,64";
+      "59,49,0,54";
     },
     "+[]:1:0": 1,
     $indexSet: function(_, key, value) {
@@ -18960,7 +17946,7 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
           this.notifyChange$1(this, t1);
         }
       }
-      "9,59,70,13,69,64";
+      "14,49,60,12,59,54";
     },
     "+[]=:2:0": 1,
     addAll$1: function(_, other) {
@@ -19206,7 +18192,7 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
       if (!t1)
         this._updateValues$0();
       return C.JSArray_methods.get$last(this._values);
-      "9,64";
+      "14,54";
     },
     "+value": 1,
     set$value: function(_, newValue) {
@@ -19236,7 +18222,7 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
           throw H.ioore(t1, len);
         t1[len] = newValue;
       }
-      "9,66,0,64";
+      "14,56,0,54";
     },
     "+value=": 1,
     observed$0: function(_) {
@@ -20089,7 +19075,7 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
     return scripts;
   },
   _loadLibrary: function(uriString) {
-    var t1, t2, t3, targetScheme, targetUserInfo, targetHost, targetPort, targetPath, targetQuery, t4, t5, uri, lib, canonicalLib, c, meta, type, waiting;
+    var t1, t2, t3, targetScheme, targetUserInfo, targetHost, targetPort, targetPath, targetQuery, t4, t5, uri, lib, canonicalLib;
     t1 = $.get$_rootUri();
     t1.toString;
     t2 = $.get$Uri__splitRe();
@@ -20149,25 +19135,9 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
     t2 = J.get$iterator$ax(t1._iterable);
     t3 = new H.WhereIterator(t2, t1._f);
     t3.$builtinTypeInfo = [H.getTypeArgumentByIndex(t1, 0)];
-    for (; t3.moveNext$0();) {
-      c = t2.get$current();
-      for (t1 = J.get$iterator$ax(c.get$metadata()); t1.moveNext$0();) {
-        meta = t1.get$current().get$reflectee();
-        t4 = J.getInterceptor(meta);
-        if (typeof meta === "object" && meta !== null && !!t4.$isCustomTag) {
-          t4 = meta.tagName;
-          type = M.getReflectedTypeWorkaround(c);
-          if (type == null)
-            type = C.Type_I2I;
-          t5 = $.get$_typesByName();
-          t5.$indexSet(t5, t4, type);
-          t5 = $.get$_waitType();
-          waiting = t5.remove$1(t5, t4);
-          if (waiting != null)
-            J.registerWhenReady$0$x(waiting);
-        }
-      }
-    }
+    for (; t3.moveNext$0();)
+      for (t1 = J.get$iterator$ax(t2.get$current().get$metadata()); t1.moveNext$0();)
+        t1.get$current().get$reflectee();
   },
   _maybeInvoke: function(obj, method) {
     var t1, annotationFound, line;
@@ -20211,9 +19181,9 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
     $is_args1: true
   },
   PolymerDeclaration: {
-    "": "HtmlElement;_type,_supertype,_super,_polymer$_name,_publish=,_publishLC=,_polymer$_observe=,_instanceAttributes=,_sheets,_styles,_eventDelegates=,_templateDelegates",
+    "": "HtmlElement;_polymer$_type,_supertype,_super,_polymer$_name,_polymer$_publish=,_publishLC=,_polymer$_observe=,_instanceAttributes=,_sheets,_styles,_eventDelegates=,_templateDelegates",
     get$type: function(receiver) {
-      return receiver._type;
+      return receiver._polymer$_type;
     },
     get$superDeclaration: function(receiver) {
       return receiver._super;
@@ -20241,16 +19211,16 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
         return;
       t1 = receiver._polymer$_name;
       t2 = $.get$_typesByName();
-      receiver._type = t2.$index(t2, t1);
+      receiver._polymer$_type = t2.$index(t2, t1);
       t2 = t2.$index(t2, extendee);
       receiver._supertype = t2;
       if (t2 != null) {
         t2 = $.get$_declarations();
         receiver._super = t2.$index(t2, extendee);
       }
-      cls = P.reflectClass(receiver._type);
+      cls = P.reflectClass(receiver._polymer$_type);
       this.publishAttributes$2(receiver, cls, receiver._super);
-      t2 = receiver._publish;
+      t2 = receiver._polymer$_publish;
       if (t2 != null)
         receiver._publishLC = this._lowerCaseMap$1(receiver, t2);
       this.inferObservers$1(receiver, cls);
@@ -20263,7 +19233,7 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
       this.installLocalSheets$0(receiver);
       A.Polymer_applyStyleToScope(this.cssTextToScopeStyle$2(receiver, this.cssTextForScope$1(receiver, "global"), "global"), document.head);
       A._shimShadowDomStyling(this.get$templateContent(receiver), t1, extendee);
-      cls = P.reflectClass(receiver._type);
+      cls = P.reflectClass(receiver._polymer$_type);
       registered = J.$index$asx(cls.get$declarations(), C.Symbol_registerCallback);
       if (registered != null) {
         t2 = J.getInterceptor(registered);
@@ -20301,18 +19271,18 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
         decl = t1.get$superDeclaration(decl);
       }
       t1 = document;
-      t2 = receiver._type;
+      t2 = receiver._polymer$_type;
       W._registerCustomElement(window, t1, $name, t2, baseTag);
     },
     publishAttributes$2: function(receiver, cls, superDecl) {
       var t1, t2, attrs, attr, property, mirror, t3;
-      if (superDecl != null && J.get$_publish$x(superDecl) != null) {
-        t1 = J.get$_publish$x(superDecl);
+      if (superDecl != null && J.get$_polymer$_publish$x(superDecl) != null) {
+        t1 = J.get$_polymer$_publish$x(superDecl);
         t2 = P.LinkedHashMap_LinkedHashMap(null, null, null, null, null);
         t2.addAll$1(t2, t1);
-        receiver._publish = t2;
+        receiver._polymer$_publish = t2;
       }
-      receiver._publish = A._getPublishedProperties(cls, receiver._publish);
+      receiver._polymer$_publish = A._getPublishedProperties(cls, receiver._polymer$_publish);
       attrs = receiver.getAttribute("attributes");
       if (attrs != null) {
         t1 = attrs.split(J.contains$1$asx(attrs, ",") ? "," : " ");
@@ -20321,7 +19291,7 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
         for (; t2.moveNext$0();) {
           attr = J.trim$0$s(t2._current);
           if (attr !== "") {
-            t1 = receiver._publish;
+            t1 = receiver._polymer$_publish;
             t1 = t1 != null && t1.containsKey$1(attr);
           } else
             t1 = false;
@@ -20338,10 +19308,10 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
               console.warn(t3);
             continue;
           }
-          t1 = receiver._publish;
+          t1 = receiver._polymer$_publish;
           if (t1 == null) {
             t1 = H.fillLiteralMap([], P.LinkedHashMap_LinkedHashMap(null, null, null, null, null));
-            receiver._publish = t1;
+            receiver._polymer$_publish = t1;
           }
           t1.$indexSet(t1, property, mirror);
         }
@@ -20477,7 +19447,7 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
         C.PolymerDeclaration_methods.Element$created$0(receiver);
         C.PolymerDeclaration_methods.PolymerDeclaration$created$0(receiver);
         return receiver;
-      }, "+new PolymerDeclaration$created:0:0": 0}
+      }}
   },
   PolymerDeclaration_waitingForExtendee_closure: {
     "": "Closure;",
@@ -20572,17 +19542,9 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
     $is_args2: true
   },
   Polymer: {
-    "": ["Object;$$:polymer$Polymer$$=-71", function() {
+    "": ["Object;$$:polymer$Polymer$$=-61", function() {
       return [C.C_Reflectable];
     }],
-    get$applyAuthorStyles: function(receiver) {
-      return false;
-    },
-    "+applyAuthorStyles": 0,
-    getShadowRoot$1: function(receiver, customTagName) {
-      var t1 = receiver.polymer$Polymer$_shadowRoots;
-      return t1.$index(t1, customTagName);
-    },
     polymerCreated$0: function(receiver) {
       if (W._convertNativeToDart_Window(this.get$ownerDocument(receiver).defaultView) != null || $.Polymer__preparingElements > 0)
         this.prepareElement$0(receiver);
@@ -20606,11 +19568,9 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
         this.prepareElement$0(receiver);
       this.cancelUnbindAll$1$preventCascade(receiver, true);
     },
-    "+enteredView:0:0": 0,
     leftView$0: function(receiver) {
       this.asyncUnbindAll$0(receiver);
     },
-    "+leftView:0:0": 0,
     parseDeclarations$1: function(receiver, declaration) {
       if (declaration != null) {
         this.parseDeclarations$1(receiver, J.get$superDeclaration$x(declaration));
@@ -20657,7 +19617,7 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
       root = this.createShadowRoot$0(receiver);
       t1 = $.get$_shadowHost();
       t1.$indexSet(t1, root, receiver);
-      root.applyAuthorStyles = this.get$applyAuthorStyles(receiver);
+      root.applyAuthorStyles = false;
       root.resetStyleInheritance = false;
       t1 = J.getInterceptor(template);
       t1 = typeof template === "object" && template !== null && !!t1.$isNodeBindExtension ? template : M.nodeBindFallback(template);
@@ -20821,7 +19781,7 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
     observeProperties$0: function(receiver) {
       var observe, publish, t1, t2, t3, $name;
       observe = J.get$_polymer$_observe$x(receiver.polymer$Polymer$_declaration);
-      publish = J.get$_publish$x(receiver.polymer$Polymer$_declaration);
+      publish = J.get$_polymer$_publish$x(receiver.polymer$Polymer$_declaration);
       t1 = observe == null;
       if (!t1)
         for (observe.toString, t2 = new P.LinkedHashMapKeyIterable(observe), H.setRuntimeTypeInfo(t2, [H.getTypeArgumentByIndex(observe, 0)]), t3 = new P.LinkedHashMapKeyIterator(observe, observe._modifications, null, null), H.setRuntimeTypeInfo(t3, [H.getTypeArgumentByIndex(t2, 0)]), t3._cell = observe._first; t3.moveNext$0();) {
@@ -20834,7 +19794,7 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
     notifyPropertyChanges$1: function(receiver, changes) {
       var observe, publish, valuePairs, t1, c, t2;
       observe = J.get$_polymer$_observe$x(receiver.polymer$Polymer$_declaration);
-      publish = J.get$_publish$x(receiver.polymer$Polymer$_declaration);
+      publish = J.get$_polymer$_publish$x(receiver.polymer$Polymer$_declaration);
       valuePairs = P.LinkedHashMap_LinkedHashMap(null, null, null, P.Symbol, A._PropertyValue);
       for (t1 = J.get$iterator$ax(changes); t1.moveNext$0();) {
         c = t1.get$current();
@@ -20942,7 +19902,10 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
   Polymer_copyInstanceAttributes_closure: {
     "": "Closure;this_0",
     call$2: function($name, value) {
-      J.get$attributes$x(this.this_0).putIfAbsent$2($name, new A.Polymer_copyInstanceAttributes__closure(value));
+      var t1 = J.get$attributes$x(this.this_0);
+      if (t1.containsKey$1($name) !== true)
+        t1.$indexSet(t1, $name, new A.Polymer_copyInstanceAttributes__closure(value).call$0());
+      t1.$index(t1, $name);
     },
     "+call:2:0": 0,
     $isFunction: true,
@@ -21147,7 +20110,7 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
     }
   },
   PolymerElement: {
-    "": ["HtmlElement_Polymer_ChangeNotifier;change_notifier$ChangeNotifier$_changes,change_notifier$ChangeNotifier$_records,polymer$Polymer$_declaration,polymer$Polymer$_observers,polymer$Polymer$_unbound,polymer$Polymer$_unbindAllJob,polymer$Polymer$_propertyObserver,polymer$Polymer$syntax,polymer$Polymer$_shadowRoots,polymer$Polymer$$-71", null, null, null, null, null, null, null, null, null, function() {
+    "": ["HtmlElement_Polymer_ChangeNotifier;change_notifier$ChangeNotifier$_changes,change_notifier$ChangeNotifier$_records,polymer$Polymer$_declaration,polymer$Polymer$_observers,polymer$Polymer$_unbound,polymer$Polymer$_unbindAllJob,polymer$Polymer$_propertyObserver,polymer$Polymer$syntax,polymer$Polymer$_shadowRoots,polymer$Polymer$$-61", null, null, null, null, null, null, null, null, null, function() {
       return [C.C_Reflectable];
     }],
     PolymerElement$created$0: function(receiver) {
@@ -21167,10 +20130,10 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
         C.PolymerElement_methods.Element$created$0(receiver);
         C.PolymerElement_methods.PolymerElement$created$0(receiver);
         return receiver;
-      }, "+new PolymerElement$created:0:0": 0}
+      }}
   },
   HtmlElement_Polymer: {
-    "": ["HtmlElement+Polymer;$$:polymer$Polymer$$=-71", function() {
+    "": ["HtmlElement+Polymer;$$:polymer$Polymer$$=-61", function() {
       return [C.C_Reflectable];
     }],
     $isPolymer: true,
@@ -21213,10 +20176,6 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
     get$complete: function(_receiver) {
       return new H.BoundClosure$i0(this, A._Job.prototype.complete$0, _receiver, "complete$0");
     }
-  },
-  CustomTag: {
-    "": "Object;tagName>",
-    $isCustomTag: true
   },
   _initPolymerOptimized_closure: {
     "": "Closure;",
@@ -21382,29 +20341,6 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
     $is_args1: true
   }
 }],
-["polymer.src.reflected_type", "package:polymer/src/reflected_type.dart", , M, {
-  getReflectedTypeWorkaround: function(cls) {
-    var t1, t2;
-    t1 = H.reflect(cls);
-    t2 = $.get$_mangledNameField();
-    t2 = t1._invoke$4(t2, 1, J.get$_name$x(t2), []);
-    return $.get$_jsHelper().invoke$2(C.Symbol_createRuntimeType, [t2.reflectee]).get$reflectee();
-  },
-  closure21: {
-    "": "Closure;",
-    call$0: function() {
-      var t1, $name;
-      for (t1 = J.get$iterator$ax(H.reflectClassByMangledName(J.get$runtimeType$(H.reflect(P.reflectClass(C.Type_ah5)).reflectee)._typeName).get$variables().get$keys()); t1.moveNext$0();) {
-        $name = t1.get$current();
-        if (J.$eq(J.get$_name$x($name), "_mangledName"))
-          return $name;
-      }
-    },
-    "+call:0:0": 0,
-    $isFunction: true,
-    $is_void_: true
-  }
-}],
 ["polymer_expressions", "package:polymer_expressions/polymer_expressions.dart", , T, {
   _classAttributeConverter: function(v) {
     var t1 = J.getInterceptor$ax(v);
@@ -21545,7 +20481,7 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
     },
     get$value: function(_) {
       return this._polymer_expressions$_value;
-      "9,64";
+      "14,54";
     },
     "+value": 1,
     set$value: function(_, v) {
@@ -21562,7 +20498,7 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
           throw exception;
       }
 
-      "9,72,9,64";
+      "14,62,14,54";
     },
     "+value=": 1,
     _Binding$3: function(expr, scope, _converter) {
@@ -23220,19 +22156,19 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
     return t1;
   },
   IndexedValue: {
-    "": "Object;index>-12,value>-14",
+    "": "Object;index>-11,value>-13",
     $eq: function(_, o) {
       var t1;
       if (o == null)
         return false;
       t1 = J.getInterceptor(o);
       return typeof o === "object" && o !== null && !!t1.$isIndexedValue && J.$eq(o.index, this.index) && J.$eq(o.value, this.value);
-      "9,73,9";
+      "14,63,14";
     },
     "+==:1:0": 1,
     get$hashCode: function(_) {
       return J.get$hashCode$(this.value);
-      "12";
+      "11";
     },
     "+hashCode": 1,
     toString$0: function(_) {
@@ -23249,7 +22185,7 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
         var t1 = new K.IndexedValue(index, value);
         H.setRuntimeTypeInfo(t1, [$V]);
         return t1;
-        "10,11,12,13,14";
+        "9,10,11,12,13";
       }, "+new IndexedValue:2:0": 1}
   },
   "+IndexedValue": [0],
@@ -23642,20 +22578,23 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
     var t1, c, i, i0;
     if (map == null)
       return;
-    if (map.get$templateRef() != null) {
-      t1 = map.get$templateRef();
+    t1 = map.templateRef;
+    if (t1 != null) {
       M.nodeBindFallback(node)._decorate$1(t1);
       if (delegate != null)
         M.nodeBindFallback(node).set$_bindingDelegate(delegate);
     }
-    t1 = J.getInterceptor$x(map);
-    if (t1.get$bindings(map) != null)
-      M._processBindings(t1.get$bindings(map), node, model, bound);
-    if (t1.get$children(map) == null)
+    t1 = map.bindings;
+    if (t1 != null)
+      M._processBindings(t1, node, model, bound);
+    t1 = map.children;
+    if (t1 == null)
       return;
     for (c = node.firstChild, i = 0; c != null; c = c.nextSibling, i = i0) {
       i0 = i + 1;
-      M._addMapBindings(c, J.$index$asx(t1.get$children(map), i), model, delegate, bound);
+      if (i >= t1.length)
+        throw H.ioore(t1, i);
+      M._addMapBindings(c, t1[i], model, delegate, bound);
     }
   },
   _getTreeScope: function(node) {
@@ -23699,19 +22638,22 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
     return t1.bindings_0;
   },
   _processBindings: function(bindings, node, model, bound) {
-    var t1, t2, t3, i, $name, tokens, t4, bindingPath, delegateFn, delegateBinding, bindingModel, observer, j, t5, subPath, t6, subModel, binding;
-    for (t1 = J.getInterceptor$asx(bindings), t2 = bound != null, t3 = J.getInterceptor(node), t3 = typeof node === "object" && node !== null && !!t3.$isNodeBindExtension, i = 0; i < t1.get$length(bindings); i += 2) {
-      $name = t1.$index(bindings, i);
-      tokens = t1.$index(bindings, i + 1);
+    var t1, t2, i, t3, $name, t4, tokens, bindingPath, delegateFn, delegateBinding, bindingModel, observer, j, subPath, t5, subModel, binding;
+    for (t1 = bound != null, t2 = J.getInterceptor(node), t2 = typeof node === "object" && node !== null && !!t2.$isNodeBindExtension, i = 0; t3 = bindings.length, i < t3; i += 2) {
+      $name = bindings[i];
+      t4 = i + 1;
+      if (t4 >= t3)
+        throw H.ioore(bindings, t4);
+      tokens = bindings[t4];
       t4 = tokens.get$tokens();
       if (1 >= t4.length)
         throw H.ioore(t4, 1);
       bindingPath = t4[1];
       if (tokens.get$hasOnePath()) {
-        t4 = tokens.get$tokens();
-        if (2 >= t4.length)
-          throw H.ioore(t4, 2);
-        delegateFn = t4[2];
+        t3 = tokens.get$tokens();
+        if (2 >= t3.length)
+          throw H.ioore(t3, 2);
+        delegateFn = t3[2];
         if (delegateFn != null) {
           delegateBinding = delegateFn.call$2(model, node);
           if (delegateBinding != null) {
@@ -23726,18 +22668,18 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
           bindingPath = "value";
         }
       } else {
-        t4 = [];
-        observer = new Y.CompoundPathObserver(t4, [], null, tokens.get$combinator(), false, false, null, null);
+        t3 = [];
+        observer = new Y.CompoundPathObserver(t3, [], null, tokens.get$combinator(), false, false, null, null);
         for (j = 1; j < tokens.get$tokens().length; j += 3) {
-          t5 = tokens.get$tokens();
-          if (j >= t5.length)
-            throw H.ioore(t5, j);
-          subPath = t5[j];
-          t5 = tokens.get$tokens();
-          t6 = j + 1;
-          if (t6 >= t5.length)
-            throw H.ioore(t5, t6);
-          delegateFn = t5[t6];
+          t4 = tokens.get$tokens();
+          if (j >= t4.length)
+            throw H.ioore(t4, j);
+          subPath = t4[j];
+          t4 = tokens.get$tokens();
+          t5 = j + 1;
+          if (t5 >= t4.length)
+            throw H.ioore(t4, t5);
+          delegateFn = t4[t5];
           delegateBinding = delegateFn != null ? delegateFn.call$2(model, node) : null;
           if (delegateBinding != null) {
             subModel = delegateBinding;
@@ -23746,14 +22688,14 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
             subModel = model;
           if (observer._started)
             H.throwExpression(new P.StateError("Cannot add more paths once started."));
-          t4.push(L.PathObserver$(subModel, subPath, null));
+          t3.push(L.PathObserver$(subModel, subPath, null));
         }
         observer.start$0(observer);
         bindingModel = observer;
         bindingPath = "value";
       }
-      binding = J.bind$3$x(t3 ? node : M.nodeBindFallback(node), $name, bindingModel, bindingPath);
-      if (t2)
+      binding = J.bind$3$x(t2 ? node : M.nodeBindFallback(node), $name, bindingModel, bindingPath);
+      if (t1)
         bound.push(binding);
     }
   },
@@ -24192,7 +23134,7 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
     }
   },
   _InstanceBindingMap: {
-    "": "Object;bindings>,children>,templateRef<,hasSubTemplate",
+    "": "Object;bindings>,children,templateRef,hasSubTemplate",
     static: {_InstanceBindingMap__InstanceBindingMap: function(node, delegate) {
         var bindings, t1, t2, templateRef, hasSubTemplate, c, children, i, childMap;
         bindings = M._getBindings(node, delegate);
@@ -25102,7 +24044,7 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
   }
 }],
 ["unmodifiable_collection", "package:unmodifiable_collection/unmodifiable_collection.dart", , F, {
-  UnmodifiableMapView0: {
+  UnmodifiableMapView: {
     "": "Object;_unmodifiable_collection$_source",
     get$length: function(_) {
       return this._unmodifiable_collection$_source._collection$_length;
@@ -25147,1247 +24089,20 @@ init.mangledGlobalNames = {CarouselWidget__DURATION: "_DURATION", CollapseWidget
     },
     "+values": 0,
     $indexSet: function(_, key, value) {
-      return F.UnmodifiableMapView__throw0();
+      return F.UnmodifiableMapView__throw();
     },
     "+[]=:2:0": 0,
     addAll$1: function(_, other) {
-      return F.UnmodifiableMapView__throw0();
+      return F.UnmodifiableMapView__throw();
     },
     remove$1: function(_, key) {
-      F.UnmodifiableMapView__throw0();
+      F.UnmodifiableMapView__throw();
     },
     $isMap: true,
-    static: {UnmodifiableMapView__throw0: function() {
+    static: {UnmodifiableMapView__throw: function() {
         throw H.wrapException(P.UnsupportedError$("Cannot modify an unmodifiable Map"));
       }}
   }
-}],
-["widget", "package:widget/widget.dart", , B, {
-  ShowHideComponent: {
-    "": "Object;",
-    $isShowHideComponent: true
-  }
-}],
-["widget.accordion", "package:widget/components/accordion.dart", , R, {
-  AccordionWidget: {
-    "": ["PolymerElement;change_notifier$ChangeNotifier$_changes,change_notifier$ChangeNotifier$_records,polymer$Polymer$_declaration,polymer$Polymer$_observers,polymer$Polymer$_unbound,polymer$Polymer$_unbindAllJob,polymer$Polymer$_propertyObserver,polymer$Polymer$syntax,polymer$Polymer$_shadowRoots,polymer$Polymer$$-71", null, null, null, null, null, null, null, null, null, function() {
-      return [C.C_Reflectable];
-    }],
-    _getAllCollapseElements$0: function(receiver) {
-      return W._FrozenElementList$_wrap(receiver.querySelectorAll("collapse-widget"), null);
-      "74";
-    },
-    "+_getAllCollapseElements:0:0": 1,
-    _onOpen$1: function(receiver, openEvent) {
-      var target, t1, t2, t3;
-      target = J.get$target$x(openEvent);
-      t1 = J.getInterceptor$x(target);
-      t2 = t1.get$xtag(target);
-      t3 = J.getInterceptor(t2);
-      if (typeof t2 === "object" && t2 !== null && !!t3.$isShowHideComponent)
-        this._onShowHideToggle$1(receiver, t1.get$xtag(target));
-      "9,75,76";
-    },
-    "+_onOpen:1:0": 1,
-    get$_onOpen: function(_receiver) {
-      return new P.BoundClosure$i1(this, R.AccordionWidget.prototype._onOpen$1, _receiver, "_onOpen$1");
-    },
-    _onShowHideToggle$1: function(receiver, shc) {
-      var t1;
-      if (J.get$isShown$x(shc) === true) {
-        t1 = W._FrozenElementList$_wrap(receiver.querySelectorAll("collapse-widget"), null);
-        t1 = t1.map$1(t1, new R.AccordionWidget__onShowHideToggle_closure());
-        t1 = P.IterableBase.prototype.where$1.call(t1, t1, new R.AccordionWidget__onShowHideToggle_closure0(shc));
-        t1.forEach$1(t1, new R.AccordionWidget__onShowHideToggle_closure1());
-      }
-      "9,77,78";
-    },
-    "+_onShowHideToggle:1:0": 1,
-    AccordionWidget$created$0: function(receiver) {
-      var t1, t2;
-      t1 = C.EventStreamProvider_toggle._eventType;
-      t2 = new W._EventStream(receiver, t1, false);
-      H.setRuntimeTypeInfo(t2, [null]);
-      t1 = new W._EventStreamSubscription(0, receiver, t1, W._wrapZone(this.get$_onOpen(receiver)), false);
-      H.setRuntimeTypeInfo(t1, [H.getTypeArgumentByIndex(t2, 0)]);
-      t1._tryResume$0();
-      "9";
-    },
-    "@": function() {
-      return [C.CustomTag_sRw];
-    },
-    static: {AccordionWidget$created: function(receiver) {
-        var t1, t2, t3, t4, t5;
-        t1 = $.get$Polymer__polymerSyntax();
-        t2 = P.HashMap_HashMap(null, null, null, J.JSString, W.ShadowRoot);
-        t3 = J.JSString;
-        t4 = W.Element;
-        t5 = new V.ObservableMap(P.HashMap_HashMap(null, null, null, t3, t4), null, null);
-        H.setRuntimeTypeInfo(t5, [t3, t4]);
-        receiver.polymer$Polymer$syntax = t1;
-        receiver.polymer$Polymer$_shadowRoots = t2;
-        receiver.polymer$Polymer$$ = t5;
-        C.AccordionWidget_methods.Element$created$0(receiver);
-        C.AccordionWidget_methods.PolymerElement$created$0(receiver);
-        C.AccordionWidget_methods.AccordionWidget$created$0(receiver);
-        return receiver;
-        "15";
-      }, "+new AccordionWidget$created:0:0": 1}
-  },
-  "+AccordionWidget": [79],
-  AccordionWidget__onShowHideToggle_closure: {
-    "": "Closure;",
-    call$1: function(e) {
-      return J.get$xtag$x(e);
-      "9,80,24";
-    },
-    "+call:1:0": 1,
-    $isFunction: true,
-    $is_Object__Object: true,
-    $is_args1: true
-  },
-  "+AccordionWidget__onShowHideToggle_closure": [61],
-  AccordionWidget__onShowHideToggle_closure0: {
-    "": "Closure;shc_0-78",
-    call$1: function(e) {
-      return !J.$eq(e, this.shc_0);
-      "9,80,9";
-    },
-    "+call:1:0": 1,
-    $isFunction: true,
-    $is_Object__Object: true,
-    $is_args1: true
-  },
-  "+AccordionWidget__onShowHideToggle_closure": [61],
-  AccordionWidget__onShowHideToggle_closure1: {
-    "": "Closure;",
-    call$1: function(e) {
-      J.hide$0$x(e);
-      "9,80,78";
-    },
-    "+call:1:0": 1,
-    $isFunction: true,
-    $is_Object__Object: true,
-    $is_args1: true
-  },
-  "+AccordionWidget__onShowHideToggle_closure": [61]
-}],
-["widget.alert", "package:widget/components/alert.dart", , M, {
-  AlertWidget: {
-    "": ["PolymerElement;_isShown%-53,change_notifier$ChangeNotifier$_changes,change_notifier$ChangeNotifier$_records,polymer$Polymer$_declaration,polymer$Polymer$_observers,polymer$Polymer$_unbound,polymer$Polymer$_unbindAllJob,polymer$Polymer$_propertyObserver,polymer$Polymer$syntax,polymer$Polymer$_shadowRoots,polymer$Polymer$$-71", null, null, null, null, null, null, null, null, null, null, function() {
-      return [C.C_Reflectable];
-    }],
-    get$applyAuthorStyles: function(receiver) {
-      return true;
-      "53";
-    },
-    "+applyAuthorStyles": 1,
-    get$isShown: function(receiver) {
-      return receiver._isShown;
-      "53";
-    },
-    "+isShown": 1,
-    set$isShown: function(receiver, value) {
-      var action, t1, t2;
-      if (!J.$eq(value, receiver._isShown)) {
-        receiver._isShown = value;
-        action = value === true ? C.ShowHideAction_show : C.ShowHideAction_hide;
-        t1 = Y.ScaleEffect__computeValues(null, null);
-        t2 = P.LinkedHashMap_LinkedHashMap(null, null, null, J.JSString, J.JSString);
-        t2.addAll$1(t2, t1);
-        t2 = new Y.ScaleEffect(null, "-webkit-transform", t2);
-        t2.Css3TransitionEffect$2("-webkit-transform", t1);
-        Y.ShowHide_begin(action, receiver, null, t2, null);
-        receiver.dispatchEvent(W.Event_Event$eventType("Event", "toggle", true, true));
-      }
-      "9,13,53";
-    },
-    "+isShown=": 1,
-    get$onToggle: function(receiver) {
-      var t1 = new W._EventStream(receiver, C.EventStreamProvider_toggle._eventType, false);
-      H.setRuntimeTypeInfo(t1, [null]);
-      return t1;
-      "81";
-    },
-    "+onToggle": 1,
-    hide$0: function(receiver) {
-      this.set$isShown(receiver, false);
-      "9";
-    },
-    "+hide:0:0": 1,
-    show$0: function(receiver) {
-      this.set$isShown(receiver, true);
-      "9";
-    },
-    "+show:0:0": 1,
-    toggle$0: function(receiver) {
-      this.set$isShown(receiver, receiver._isShown !== true);
-      "9";
-    },
-    "+toggle:0:0": 1,
-    _alert$_onClick$1: function(receiver, $event) {
-      var t1, target;
-      t1 = J.getInterceptor$x($event);
-      if (t1.get$defaultPrevented($event) !== true) {
-        target = H.interceptedTypeCast(t1.get$target($event), "$isElement");
-        if (target != null) {
-          target.toString;
-          t1 = target.getAttribute("data-" + new W._DataAttributeMap(new W._ElementAttributeMap(target))._toHyphenedName$1("dismiss")) === "alert";
-        } else
-          t1 = false;
-        if (t1)
-          this.set$isShown(receiver, false);
-      }
-      "9,82,83";
-    },
-    "+_onClick:1:0": 1,
-    get$_alert$_onClick: function(_receiver) {
-      return new P.BoundClosure$i1(this, M.AlertWidget.prototype._alert$_onClick$1, _receiver, "_alert$_onClick$1");
-    },
-    AlertWidget$created$0: function(receiver) {
-      var t1, t2;
-      t1 = C.EventStreamProvider_click.forElement$1(receiver);
-      t2 = new W._EventStreamSubscription(0, t1._target, t1._eventType, W._wrapZone(this.get$_alert$_onClick(receiver)), t1._useCapture);
-      H.setRuntimeTypeInfo(t2, [H.getTypeArgumentByIndex(t1, 0)]);
-      t2._tryResume$0();
-      "9";
-    },
-    $isShowHideComponent: true,
-    "@": function() {
-      return [C.CustomTag_tdc];
-    },
-    static: {AlertWidget$created: function(receiver) {
-        var t1, t2, t3, t4, t5;
-        t1 = $.get$Polymer__polymerSyntax();
-        t2 = P.HashMap_HashMap(null, null, null, J.JSString, W.ShadowRoot);
-        t3 = J.JSString;
-        t4 = W.Element;
-        t5 = new V.ObservableMap(P.HashMap_HashMap(null, null, null, t3, t4), null, null);
-        H.setRuntimeTypeInfo(t5, [t3, t4]);
-        receiver._isShown = true;
-        receiver.polymer$Polymer$syntax = t1;
-        receiver.polymer$Polymer$_shadowRoots = t2;
-        receiver.polymer$Polymer$$ = t5;
-        C.AlertWidget_methods.Element$created$0(receiver);
-        C.AlertWidget_methods.PolymerElement$created$0(receiver);
-        C.AlertWidget_methods.AlertWidget$created$0(receiver);
-        return receiver;
-        "16";
-      }, "+new AlertWidget$created:0:0": 1}
-  },
-  "+AlertWidget": [79, 78]
-}],
-["widget.carousel", "package:widget/components/carousel.dart", , X, {
-  CarouselWidget: {
-    "": ["PolymerElement;_fromTheLeft=-84,_fromTheRight=-84,_pendingAction%-85,change_notifier$ChangeNotifier$_changes,change_notifier$ChangeNotifier$_records,polymer$Polymer$_declaration,polymer$Polymer$_observers,polymer$Polymer$_unbound,polymer$Polymer$_unbindAllJob,polymer$Polymer$_propertyObserver,polymer$Polymer$syntax,polymer$Polymer$_shadowRoots,polymer$Polymer$$-71", null, null, null, null, null, null, null, null, null, null, null, null, function() {
-      return [C.C_Reflectable];
-    }],
-    get$applyAuthorStyles: function(receiver) {
-      return true;
-      "53";
-    },
-    "+applyAuthorStyles": 1,
-    next$0: function(receiver) {
-      return this._moveDelta$1(receiver, true);
-      "85";
-    },
-    "+next:0:0": 1,
-    get$next: function(_receiver) {
-      return new H.BoundClosure$i0(this, X.CarouselWidget.prototype.next$0, _receiver, "next$0");
-    },
-    previous$0: function(receiver) {
-      return this._moveDelta$1(receiver, false);
-      "85";
-    },
-    "+previous:0:0": 1,
-    onNext$3: function(receiver, $event, detail, target) {
-      this._moveDelta$1(receiver, true);
-      "9,82,9,86,9,87,9";
-    },
-    "+onNext:3:0": 1,
-    onPrevious$3: function(receiver, $event, detail, target) {
-      this._moveDelta$1(receiver, false);
-      "9,82,9,86,9,87,9";
-    },
-    "+onPrevious:3:0": 1,
-    get$_swap: function(receiver) {
-      var t1, t2;
-      t1 = (receiver.shadowRoot || receiver.webkitShadowRoot).querySelector(".carousel > swap-widget");
-      t2 = t1._xtag;
-      return t2 != null ? t2 : t1;
-      "88";
-    },
-    "+_swap": 1,
-    _moveDelta$1: function(receiver, doNext) {
-      var t1, swap, swap0, delta, showEffect, hideEffect, t0, t2, activeIndex, newIndex;
-      t1 = receiver._pendingAction;
-      if (t1 != null)
-        return t1.then$1(new X.CarouselWidget__moveDelta_closure());
-      swap = (receiver.shadowRoot || receiver.webkitShadowRoot).querySelector(".carousel > swap-widget");
-      swap0 = swap._xtag;
-      if (J.get$items$x(swap0 != null ? swap0 : swap).length === 0)
-        return P._Future$immediate(false, null);
-      t1 = doNext === true;
-      delta = t1 ? 1 : -1;
-      showEffect = receiver._fromTheRight;
-      hideEffect = receiver._fromTheLeft;
-      if (t1)
-        ;
-      else {
-        t0 = hideEffect;
-        hideEffect = showEffect;
-        showEffect = t0;
-      }
-      t1 = (receiver.shadowRoot || receiver.webkitShadowRoot).querySelector(".carousel > swap-widget");
-      t2 = t1._xtag;
-      activeIndex = J.get$activeItemIndex$x(t2 != null ? t2 : t1);
-      t1 = (receiver.shadowRoot || receiver.webkitShadowRoot).querySelector(".carousel > swap-widget");
-      t2 = t1._xtag;
-      newIndex = C.JSNumber_methods.$mod(activeIndex + delta, J.get$items$x(t2 != null ? t2 : t1).length);
-      t1 = (receiver.shadowRoot || receiver.webkitShadowRoot).querySelector(".carousel > swap-widget");
-      t2 = t1._xtag;
-      t1 = J.showItemAtIndex$4$duration$effect$hideEffect$x(t2 != null ? t2 : t1, newIndex, 1000, showEffect, hideEffect).whenComplete$1(new X.CarouselWidget__moveDelta_closure0(receiver));
-      receiver._pendingAction = t1;
-      return t1;
-      "85,89,53";
-    },
-    "+_moveDelta:1:0": 1,
-    "@": function() {
-      return [C.CustomTag_uHq];
-    },
-    static: {"": "CarouselWidget__DURATION<-9", CarouselWidget$created: function(receiver) {
-        var t1, t2, t3, t4, t5, t6, t7;
-        t1 = P.LinkedHashMap_LinkedHashMap(null, null, null, J.JSString, J.JSString);
-        t1 = new Y.SlideEffect(C.HorizontalAlignment_left, null, "-webkit-transform", t1);
-        t1.Css3TransitionEffect$2("-webkit-transform", null);
-        t2 = P.LinkedHashMap_LinkedHashMap(null, null, null, J.JSString, J.JSString);
-        t2 = new Y.SlideEffect(C.HorizontalAlignment_right, null, "-webkit-transform", t2);
-        t2.Css3TransitionEffect$2("-webkit-transform", null);
-        t3 = $.get$Polymer__polymerSyntax();
-        t4 = P.HashMap_HashMap(null, null, null, J.JSString, W.ShadowRoot);
-        t5 = J.JSString;
-        t6 = W.Element;
-        t7 = new V.ObservableMap(P.HashMap_HashMap(null, null, null, t5, t6), null, null);
-        H.setRuntimeTypeInfo(t7, [t5, t6]);
-        receiver._fromTheLeft = t1;
-        receiver._fromTheRight = t2;
-        receiver._pendingAction = null;
-        receiver.polymer$Polymer$syntax = t3;
-        receiver.polymer$Polymer$_shadowRoots = t4;
-        receiver.polymer$Polymer$$ = t7;
-        C.CarouselWidget_methods.Element$created$0(receiver);
-        C.CarouselWidget_methods.PolymerElement$created$0(receiver);
-        return receiver;
-        "17";
-      }, "+new CarouselWidget$created:0:0": 1}
-  },
-  "+CarouselWidget": [79],
-  CarouselWidget__moveDelta_closure: {
-    "": "Closure;",
-    call$1: function(_) {
-      return false;
-      "9,90,9";
-    },
-    "+call:1:0": 1,
-    $isFunction: true,
-    $is_Object__Object: true,
-    $is_args1: true
-  },
-  "+CarouselWidget__moveDelta_closure": [61],
-  CarouselWidget__moveDelta_closure0: {
-    "": "Closure;this_0-9",
-    call$0: function() {
-      J.set$_pendingAction$x(this.this_0, null);
-      "9";
-    },
-    "+call:0:0": 1,
-    $isFunction: true,
-    $is_void_: true
-  },
-  "+CarouselWidget__moveDelta_closure": [61]
-}],
-["widget.collapse", "package:widget/components/collapse.dart", , Y, {
-  CollapseWidget: {
-    "": ["PolymerElement;_collapse$_isShown%-53,_insertedCalled%-53,change_notifier$ChangeNotifier$_changes,change_notifier$ChangeNotifier$_records,polymer$Polymer$_declaration,polymer$Polymer$_observers,polymer$Polymer$_unbound,polymer$Polymer$_unbindAllJob,polymer$Polymer$_propertyObserver,polymer$Polymer$syntax,polymer$Polymer$_shadowRoots,polymer$Polymer$$-71", null, null, null, null, null, null, null, null, null, null, null, function() {
-      return [C.C_Reflectable];
-    }],
-    get$applyAuthorStyles: function(receiver) {
-      return true;
-      "53";
-    },
-    "+applyAuthorStyles": 1,
-    get$isShown: function(receiver) {
-      return receiver._collapse$_isShown;
-      "53";
-    },
-    "+isShown": 1,
-    set$isShown: function(receiver, value) {
-      if (!J.$eq(value, receiver._collapse$_isShown)) {
-        receiver._collapse$_isShown = value;
-        this._updateElements$1(receiver, receiver._insertedCalled !== true);
-        receiver.dispatchEvent(W.Event_Event$eventType("Event", "toggle", true, true));
-      }
-      "9,13,53";
-    },
-    "+isShown=": 1,
-    get$onToggle: function(receiver) {
-      var t1 = new W._EventStream(receiver, C.EventStreamProvider_toggle._eventType, false);
-      H.setRuntimeTypeInfo(t1, [null]);
-      return t1;
-      "81";
-    },
-    "+onToggle": 1,
-    hide$0: function(receiver) {
-      this.set$isShown(receiver, false);
-      "9";
-    },
-    "+hide:0:0": 1,
-    show$0: function(receiver) {
-      this.set$isShown(receiver, true);
-      "9";
-    },
-    "+show:0:0": 1,
-    toggle$0: function(receiver) {
-      this.set$isShown(receiver, receiver._collapse$_isShown !== true);
-      "9";
-    },
-    "+toggle:0:0": 1,
-    enteredView$0: function(receiver) {
-      A.Polymer.prototype.enteredView$0.call(this, receiver);
-      receiver._insertedCalled = true;
-      this._updateElements$1(receiver, true);
-      "9,91";
-    },
-    "+enteredView:0:0": 1,
-    _collapse$_onClick$1: function(receiver, e) {
-      var t1, clickElement, t2;
-      t1 = J.getInterceptor$x(e);
-      if (t1.get$defaultPrevented(e) !== true) {
-        clickElement = H.interceptedTypeCast(t1.get$target(e), "$isElement");
-        if (clickElement != null) {
-          clickElement.toString;
-          t2 = clickElement.getAttribute("data-" + new W._DataAttributeMap(new W._ElementAttributeMap(clickElement))._toHyphenedName$1("toggle")) === "collapse";
-        } else
-          t2 = false;
-        if (t2) {
-          this.set$isShown(receiver, receiver._collapse$_isShown !== true);
-          t1.preventDefault$0(e);
-        }
-      }
-      "9,80,83";
-    },
-    "+_onClick:1:0": 1,
-    get$_collapse$_onClick: function(_receiver) {
-      return new P.BoundClosure$i1(this, Y.CollapseWidget.prototype._collapse$_onClick$1, _receiver, "_collapse$_onClick$1");
-    },
-    _updateElements$1: function(receiver, skipAnimation) {
-      var collapseDiv, action;
-      collapseDiv = J.querySelector$1$x(this.getShadowRoot$1(receiver, "collapse-widget"), ".collapse-body-x");
-      if (collapseDiv != null) {
-        action = receiver._collapse$_isShown === true ? C.ShowHideAction_show : C.ShowHideAction_hide;
-        Y.ShowHide_begin(action, collapseDiv, null, skipAnimation === true ? null : $.get$CollapseWidget__effect(), null);
-      }
-      "9,92,53";
-    },
-    "+_updateElements:1:0": 1,
-    "*_updateElements": [93],
-    _updateElements$0: function($receiver) {
-      return this._updateElements$1($receiver, false);
-    },
-    "+_updateElements:0:0": 1,
-    CollapseWidget$created$0: function(receiver) {
-      var t1, t2;
-      t1 = C.EventStreamProvider_click.forElement$1(receiver);
-      t2 = new W._EventStreamSubscription(0, t1._target, t1._eventType, W._wrapZone(this.get$_collapse$_onClick(receiver)), t1._useCapture);
-      H.setRuntimeTypeInfo(t2, [H.getTypeArgumentByIndex(t1, 0)]);
-      t2._tryResume$0();
-      "9";
-    },
-    $isShowHideComponent: true,
-    "@": function() {
-      return [C.CustomTag_ujb];
-    },
-    static: {"": "CollapseWidget__collapseDivSelector<-7,CollapseWidget__effect<-84", CollapseWidget$created: function(receiver) {
-        var t1, t2, t3, t4, t5;
-        t1 = $.get$Polymer__polymerSyntax();
-        t2 = P.HashMap_HashMap(null, null, null, J.JSString, W.ShadowRoot);
-        t3 = J.JSString;
-        t4 = W.Element;
-        t5 = new V.ObservableMap(P.HashMap_HashMap(null, null, null, t3, t4), null, null);
-        H.setRuntimeTypeInfo(t5, [t3, t4]);
-        receiver._collapse$_isShown = false;
-        receiver._insertedCalled = false;
-        receiver.polymer$Polymer$syntax = t1;
-        receiver.polymer$Polymer$_shadowRoots = t2;
-        receiver.polymer$Polymer$$ = t5;
-        C.CollapseWidget_methods.Element$created$0(receiver);
-        C.CollapseWidget_methods.PolymerElement$created$0(receiver);
-        C.CollapseWidget_methods.CollapseWidget$created$0(receiver);
-        return receiver;
-        "18";
-      }, "+new CollapseWidget$created:0:0": 1}
-  },
-  "+CollapseWidget": [79, 78]
-}],
-["widget.dropdown", "package:widget/components/dropdown.dart", , M, {
-  DropdownWidget: {
-    "": ["PolymerElement;_dropdown$_isShown%-53,change_notifier$ChangeNotifier$_changes,change_notifier$ChangeNotifier$_records,polymer$Polymer$_declaration,polymer$Polymer$_observers,polymer$Polymer$_unbound,polymer$Polymer$_unbindAllJob,polymer$Polymer$_propertyObserver,polymer$Polymer$syntax,polymer$Polymer$_shadowRoots,polymer$Polymer$$-71", null, null, null, null, null, null, null, null, null, null, function() {
-      return [C.C_Reflectable];
-    }],
-    get$isShown: function(receiver) {
-      return receiver._dropdown$_isShown;
-      "53";
-    },
-    "+isShown": 1,
-    set$isShown: function(receiver, value) {
-      var t1, action, contentDiv;
-      if (!J.$eq(value, receiver._dropdown$_isShown)) {
-        if (value === true)
-          M.DropdownWidget_closeDropdowns();
-        receiver._dropdown$_isShown = value;
-        t1 = value === true;
-        action = t1 ? C.ShowHideAction_show : C.ShowHideAction_hide;
-        if (t1) {
-          t1 = new W._ElementCssClassSet(receiver);
-          t1.add$1(t1, "open");
-        } else {
-          t1 = new W._ElementCssClassSet(receiver);
-          t1.remove$1(t1, "open");
-        }
-        contentDiv = receiver.querySelector("[is=x-dropdown] > .dropdown-menu");
-        if (contentDiv != null)
-          Y.ShowHide_begin(action, contentDiv, null, $.get$DropdownWidget__effect(), null);
-        receiver.dispatchEvent(W.Event_Event$eventType("Event", "toggle", true, true));
-      }
-      "9,13,53";
-    },
-    "+isShown=": 1,
-    get$onToggle: function(receiver) {
-      var t1 = new W._EventStream(receiver, C.EventStreamProvider_toggle._eventType, false);
-      H.setRuntimeTypeInfo(t1, [null]);
-      return t1;
-      "81";
-    },
-    "+onToggle": 1,
-    hide$0: function(receiver) {
-      this.set$isShown(receiver, false);
-      "9";
-    },
-    "+hide:0:0": 1,
-    show$0: function(receiver) {
-      this.set$isShown(receiver, true);
-      "9";
-    },
-    "+show:0:0": 1,
-    toggle$0: function(receiver) {
-      this.set$isShown(receiver, receiver._dropdown$_isShown !== true);
-      "9";
-    },
-    "+toggle:0:0": 1,
-    _onKeyDown$1: function(receiver, e) {
-      var t1 = J.getInterceptor$x(e);
-      if (t1.get$defaultPrevented(e) !== true && t1.get$keyCode(e) === 27) {
-        this.set$isShown(receiver, false);
-        t1.preventDefault$0(e);
-      }
-      "9,80,94";
-    },
-    "+_onKeyDown:1:0": 1,
-    get$_onKeyDown: function(_receiver) {
-      return new P.BoundClosure$i1(this, M.DropdownWidget.prototype._onKeyDown$1, _receiver, "_onKeyDown$1");
-    },
-    _dropdown$_onClick$1: function(receiver, $event) {
-      var t1, t2, t3, target;
-      t1 = J.getInterceptor$x($event);
-      if (t1.get$defaultPrevented($event) !== true) {
-        t2 = t1.get$target($event);
-        t3 = J.getInterceptor(t2);
-        t3 = typeof t2 === "object" && t2 !== null && !!t3.$isElement;
-        t2 = t3;
-      } else
-        t2 = false;
-      if (t2) {
-        target = t1.get$target($event);
-        if (target != null) {
-          t2 = J.get$dataset$x(target);
-          t2 = t2._attributes._element.getAttribute("data-" + t2._toHyphenedName$1("toggle")) === "dropdown";
-        } else
-          t2 = false;
-        if (t2) {
-          this.set$isShown(receiver, receiver._dropdown$_isShown !== true);
-          t1.preventDefault$0($event);
-          J.focus$0$x(target);
-        }
-      }
-      "9,82,83";
-    },
-    "+_onClick:1:0": 1,
-    get$_dropdown$_onClick: function(_receiver) {
-      return new P.BoundClosure$i1(this, M.DropdownWidget.prototype._dropdown$_onClick$1, _receiver, "_dropdown$_onClick$1");
-    },
-    DropdownWidget$created$0: function(receiver) {
-      var t1, t2;
-      C.EventStreamProvider_click._forElementList$1(W._FrozenElementList$_wrap(receiver.querySelectorAll("[data-toggle=dropdown]"), null)).listen$1(this.get$_dropdown$_onClick(receiver));
-      t1 = C.EventStreamProvider_keydown.forElement$1(receiver);
-      t2 = new W._EventStreamSubscription(0, t1._target, t1._eventType, W._wrapZone(this.get$_onKeyDown(receiver)), t1._useCapture);
-      H.setRuntimeTypeInfo(t2, [H.getTypeArgumentByIndex(t1, 0)]);
-      t2._tryResume$0();
-      "9";
-    },
-    $isDropdownWidget: true,
-    $isShowHideComponent: true,
-    "@": function() {
-      return [C.CustomTag_U4w];
-    },
-    static: {"": "DropdownWidget__effect<-84,DropdownWidget__duration<-12", DropdownWidget$created: function(receiver) {
-        var t1, t2, t3, t4, t5;
-        t1 = $.get$Polymer__polymerSyntax();
-        t2 = P.HashMap_HashMap(null, null, null, J.JSString, W.ShadowRoot);
-        t3 = J.JSString;
-        t4 = W.Element;
-        t5 = new V.ObservableMap(P.HashMap_HashMap(null, null, null, t3, t4), null, null);
-        H.setRuntimeTypeInfo(t5, [t3, t4]);
-        receiver._dropdown$_isShown = false;
-        receiver.polymer$Polymer$syntax = t1;
-        receiver.polymer$Polymer$_shadowRoots = t2;
-        receiver.polymer$Polymer$$ = t5;
-        C.DropdownWidget_methods.Element$created$0(receiver);
-        C.DropdownWidget_methods.PolymerElement$created$0(receiver);
-        C.DropdownWidget_methods.DropdownWidget$created$0(receiver);
-        return receiver;
-        "19";
-      }, "+new DropdownWidget$created:0:0": 1, DropdownWidget_closeDropdowns: function() {
-        var t1 = W._FrozenElementList$_wrap(document.querySelectorAll("[is=x-dropdown]"), null);
-        t1 = t1.where$1(t1, new M.DropdownWidget_closeDropdowns_closure());
-        t1 = H.MappedIterable_MappedIterable(t1, new M.DropdownWidget_closeDropdowns_closure0(), H.getRuntimeTypeArgument(t1, "IterableBase", 0), null);
-        t1.forEach$1(t1, new M.DropdownWidget_closeDropdowns_closure1());
-        "9";
-      }, "+closeDropdowns:0:0": 1}
-  },
-  "+DropdownWidget": [79, 78],
-  DropdownWidget_closeDropdowns_closure: {
-    "": "Closure;",
-    call$1: function(e) {
-      var t1, t2;
-      t1 = J.get$xtag$x(e);
-      t2 = J.getInterceptor(t1);
-      return typeof t1 === "object" && t1 !== null && !!t2.$isDropdownWidget;
-      "9,80,9";
-    },
-    "+call:1:0": 1,
-    $isFunction: true,
-    $is_Object__Object: true,
-    $is_args1: true
-  },
-  "+DropdownWidget_closeDropdowns_closure": [61],
-  DropdownWidget_closeDropdowns_closure0: {
-    "": "Closure;",
-    call$1: function(e) {
-      return H.interceptedTypeCast(J.get$xtag$x(e), "$isDropdownWidget");
-      "9,80,9";
-    },
-    "+call:1:0": 1,
-    $isFunction: true,
-    $is_Object__Object: true,
-    $is_args1: true
-  },
-  "+DropdownWidget_closeDropdowns_closure": [61],
-  DropdownWidget_closeDropdowns_closure1: {
-    "": "Closure;",
-    call$1: function(dd) {
-      return J.hide$0$x(dd);
-      "9,95,9";
-    },
-    "+call:1:0": 1,
-    $isFunction: true,
-    $is_Object__Object: true,
-    $is_args1: true
-  },
-  "+DropdownWidget_closeDropdowns_closure": [61]
-}],
-["widget.modal", "package:widget/components/modal.dart", , R, {
-  ModalWidget: {
-    "": ["PolymerElement;staticBackdrop%-53,_modal$_isShown%-53,effect%-84,change_notifier$ChangeNotifier$_changes,change_notifier$ChangeNotifier$_records,polymer$Polymer$_declaration,polymer$Polymer$_observers,polymer$Polymer$_unbound,polymer$Polymer$_unbindAllJob,polymer$Polymer$_propertyObserver,polymer$Polymer$syntax,polymer$Polymer$_shadowRoots,polymer$Polymer$$-71", null, null, null, null, null, null, null, null, null, null, null, null, function() {
-      return [C.C_Reflectable];
-    }],
-    get$applyAuthorStyles: function(receiver) {
-      return true;
-      "53";
-    },
-    "+applyAuthorStyles": 1,
-    get$isShown: function(receiver) {
-      return receiver._modal$_isShown;
-      "53";
-    },
-    "+isShown": 1,
-    set$isShown: function(receiver, value) {
-      var modal, t1, t2;
-      if (!J.$eq(value, receiver._modal$_isShown)) {
-        receiver._modal$_isShown = value;
-        modal = J.querySelector$1$x(this.getShadowRoot$1(receiver, "modal-widget"), ".modal");
-        if (modal != null) {
-          t1 = receiver._modal$_isShown;
-          t2 = receiver.effect;
-          if (t1 === true)
-            Y.ModalManager_show(modal, this.get$_onBackdropClicked(receiver), null, t2, null);
-          else
-            Y.ModalManager_hide(modal, null, t2, null);
-        }
-        receiver.dispatchEvent(W.Event_Event$eventType("Event", "toggle", true, true));
-      }
-      "9,13,53";
-    },
-    "+isShown=": 1,
-    get$onToggle: function(receiver) {
-      var t1 = new W._EventStream(receiver, C.EventStreamProvider_toggle._eventType, false);
-      H.setRuntimeTypeInfo(t1, [null]);
-      return t1;
-      "81";
-    },
-    "+onToggle": 1,
-    hide$0: function(receiver) {
-      this.set$isShown(receiver, false);
-      "9";
-    },
-    "+hide:0:0": 1,
-    show$0: function(receiver) {
-      this.set$isShown(receiver, true);
-      "9";
-    },
-    "+show:0:0": 1,
-    toggle$0: function(receiver) {
-      this.set$isShown(receiver, receiver._modal$_isShown !== true);
-      "9";
-    },
-    "+toggle:0:0": 1,
-    enteredView$0: function(receiver) {
-      var modal;
-      A.Polymer.prototype.enteredView$0.call(this, receiver);
-      modal = J.querySelector$1$x(this.getShadowRoot$1(receiver, "modal-widget"), ".modal");
-      if (modal != null && receiver._modal$_isShown !== true)
-        Y.ModalManager_hide(modal, null, null, null);
-      "9,91";
-    },
-    "+enteredView:0:0": 1,
-    _getModalElement$0: function(receiver) {
-      return J.querySelector$1$x(this.getShadowRoot$1(receiver, "modal-widget"), ".modal");
-      "24";
-    },
-    "+_getModalElement:0:0": 1,
-    _onClick$1: function(receiver, $event) {
-      var t1, target;
-      t1 = J.getInterceptor$x($event);
-      if (t1.get$defaultPrevented($event) !== true) {
-        target = H.interceptedTypeCast(t1.get$target($event), "$isElement");
-        if (target != null) {
-          target.toString;
-          t1 = target.getAttribute("data-" + new W._DataAttributeMap(new W._ElementAttributeMap(target))._toHyphenedName$1("dismiss")) === "modal";
-        } else
-          t1 = false;
-        if (t1)
-          this.set$isShown(receiver, false);
-      }
-      "9,82,83";
-    },
-    "+_onClick:1:0": 1,
-    get$_onClick: function(_receiver) {
-      return new P.BoundClosure$i1(this, R.ModalWidget.prototype._onClick$1, _receiver, "_onClick$1");
-    },
-    _onBackdropClicked$0: function(receiver) {
-      if (receiver.staticBackdrop !== true)
-        this.set$isShown(receiver, false);
-      "9";
-    },
-    "+_onBackdropClicked:0:0": 1,
-    get$_onBackdropClicked: function(_receiver) {
-      return new H.BoundClosure$i0(this, R.ModalWidget.prototype._onBackdropClicked$0, _receiver, "_onBackdropClicked$0");
-    },
-    ModalWidget$created$0: function(receiver) {
-      var t1, t2;
-      t1 = C.EventStreamProvider_click.forElement$1(receiver);
-      t2 = new W._EventStreamSubscription(0, t1._target, t1._eventType, W._wrapZone(this.get$_onClick(receiver)), t1._useCapture);
-      H.setRuntimeTypeInfo(t2, [H.getTypeArgumentByIndex(t1, 0)]);
-      t2._tryResume$0();
-      "9";
-    },
-    $isShowHideComponent: true,
-    "@": function() {
-      return [C.CustomTag_PbP];
-    },
-    static: {ModalWidget$created: function(receiver) {
-        var t1, t2, t3, t4, t5, t6;
-        t1 = Y.ScaleEffect__computeValues(null, null);
-        t2 = P.LinkedHashMap_LinkedHashMap(null, null, null, J.JSString, J.JSString);
-        t2.addAll$1(t2, t1);
-        t2 = new Y.ScaleEffect(null, "-webkit-transform", t2);
-        t2.Css3TransitionEffect$2("-webkit-transform", t1);
-        t1 = $.get$Polymer__polymerSyntax();
-        t3 = P.HashMap_HashMap(null, null, null, J.JSString, W.ShadowRoot);
-        t4 = J.JSString;
-        t5 = W.Element;
-        t6 = new V.ObservableMap(P.HashMap_HashMap(null, null, null, t4, t5), null, null);
-        H.setRuntimeTypeInfo(t6, [t4, t5]);
-        receiver.staticBackdrop = false;
-        receiver._modal$_isShown = false;
-        receiver.effect = t2;
-        receiver.polymer$Polymer$syntax = t1;
-        receiver.polymer$Polymer$_shadowRoots = t3;
-        receiver.polymer$Polymer$$ = t6;
-        C.ModalWidget_methods.Element$created$0(receiver);
-        C.ModalWidget_methods.PolymerElement$created$0(receiver);
-        C.ModalWidget_methods.ModalWidget$created$0(receiver);
-        return receiver;
-        "20";
-      }, "+new ModalWidget$created:0:0": 1}
-  },
-  "+ModalWidget": [79, 78]
-}],
-["widget.swap", "package:widget/components/swap.dart", , G, {
-  SwapWidget: {
-    "": ["PolymerElement;_contentElementField%-96,change_notifier$ChangeNotifier$_changes,change_notifier$ChangeNotifier$_records,polymer$Polymer$_declaration,polymer$Polymer$_observers,polymer$Polymer$_unbound,polymer$Polymer$_unbindAllJob,polymer$Polymer$_propertyObserver,polymer$Polymer$syntax,polymer$Polymer$_shadowRoots,polymer$Polymer$$-71", null, null, null, null, null, null, null, null, null, null, function() {
-      return [C.C_Reflectable];
-    }],
-    get$activeItemIndex: function(receiver) {
-      var t1 = this.get$items(receiver);
-      return H.Arrays_indexOf(t1, this.get$activeItem(receiver), 0, t1.length);
-      "12";
-    },
-    "+activeItemIndex": 1,
-    get$activeItem: function(receiver) {
-      return H.IterableMixinWorkaround_singleWhere(this.get$items(receiver), new G.SwapWidget_activeItem_closure());
-      "24";
-    },
-    "+activeItem": 1,
-    get$items: function(receiver) {
-      var t1;
-      this._initialize$0(receiver);
-      t1 = C.NodeList_methods.where$1(J.getDistributedNodes$0$x(receiver._contentElementField), new G.SwapWidget_items_closure());
-      return P.List_List$from(t1, false, H.getRuntimeTypeArgument(t1, "IterableBase", 0));
-      "74";
-    },
-    "+items": 1,
-    showItemAtIndex$5$duration$effect$effectTiming$hideEffect: function(receiver, index, duration, effect, effectTiming, hideEffect) {
-      var t1 = this.get$items(receiver);
-      if (index >>> 0 !== index || index >= t1.length)
-        throw H.ioore(t1, index);
-      return this.showItem$5$duration$effect$effectTiming$hideEffect(receiver, t1[index], duration, effect, effectTiming, hideEffect);
-      "85,11,12,97,84,98,12,99,100,101,84";
-    },
-    "+showItemAtIndex:1:4:duration:effect:effectTiming:hideEffect": 1,
-    "*showItemAtIndex": [9, 9, 9, 9],
-    showItemAtIndex$4$duration$effect$hideEffect: function($receiver, index, duration, effect, hideEffect) {
-      return this.showItemAtIndex$5$duration$effect$effectTiming$hideEffect($receiver, index, duration, effect, null, hideEffect);
-    },
-    "+showItemAtIndex:4:0:duration:effect:hideEffect": 1,
-    showItemAtIndex$1: function($receiver, index) {
-      return this.showItemAtIndex$5$duration$effect$effectTiming$hideEffect($receiver, index, null, null, null, null);
-    },
-    "+showItemAtIndex:1:0": 1,
-    showItem$5$duration$effect$effectTiming$hideEffect: function(receiver, item, duration, effect, effectTiming, hideEffect) {
-      var oldActiveChild, t1, t2;
-      oldActiveChild = this.get$activeItem(receiver);
-      t1 = J.getInterceptor(oldActiveChild);
-      if (t1.$eq(oldActiveChild, item))
-        return P._Future$immediate(true, J.JSBool);
-      H.IterableMixinWorkaround_forEach([oldActiveChild, item], new G.SwapWidget_showItem_closure());
-      t2 = t1.get$classes(oldActiveChild);
-      t2.remove$1(t2, "active");
-      t1 = t1.get$classes(oldActiveChild);
-      t1.add$1(t1, "prev");
-      t1 = J.get$classes$x(item);
-      t1.add$1(t1, "active");
-      return Y.Swapper_swap(this.get$items(receiver), item, duration, effect, effectTiming, hideEffect).whenComplete$1(new G.SwapWidget_showItem_closure0(oldActiveChild));
-      "85,102,24,97,84,98,12,99,100,101,84";
-    },
-    "+showItem:1:4:duration:effect:effectTiming:hideEffect": 1,
-    "*showItem": [9, 9, 9, 9],
-    showItem$1: function($receiver, item) {
-      return this.showItem$5$duration$effect$effectTiming$hideEffect($receiver, item, null, null, null, null);
-    },
-    "+showItem:1:0": 1,
-    enteredView$0: function(receiver) {
-      this._initialize$0(receiver);
-      "9,91";
-    },
-    "+enteredView:0:0": 1,
-    leftView$0: function(receiver) {
-      receiver._contentElementField = null;
-      "9,91";
-    },
-    "+leftView:0:0": 1,
-    get$_contentElement: function(receiver) {
-      this._initialize$0(receiver);
-      return receiver._contentElementField;
-      "96";
-    },
-    "+_contentElement": 1,
-    _initialize$0: function(receiver) {
-      var t1, theItems, activeFigures;
-      if (receiver._contentElementField == null) {
-        t1 = (receiver.shadowRoot || receiver.webkitShadowRoot).querySelector("content");
-        receiver._contentElementField = t1;
-        if (t1 == null)
-          throw H.wrapException("Could not find the content element. Either the template has changed or state was accessed too early in the component lifecycle.");
-        theItems = this.get$items(receiver);
-        t1 = new H.WhereIterable(theItems, new G.SwapWidget__initialize_closure());
-        H.setRuntimeTypeInfo(t1, [null]);
-        activeFigures = P.List_List$from(P.List_List$from(t1, true, H.getRuntimeTypeArgument(t1, "IterableBase", 0)), true, W.Element);
-        if (activeFigures.length === 0) {
-          if (theItems.length > 0) {
-            t1 = J.get$classes$x(theItems[0]);
-            t1.add$1(t1, "active");
-          }
-        } else
-          H.IterableMixinWorkaround_forEach(C.JSArray_methods.sublist$1(activeFigures, 1), new G.SwapWidget__initialize_closure0());
-        H.IterableMixinWorkaround_forEach(theItems, new G.SwapWidget__initialize_closure1());
-      }
-      "9";
-    },
-    "+_initialize:0:0": 1,
-    $isSwapComponent: true,
-    "@": function() {
-      return [C.CustomTag_0];
-    },
-    static: {"": "SwapWidget__ACTIVE_CLASS<-9,SwapWidget__DIR_CLASS_PREV<-9", SwapWidget$created: function(receiver) {
-        var t1, t2, t3, t4, t5;
-        t1 = $.get$Polymer__polymerSyntax();
-        t2 = P.HashMap_HashMap(null, null, null, J.JSString, W.ShadowRoot);
-        t3 = J.JSString;
-        t4 = W.Element;
-        t5 = new V.ObservableMap(P.HashMap_HashMap(null, null, null, t3, t4), null, null);
-        H.setRuntimeTypeInfo(t5, [t3, t4]);
-        receiver.polymer$Polymer$syntax = t1;
-        receiver.polymer$Polymer$_shadowRoots = t2;
-        receiver.polymer$Polymer$$ = t5;
-        C.SwapWidget_methods.Element$created$0(receiver);
-        C.SwapWidget_methods.PolymerElement$created$0(receiver);
-        return receiver;
-        "21";
-      }, "+new SwapWidget$created:0:0": 1}
-  },
-  "+SwapWidget": [79, 88],
-  SwapWidget_activeItem_closure: {
-    "": "Closure;",
-    call$1: function(e) {
-      var t1 = J.get$classes$x(e);
-      return t1.contains$1(t1, "active");
-      "9,80,9";
-    },
-    "+call:1:0": 1,
-    $isFunction: true,
-    $is_Object__Object: true,
-    $is_args1: true
-  },
-  "+SwapWidget_activeItem_closure": [61],
-  SwapWidget_items_closure: {
-    "": "Closure;",
-    call$1: function(e) {
-      var t1 = J.getInterceptor(e);
-      return typeof e === "object" && e !== null && !!t1.$isElement;
-      "9,80,9";
-    },
-    "+call:1:0": 1,
-    $isFunction: true,
-    $is_Object__Object: true,
-    $is_args1: true
-  },
-  "+SwapWidget_items_closure": [61],
-  SwapWidget_showItem_closure: {
-    "": "Closure;",
-    call$1: function(e) {
-      var t1 = J.get$classes$x(e);
-      return t1.remove$1(t1, "prev");
-      "9,80,9";
-    },
-    "+call:1:0": 1,
-    $isFunction: true,
-    $is_Object__Object: true,
-    $is_args1: true
-  },
-  "+SwapWidget_showItem_closure": [61],
-  SwapWidget_showItem_closure0: {
-    "": "Closure;oldActiveChild_0-9",
-    call$0: function() {
-      var t1 = J.get$classes$x(this.oldActiveChild_0);
-      t1.remove$1(t1, "prev");
-      "9";
-    },
-    "+call:0:0": 1,
-    $isFunction: true,
-    $is_void_: true
-  },
-  "+SwapWidget_showItem_closure": [61],
-  SwapWidget__initialize_closure: {
-    "": "Closure;",
-    call$1: function(e) {
-      var t1 = J.get$classes$x(e);
-      return t1.contains$1(t1, "active");
-      "9,80,9";
-    },
-    "+call:1:0": 1,
-    $isFunction: true,
-    $is_Object__Object: true,
-    $is_args1: true
-  },
-  "+SwapWidget__initialize_closure": [61],
-  SwapWidget__initialize_closure0: {
-    "": "Closure;",
-    call$1: function(e) {
-      var t1 = J.get$classes$x(e);
-      return t1.remove$1(t1, "active");
-      "9,80,9";
-    },
-    "+call:1:0": 1,
-    $isFunction: true,
-    $is_Object__Object: true,
-    $is_args1: true
-  },
-  "+SwapWidget__initialize_closure": [61],
-  SwapWidget__initialize_closure1: {
-    "": "Closure;",
-    call$1: function(f) {
-      return Y.ShowHide__populateState(f);
-      "9,103,9";
-    },
-    "+call:1:0": 1,
-    $isFunction: true,
-    $is_Object__Object: true,
-    $is_args1: true
-  },
-  "+SwapWidget__initialize_closure": [61]
-}],
-["widget.tabs", "package:widget/components/tabs.dart", , V, {
-  TabsWidget: {
-    "": ["PolymerElement;change_notifier$ChangeNotifier$_changes,change_notifier$ChangeNotifier$_records,polymer$Polymer$_declaration,polymer$Polymer$_observers,polymer$Polymer$_unbound,polymer$Polymer$_unbindAllJob,polymer$Polymer$_propertyObserver,polymer$Polymer$syntax,polymer$Polymer$_shadowRoots,polymer$Polymer$$-71", null, null, null, null, null, null, null, null, null, function() {
-      return [C.C_Reflectable];
-    }],
-    get$applyAuthorStyles: function(receiver) {
-      return true;
-      "53";
-    },
-    "+applyAuthorStyles": 1,
-    enteredView$0: function(receiver) {
-      A.Polymer.prototype.enteredView$0.call(this, receiver);
-      this._ensureAtMostOneTabActive$0(receiver);
-      "9,91";
-    },
-    "+enteredView:0:0": 1,
-    _clickListener$1: function(receiver, e) {
-      var t1, t2, t3;
-      t1 = J.getInterceptor$x(e);
-      if (t1.get$defaultPrevented(e) !== true) {
-        t2 = t1.get$target(e);
-        t3 = J.getInterceptor(t2);
-        t3 = typeof t2 === "object" && t2 !== null && !!t3.$isElement;
-        t2 = t3;
-      } else
-        t2 = false;
-      if (t2)
-        if (this._targetClick$1(receiver, t1.get$target(e)))
-          t1.preventDefault$0(e);
-      "9,80,83";
-    },
-    "+_clickListener:1:0": 1,
-    get$_clickListener: function(_receiver) {
-      return new P.BoundClosure$i1(this, V.TabsWidget.prototype._clickListener$1, _receiver, "_clickListener$1");
-    },
-    _targetClick$1: function(receiver, clickElement) {
-      var t1, t2, toggleData, allTabs, activatedTab, target, href;
-      t1 = J.getInterceptor$x(clickElement);
-      t2 = t1.get$dataset(clickElement);
-      toggleData = t2._attributes._element.getAttribute("data-" + t2._toHyphenedName$1("toggle"));
-      if (toggleData !== "tab" && toggleData !== "pill")
-        return false;
-      allTabs = H.interceptedTypeCast((receiver.shadowRoot || receiver.webkitShadowRoot).querySelector(".nav-tabs > content"), "$isContentElement").getDistributedNodes();
-      activatedTab = C.NodeList_methods.firstWhere$2$orElse(allTabs, new V.TabsWidget__targetClick_closure(Y.Tools_getAncestors(clickElement, false)), new V.TabsWidget__targetClick_closure0());
-      if (activatedTab != null)
-        C.NodeList_methods.forEach$1(allTabs, new V.TabsWidget__targetClick_closure1(activatedTab));
-      t2 = t1.get$dataset(clickElement);
-      target = t2._attributes._element.getAttribute("data-" + t2._toHyphenedName$1("target"));
-      if (target == null) {
-        href = t1.get$attributes(clickElement)._element.getAttribute("href");
-        if (href != null)
-          target = P.Uri$_fromMatch($.get$Uri__splitRe().firstMatch$1(href)).fragment;
-      }
-      if (target != null)
-        this._updateContent$1(receiver, target);
-      return true;
-      "53,104,24";
-    },
-    "+_targetClick:1:0": 1,
-    _getAllTabs$0: function(receiver) {
-      return H.interceptedTypeCast((receiver.shadowRoot || receiver.webkitShadowRoot).querySelector(".nav-tabs > content"), "$isContentElement").getDistributedNodes();
-      "74";
-    },
-    "+_getAllTabs:0:0": 1,
-    _ensureAtMostOneTabActive$0: function(receiver) {
-      var t1, tabs, activeTab;
-      t1 = {};
-      tabs = H.interceptedTypeCast((receiver.shadowRoot || receiver.webkitShadowRoot).querySelector(".nav-tabs > content"), "$isContentElement").getDistributedNodes();
-      t1.activeTab_0 = null;
-      C.NodeList_methods.forEach$1(tabs, new V.TabsWidget__ensureAtMostOneTabActive_closure(t1));
-      if (t1.activeTab_0 == null && !C.NodeList_methods.get$isEmpty(tabs)) {
-        if (0 >= tabs.length)
-          throw H.ioore(tabs, 0);
-        activeTab = tabs[0];
-        t1.activeTab_0 = activeTab;
-        t1 = J.get$classes$x(activeTab);
-        t1.add$1(t1, "active");
-      }
-      "9";
-    },
-    "+_ensureAtMostOneTabActive:0:0": 1,
-    _getSwap$0: function(receiver) {
-      return H.interceptedTypeCast((receiver.shadowRoot || receiver.webkitShadowRoot).querySelector("swap-widget"), "$isSwapComponent");
-      "88";
-    },
-    "+_getSwap:0:0": 1,
-    _updateContent$1: function(receiver, target) {
-      var swap, t1, t2, targetItem;
-      swap = H.interceptedTypeCast((receiver.shadowRoot || receiver.webkitShadowRoot).querySelector("swap-widget"), "$isSwapComponent");
-      if (swap != null) {
-        t1 = J.getInterceptor$x(swap);
-        t2 = X.$$(t1.get$items(swap));
-        targetItem = t2.firstWhere$2$orElse(t2, new V.TabsWidget__updateContent_closure(target), new V.TabsWidget__updateContent_closure0());
-        if (targetItem != null)
-          t1.showItem$1(swap, targetItem);
-      }
-      "9,87,7";
-    },
-    "+_updateContent:1:0": 1,
-    TabsWidget$created$0: function(receiver) {
-      var t1, t2;
-      t1 = C.EventStreamProvider_click.forElement$1(receiver);
-      t2 = new W._EventStreamSubscription(0, t1._target, t1._eventType, W._wrapZone(this.get$_clickListener(receiver)), t1._useCapture);
-      H.setRuntimeTypeInfo(t2, [H.getTypeArgumentByIndex(t1, 0)]);
-      t2._tryResume$0();
-      "9";
-    },
-    "@": function() {
-      return [C.CustomTag_WR4];
-    },
-    static: {TabsWidget$created: function(receiver) {
-        var t1, t2, t3, t4, t5;
-        t1 = $.get$Polymer__polymerSyntax();
-        t2 = P.HashMap_HashMap(null, null, null, J.JSString, W.ShadowRoot);
-        t3 = J.JSString;
-        t4 = W.Element;
-        t5 = new V.ObservableMap(P.HashMap_HashMap(null, null, null, t3, t4), null, null);
-        H.setRuntimeTypeInfo(t5, [t3, t4]);
-        receiver.polymer$Polymer$syntax = t1;
-        receiver.polymer$Polymer$_shadowRoots = t2;
-        receiver.polymer$Polymer$$ = t5;
-        C.TabsWidget_methods.Element$created$0(receiver);
-        C.TabsWidget_methods.PolymerElement$created$0(receiver);
-        C.TabsWidget_methods.TabsWidget$created$0(receiver);
-        return receiver;
-        "22";
-      }, "+new TabsWidget$created:0:0": 1, TabsWidget__getClickTarget: function(clickedElement) {
-        var t1, t2, target, href;
-        t1 = J.getInterceptor$x(clickedElement);
-        t2 = t1.get$dataset(clickedElement);
-        target = t2._attributes._element.getAttribute("data-" + t2._toHyphenedName$1("target"));
-        if (target == null) {
-          href = t1.get$attributes(clickedElement)._element.getAttribute("href");
-          if (href != null)
-            target = P.Uri$_fromMatch($.get$Uri__splitRe().firstMatch$1(href)).fragment;
-        }
-        return target;
-        "7,23,24";
-      }, "+_getClickTarget:1:0": 1}
-  },
-  "+TabsWidget": [79],
-  TabsWidget__targetClick_closure: {
-    "": "Closure;clickAncestors_0-9",
-    call$1: function(t) {
-      return J.contains$1$asx(this.clickAncestors_0, t);
-      "9,105,9";
-    },
-    "+call:1:0": 1,
-    $isFunction: true,
-    $is_Object__Object: true,
-    $is_args1: true
-  },
-  "+TabsWidget__targetClick_closure": [61],
-  TabsWidget__targetClick_closure0: {
-    "": "Closure;",
-    call$0: function() {
-      return;
-      "9";
-    },
-    "+call:0:0": 1,
-    $isFunction: true,
-    $is_void_: true
-  },
-  "+TabsWidget__targetClick_closure": [61],
-  TabsWidget__targetClick_closure1: {
-    "": "Closure;activatedTab_1-9",
-    call$1: function(t) {
-      var t1 = J.getInterceptor(t);
-      if (t1.$eq(t, this.activatedTab_1)) {
-        t1 = t1.get$classes(t);
-        t1.add$1(t1, "active");
-      } else {
-        t1 = t1.get$classes(t);
-        t1.remove$1(t1, "active");
-      }
-      "9,105,9";
-    },
-    "+call:1:0": 1,
-    $isFunction: true,
-    $is_Object__Object: true,
-    $is_args1: true
-  },
-  "+TabsWidget__targetClick_closure": [61],
-  TabsWidget__ensureAtMostOneTabActive_closure: {
-    "": "Closure;box_0-9",
-    call$1: function(tab) {
-      var t1, t2;
-      t1 = J.getInterceptor$x(tab);
-      t2 = t1.get$classes(tab);
-      if (t2.contains$1(t2, "active")) {
-        t2 = this.box_0;
-        if (t2.activeTab_0 == null)
-          t2.activeTab_0 = tab;
-        else {
-          t1 = t1.get$classes(tab);
-          t1.remove$1(t1, "active");
-        }
-      }
-      "9,106,24";
-    },
-    "+call:1:0": 1,
-    $isFunction: true,
-    $is_Object__Object: true,
-    $is_args1: true
-  },
-  "+TabsWidget__ensureAtMostOneTabActive_closure": [61],
-  TabsWidget__updateContent_closure: {
-    "": "Closure;target_0-7",
-    call$1: function(e) {
-      var t1, t2;
-      t1 = J.get$id$x(e);
-      t2 = this.target_0;
-      return t1 == null ? t2 == null : t1 === t2;
-      "9,80,9";
-    },
-    "+call:1:0": 1,
-    $isFunction: true,
-    $is_Object__Object: true,
-    $is_args1: true
-  },
-  "+TabsWidget__updateContent_closure": [61],
-  TabsWidget__updateContent_closure0: {
-    "": "Closure;",
-    call$0: function() {
-      return;
-      "9";
-    },
-    "+call:0:0": 1,
-    $isFunction: true,
-    $is_void_: true
-  },
-  "+TabsWidget__updateContent_closure": [61]
 }],
 ]);
 Isolate.$finishClasses($$, $, null);
@@ -26399,9 +24114,9 @@ init.globalFunctions.Primitives__throwFormatException$closure = H.Primitives__th
 init.globalFunctions.toStringWrapper$closure = H.toStringWrapper$closure = new H.Closure$0(H.toStringWrapper, "toStringWrapper$closure");
 init.globalFunctions.invokeClosure$closure = H.invokeClosure$closure = new H.Closure$7(H.invokeClosure, "invokeClosure$closure");
 init.globalFunctions.isAssignable$closure = H.isAssignable$closure = new H.Closure$2(H.isAssignable, "isAssignable$closure");
+init.globalFunctions.main$closure = S.main$closure = new H.Closure$0(S.main, "main$closure");
 init.globalFunctions._show$closure = S._show$closure = new H.Closure$1(S._show, "_show$closure");
 init.globalFunctions._onNavigate$closure = S._onNavigate$closure = new H.Closure$1(S._onNavigate, "_onNavigate$closure");
-init.globalFunctions.main0$closure = E.main0$closure = new H.Closure$0(E.main0, "main0$closure");
 init.globalFunctions.reflect$closure = H.reflect$closure = new H.Closure$1(H.reflect, "reflect$closure");
 init.globalFunctions._asyncRunCallback$closure = P._asyncRunCallback$closure = new H.Closure$0(P._asyncRunCallback, "_asyncRunCallback$closure");
 init.globalFunctions._nullDataHandler$closure = P._nullDataHandler$closure = new H.Closure$1(P._nullDataHandler, "_nullDataHandler$closure");
@@ -26431,8 +24146,6 @@ init.globalFunctions._callAttributeChanged$closure = W._callAttributeChanged$clo
 init.globalFunctions._callDartFunction$closure = P._callDartFunction$closure = new P.Closure$4(P._callDartFunction, "_callDartFunction$closure");
 init.globalFunctions._convertToJS$closure = P._convertToJS$closure = new H.Closure$1(P._convertToJS, "_convertToJS$closure");
 init.globalFunctions._convertToDart$closure = P._convertToDart$closure = new H.Closure$1(P._convertToDart, "_convertToDart$closure");
-init.globalFunctions.ShowHide_getState$closure = Y.ShowHide_getState$closure = new H.Closure$1(Y.ShowHide_getState, "ShowHide_getState$closure");
-init.globalFunctions.ShowHide_hide$closure = Y.ShowHide_hide$closure = new Y.Closure$47(Y.ShowHide_hide, "ShowHide_hide$closure");
 init.globalFunctions.ShowHide__finishShow$closure = Y.ShowHide__finishShow$closure = new H.Closure$1(Y.ShowHide__finishShow, "ShowHide__finishShow$closure");
 init.globalFunctions.ShowHide__finishHide$closure = Y.ShowHide__finishHide$closure = new H.Closure$1(Y.ShowHide__finishHide, "ShowHide__finishHide$closure");
 init.globalFunctions._initPolymerOptimized$closure = A._initPolymerOptimized$closure = new H.Closure$0(A._initPolymerOptimized, "_initPolymerOptimized$closure");
@@ -26454,15 +24167,11 @@ J.JSNumber.$isObject = true;
 P.Duration.$isDuration = true;
 P.Duration.$isObject = true;
 P.Match.$isObject = true;
+N.Level.$isObject = true;
 J.JSArray.$isList = true;
 J.JSArray.$isIterable = true;
 J.JSArray.$isObject = true;
 P.Object.$isObject = true;
-N.Level.$isObject = true;
-W.Element.$isElement = true;
-W.Element.$isNode = true;
-W.Element.$isEventTarget = true;
-W.Element.$isObject = true;
 U.EmptyExpression.$isExpression = true;
 U.EmptyExpression.$isObject = true;
 U.Invoke.$isExpression = true;
@@ -26491,31 +24200,21 @@ K.IndexedValue.$isIndexedValue = true;
 K.IndexedValue.$isObject = true;
 W.Event.$isEvent = true;
 W.Event.$isObject = true;
-W.MouseEvent.$isMouseEvent = true;
 W.MouseEvent.$isEvent = true;
 W.MouseEvent.$isObject = true;
 Y._ShowHideValues.$isObject = true;
-Y.ShowHideResult.$isShowHideResult = true;
 Y.ShowHideResult.$isObject = true;
 Y._AnimatingValues.$isObject = true;
 Y._css3TransitionEffectValues.$isObject = true;
-W.TransitionEvent.$isEvent = true;
-W.TransitionEvent.$isObject = true;
 J.JSBool.$isbool = true;
 J.JSBool.$isObject = true;
 P.Symbol.$isSymbol = true;
 P.Symbol.$isObject = true;
-A.PolymerDeclaration.$isPolymerDeclaration = true;
-A.PolymerDeclaration.$isElement = true;
-A.PolymerDeclaration.$isNode = true;
-A.PolymerDeclaration.$isEventTarget = true;
-A.PolymerDeclaration.$isObject = true;
-P.MethodMirror.$isMirror = true;
-P.MethodMirror.$isObject = true;
-H.JsMethodMirror.$isMirror = true;
-H.JsMethodMirror.$isMirror = true;
-H.JsMethodMirror.$isMirror = true;
-H.JsMethodMirror.$isObject = true;
+W.TransitionEvent.$isEvent = true;
+W.TransitionEvent.$isObject = true;
+N.Logger.$isObject = true;
+P.Uri.$isUri = true;
+P.Uri.$isObject = true;
 P.LibraryMirror.$isLibraryMirror = true;
 P.LibraryMirror.$isMirror = true;
 P.LibraryMirror.$isMirror = true;
@@ -26529,18 +24228,26 @@ P.Mirror.$isMirror = true;
 P.Mirror.$isObject = true;
 P.VariableMirror.$isMirror = true;
 P.VariableMirror.$isObject = true;
-P.TypeVariableMirror.$isMirror = true;
-P.TypeVariableMirror.$isObject = true;
-P.TypeMirror.$isMirror = true;
-P.TypeMirror.$isObject = true;
+H.JsMethodMirror.$isMirror = true;
+H.JsMethodMirror.$isMirror = true;
+H.JsMethodMirror.$isMirror = true;
+H.JsMethodMirror.$isObject = true;
+P.ParameterMirror.$isMirror = true;
+P.ParameterMirror.$isObject = true;
+P.MethodMirror.$isMirror = true;
+P.MethodMirror.$isObject = true;
 P.ClassMirror.$isClassMirror = true;
 P.ClassMirror.$isMirror = true;
 P.ClassMirror.$isMirror = true;
 P.ClassMirror.$isObject = true;
-P.ParameterMirror.$isMirror = true;
-P.ParameterMirror.$isObject = true;
+P.TypeVariableMirror.$isMirror = true;
+P.TypeVariableMirror.$isObject = true;
+W.Document.$isNode = true;
+W.Document.$isEventTarget = true;
+W.Document.$isObject = true;
+P.TypeMirror.$isMirror = true;
+P.TypeMirror.$isObject = true;
 X.NodeBinding.$isObject = true;
-N.Logger.$isObject = true;
 T.ChangeRecord.$isChangeRecord = true;
 T.ChangeRecord.$isObject = true;
 P.StreamSubscription.$isStreamSubscription = true;
@@ -26559,25 +24266,32 @@ A.Polymer.$isNode = true;
 A.Polymer.$isEventTarget = true;
 A.Polymer.$isObject = true;
 A._PropertyValue.$isObject = true;
-P.Type.$isObject = true;
-P.Uri.$isUri = true;
-P.Uri.$isObject = true;
-W.Document.$isNode = true;
-W.Document.$isEventTarget = true;
-W.Document.$isObject = true;
+A.PolymerDeclaration.$isPolymerDeclaration = true;
+A.PolymerDeclaration.$isElement = true;
+A.PolymerDeclaration.$isNode = true;
+A.PolymerDeclaration.$isEventTarget = true;
+A.PolymerDeclaration.$isObject = true;
 H.RawReceivePortImpl.$isObject = true;
 H._IsolateEvent.$isObject = true;
 H._IsolateContext.$isObject = true;
+P.Type.$isObject = true;
 W.ShadowRoot.$isNode = true;
 W.ShadowRoot.$isEventTarget = true;
 W.ShadowRoot.$isObject = true;
-W.KeyboardEvent.$isKeyboardEvent = true;
-W.KeyboardEvent.$isEvent = true;
-W.KeyboardEvent.$isObject = true;
+W.Element.$isElement = true;
+W.Element.$isNode = true;
+W.Element.$isEventTarget = true;
+W.Element.$isObject = true;
 P.StackTrace.$isStackTrace = true;
 P.StackTrace.$isObject = true;
-Y.ShowHideState.$isShowHideState = true;
-Y.ShowHideState.$isObject = true;
+H.JsLibraryMirror.$isJsLibraryMirror = true;
+H.JsLibraryMirror.$isLibraryMirror = true;
+H.JsLibraryMirror.$isMirror = true;
+H.JsLibraryMirror.$isMirror = true;
+H.JsLibraryMirror.$isMirror = true;
+H.JsLibraryMirror.$isMirror = true;
+H.JsLibraryMirror.$isMirror = true;
+H.JsLibraryMirror.$isObject = true;
 P._BufferingStreamSubscription.$is_BufferingStreamSubscription = true;
 P._BufferingStreamSubscription.$is_EventSink = true;
 P._BufferingStreamSubscription.$isStreamSubscription = true;
@@ -26587,20 +24301,10 @@ P._BroadcastSubscription.$is_BufferingStreamSubscription = true;
 P._BroadcastSubscription.$is_EventSink = true;
 P._BroadcastSubscription.$isStreamSubscription = true;
 P._BroadcastSubscription.$isObject = true;
-H.JsLibraryMirror.$isJsLibraryMirror = true;
-H.JsLibraryMirror.$isLibraryMirror = true;
-H.JsLibraryMirror.$isMirror = true;
-H.JsLibraryMirror.$isMirror = true;
-H.JsLibraryMirror.$isMirror = true;
-H.JsLibraryMirror.$isMirror = true;
-H.JsLibraryMirror.$isMirror = true;
-H.JsLibraryMirror.$isObject = true;
 P.ZoneDelegate.$isZoneDelegate = true;
 P.ZoneDelegate.$isObject = true;
 P.Zone.$isZone = true;
 P.Zone.$isObject = true;
-B.ShowHideComponent.$isShowHideComponent = true;
-B.ShowHideComponent.$isObject = true;
 W.HashChangeEvent.$isHashChangeEvent = true;
 W.HashChangeEvent.$isEvent = true;
 W.HashChangeEvent.$isObject = true;
@@ -26608,12 +24312,6 @@ P.Function.$isFunction = true;
 P.Function.$isObject = true;
 W.EventTarget.$isEventTarget = true;
 W.EventTarget.$isObject = true;
-P.Future.$isFuture = true;
-P.Future.$isObject = true;
-Y.ShowHideEffect.$isShowHideEffect = true;
-Y.ShowHideEffect.$isObject = true;
-Y.EffectTiming.$isEffectTiming = true;
-Y.EffectTiming.$isObject = true;
 P.ZoneSpecification.$isZoneSpecification = true;
 P.ZoneSpecification.$isObject = true;
 P.Map.$isMap = true;
@@ -26624,6 +24322,8 @@ P.Iterable.$isIterable = true;
 P.Iterable.$isObject = true;
 P._EventSink.$is_EventSink = true;
 P._EventSink.$isObject = true;
+P.Future.$isFuture = true;
+P.Future.$isObject = true;
 P._DelayedEvent.$is_DelayedEvent = true;
 P._DelayedEvent.$isObject = true;
 P.DateTime.$isDateTime = true;
@@ -26785,11 +24485,8 @@ J.$sub$n = function(receiver, a0) {
 J._initMouseEvent$15$x = function(receiver, a0, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14) {
   return J.getInterceptor$x(receiver)._initMouseEvent$15(receiver, a0, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14);
 };
-J._logging$_publish$1$x = function(receiver, a0) {
-  return J.getInterceptor$x(receiver)._logging$_publish$1(receiver, a0);
-};
-J._replaceChild$2$x = function(receiver, a0, a1) {
-  return J.getInterceptor$x(receiver)._replaceChild$2(receiver, a0, a1);
+J._publish$1$x = function(receiver, a0) {
+  return J.getInterceptor$x(receiver)._publish$1(receiver, a0);
 };
 J.accept$1$x = function(receiver, a0) {
   return J.getInterceptor$x(receiver).accept$1(receiver, a0);
@@ -26842,20 +24539,11 @@ J.endsWith$1$s = function(receiver, a0) {
 J.enteredView$0$x = function(receiver) {
   return J.getInterceptor$x(receiver).enteredView$0(receiver);
 };
-J.every$1$ax = function(receiver, a0) {
-  return J.getInterceptor$ax(receiver).every$1(receiver, a0);
-};
-J.focus$0$x = function(receiver) {
-  return J.getInterceptor$x(receiver).focus$0(receiver);
-};
 J.forEach$1$ax = function(receiver, a0) {
   return J.getInterceptor$ax(receiver).forEach$1(receiver, a0);
 };
 J.get$_children$x = function(receiver) {
   return J.getInterceptor$x(receiver).get$_children(receiver);
-};
-J.get$_duration$x = function(receiver) {
-  return J.getInterceptor$x(receiver).get$_duration(receiver);
 };
 J.get$_eventDelegates$x = function(receiver) {
   return J.getInterceptor$x(receiver).get$_eventDelegates(receiver);
@@ -26869,14 +24557,11 @@ J.get$_name$x = function(receiver) {
 J.get$_polymer$_observe$x = function(receiver) {
   return J.getInterceptor$x(receiver).get$_polymer$_observe(receiver);
 };
-J.get$_publish$x = function(receiver) {
-  return J.getInterceptor$x(receiver).get$_publish(receiver);
+J.get$_polymer$_publish$x = function(receiver) {
+  return J.getInterceptor$x(receiver).get$_polymer$_publish(receiver);
 };
 J.get$_publishLC$x = function(receiver) {
   return J.getInterceptor$x(receiver).get$_publishLC(receiver);
-};
-J.get$activeItemIndex$x = function(receiver) {
-  return J.getInterceptor$x(receiver).get$activeItemIndex(receiver);
 };
 J.get$attributes$x = function(receiver) {
   return J.getInterceptor$x(receiver).get$attributes(receiver);
@@ -26902,9 +24587,6 @@ J.get$classes$x = function(receiver) {
 J.get$content$x = function(receiver) {
   return J.getInterceptor$x(receiver).get$content(receiver);
 };
-J.get$dataset$x = function(receiver) {
-  return J.getInterceptor$x(receiver).get$dataset(receiver);
-};
 J.get$display$x = function(receiver) {
   return J.getInterceptor$x(receiver).get$display(receiver);
 };
@@ -26925,12 +24607,6 @@ J.get$isEmpty$asx = function(receiver) {
 };
 J.get$isNotEmpty$asx = function(receiver) {
   return J.getInterceptor$asx(receiver).get$isNotEmpty(receiver);
-};
-J.get$isShown$x = function(receiver) {
-  return J.getInterceptor$x(receiver).get$isShown(receiver);
-};
-J.get$items$x = function(receiver) {
-  return J.getInterceptor$x(receiver).get$items(receiver);
 };
 J.get$iterator$ax = function(receiver) {
   return J.getInterceptor$ax(receiver).get$iterator(receiver);
@@ -26964,9 +24640,6 @@ J.get$newUrl$x = function(receiver) {
 };
 J.get$newValue$x = function(receiver) {
   return J.getInterceptor$x(receiver).get$newValue(receiver);
-};
-J.get$next$x = function(receiver) {
-  return J.getInterceptor$x(receiver).get$next(receiver);
 };
 J.get$nextNode$x = function(receiver) {
   return J.getInterceptor$x(receiver).get$nextNode(receiver);
@@ -27025,23 +24698,14 @@ J.get$value$x = function(receiver) {
 J.get$values$x = function(receiver) {
   return J.getInterceptor$x(receiver).get$values(receiver);
 };
-J.get$xtag$x = function(receiver) {
-  return J.getInterceptor$x(receiver).get$xtag(receiver);
-};
 J.getComputedStyle$0$x = function(receiver) {
   return J.getInterceptor$x(receiver).getComputedStyle$0(receiver);
-};
-J.getDistributedNodes$0$x = function(receiver) {
-  return J.getInterceptor$x(receiver).getDistributedNodes$0(receiver);
 };
 J.getElementById$1$x = function(receiver, a0) {
   return J.getInterceptor$x(receiver).getElementById$1(receiver, a0);
 };
 J.getPropertyValue$1$x = function(receiver, a0) {
   return J.getInterceptor$x(receiver).getPropertyValue$1(receiver, a0);
-};
-J.hide$0$x = function(receiver) {
-  return J.getInterceptor$x(receiver).hide$0(receiver);
 };
 J.indexOf$1$asx = function(receiver, a0) {
   return J.getInterceptor$asx(receiver).indexOf$1(receiver, a0);
@@ -27073,9 +24737,6 @@ J.print$1$x = function(receiver, a0) {
 J.queryAll$1$x = function(receiver, a0) {
   return J.getInterceptor$x(receiver).queryAll$1(receiver, a0);
 };
-J.querySelector$1$x = function(receiver, a0) {
-  return J.getInterceptor$x(receiver).querySelector$1(receiver, a0);
-};
 J.querySelectorAll$1$x = function(receiver, a0) {
   return J.getInterceptor$x(receiver).querySelectorAll$1(receiver, a0);
 };
@@ -27097,17 +24758,11 @@ J.removeEventListener$3$x = function(receiver, a0, a1, a2) {
 J.replaceAll$2$s = function(receiver, a0, a1) {
   return J.getInterceptor$s(receiver).replaceAll$2(receiver, a0, a1);
 };
-J.replaceWith$1$x = function(receiver, a0) {
-  return J.getInterceptor$x(receiver).replaceWith$1(receiver, a0);
-};
 J.round$0$n = function(receiver) {
   return J.getInterceptor$n(receiver).round$0(receiver);
 };
 J.send$1$x = function(receiver, a0) {
   return J.getInterceptor$x(receiver).send$1(receiver, a0);
-};
-J.set$_pendingAction$x = function(receiver, value) {
-  return J.getInterceptor$x(receiver).set$_pendingAction(receiver, value);
 };
 J.set$_selector$x = function(receiver, value) {
   return J.getInterceptor$x(receiver).set$_selector(receiver, value);
@@ -27127,9 +24782,6 @@ J.set$length$asx = function(receiver, value) {
 J.set$newValue$x = function(receiver, value) {
   return J.getInterceptor$x(receiver).set$newValue(receiver, value);
 };
-J.set$next$x = function(receiver, value) {
-  return J.getInterceptor$x(receiver).set$next(receiver, value);
-};
 J.set$selectedIndex$x = function(receiver, value) {
   return J.getInterceptor$x(receiver).set$selectedIndex(receiver, value);
 };
@@ -27142,9 +24794,6 @@ J.set$type$x = function(receiver, value) {
 J.set$value$x = function(receiver, value) {
   return J.getInterceptor$x(receiver).set$value(receiver, value);
 };
-J.set$zIndex$x = function(receiver, value) {
-  return J.getInterceptor$x(receiver).set$zIndex(receiver, value);
-};
 J.setProperty$2$x = function(receiver, a0, a1) {
   return J.getInterceptor$x(receiver).setProperty$2(receiver, a0, a1);
 };
@@ -27153,9 +24802,6 @@ J.setProperty$3$x = function(receiver, a0, a1, a2) {
 };
 J.show$0$x = function(receiver) {
   return J.getInterceptor$x(receiver).show$0(receiver);
-};
-J.showItemAtIndex$4$duration$effect$hideEffect$x = function(receiver, a0, a1, a2, a3) {
-  return J.getInterceptor$x(receiver).showItemAtIndex$4$duration$effect$hideEffect(receiver, a0, a1, a2, a3);
 };
 J.skip$1$ax = function(receiver, a0) {
   return J.getInterceptor$ax(receiver).skip$1(receiver, a0);
@@ -27181,9 +24827,6 @@ J.toLowerCase$0$s = function(receiver) {
 J.toString$0 = function(receiver) {
   return J.getInterceptor(receiver).toString$0(receiver);
 };
-J.toUpperCase$0$s = function(receiver) {
-  return J.getInterceptor$s(receiver).toUpperCase$0(receiver);
-};
 J.trim$0$s = function(receiver) {
   return J.getInterceptor$s(receiver).trim$0(receiver);
 };
@@ -27196,8 +24839,6 @@ J.unbindAll$0$x = function(receiver) {
 J.where$1$ax = function(receiver, a0) {
   return J.getInterceptor$ax(receiver).where$1(receiver, a0);
 };
-C.AccordionWidget_methods = R.AccordionWidget.prototype;
-C.AlertWidget_methods = M.AlertWidget.prototype;
 C.C_EmptyExpression = new U.EmptyExpression();
 C.C_EmptyIterator = new H.EmptyIterator();
 C.C_JSArray = new J.JSArray();
@@ -27211,20 +24852,8 @@ C.C_Reflectable = new K.Reflectable();
 C.C__DelayedDone = new P._DelayedDone();
 C.C__InitMethodAnnotation = new A._InitMethodAnnotation();
 C.C__NoOpShowHideEffect = new Y._NoOpShowHideEffect();
-C.C__Override = new P._Override();
 C.C__RootZone = new P._RootZone();
 C.C__RootZoneSpecification = new P._RootZoneSpecification();
-C.CarouselWidget_methods = X.CarouselWidget.prototype;
-C.CollapseWidget_methods = Y.CollapseWidget.prototype;
-C.CustomTag_0 = new A.CustomTag("swap-widget");
-C.CustomTag_PbP = new A.CustomTag("modal-widget");
-C.CustomTag_U4w = new A.CustomTag("dropdown-widget");
-C.CustomTag_WR4 = new A.CustomTag("tabs-widget");
-C.CustomTag_sRw = new A.CustomTag("accordion-widget");
-C.CustomTag_tdc = new A.CustomTag("alert-widget");
-C.CustomTag_uHq = new A.CustomTag("carousel-widget");
-C.CustomTag_ujb = new A.CustomTag("collapse-widget");
-C.DropdownWidget_methods = M.DropdownWidget.prototype;
 C.Duration_0 = new P.Duration(0);
 C.Duration_1000 = new P.Duration(1000);
 C.Duration_1000000 = new P.Duration(1000000);
@@ -27232,11 +24861,8 @@ C.EventStreamProvider_change = H.setRuntimeTypeInfo(new W.EventStreamProvider("c
 C.EventStreamProvider_click = H.setRuntimeTypeInfo(new W.EventStreamProvider("click"), [W.MouseEvent]);
 C.EventStreamProvider_hashchange = H.setRuntimeTypeInfo(new W.EventStreamProvider("hashchange"), [W.Event]);
 C.EventStreamProvider_input = H.setRuntimeTypeInfo(new W.EventStreamProvider("input"), [W.Event]);
-C.EventStreamProvider_keydown = H.setRuntimeTypeInfo(new W.EventStreamProvider("keydown"), [W.KeyboardEvent]);
-C.EventStreamProvider_toggle = H.setRuntimeTypeInfo(new W.EventStreamProvider("toggle"), [W.Event]);
 C.HorizontalAlignment_center = new Y.HorizontalAlignment("center");
 C.HorizontalAlignment_left = new Y.HorizontalAlignment("left");
-C.HorizontalAlignment_right = new Y.HorizontalAlignment("right");
 C.HttpRequest_methods = W.HttpRequest.prototype;
 C.JSArray_methods = J.JSArray.prototype;
 C.JSDouble_methods = J.JSDouble.prototype;
@@ -27388,13 +25014,10 @@ C.List_c9P = Isolate.makeConstantList(["name", "extends", "constructor", "noscri
 C.Map_c94aj = new H.ConstantStringMap(5, {name: 1, extends: 1, constructor: 1, noscript: 1, attributes: 1}, C.List_c9P);
 C.List_enumerate = Isolate.makeConstantList(["enumerate"]);
 C.Map_wgEsG = new H.ConstantStringMap(1, {enumerate: K.enumerate$closure}, C.List_enumerate);
-C.ModalWidget_methods = R.ModalWidget.prototype;
 C.NodeList_methods = W.NodeList.prototype;
 C.Orientation_vertical = new Y.Orientation("vertical");
 C.PolymerDeclaration_methods = A.PolymerDeclaration.prototype;
 C.PolymerElement_methods = A.PolymerElement.prototype;
-C.ShowHideAction_hide = new Y.ShowHideAction("hide");
-C.ShowHideAction_show = new Y.ShowHideAction("show");
 C.ShowHideAction_toggle = new Y.ShowHideAction("toggle");
 C.ShowHideResult_Pkw = new Y.ShowHideResult("no-op");
 C.ShowHideResult_animated = new Y.ShowHideResult("animated");
@@ -27404,7 +25027,6 @@ C.ShowHideState_hidden = new Y.ShowHideState("hidden");
 C.ShowHideState_hidding = new Y.ShowHideState("hidding");
 C.ShowHideState_showing = new Y.ShowHideState("showing");
 C.ShowHideState_shown = new Y.ShowHideState("shown");
-C.SwapWidget_methods = G.SwapWidget.prototype;
 C.Symbol_46c = new H.Symbol0("dart.core.Object");
 C.Symbol_4YB = new H.Symbol0("dart.core.DateTime");
 C.Symbol_6TA = new H.Symbol0("dart.core.bool");
@@ -27412,7 +25034,6 @@ C.Symbol_Directory = new H.Symbol0("Directory");
 C.Symbol_Platform = new H.Symbol0("Platform");
 C.Symbol_Qyo = new H.Symbol0("[]");
 C.Symbol_call = new H.Symbol0("call");
-C.Symbol_createRuntimeType = new H.Symbol0("createRuntimeType");
 C.Symbol_current = new H.Symbol0("current");
 C.Symbol_dynamic = new H.Symbol0("dynamic");
 C.Symbol_iC9 = new H.Symbol0("dart.core.String");
@@ -27426,7 +25047,6 @@ C.Symbol_sMO = new H.Symbol0("dart.core.double");
 C.Symbol_sgp = new H.Symbol0("[]=");
 C.Symbol_value = new H.Symbol0("value");
 C.Symbol_window = new H.Symbol0("window");
-C.TabsWidget_methods = V.TabsWidget.prototype;
 C.Type_2Vk = H.createRuntimeType('IndexedValue');
 C.TypeVariable_bBG = new H.TypeVariable(C.Type_2Vk, "V", 0);
 C.Type_ejQ = H.createRuntimeType('ObservableBox');
@@ -27434,30 +25054,21 @@ C.TypeVariable_mDP = new H.TypeVariable(C.Type_ejQ, "T", 0);
 C.Type_caQ = H.createRuntimeType('ObservableMap');
 C.TypeVariable_pea = new H.TypeVariable(C.Type_caQ, "V", 0);
 C.TypeVariable_wAg = new H.TypeVariable(C.Type_caQ, "K", 0);
-C.Type_4tk = H.createRuntimeType('CarouselWidget');
 C.Type_AGr = H.createRuntimeType('JsTypeVariableMirror');
-C.Type_Afj = H.createRuntimeType('AccordionWidget');
-C.Type_EK0 = H.createRuntimeType('CollapseWidget');
 C.Type_EjN = H.createRuntimeType('Function');
 C.Type_Ejg = H.createRuntimeType('String');
 C.Type_EsU = H.createRuntimeType('bool');
 C.Type_HqF = H.createRuntimeType('Object');
 C.Type_I2I = H.createRuntimeType('PolymerElement');
-C.Type_M6L = H.createRuntimeType('DropdownWidget');
 C.Type_SnA = H.createRuntimeType('int');
-C.Type_WJY = H.createRuntimeType('AlertWidget');
 C.Type_XXD = H.createRuntimeType('JSObject');
 C.Type_YnA = H.createRuntimeType('PolymerDeclaration');
-C.Type_aTW = H.createRuntimeType('TabsWidget');
-C.Type_ah5 = H.createRuntimeType('ClassMirror');
 C.Type_dVs = H.createRuntimeType('DateTime');
 C.Type_e5Z = H.createRuntimeType('dynamic');
-C.Type_eRf = H.createRuntimeType('SwapWidget');
 C.Type_eZO = H.createRuntimeType('Null');
 C.Type_oqh = H.createRuntimeType('Uint64List');
 C.Type_qq1 = H.createRuntimeType('double');
 C.Type_qxd = H.createRuntimeType('Int64List');
-C.Type_xEc = H.createRuntimeType('ModalWidget');
 C.UnknownJavaScriptObject_methods = J.UnknownJavaScriptObject.prototype;
 C.Utf8Codec_false = new P.Utf8Codec(false);
 C.VerticalAlignment_middle = new Y.VerticalAlignment("middle");
@@ -27494,8 +25105,8 @@ $._delivering = false;
 $.Polymer__preparingElements = 0;
 $._useDirtyChecking = true;
 $.TemplateBindExtension__initStyles = null;
-$.interceptedNames = ["$add", "$and", "$div", "$eq", "$ge", "$gt", "$index", "$indexSet", "$le", "$lt", "$mod", "$mul", "$negate", "$shl", "$shr", "$sub", "$tdiv", "AccordionWidget$created$0", "AlertWidget$created$0", "CollapseWidget$created$0", "DropdownWidget$created$0", "Element$created$0", "ModalWidget$created$0", "PolymerDeclaration$created$0", "PolymerElement$created$0", "TabsWidget$created$0", "_alert$_onClick$1", "_checkIndex$2", "_checkSublistArguments$3", "_clickListener$1", "_collapse$_onClick$1", "_dropdown$_onClick$1", "_ensureAtMostOneTabActive$0", "_ensureRequestAnimationFrame$0", "_getAllCollapseElements$0", "_getAllTabs$0", "_getModalElement$0", "_getSwap$0", "_initMouseEvent$15", "_initialize$0", "_invalidIndex$2", "_logging$_publish$1", "_lowerCaseMap$1", "_moveDelta$1", "_observe$1", "_onBackdropClicked$0", "_onClick$1", "_onKeyDown$1", "_onOpen$1", "_onShowHideToggle$1", "_rangeCheck$2", "_replaceChild$2", "_requestAnimationFrame$1", "_targetClick$1", "_updateContent$1", "_updateElements$0", "_updateElements$1", "abs$0", "accept$1", "accumulateInstanceAttributes$0", "add$1", "addAll$1", "addAttributeDelegates$1", "addEventListener$3", "addHostListeners$0", "addNodeListeners$3", "allMatches$1", "any$1", "append$1", "asyncUnbindAll$0", "attributeChanged$3", "attributeToProperty$2", "bind$3", "cacheSheets$0", "cacheStyles$0", "cancelUnbindAll$0", "cancelUnbindAll$1$preventCascade", "clear$0", "clone$1", "close$0", "codeUnitAt$1", "complete$0", "complete$1", "contains$1", "contains$2", "copyInstanceAttributes$0", "createDocumentFragment$0", "createShadowRoot$0", "cssTextForScope$1", "cssTextToScopeStyle$2", "deliverChanges$0", "dispatchMethod$3", "elementAt$1", "endsWith$1", "enteredView$0", "error$1", "every$1", "findNodes$1", "findNodes$2", "firstWhere$1", "firstWhere$2$orElse", "focus$0", "fold$2", "forEach$1", "get$$$", "get$_children", "get$_collapse$_isShown", "get$_contentElement", "get$_contentElementField", "get$_dropdown$_isShown", "get$_duration", "get$_eventDelegates", "get$_fromTheLeft", "get$_fromTheRight", "get$_insertedCalled", "get$_instanceAttributes", "get$_isShown", "get$_modal$_isShown", "get$_name", "get$_pendingAction", "get$_polymer$_observe", "get$_publish", "get$_publishLC", "get$_swap", "get$activeItem", "get$activeItemIndex", "get$applyAuthorStyles", "get$attributes", "get$bindings", "get$body", "get$bound", "get$bubbles", "get$changes", "get$checked", "get$children", "get$className", "get$classes", "get$clientHeight", "get$content", "get$dataset", "get$defaultPrevented", "get$detail", "get$display", "get$effect", "get$entries", "get$error", "get$first", "get$firstChild", "get$form", "get$hasObservers", "get$hash", "get$hashCode", "get$host", "get$href", "get$id", "get$index", "get$isEmpty", "get$isNaN", "get$isNegative", "get$isNotEmpty", "get$isShown", "get$items", "get$iterator", "get$key", "get$keyCode", "get$kind", "get$last", "get$left", "get$length", "get$localName", "get$location", "get$message", "get$method", "get$name", "get$newUrl", "get$newValue", "get$next", "get$nextNode", "get$nodes", "get$oldValue", "get$on", "get$onChange", "get$onClick", "get$onInput", "get$onToggle", "get$opacity", "get$operator", "get$ownerDocument", "get$parent", "get$parentNode", "get$path", "get$port", "get$print", "get$right", "get$runtimeType", "get$scrollHeight", "get$selectedIndex", "get$shadowRoot", "get$src", "get$staticBackdrop", "get$style", "get$superDeclaration", "get$tagName", "get$target", "get$templateContent", "get$type", "get$value", "get$values", "get$xtag", "getComputedStyle$0", "getComputedStyle$1", "getDistributedNodes$0", "getElementById$1", "getPropertyValue$1", "getRange$2", "getShadowRoot$1", "hide$0", "hostEventListener$1", "index$2", "indexOf$1", "indexOf$2", "inferObservers$1", "insertAdjacentText$2", "insertBefore$2", "installLocalSheets$0", "join$1", "join$8", "lastIndexOf$1", "lastIndexOf$2", "leftView$0", "lightFromTemplate$1", "map$1", "marshalNodeReferences$1", "matchAsPrefix$1", "matchAsPrefix$2", "matches$1", "matchesWithAncestors$1", "next$0", "noSuchMethod$1", "notifyChange$1", "notifyPropertyChanges$1", "observeArrayValue$3", "observeProperties$0", "observed$0", "onError$1", "onNext$3", "onPrevious$3", "open$3$async", "open$5$async$password$user", "parseDeclaration$1", "parseDeclarations$1", "pause$0", "pause$1", "polymerCreated$0", "prepareElement$0", "preventDefault$0", "previous$0", "print$1", "print$2", "propertyForAttribute$1", "publishAttributes$2", "query$1", "queryAll$1", "querySelector$1", "querySelectorAll$1", "reflectPropertyToAttribute$1", "register$2", "registerType$1", "registerWhenReady$0", "remainder$1", "remove$0", "remove$1", "removeEventListener$3", "removeLast$0", "removeRange$2", "replaceAll$2", "replaceWith$1", "reset$0", "round$0", "roundToDouble$0", "send$1", "send$2", "serializeValue$1", "set$_collapse$_isShown", "set$_contentElementField", "set$_dropdown$_isShown", "set$_insertedCalled", "set$_isShown", "set$_modal$_isShown", "set$_pendingAction", "set$_selector", "set$checked", "set$className", "set$display", "set$effect", "set$hash", "set$isShown", "set$length", "set$newValue", "set$next", "set$selectedIndex", "set$staticBackdrop", "set$text", "set$transitionDuration", "set$transitionProperty", "set$transitionTimingFunction", "set$type", "set$value", "set$zIndex", "setProperty$2", "setProperty$3", "setRange$4", "shadowFromTemplate$1", "show$0", "showItem$1", "showItem$5$duration$effect$effectTiming$hideEffect", "showItemAtIndex$1", "showItemAtIndex$4$duration$effect$hideEffect", "showItemAtIndex$5$duration$effect$effectTiming$hideEffect", "skip$1", "split$1", "start$0", "startsWith$1", "startsWith$2", "stop$0", "sublist$1", "sublist$2", "substring$1", "substring$2", "take$1", "takeAttributes$0", "toInt$0", "toList$0", "toList$1$growable", "toLowerCase$0", "toString$0", "toUpperCase$0", "toggle$0", "trim$0", "unbind$1", "unbindAll$0", "unobserved$0", "unregisterObservers$0", "waitingForExtendee$1", "waitingForType$1", "where$1"];
-$.mapTypeToInterceptor = [C.Type_4tk, X.CarouselWidget, {created: X.CarouselWidget$created}, C.Type_Afj, R.AccordionWidget, {created: R.AccordionWidget$created}, C.Type_EK0, Y.CollapseWidget, {created: Y.CollapseWidget$created}, C.Type_I2I, A.PolymerElement, {created: A.PolymerElement$created}, C.Type_M6L, M.DropdownWidget, {created: M.DropdownWidget$created}, C.Type_WJY, M.AlertWidget, {created: M.AlertWidget$created}, C.Type_YnA, A.PolymerDeclaration, {created: A.PolymerDeclaration$created}, C.Type_aTW, V.TabsWidget, {created: V.TabsWidget$created}, C.Type_eRf, G.SwapWidget, {created: G.SwapWidget$created}, C.Type_oqh, P.Uint64List, {}, C.Type_qxd, P.Int64List, {}, C.Type_xEc, R.ModalWidget, {created: R.ModalWidget$created}];
+$.interceptedNames = ["$add", "$and", "$div", "$eq", "$ge", "$gt", "$index", "$indexSet", "$le", "$lt", "$mul", "$negate", "$shl", "$shr", "$sub", "$tdiv", "Element$created$0", "PolymerDeclaration$created$0", "PolymerElement$created$0", "_checkIndex$2", "_checkSublistArguments$3", "_ensureRequestAnimationFrame$0", "_initMouseEvent$15", "_invalidIndex$2", "_lowerCaseMap$1", "_observe$1", "_publish$1", "_rangeCheck$2", "_requestAnimationFrame$1", "abs$0", "accept$1", "accumulateInstanceAttributes$0", "add$1", "addAll$1", "addAttributeDelegates$1", "addEventListener$3", "addHostListeners$0", "addNodeListeners$3", "allMatches$1", "any$1", "append$1", "asyncUnbindAll$0", "attributeChanged$3", "attributeToProperty$2", "bind$3", "cacheSheets$0", "cacheStyles$0", "cancelUnbindAll$0", "cancelUnbindAll$1$preventCascade", "clear$0", "clone$1", "close$0", "codeUnitAt$1", "complete$0", "complete$1", "contains$1", "contains$2", "copyInstanceAttributes$0", "createDocumentFragment$0", "createShadowRoot$0", "cssTextForScope$1", "cssTextToScopeStyle$2", "deliverChanges$0", "dispatchMethod$3", "elementAt$1", "endsWith$1", "enteredView$0", "error$1", "findNodes$1", "findNodes$2", "firstWhere$1", "firstWhere$2$orElse", "fold$2", "forEach$1", "get$$$", "get$_children", "get$_eventDelegates", "get$_instanceAttributes", "get$_name", "get$_polymer$_observe", "get$_polymer$_publish", "get$_publishLC", "get$attributes", "get$bindings", "get$bound", "get$bubbles", "get$changes", "get$checked", "get$className", "get$classes", "get$clientHeight", "get$content", "get$detail", "get$display", "get$entries", "get$error", "get$first", "get$firstChild", "get$form", "get$hasObservers", "get$hash", "get$hashCode", "get$host", "get$href", "get$id", "get$index", "get$isEmpty", "get$isNaN", "get$isNegative", "get$isNotEmpty", "get$iterator", "get$key", "get$kind", "get$last", "get$left", "get$length", "get$localName", "get$location", "get$message", "get$method", "get$name", "get$newUrl", "get$newValue", "get$nextNode", "get$nodes", "get$oldValue", "get$on", "get$onChange", "get$onClick", "get$onInput", "get$opacity", "get$operator", "get$ownerDocument", "get$parent", "get$parentNode", "get$path", "get$port", "get$print", "get$right", "get$runtimeType", "get$scrollHeight", "get$selectedIndex", "get$shadowRoot", "get$src", "get$style", "get$superDeclaration", "get$tagName", "get$target", "get$templateContent", "get$type", "get$value", "get$values", "getComputedStyle$0", "getComputedStyle$1", "getElementById$1", "getPropertyValue$1", "getRange$2", "hostEventListener$1", "index$2", "indexOf$1", "indexOf$2", "inferObservers$1", "insertAdjacentText$2", "insertBefore$2", "installLocalSheets$0", "join$1", "join$8", "lastIndexOf$1", "lastIndexOf$2", "leftView$0", "lightFromTemplate$1", "map$1", "marshalNodeReferences$1", "matchAsPrefix$1", "matchAsPrefix$2", "matches$1", "matchesWithAncestors$1", "noSuchMethod$1", "notifyChange$1", "notifyPropertyChanges$1", "observeArrayValue$3", "observeProperties$0", "observed$0", "onError$1", "open$3$async", "open$5$async$password$user", "parseDeclaration$1", "parseDeclarations$1", "pause$0", "pause$1", "polymerCreated$0", "prepareElement$0", "print$1", "print$2", "propertyForAttribute$1", "publishAttributes$2", "query$1", "queryAll$1", "querySelectorAll$1", "reflectPropertyToAttribute$1", "register$2", "registerType$1", "registerWhenReady$0", "remainder$1", "remove$0", "remove$1", "removeEventListener$3", "removeLast$0", "replaceAll$2", "reset$0", "round$0", "roundToDouble$0", "send$1", "send$2", "serializeValue$1", "set$_selector", "set$checked", "set$className", "set$display", "set$hash", "set$length", "set$newValue", "set$selectedIndex", "set$text", "set$transitionDuration", "set$transitionProperty", "set$transitionTimingFunction", "set$type", "set$value", "setProperty$2", "setProperty$3", "setRange$4", "shadowFromTemplate$1", "show$0", "skip$1", "split$1", "start$0", "startsWith$1", "startsWith$2", "stop$0", "sublist$1", "sublist$2", "substring$1", "substring$2", "take$1", "takeAttributes$0", "toInt$0", "toList$0", "toList$1$growable", "toLowerCase$0", "toString$0", "trim$0", "unbind$1", "unbindAll$0", "unobserved$0", "unregisterObservers$0", "waitingForExtendee$1", "waitingForType$1", "where$1"];
+$.mapTypeToInterceptor = [C.Type_I2I, A.PolymerElement, {created: A.PolymerElement$created}, C.Type_YnA, A.PolymerDeclaration, {created: A.PolymerDeclaration$created}, C.Type_oqh, P.Uint64List, {}, C.Type_qxd, P.Int64List, {}];
 Isolate.$lazy($, "globalThis", "globalThis", "get$globalThis", function() {
   return function() { return this; }();
 });
@@ -27761,16 +25372,6 @@ Isolate.$lazy($, "_loaderLog", "_loaderLog", "get$_loaderLog", function() {
 Isolate.$lazy($, "_typeHandlers", "_typeHandlers", "get$_typeHandlers", function() {
   return new Z.closure0().call$0();
 });
-Isolate.$lazy($, "_jsHelper", "_jsHelper", "get$_jsHelper", function() {
-  var t1, t2;
-  t1 = $.get$currentJsMirrorSystem().get$libraries();
-  t2 = P.Uri$_fromMatch($.get$Uri__splitRe().firstMatch$1("dart:_js_helper"));
-  t1 = t1.__js_mirrors$_source;
-  return t1.$index(t1, t2);
-});
-Isolate.$lazy($, "_mangledNameField", "_mangledNameField", "get$_mangledNameField", function() {
-  return new M.closure21().call$0();
-});
 Isolate.$lazy($, "_logger", "_logger1", "get$_logger1", function() {
   return N.Logger_Logger("polymer_expressions");
 });
@@ -27797,21 +25398,6 @@ Isolate.$lazy($, "_expando", "_expando", "get$_expando", function() {
   H.setRuntimeTypeInfo(t1, [null]);
   return t1;
 });
-Isolate.$lazy($, "_effect", "CollapseWidget__effect", "get$CollapseWidget__effect", function() {
-  var t1, t2;
-  t1 = H.fillLiteralMap(["overflow", "hidden"], P.LinkedHashMap_LinkedHashMap(null, null, null, null, null));
-  t2 = P.LinkedHashMap_LinkedHashMap(null, null, null, J.JSString, J.JSString);
-  t2.addAll$1(t2, t1);
-  t2 = new Y.ShrinkEffect("max-height", t2);
-  t2.Css3TransitionEffect$2("max-height", t1);
-  return t2;
-});
-Isolate.$lazy($, "_effect", "DropdownWidget__effect", "get$DropdownWidget__effect", function() {
-  var t1 = P.LinkedHashMap_LinkedHashMap(null, null, null, J.JSString, J.JSString);
-  t1 = new Y.FadeEffect("opacity", t1);
-  t1.Css3TransitionEffect$2("opacity", null);
-  return t1;
-});
 // Native classes
 
 init.functionAliases = {};
@@ -27825,30 +25411,20 @@ P.Type,
 "name",
 J.JSString,
 W.Window,
-,
 [K.IndexedValue, 4],
 "index",
 J.JSInt,
 "value",
 4,
-R.AccordionWidget,
-M.AlertWidget,
-X.CarouselWidget,
-Y.CollapseWidget,
-M.DropdownWidget,
-R.ModalWidget,
-G.SwapWidget,
-V.TabsWidget,
-"clickedElement",
-W.Element,
+,
 J.JSArray,
 P.ClassMirror,
 [J.JSArray, H.JsMethodMirror],
 [J.JSArray, P.VariableMirror],
-[H.UnmodifiableMapView, P.Symbol, P.MethodMirror],
-[H.UnmodifiableMapView, P.Symbol, P.VariableMirror],
-[H.UnmodifiableMapView, P.Symbol, P.Mirror],
-[H.UnmodifiableMapView, P.Symbol, P.DeclarationMirror],
+[H.UnmodifiableMapView0, P.Symbol, P.MethodMirror],
+[H.UnmodifiableMapView0, P.Symbol, P.VariableMirror],
+[H.UnmodifiableMapView0, P.Symbol, P.Mirror],
+[H.UnmodifiableMapView0, P.Symbol, P.DeclarationMirror],
 [P.UnmodifiableListView, P.InstanceMirror],
 [P.UnmodifiableListView, P.ClassMirror],
 [P.UnmodifiableListView, P.TypeVariableMirror],
@@ -27890,39 +25466,6 @@ C.C_Reflectable,
 [P.Map, J.JSString, W.Element],
 "v",
 "o",
-[J.JSArray, W.Element],
-"openEvent",
-W.Event,
-"shc",
-B.ShowHideComponent,
-A.PolymerElement,
-"e",
-[P.Stream, W.Event],
-"event",
-W.MouseEvent,
-Y.ShowHideEffect,
-[P.Future, J.JSBool],
-"detail",
-"target",
-B.SwapComponent,
-"doNext",
-"_",
-C.C__Override,
-"skipAnimation",
-false,
-W.KeyboardEvent,
-"dd",
-W.ContentElement,
-"effect",
-"duration",
-"effectTiming",
-Y.EffectTiming,
-"hideEffect",
-"item",
-"f",
-"clickElement",
-"t",
-"tab",
 ];
 $ = null;
 Isolate = Isolate.$finishIsolateConstructor(Isolate);
@@ -27993,9 +25536,9 @@ Z = convertToFastObject(Z);
   init.currentScript = currentScript;
 
   if (typeof dartMainRunner === "function") {
-    dartMainRunner(function() { H.startRootIsolate(E.main0$closure); });
+    dartMainRunner(function() { H.startRootIsolate(S.main$closure); });
   } else {
-    H.startRootIsolate(E.main0$closure);
+    H.startRootIsolate(S.main$closure);
   }
 });
 // END invoke [main].
