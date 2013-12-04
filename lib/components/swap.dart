@@ -56,7 +56,7 @@ class SwapWidget extends PolymerElement implements SwapComponent {
 
     item.classes.add(_ACTIVE_CLASS);
 
-    return Swapper.swap(_contentElement, item, effect: effect, duration: duration, effectTiming: effectTiming, hideEffect: hideEffect)
+    return Swapper.swap(items, item, effect: effect, duration: duration, effectTiming: effectTiming, hideEffect: hideEffect)
         .whenComplete(() {
           oldActiveChild.classes.remove(_DIR_CLASS_PREV);
         });

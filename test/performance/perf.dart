@@ -77,7 +77,9 @@ Future<bool> showItem(Element item, {ShowHideEffect effect, int duration, Effect
 
   item.classes.add(_activeClass);
 
-  return Swapper.swap(_contentElementField, item, effect: effect, duration: duration, effectTiming: effectTiming, hideEffect: hideEffect)
+  return Swapper.swap(_contentElementField.children, item,
+      effect: effect, duration: duration, effectTiming: effectTiming,
+      hideEffect: hideEffect)
       .whenComplete(() {
         oldActiveChild.classes.remove(_dirClassPrev);
       });

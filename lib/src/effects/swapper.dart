@@ -15,10 +15,10 @@ class Swapper {
   /**
    * [effect] is used as the [hideEffect] unless [hideEffect] is provided.
    */
-  static Future<bool> swap(Element host, Element child,
+  static Future<bool> swap(List<Element> children, Element child,
       {ShowHideEffect effect, int duration, EffectTiming effectTiming, ShowHideEffect hideEffect}) {
 
-    assert(host != null);
+    assert(children != null);
 
     if(hideEffect == null) {
       hideEffect = effect;
@@ -28,15 +28,15 @@ class Swapper {
       // hide everything
       // NOTE: all visible items will have the same animation run, which might be weird
       //       hmm...
-      return _hideEverything(host.children, hideEffect, duration, effectTiming);
+      return _hideEverything(children, hideEffect, duration, effectTiming);
     }
 
-    if(child.parent != host) {
-      throw 'host is not the parent of the provided child';
+    if(!children.contains(child)) {
+      throw new ArgumentError('child is not one of children');
     }
 
     // ensure at most one child of the host is visible before beginning
-    return _ensureOneShown(host.children)
+    return _ensureOneShown(children)
         .then((Element currentlyVisible) {
           if(currentlyVisible == null) {
             return new Future.value(false);

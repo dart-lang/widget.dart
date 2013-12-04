@@ -96,9 +96,9 @@ void _swapperTest(int childCount,
     }
 
     if(!expectedResult) {
-      expect(() => Swapper.swap(pg, toShowElement), throws);
+      expect(() => Swapper.swap(pg.children, toShowElement), throws);
     } else {
-      return Swapper.swap(pg, toShowElement)
+      return Swapper.swap(pg.children, toShowElement)
         .then((bool actualResult) {
           expect(actualResult, expectedResult);
         })
