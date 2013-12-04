@@ -1,3 +1,5 @@
+library widget.carousel;
+
 import 'dart:async';
 import 'package:polymer/polymer.dart';
 import 'package:widget/effects.dart';

@@ -1,3 +1,5 @@
+library widget.accordion;
+
 import 'dart:html';
 import 'package:polymer/polymer.dart';
 import 'package:widget/widget.dart';

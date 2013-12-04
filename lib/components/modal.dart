@@ -1,3 +1,5 @@
+library widget.modal;
+
 import 'dart:async';
 import 'dart:html';
 import 'package:polymer/polymer.dart';
