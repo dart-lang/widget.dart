@@ -20,13 +20,7 @@ void main(List<String> args) {
   // gh_pages
   //
   addTask('pages', (ctx) =>
-      branchForDir(ctx, 'master', 'example', 'gh-pages'));
-
-  //
-  // populate components into example dir
-  //
-  addTask('copy_components', (ctx) =>
-      startProcess(ctx, './bin/copy_out.sh'));
+      branchForDir(ctx, 'master', 'build', 'gh-pages'));
 
   runHop(args);
 }
