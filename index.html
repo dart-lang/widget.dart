@@ -1,19 +1,19 @@
-<!DOCTYPE html><html lang="en"><head><script src="shadow_dom.debug.js"></script>
-<script src="custom-elements.debug.js"></script>
-<script src="interop.js"></script>
+<!DOCTYPE html><html lang="en"><head><script src="script/shadow_dom.debug.js"></script>
+<script src="script/custom-elements.debug.js"></script>
+<script src="script/interop.js"></script>
 
     <meta charset="utf-8">
     <title>Dart Widgets</title>
-
-
-
-
-
-
-
+    
+    
+    
+    
+    
+    
+    
 
     <script type="application/dart" src="index.html_bootstrap.dart"></script>
-    <script src="dart.js"></script>
+    <script src="script/dart.js"></script>
 
     <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap-responsive.min.css" rel="stylesheet">
@@ -25,7 +25,7 @@
   <template>
     <content select="collapse-widget"></content>
   </template>
-
+  
 </polymer-element>
 <polymer-element name="alert-widget">
   <template>
@@ -33,7 +33,7 @@
       <content></content>
     </div>
   </template>
-
+  
 </polymer-element>
 <polymer-element name="carousel-widget">
   <template>
@@ -57,7 +57,7 @@
       <a class="right carousel-control" on-click="{{onNext}}">›</a>
     </div>
   </template>
-
+  
 </polymer-element>
 <polymer-element name="collapse-widget">
   <template>
@@ -70,7 +70,7 @@
       </div>
     </div>
   </template>
-
+  
 </polymer-element>
 <polymer-element name="dropdown-widget" apply-author-styles="">
   <template>
@@ -85,7 +85,7 @@
       <content></content>
     </div>
   </template>
-
+  
 </polymer-element>
 <polymer-element name="modal-widget">
   <template>
@@ -93,7 +93,7 @@
       <content></content>
     </div>
   </template>
-
+  
 </polymer-element>
 
 <polymer-element name="swap-widget">
@@ -130,9 +130,9 @@
       <content></content>
     </div>
   </template>
-
+  
 </polymer-element>
-
+  
 
 <polymer-element name="tabs-widget">
   <template>
@@ -166,11 +166,11 @@
 
     swap-widget > content::content > * {
       display: none;
-    }
+    }    
 
     swap-widget > content::content > .active {
       display: block;
-    }
+    }    
     </style>
     <ul class="nav nav-tabs">
       <content select="li"></content>
@@ -179,7 +179,7 @@
       <content></content>
     </swap-widget>
   </template>
-
+  
 </polymer-element>
 
     <div class="container">
@@ -187,9 +187,9 @@
         <h1 id="dart_widgets">Dart Widgets</h1>
         <p>A collection of <a href="#components">Components</a> and <a href="#effects">Effects</a>, written in <a href="http://www.dartlang.org/">Dart</a>, designed to make it easier to build rich web applications.</p>
         <div class="icons">
-          <a href="https://github.com/dart-lang/widget.dart" title="kevmoo/widget.dart"><i class="icon-github"></i></a>
+          <a href="https://github.com/dart-lang/widget.dart" title="dart-lang/widget.dart"><i class="icon-github"></i></a>
           <a href="https://twitter.com/kevmoo" rel="author" title="@kevmoo"><i class="icon-twitter"></i></a>
-          <a href="https://plus.google.com/110066012384188006594?rel=author" rel="author" title="+Kevin Moore"><i class="icon-google-plus-sign"></i></a>
+          <a href="https://plus.google.com/+KevinMoore314?rel=author" rel="author" title="+Kevin Moore"><i class="icon-google-plus-sign"></i></a>
         </div>
       </header>
       <div class="row">
