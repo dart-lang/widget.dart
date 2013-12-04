@@ -28,7 +28,7 @@ class Swapper {
       // hide everything
       // NOTE: all visible items will have the same animation run, which might be weird
       //       hmm...
-      return _hideEverything(host, hideEffect, duration, effectTiming);
+      return _hideEverything(host.children, hideEffect, duration, effectTiming);
     }
 
     if(child.parent != host) {
@@ -36,7 +36,7 @@ class Swapper {
     }
 
     // ensure at most one child of the host is visible before beginning
-    return _ensureOneShown(host)
+    return _ensureOneShown(host.children)
         .then((Element currentlyVisible) {
           if(currentlyVisible == null) {
             return new Future.value(false);
@@ -59,21 +59,20 @@ class Swapper {
         });
   }
 
-  static Future<bool> _hideEverything(Element host, ShowHideEffect effect, int duration, EffectTiming effectTiming) {
-    final futures = host.children.map((e) => ShowHide.hide(e, effect: effect, duration: duration, effectTiming: effectTiming)).toList();
+  static Future<bool> _hideEverything(List<Element> children, ShowHideEffect effect, int duration, EffectTiming effectTiming) {
+    var futures = children.map((e) => ShowHide.hide(e, effect: effect, duration: duration, effectTiming: effectTiming));
     return Future.wait(futures)
-        .then((List<ShowHideResult> successList) {
-          return successList.every((v) => v.isSuccess);
-        });
+        .then((List<ShowHideResult> successList) =>
+            successList.every((v) => v.isSuccess));
   }
 
-  static Future<Element> _ensureOneShown(Element host) {
-    assert(host != null);
-    if(host.children.length == 0) {
+  static Future<Element> _ensureOneShown(List<Element> children) {
+    assert(children != null);
+    if(children.length == 0) {
       // no elements to show
       return new Future.value(null);
-    } else if(host.children.length == 1) {
-      final child = host.children[0];
+    } else if(children.length == 1) {
+      final child = children[0];
       return ShowHide.show(child)
           .then((ShowHideResult result) {
             if(result.isSuccess) {
@@ -85,7 +84,7 @@ class Swapper {
     }
 
     // 1 - get states of all children
-    final theStates = host.children
+    final theStates = children
         .map(ShowHide.getState).toList();
 
     int shownIndex = null;
@@ -94,7 +93,7 @@ class Swapper {
         .then((List<ShowHideState> states) {
           // paranoid sanity check that at lesat the count of items
           // before and after haven't changed
-          assert(states.length == host.children.length);
+          assert(states.length == children.length);
 
           // See how many of the items are actually shown
           final showIndicies = new List<int>();
@@ -106,15 +105,15 @@ class Swapper {
 
           if(showIndicies.length == 0) {
             // show last item -> likely the visible one
-            shownIndex = host.children.length-1;
+            shownIndex = children.length-1;
 
-            return ShowHide.show(host.children[shownIndex])
+            return ShowHide.show(children[shownIndex])
                 .then((ShowHideResult r) => r.isSuccess);
           } else if(showIndicies.length > 1) {
             // if more than one is shown, hide all but the last one
             final toHide = showIndicies
                 .sublist(0, showIndicies.length - 1)
-                .map((int index) => host.children[index]).toList();
+                .map((int index) => children[index]).toList();
             shownIndex = showIndicies[showIndicies.length - 1];
             return _hideAll(toHide);
           } else {
@@ -128,16 +127,15 @@ class Swapper {
           assert(success == true || success == false);
           assert(shownIndex != null);
           if(success) {
-            return host.children[shownIndex];
+            return children[shownIndex];
           } else {
             return null;
           }
         });
   }
 
-  static Future<bool> _hideAll(List<Element> elements) {
-    final futures = elements.map((Element e) => ShowHide.hide(e)).toList();
-    return Future.wait(futures)
-        .then((List<ShowHideResult> successValues) => successValues.every((v) => v.isSuccess));
-  }
+  static Future<bool> _hideAll(List<Element> children) =>
+    Future.wait(children.map(ShowHide.hide))
+    .then((List<ShowHideResult> successValues) =>
+        successValues.every((v) => v.isSuccess));
 }
