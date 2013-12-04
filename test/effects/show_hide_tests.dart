@@ -192,6 +192,7 @@ ShowHideState _getActionResult(ShowHideAction action, ShowHideState initial) {
         default:
           throw 'boo!';
       }
+      // DARTBUG: http://code.google.com/p/dart/issues/detail?id=6563
       break;
     default:
       throw 'no clue how to party on $action';
@@ -230,8 +231,7 @@ String _getExpectedInitialCalculatedValue(String defaultTagValue, String sheetSt
         default:
           return sheetStyle;
       }
-      // DARTBUG: I think this is filed arleady...should figure out this is never
-      // hit...hmm...
+      // DARTBUG: http://code.google.com/p/dart/issues/detail?id=6563
       break;
     default:
       return inlineStyle;

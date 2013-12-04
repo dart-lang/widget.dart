@@ -104,8 +104,6 @@ class ShowHide {
         }
 
         // DARTBUG: http://code.google.com/p/dart/issues/detail?id=6563
-        // dart2js knows this break is not needed, but the analyzer hasn't
-        // caught up yet
         break;
       default:
         throw new DetailedArgumentError('action', 'Value of $action is not supported');
@@ -201,7 +199,7 @@ class ShowHide {
     assert(effectTiming != null);
     final values = _values[element];
     num fractionComplete = null;
-    
+
     switch(values.currentState) {
       case ShowHideState.HIDING:
         // no op - let the current animation finish
@@ -226,7 +224,7 @@ class ShowHide {
     if (fractionComplete == null) {
       fractionComplete = 1;
     }
-    
+
     assert(!_AnimatingValues.isAnimating(element));
     final durationMS = effect.startHide(element, desiredDuration, effectTiming, fractionComplete);
     if(durationMS > 0) {
