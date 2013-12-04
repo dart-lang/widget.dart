@@ -18,8 +18,11 @@ class CarouselWidget extends PolymerElement {
 
   static const _DURATION = 1000;
 
-  final ShowHideEffect _fromTheLeft = new SlideEffect(xStart: HorizontalAlignment.LEFT);
-  final ShowHideEffect _fromTheRight = new SlideEffect(xStart: HorizontalAlignment.RIGHT);
+  final ShowHideEffect _fromTheLeft =
+      new SlideEffect(xStart: HorizontalAlignment.LEFT);
+
+  final ShowHideEffect _fromTheRight =
+      new SlideEffect(xStart: HorizontalAlignment.RIGHT);
 
   CarouselWidget.created() : super.created();
 
@@ -31,16 +34,16 @@ class CarouselWidget extends PolymerElement {
 
   Future<bool> previous() => _moveDelta(false);
 
-  void _next(event, detail, target) {
+  void onNext(event, detail, target) {
     next();
   }
 
-  void _previous(event, detail, target) {
+  void onPrevious(event, detail, target) {
     previous();
   }
 
   SwapComponent get _swap =>
-      getShadowRoot('carousel-widget').querySelector('.carousel > swap-widget').xtag;
+      shadowRoot.querySelector('.carousel > swap-widget').xtag;
 
   Future<bool> _moveDelta(bool doNext) {
     if (_pendingAction != null) {
@@ -49,14 +52,15 @@ class CarouselWidget extends PolymerElement {
       return _pendingAction.then((_) => false);
     }
 
-    final swap = _swap;
+    var swap = _swap;
     assert(swap != null);
+
     if (swap.items.length == 0) {
       return new Future.value(false);
     }
 
     assert(doNext != null);
-    final delta = doNext ? 1 : -1;
+    var delta = doNext ? 1 : -1;
 
     ShowHideEffect showEffect, hideEffect;
     if (doNext) {
@@ -67,13 +71,12 @@ class CarouselWidget extends PolymerElement {
       hideEffect = _fromTheRight;
     }
 
-    final activeIndex = _swap.activeItemIndex;
+    var activeIndex = _swap.activeItemIndex;
 
-    final newIndex = (activeIndex + delta) % _swap.items.length;
+    var newIndex = (activeIndex + delta) % _swap.items.length;
 
-    _pendingAction = _swap.showItemAtIndex(newIndex, effect: showEffect,
-        hideEffect: hideEffect, duration: _DURATION);
-    _pendingAction.whenComplete(() { _pendingAction = null; });
-    return _pendingAction;
+    return _pendingAction = _swap.showItemAtIndex(newIndex, effect: showEffect,
+        hideEffect: hideEffect, duration: _DURATION)
+          .whenComplete(() { _pendingAction = null; });
   }
 }

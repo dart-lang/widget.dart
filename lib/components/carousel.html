@@ -1,12 +1,6 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <link rel="import" href="swap.html">
-  </head>
-  <body>
 <polymer-element name="carousel-widget">
   <template>
-    <style type='text/css' scoped>
+    <style>
       .carousel > a.carousel-control {
         cursor: pointer;
         z-index: 5;
@@ -16,11 +10,9 @@
       <swap-widget>
         <content></content>
       </swap-widget>
-      <a class="left carousel-control" on-click='_previous'>&lsaquo;</a>
-      <a class="right carousel-control" on-click='_next'>&rsaquo;</a>
+      <a class="left carousel-control" on-click='{{onPrevious}}'>&lsaquo;</a>
+      <a class="right carousel-control" on-click='{{onNext}}'>&rsaquo;</a>
     </div>
   </template>
   <script type="application/dart" src='carousel.dart'></script>
 </polymer-element>
-  </body>
-</html>
