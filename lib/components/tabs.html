@@ -29,13 +29,15 @@
       cursor: default;
     }
 
+    /* @polyfill :host > swap-widget > .content > * */
     swap-widget > content::content > * {
       display: none;
-    }    
+    }
 
+    /* @polyfill :host > swap-widget > .content > .active */
     swap-widget > content::content > .active {
       display: block;
-    }    
+    }
     </style>
     <ul class='nav nav-tabs'>
       <content select='li'></content>
