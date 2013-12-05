@@ -338,7 +338,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
     map = t1;
     for (t1 = map.length, t2 = J.getInterceptor(type), i = 0; i + 1 < t1; i += 3) {
       if (i >= t1)
-        throw H.ioore(map, i);
+        return H.ioore(map, i);
       if (t2.$eq(type, map[i]))
         return i;
     }
@@ -351,7 +351,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       return;
     t1 = $.mapTypeToInterceptor;
     if (typeof index !== "number")
-      throw index.$add();
+      return index.$add();
     return J.$index$asx(t1, index + 1);
   },
   findConstructorForNativeSubclassType: function(type, $name) {
@@ -361,7 +361,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       return;
     t1 = $.mapTypeToInterceptor;
     if (typeof index !== "number")
-      throw index.$add();
+      return index.$add();
     return J.$index$asx(t1, index + 2)[$name];
   },
   Interceptor: {
@@ -483,11 +483,12 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
     join$1: function(receiver, separator) {
       var t1, list, i, t2;
       t1 = receiver.length;
-      list = P.List_List(t1, null);
+      list = Array(t1);
+      list.fixed$length = init;
       for (i = 0; i < receiver.length; ++i) {
         t2 = H.S(receiver[i]);
         if (i >= t1)
-          throw H.ioore(list, i);
+          return H.ioore(list, i);
         list[i] = t2;
       }
       return list.join(separator);
@@ -497,7 +498,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
     },
     elementAt$1: function(receiver, index) {
       if (index >>> 0 !== index || index >= receiver.length)
-        throw H.ioore(receiver, index);
+        return H.ioore(receiver, index);
       return receiver[index];
     },
     sublist$2: function(receiver, start, end) {
@@ -807,6 +808,15 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
     $isdouble: true,
     $isnum: true
   },
+  JSPositiveInt: {
+    "": "JSInt;"
+  },
+  JSUInt32: {
+    "": "JSPositiveInt;"
+  },
+  JSUInt31: {
+    "": "JSUInt32;"
+  },
   JSString: {
     "": "String/Interceptor;",
     codeUnitAt$1: function(receiver, index) {
@@ -831,8 +841,6 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
         return;
       for (i = 0; i < t1; ++i) {
         t3 = start + i;
-        if (typeof t3 !== "number" || Math.floor(t3) !== t3)
-          H.throwExpression(new P.ArgumentError(t3));
         if (t3 < 0)
           H.throwExpression(P.RangeError$value(t3));
         if (t3 >= t2)
@@ -866,7 +874,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
     },
     startsWith$2: function(receiver, pattern, index) {
       var endIndex;
-      if (index < 0 || index > receiver.length)
+      if (index > receiver.length)
         throw H.wrapException(P.RangeError$range(index, 0, receiver.length));
       if (typeof pattern === "string") {
         endIndex = index + pattern.length;
@@ -932,8 +940,6 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       return receiver.substring(startIndex, endIndex0);
     },
     indexOf$2: function(receiver, pattern, start) {
-      if (typeof start !== "number" || Math.floor(start) !== start)
-        throw H.wrapException(new P.ArgumentError(start));
       if (start < 0 || start > receiver.length)
         throw H.wrapException(P.RangeError$range(start, 0, receiver.length));
       return receiver.indexOf(pattern, start);
@@ -947,7 +953,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       if (typeof pattern === "string") {
         t1 = pattern.length;
         if (typeof start !== "number")
-          throw start.$add();
+          return start.$add();
         t2 = receiver.length;
         if (start + t1 > t2)
           start = t2 - t1;
@@ -957,7 +963,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       i = start;
       while (true) {
         if (typeof i !== "number")
-          throw i.$ge();
+          return i.$ge();
         if (!(i >= 0))
           break;
         if (t1.matchAsPrefix$2(pattern, receiver, i) != null)
@@ -972,7 +978,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
     contains$2: function(receiver, other, startIndex) {
       if (other == null)
         H.throwExpression(new P.ArgumentError(null));
-      if (startIndex < 0 || startIndex > receiver.length)
+      if (startIndex > receiver.length)
         throw H.wrapException(P.RangeError$range(startIndex, 0, receiver.length));
       return H.stringContainsUnchecked(receiver, other, startIndex);
     },
@@ -1064,26 +1070,26 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
 ["_isolate_helper", "dart:_isolate_helper", , H, {
   _callInIsolate: function(isolate, $function) {
     var result = isolate.eval$1($function);
-    $globalState.topEventLoop.run$0();
+    init.globalState.topEventLoop.run$0();
     return result;
   },
   startRootIsolate: function(entry) {
     var t1, rootContext;
     t1 = new H._Manager(0, 0, 1, null, null, null, null, null, null, null, null, null, entry);
     t1._Manager$1(entry);
-    $globalState = t1;
-    if ($globalState.isWorker === true)
+    init.globalState = t1;
+    if (init.globalState.isWorker === true)
       return;
     rootContext = H._IsolateContext$();
-    $globalState.rootContext = rootContext;
-    $globalState.currentContext = rootContext;
+    init.globalState.rootContext = rootContext;
+    init.globalState.currentContext = rootContext;
     if (!!entry.$is_args1)
       rootContext.eval$1(new H.startRootIsolate_closure(entry));
     else if (!!entry.$is_args2)
       rootContext.eval$1(new H.startRootIsolate_closure0(entry));
     else
       rootContext.eval$1(entry);
-    $globalState.topEventLoop.run$0();
+    init.globalState.topEventLoop.run$0();
   },
   IsolateNatives_computeThisScript: function() {
     var currentScript = init.currentScript;
@@ -1117,17 +1123,17 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
     t1 = J.getInterceptor$asx(msg);
     switch (t1.$index(msg, "command")) {
       case "start":
-        $globalState.currentManagerId = t1.$index(msg, "id");
+        init.globalState.currentManagerId = t1.$index(msg, "id");
         functionName = t1.$index(msg, "functionName");
-        entryPoint = functionName == null ? $globalState.entry : init.globalFunctions[functionName];
+        entryPoint = functionName == null ? init.globalState.entry : init.globalFunctions[functionName];
         args = t1.$index(msg, "args");
         message = H._deserializeMessage(t1.$index(msg, "msg"));
         isSpawnUri = t1.$index(msg, "isSpawnUri");
         replyTo = H._deserializeMessage(t1.$index(msg, "replyTo"));
         context = H._IsolateContext$();
-        $globalState.topEventLoop.events._add$1(new H._IsolateEvent(context, new H.IsolateNatives__processWorkerMessage_closure(entryPoint, args, message, isSpawnUri, replyTo), "worker-start"));
-        $globalState.currentContext = context;
-        $globalState.topEventLoop.run$0();
+        init.globalState.topEventLoop.events._add$1(new H._IsolateEvent(context, new H.IsolateNatives__processWorkerMessage_closure(entryPoint, args, message, isSpawnUri, replyTo), "worker-start"));
+        init.globalState.currentContext = context;
+        init.globalState.topEventLoop.run$0();
         break;
       case "spawn-worker":
         t2 = t1.$index(msg, "functionName");
@@ -1140,33 +1146,33 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
           uri = $.get$IsolateNatives_thisScript();
         worker = new Worker(uri);
         worker.onmessage = function(e) { H.IsolateNatives__processWorkerMessage$closure.call$2(worker, e); };
-        t6 = $globalState;
+        t6 = init.globalState;
         workerId = t6.nextManagerId;
         t6.nextManagerId = workerId + 1;
         t6 = $.get$IsolateNatives_workerIds();
         t6.$indexSet(t6, worker, workerId);
-        t6 = $globalState.managers;
+        t6 = init.globalState.managers;
         t6.$indexSet(t6, workerId, worker);
         worker.postMessage(H._serializeMessage(H.fillLiteralMap(["command", "start", "id", workerId, "replyTo", H._serializeMessage(t1), "args", t3, "msg", H._serializeMessage(t4), "isSpawnUri", t5, "functionName", t2], P.LinkedHashMap_LinkedHashMap(null, null, null, null, null))));
         break;
       case "message":
         if (t1.$index(msg, "port") != null)
           J.send$1$x(t1.$index(msg, "port"), t1.$index(msg, "msg"));
-        $globalState.topEventLoop.run$0();
+        init.globalState.topEventLoop.run$0();
         break;
       case "close":
-        t1 = $globalState.managers;
+        t1 = init.globalState.managers;
         t2 = $.get$IsolateNatives_workerIds();
         t1.remove$1(t1, t2.$index(t2, sender));
         sender.terminate();
-        $globalState.topEventLoop.run$0();
+        init.globalState.topEventLoop.run$0();
         break;
       case "log":
         H.IsolateNatives__log(t1.$index(msg, "msg"));
         break;
       case "print":
-        if ($globalState.isWorker === true) {
-          t1 = $globalState.mainManager;
+        if (init.globalState.isWorker === true) {
+          t1 = init.globalState.mainManager;
           t2 = H._serializeMessage(H.fillLiteralMap(["command", "print", "msg", msg], P.LinkedHashMap_LinkedHashMap(null, null, null, null, null)));
           t1.toString;
           self.postMessage(t2);
@@ -1180,8 +1186,8 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
   },
   IsolateNatives__log: function(msg) {
     var trace, t1, t2, exception;
-    if ($globalState.isWorker === true) {
-      t1 = $globalState.mainManager;
+    if (init.globalState.isWorker === true) {
+      t1 = init.globalState.mainManager;
       t2 = H._serializeMessage(H.fillLiteralMap(["command", "log", "msg", msg], P.LinkedHashMap_LinkedHashMap(null, null, null, null, null)));
       t1.toString;
       self.postMessage(t2);
@@ -1203,7 +1209,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
   },
   _serializeMessage: function(message) {
     var t1;
-    if ($globalState.supportsWorkers === true) {
+    if (init.globalState.supportsWorkers === true) {
       t1 = new H._JsSerializer(0, new H._MessageTraverserVisitedMap());
       t1._visited = new H._JsVisitedMap(null);
       return t1.traverse$1(message);
@@ -1214,7 +1220,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
     }
   },
   _deserializeMessage: function(message) {
-    if ($globalState.supportsWorkers === true)
+    if (init.globalState.supportsWorkers === true)
       return new H._JsDeserializer(null).deserialize$1(message);
     else
       return message;
@@ -1277,14 +1283,14 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
     "": "Object;id>,ports,isolateStatics<",
     eval$1: function(code) {
       var old, result;
-      old = $globalState.currentContext;
-      $globalState.currentContext = this;
+      old = init.globalState.currentContext;
+      init.globalState.currentContext = this;
       $ = this.isolateStatics;
       result = null;
       try {
         result = code.call$0();
       } finally {
-        $globalState.currentContext = old;
+        init.globalState.currentContext = old;
         if (old != null)
           $ = old.get$isolateStatics();
       }
@@ -1300,12 +1306,12 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
         throw H.wrapException(P.Exception_Exception("Registry: ports must be registered only once."));
       t1 = this.ports;
       t1.$indexSet(t1, portId, port);
-      t1 = $globalState.isolates;
+      t1 = init.globalState.isolates;
       t1.$indexSet(t1, this.id, this);
     },
     _IsolateContext$0: function() {
       var t1, t2;
-      t1 = $globalState;
+      t1 = init.globalState;
       t2 = t1.nextIsolateId;
       t1.nextIsolateId = t2 + 1;
       this.id = t2;
@@ -1331,9 +1337,9 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       var $event, t1, t2;
       $event = this.dequeue$0();
       if ($event == null) {
-        if ($globalState.rootContext != null && $globalState.isolates.containsKey$1($globalState.rootContext.id) && $globalState.fromCommandLine === true && $globalState.rootContext.ports._collection$_length === 0)
+        if (init.globalState.rootContext != null && init.globalState.isolates.containsKey$1(init.globalState.rootContext.id) && init.globalState.fromCommandLine === true && init.globalState.rootContext.ports._collection$_length === 0)
           H.throwExpression(P.Exception_Exception("Program exited with open ReceivePorts."));
-        t1 = $globalState;
+        t1 = init.globalState;
         if (t1.isWorker === true && t1.isolates._collection$_length === 0 && t1.topEventLoop.activeTimerCount === 0) {
           t1 = t1.mainManager;
           t2 = H._serializeMessage(H.fillLiteralMap(["command", "close"], P.LinkedHashMap_LinkedHashMap(null, null, null, null, null)));
@@ -1354,7 +1360,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
     },
     run$0: function() {
       var e, trace, exception, t1, t2;
-      if ($globalState.isWorker !== true)
+      if (init.globalState.isWorker !== true)
         this._runHelper$0();
       else
         try {
@@ -1363,7 +1369,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
           t1 = H.unwrapException(exception);
           e = t1;
           trace = new H._StackTrace(exception, null);
-          t1 = $globalState.mainManager;
+          t1 = init.globalState.mainManager;
           t2 = H._serializeMessage(H.fillLiteralMap(["command", "error", "msg", H.S(e) + "\n" + H.S(trace)], P.LinkedHashMap_LinkedHashMap(null, null, null, null, null)));
           t1.toString;
           self.postMessage(t2);
@@ -1399,12 +1405,12 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       t1 = this.entryPoint_0;
       t2 = this.args_1;
       t3 = this.message_2;
-      t4 = $globalState.currentContext.id;
+      t4 = init.globalState.currentContext.id;
       $.Primitives_mirrorFunctionCacheName = $.Primitives_mirrorFunctionCacheName + ("_" + t4);
       $.Primitives_mirrorInvokeCacheName = $.Primitives_mirrorInvokeCacheName + ("_" + t4);
       t4 = P.ReceivePort_ReceivePort();
       $.lazyPort = t4;
-      J.send$1$x(this.replyTo_4, ["spawned", new H._NativeJsSendPort(t4._rawPort, $globalState.currentContext.id)]);
+      J.send$1$x(this.replyTo_4, ["spawned", new H._NativeJsSendPort(t4._rawPort, init.globalState.currentContext.id)]);
       if (this.isSpawnUri_3 !== true)
         t1.call$1(t3);
       else {
@@ -1450,7 +1456,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
     call$0: function() {
       var t1, t2, t3, t4, isolate, shouldSerialize, msg;
       t1 = {};
-      t2 = $globalState.isolates;
+      t2 = init.globalState.isolates;
       t3 = this.this_1;
       t4 = t3._isolateId;
       isolate = t2.$index(t2, t4);
@@ -1458,12 +1464,12 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
         return;
       if (t3._receivePort.get$_isClosed())
         return;
-      shouldSerialize = $globalState.currentContext != null && $globalState.currentContext.id !== t4;
+      shouldSerialize = init.globalState.currentContext != null && init.globalState.currentContext.id !== t4;
       msg = this.message_2;
       t1.msg_0 = msg;
       if (shouldSerialize)
         t1.msg_0 = H._serializeMessage(msg);
-      t2 = $globalState.topEventLoop;
+      t2 = init.globalState.topEventLoop;
       t4 = "receive " + H.S(msg);
       t2.events._add$1(new H._IsolateEvent(isolate, new H._NativeJsSendPort_send__closure(t1, t3, shouldSerialize), t4));
     },
@@ -1507,7 +1513,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       t2 = J.$shl$n(this._isolateId, 8);
       t3 = this._receivePortId;
       if (typeof t3 !== "number")
-        throw H.iae(t3);
+        return H.iae(t3);
       return (t1 ^ t2 ^ t3) >>> 0;
     },
     "+hashCode": 0,
@@ -1520,11 +1526,11 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       var t1, workerMessage, t2, manager;
       t1 = this.this_0;
       workerMessage = H._serializeMessage(H.fillLiteralMap(["command", "message", "port", t1, "msg", this.message_1], P.LinkedHashMap_LinkedHashMap(null, null, null, null, null)));
-      if ($globalState.isWorker === true) {
-        $globalState.mainManager.toString;
+      if (init.globalState.isWorker === true) {
+        init.globalState.mainManager.toString;
         self.postMessage(workerMessage);
       } else {
-        t2 = $globalState.managers;
+        t2 = init.globalState.managers;
         manager = t2.$index(t2, t1._workerId);
         if (manager != null)
           manager.postMessage(workerMessage);
@@ -1545,11 +1551,11 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
         return;
       this._isClosed = true;
       this._handler = null;
-      t1 = $globalState.currentContext;
+      t1 = init.globalState.currentContext;
       t2 = t1.ports;
       t2.remove$1(t2, this._id);
       if (t1.ports._collection$_length === 0) {
-        t2 = $globalState.isolates;
+        t2 = init.globalState.isolates;
         t2.remove$1(t2, t1.id);
       }
     },
@@ -1635,7 +1641,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
     "": "_Serializer;_nextFreeRefId,_visited",
     visitSendPort$1: function(x) {
       if (!!x.$is_NativeJsSendPort)
-        return ["sendport", $globalState.currentManagerId, x._isolateId, x._receivePort.get$_id()];
+        return ["sendport", init.globalState.currentManagerId, x._isolateId, x._receivePort.get$_id()];
       if (!!x.$is_WorkerSendPort)
         return ["sendport", x._workerId, x._isolateId, x._receivePortId];
       throw H.wrapException("Illegal underlying port " + H.S(x));
@@ -1659,8 +1665,8 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       managerId = t1.$index(list, 1);
       isolateId = t1.$index(list, 2);
       receivePortId = t1.$index(list, 3);
-      if (J.$eq(managerId, $globalState.currentManagerId)) {
-        t1 = $globalState.isolates;
+      if (J.$eq(managerId, init.globalState.currentManagerId)) {
+        t1 = init.globalState.isolates;
         isolate = t1.$index(t1, isolateId);
         if (isolate == null)
           return;
@@ -1691,7 +1697,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       for ($length = this.tagged.length, i = 0; i < $length; ++i) {
         t1 = this.tagged;
         if (i >= t1.length)
-          throw H.ioore(t1, i);
+          return H.ioore(t1, i);
         t1[i].__MessageTraverser__attached_info__ = null;
       }
       this.tagged = null;
@@ -1709,6 +1715,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
     reset$0: function(_) {
     },
     cleanup$0: function() {
+      return;
     }
   },
   _MessageTraverser: {
@@ -1760,17 +1767,16 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
         return copy;
       t1 = J.getInterceptor$asx(list);
       len = t1.get$length(list);
-      copy = P.List_List(len, null);
+      if (typeof len !== "number")
+        return H.iae(len);
+      copy = Array(len);
+      copy.fixed$length = init;
       t2 = this._visited;
       t2.$indexSet(t2, list, copy);
-      if (typeof len !== "number")
-        throw H.iae(len);
-      t2 = copy.length;
-      i = 0;
-      for (; i < len; ++i) {
+      for (t2 = copy.length, i = 0; i < len; ++i) {
         t3 = this._dispatch$1(t1.$index(list, i));
         if (i >= t2)
-          throw H.ioore(copy, i);
+          return H.ioore(copy, i);
         copy[i] = t3;
       }
       return copy;
@@ -1837,12 +1843,12 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       result = P.List_List(null, null);
       C.JSArray_methods.set$length(result, len);
       if (typeof len !== "number")
-        throw H.iae(len);
+        return H.iae(len);
       i = 0;
       for (; i < len; ++i) {
         t2 = this._dispatch$1(t1.$index(list, i));
         if (i >= result.length)
-          throw H.ioore(result, i);
+          return H.ioore(result, i);
         result[i] = t2;
       }
       return result;
@@ -1886,7 +1892,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       t1 = J.getInterceptor$asx(dartList);
       len = t1.get$length(dartList);
       if (typeof len !== "number")
-        throw H.iae(len);
+        return H.iae(len);
       i = 0;
       for (; i < len; ++i)
         t1.$indexSet(dartList, i, this._deserializeHelper$1(t1.$index(dartList, i)));
@@ -1904,7 +1910,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       t1 = J.getInterceptor$asx(keys);
       len = t1.get$length(keys);
       if (typeof len !== "number")
-        throw H.iae(len);
+        return H.iae(len);
       t2 = J.getInterceptor$asx(values);
       i = 0;
       for (; i < len; ++i)
@@ -1926,7 +1932,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
         t2 = this._handle;
         if (t2 == null)
           return;
-        t3 = $globalState.topEventLoop;
+        t3 = init.globalState.topEventLoop;
         t3.activeTimerCount = t3.activeTimerCount - 1;
         if (this._once)
           t1.clearTimeout(t2);
@@ -1939,19 +1945,19 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
     TimerImpl$2: function(milliseconds, callback) {
       var t1, t2;
       if (milliseconds === 0)
-        t1 = $.get$globalThis().setTimeout == null || $globalState.isWorker === true;
+        t1 = $.get$globalThis().setTimeout == null || init.globalState.isWorker === true;
       else
         t1 = false;
       if (t1) {
         this._handle = 1;
-        t1 = $globalState.topEventLoop;
-        t2 = $globalState.currentContext;
+        t1 = init.globalState.topEventLoop;
+        t2 = init.globalState.currentContext;
         t1.events._add$1(new H._IsolateEvent(t2, new H.TimerImpl_internalCallback(this, callback), "timer"));
         this._inEventLoop = true;
       } else {
         t1 = $.get$globalThis();
         if (t1.setTimeout != null) {
-          t2 = $globalState.topEventLoop;
+          t2 = init.globalState.topEventLoop;
           t2.activeTimerCount = t2.activeTimerCount + 1;
           this._handle = t1.setTimeout(H.convertDartClosureToJS(new H.TimerImpl_internalCallback0(this, callback), 0), milliseconds);
         } else
@@ -1978,7 +1984,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
     "": "Closure;this_2,callback_3",
     call$0: function() {
       this.this_2._handle = null;
-      var t1 = $globalState.topEventLoop;
+      var t1 = init.globalState.topEventLoop;
       t1.activeTimerCount = t1.activeTimerCount - 1;
       this.callback_3.call$0();
     },
@@ -2041,11 +2047,11 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       if (match != null) {
         t1 = match.length;
         if (2 >= t1)
-          throw H.ioore(match, 2);
+          return H.ioore(match, 2);
         if (match[2] != null)
           return parseInt(source, 16);
         if (3 >= t1)
-          throw H.ioore(match, 3);
+          return H.ioore(match, 3);
         if (match[3] != null)
           return parseInt(source, 10);
         return handleError.call$1(source);
@@ -2059,7 +2065,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       if (match != null) {
         if (radix === 10) {
           if (3 >= match.length)
-            throw H.ioore(match, 3);
+            return H.ioore(match, 3);
           t1 = match[3] != null;
         } else
           t1 = false;
@@ -2067,21 +2073,21 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
           return parseInt(source, 10);
         if (!(radix < 10)) {
           if (3 >= match.length)
-            throw H.ioore(match, 3);
+            return H.ioore(match, 3);
           t1 = match[3] == null;
         } else
           t1 = true;
         if (t1) {
           maxCharCode = radix <= 10 ? 48 + radix - 1 : 97 + radix - 10 - 1;
           if (1 >= match.length)
-            throw H.ioore(match, 1);
+            return H.ioore(match, 1);
           digitsPart = match[1];
           t1 = J.getInterceptor$asx(digitsPart);
           i = 0;
           while (true) {
             t2 = t1.get$length(digitsPart);
             if (typeof t2 !== "number")
-              throw H.iae(t2);
+              return H.iae(t2);
             if (!(i < t2))
               break;
             t1.codeUnitAt$1(digitsPart, 0);
@@ -2115,7 +2121,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
   },
   Primitives_objectTypeName: function(object) {
     var $name, decompiled, t1;
-    $name = C.JS_CONST_86y(J.getInterceptor(object));
+    $name = C.JS_CONST_IX5(J.getInterceptor(object));
     if ($name === "Object") {
       decompiled = String(object.constructor).match(/^\s*function\s*(\S*)\s*\(/)[1];
       if (typeof decompiled === "string")
@@ -2239,7 +2245,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       t3 = J.getInterceptor$asx(listOfNamedArguments);
       t4 = t3.get$length(listOfNamedArguments);
       if (typeof t4 !== "number")
-        throw H.iae(t4);
+        return H.iae(t4);
       t1.argumentCount_0 = t2 + t4;
       t3.forEach$1(listOfNamedArguments, new H.Primitives_applyFunction_closure0(buffer, $arguments, allNamedArguments));
     } else if (namedArguments != null && !namedArguments.get$isEmpty(namedArguments))
@@ -2449,7 +2455,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
     $function = closure.$identity;
     if (!!$function)
       return $function;
-    $function = (function(closure, arity, context, invoke) {  return function(a1, a2, a3, a4) {     return invoke(closure, context, arity, a1, a2, a3, a4);  };})(closure,arity,$globalState.currentContext,H.invokeClosure$closure.call$7);
+    $function = (function(closure, arity, context, invoke) {  return function(a1, a2, a3, a4) {     return invoke(closure, context, arity, a1, a2, a3, a4);  };})(closure,arity,init.globalState.currentContext,H.invokeClosure$closure.call$7);
     closure.$identity = $function;
     return $function;
   },
@@ -2729,8 +2735,8 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
         if (!(H.isSubtype(t1, t2) || H.isSubtype(t2, t1)))
           return false;
       }
-      for (sPos = 0; tPos < tOptionalParametersLen; ++sPos, ++tPos) {
-        t1 = tOptionalParameterTypes[sPos];
+      for (tPos = 0; tPos < tOptionalParametersLen; ++sPos, ++tPos) {
+        t1 = sOptionalParameterTypes[sPos];
         t2 = tOptionalParameterTypes[tPos];
         if (!(H.isSubtype(t1, t2) || H.isSubtype(t2, t1)))
           return false;
@@ -2864,7 +2870,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
   initHooks: function() {
     var hooks, transformers, i, transformer, getTag, getUnknownTag, prototypeForTag;
     hooks = C.JS_CONST_TtD();
-    hooks = H.applyHooksTransformer(C.JS_CONST_0, H.applyHooksTransformer(C.JS_CONST_Fs4, H.applyHooksTransformer(C.JS_CONST_Fs4, H.applyHooksTransformer(C.JS_CONST_rD3, H.applyHooksTransformer(C.JS_CONST_6qb, H.applyHooksTransformer(C.JS_CONST_Cbr(C.JS_CONST_86y), hooks))))));
+    hooks = H.applyHooksTransformer(C.JS_CONST_0, H.applyHooksTransformer(C.JS_CONST_rr7, H.applyHooksTransformer(C.JS_CONST_Fs4, H.applyHooksTransformer(C.JS_CONST_Fs4, H.applyHooksTransformer(C.JS_CONST_gkc, H.applyHooksTransformer(C.JS_CONST_U4w, H.applyHooksTransformer(C.JS_CONST_QJm(C.JS_CONST_IX5), hooks)))))));
     if (typeof dartNativeDispatchHooksTransformer != "undefined") {
       transformers = dartNativeDispatchHooksTransformer;
       if (typeof transformers == "function")
@@ -2984,9 +2990,6 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
     remove$1: function(_, key) {
       return this._throwUnmodifiable$0();
     },
-    addAll$1: function(_, other) {
-      return this._throwUnmodifiable$0();
-    },
     $isMap: true
   },
   ConstantStringMap: {
@@ -3082,7 +3085,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       if (unmangledName != null) {
         t1 = J.split$1$s(unmangledName, ":");
         if (0 >= t1.length)
-          throw H.ioore(t1, 0);
+          return H.ioore(t1, 0);
         $name = t1[0];
       }
       t1 = new H.Symbol0($name);
@@ -3106,7 +3109,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       list = [];
       for (index = 0; index < argumentCount; ++index) {
         if (index >= t1.length)
-          throw H.ioore(t1, index);
+          return H.ioore(t1, index);
         list.push(t1[index]);
       }
       list.immutable$list = true;
@@ -3132,11 +3135,11 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       map = P.LinkedHashMap_LinkedHashMap(null, null, null, P.Symbol, null);
       for (i = 0; i < namedArgumentCount; ++i) {
         if (i >= t1.length)
-          throw H.ioore(t1, i);
+          return H.ioore(t1, i);
         t3 = t1[i];
         t4 = namedArgumentsStartIndex + i;
         if (t4 < 0 || t4 >= t2.length)
-          throw H.ioore(t2, t4);
+          return H.ioore(t2, t4);
         map.$indexSet(map, new H.Symbol0(t3), t2[t4]);
       }
       return map;
@@ -3585,7 +3588,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       t1 = match.length;
       t2 = t1 - 1;
       if (t2 < 0)
-        throw H.ioore(match, t2);
+        return H.ioore(match, t2);
       if (match[t2] != null)
         return;
       J.set$length$asx(match, t2);
@@ -3596,7 +3599,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       if (start >= 0) {
         t1 = J.get$length$asx(string);
         if (typeof t1 !== "number")
-          throw H.iae(t1);
+          return H.iae(t1);
         t1 = start > t1;
       } else
         t1 = true;
@@ -3625,7 +3628,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
     $index: function(_, index) {
       var t1 = this._match;
       if (index >>> 0 !== index || index >= t1.length)
-        throw H.ioore(t1, index);
+        return H.ioore(t1, index);
       return t1[index];
     },
     "+[]:1:0": 0,
@@ -3665,10 +3668,10 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
         t1 = t1._match;
         t2 = t1.index;
         if (0 >= t1.length)
-          throw H.ioore(t1, 0);
+          return H.ioore(t1, 0);
         t1 = J.get$length$asx(t1[0]);
         if (typeof t1 !== "number")
-          throw H.iae(t1);
+          return H.iae(t1);
         index = t2 + t1;
         if (this.__js_helper$_current._match.index === index)
           ++index;
@@ -3755,7 +3758,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
     if (matches != null) {
       t1 = matches._match;
       if (1 >= t1.length)
-        throw H.ioore(t1, 1);
+        return H.ioore(t1, 1);
       t1 = "#" + H.S(t1[1]);
       element = document.querySelector(t1);
       if (element != null)
@@ -3882,13 +3885,13 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
     if (t1.$lt(srcStart, dstStart))
       for (i = J.$sub$n(t1.$add(srcStart, count), 1), j = J.$sub$n(J.$add$ns(dstStart, count), 1); J.$ge$n(i, srcStart); --i, j = J.$sub$n(j, 1)) {
         if (i >>> 0 !== i || i >= src.length)
-          throw H.ioore(src, i);
+          return H.ioore(src, i);
         C.JSArray_methods.$indexSet(dst, j, src[i]);
       }
     else
       for (j = dstStart, i = srcStart; J.$lt$n(i, t1.$add(srcStart, count)); ++i, j = J.$add$ns(j, 1)) {
         if (i >>> 0 !== i || i >= src.length)
-          throw H.ioore(src, i);
+          return H.ioore(src, i);
         C.JSArray_methods.$indexSet(dst, j, src[i]);
       }
   },
@@ -3899,8 +3902,8 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
     if (startIndex < 0)
       startIndex = 0;
     for (i = startIndex; i < endIndex; ++i) {
-      if (i >>> 0 !== i || i >= a.length)
-        throw H.ioore(a, i);
+      if (i < 0 || i >= a.length)
+        return H.ioore(a, i);
       if (J.$eq(a[i], element))
         return i;
     }
@@ -3909,7 +3912,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
   Arrays_lastIndexOf: function(a, element, startIndex) {
     var t1, i;
     if (typeof startIndex !== "number")
-      throw startIndex.$lt();
+      return startIndex.$lt();
     if (startIndex < 0)
       return -1;
     t1 = a.length;
@@ -3917,7 +3920,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       startIndex = t1 - 1;
     for (i = startIndex; i >= 0; --i) {
       if (i >= a.length)
-        throw H.ioore(a, i);
+        return H.ioore(a, i);
       if (J.$eq(a[i], element))
         return i;
     }
@@ -3955,7 +3958,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
     } finally {
       t1 = $.get$IterableMixinWorkaround__toStringList();
       if (0 >= t1.length)
-        throw H.ioore(t1, 0);
+        return H.ioore(t1, 0);
       t1.pop();
     }
     return result.get$_contents();
@@ -3972,7 +3975,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
     var $length, t1;
     H.IterableMixinWorkaround__rangeCheck(list, start, end);
     if (typeof start !== "number")
-      throw H.iae(start);
+      return H.iae(start);
     $length = end - start;
     if ($length === 0)
       return;
@@ -4011,7 +4014,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       var $length, i;
       $length = this.get$length(this);
       if (typeof $length !== "number")
-        throw H.iae($length);
+        return H.iae($length);
       i = 0;
       for (; i < $length; ++i) {
         action.call$1(this.elementAt$1(this, i));
@@ -4032,7 +4035,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       var $length, i;
       $length = this.get$length(this);
       if (typeof $length !== "number")
-        throw H.iae($length);
+        return H.iae($length);
       i = 0;
       for (; i < $length; ++i) {
         if (J.$eq(this.elementAt$1(this, i), element))
@@ -4046,7 +4049,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       var $length, i;
       $length = this.get$length(this);
       if (typeof $length !== "number")
-        throw H.iae($length);
+        return H.iae($length);
       i = 0;
       for (; i < $length; ++i) {
         if (test.call$1(this.elementAt$1(this, i)) === true)
@@ -4068,7 +4071,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
           throw H.wrapException(P.ConcurrentModificationError$(this));
         buffer = P.StringBuffer$(first);
         if (typeof $length !== "number")
-          throw H.iae($length);
+          return H.iae($length);
         i = 1;
         for (; i < $length; ++i) {
           buffer._contents = buffer._contents + separator;
@@ -4082,7 +4085,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       } else {
         buffer = P.StringBuffer$("");
         if (typeof $length !== "number")
-          throw H.iae($length);
+          return H.iae($length);
         i = 0;
         for (; i < $length; ++i) {
           str = this.elementAt$1(this, i);
@@ -4106,7 +4109,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       var $length, value, i;
       $length = this.get$length(this);
       if (typeof $length !== "number")
-        throw H.iae($length);
+        return H.iae($length);
       value = initialValue;
       i = 0;
       for (; i < $length; ++i) {
@@ -4120,22 +4123,28 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       return H.SubListIterable$(this, count, null, null);
     },
     toList$1$growable: function(_, growable) {
-      var result, i, t1;
+      var result, t1, i;
       if (growable) {
         result = P.List_List(null, H.getRuntimeTypeArgument(this, "ListIterable", 0));
         C.JSArray_methods.set$length(result, this.get$length(this));
-      } else
-        result = P.List_List(this.get$length(this), H.getRuntimeTypeArgument(this, "ListIterable", 0));
+      } else {
+        t1 = this.get$length(this);
+        if (typeof t1 !== "number")
+          return H.iae(t1);
+        result = Array(t1);
+        result.fixed$length = init;
+        H.setRuntimeTypeInfo(result, [H.getRuntimeTypeArgument(this, "ListIterable", 0)]);
+      }
       i = 0;
       while (true) {
         t1 = this.get$length(this);
         if (typeof t1 !== "number")
-          throw H.iae(t1);
+          return H.iae(t1);
         if (!(i < t1))
           break;
         t1 = this.elementAt$1(this, i);
         if (i >= result.length)
-          throw H.ioore(result, i);
+          return H.ioore(result, i);
         result[i] = t1;
         ++i;
       }
@@ -4185,8 +4194,6 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       return J.elementAt$1$ax(this._iterable, realIndex);
     },
     skip$1: function(_, count) {
-      if (count < 0)
-        throw H.wrapException(new P.RangeError("value " + count));
       return H.SubListIterable$(this._iterable, J.$add$ns(this._dev$_start, count), this._endOrLength, null);
     },
     take$1: function(_, count) {
@@ -4242,7 +4249,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
         throw H.wrapException(P.ConcurrentModificationError$(t1));
       t3 = this._index;
       if (typeof $length !== "number")
-        throw H.iae($length);
+        return H.iae($length);
       if (t3 >= $length) {
         this._current = null;
         return false;
@@ -4412,8 +4419,6 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
   SkipIterable: {
     "": "IterableBase;_iterable,_skipCount",
     skip$1: function(_, n) {
-      if (n < 0)
-        throw H.wrapException(new P.RangeError("value " + n));
       return H.SkipIterable_SkipIterable(this._iterable, this._skipCount + n, H.getTypeArgumentByIndex(this, 0));
     },
     get$iterator: function(_) {
@@ -4423,8 +4428,6 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       return t1;
     },
     SkipIterable$_$2: function(_iterable, _skipCount, $E) {
-      if (this._skipCount < 0)
-        throw H.wrapException(P.RangeError$(this._skipCount));
     },
     $asIterableBase: null,
     $asIterable: null,
@@ -4493,9 +4496,6 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
     add$1: function(receiver, value) {
       throw H.wrapException(P.UnsupportedError$("Cannot add to a fixed-length list"));
     },
-    addAll$1: function(receiver, iterable) {
-      throw H.wrapException(P.UnsupportedError$("Cannot add to a fixed-length list"));
-    },
     remove$1: function(receiver, element) {
       throw H.wrapException(P.UnsupportedError$("Cannot remove from a fixed-length list"));
     }
@@ -4511,9 +4511,6 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
     },
     "+length=": 0,
     add$1: function(_, value) {
-      throw H.wrapException(P.UnsupportedError$("Cannot add to an unmodifiable list"));
-    },
-    addAll$1: function(_, iterable) {
       throw H.wrapException(P.UnsupportedError$("Cannot add to an unmodifiable list"));
     },
     remove$1: function(_, element) {
@@ -4607,10 +4604,12 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
     var t1, unmangledName;
     t1 = $.get$mangledGlobalNames();
     unmangledName = t1.$index(t1, mangledName);
+    if (J.$eq(mangledName, "dynamic"))
+      return $.get$JsMirrorSystem__dynamicType();
     return H.reflectClassByName(H.s(unmangledName == null ? mangledName : unmangledName), mangledName);
   },
   reflectClassByName: function(symbol, mangledName) {
-    var t1, mirror, typeArgIndex, t2, constructorOrInterceptor, index, $constructor, descriptor, fields, fieldsMetadata, mixins;
+    var t1, mirror, typeArgIndex, t2, constructorOrInterceptor, index, $constructor, descriptor, fields, fieldsMetadata, mixins, classMirror, typeVariables, typeArguments, i;
     t1 = $.classMirrors;
     if (t1 == null) {
       t1 = H.JsCache_allocate();
@@ -4622,7 +4621,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
     t1 = J.getInterceptor$asx(mangledName);
     typeArgIndex = t1.indexOf$1(mangledName, "<");
     if (typeArgIndex !== -1) {
-      t2 = H.reflectClassByMangledName(t1.substring$2(mangledName, 0, typeArgIndex));
+      t2 = H.reflectClassByMangledName(t1.substring$2(mangledName, 0, typeArgIndex)).get$originalDeclaration();
       mirror = new H.JsTypeBoundClassMirror(t2, t1.substring$2(mangledName, typeArgIndex + 1, J.$sub$n(t1.get$length(mangledName), 1)), null, null, null, null, null, null, null, null, null, null, null, t2.get$simpleName());
       $.classMirrors[mangledName] = mirror;
       return mirror;
@@ -4658,14 +4657,26 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
     }
     t1 = J.split$1$s(fields, ";");
     if (0 >= t1.length)
-      throw H.ioore(t1, 0);
+      return H.ioore(t1, 0);
     mixins = J.split$1$s(t1[0], "+");
     if (mixins.length > 1) {
       t1 = $.get$mangledGlobalNames();
       t1 = t1.$index(t1, mangledName) == null;
     } else
       t1 = false;
-    mirror = t1 ? H.reflectMixinApplication(mixins, mangledName) : new H.JsClassMirror(mangledName, constructorOrInterceptor, fields, fieldsMetadata, H.JsCache_allocate(), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, symbol);
+    if (t1)
+      mirror = H.reflectMixinApplication(mixins, mangledName);
+    else {
+      classMirror = new H.JsClassMirror(mangledName, constructorOrInterceptor, fields, fieldsMetadata, H.JsCache_allocate(), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, symbol);
+      typeVariables = $constructor.prototype["<>"];
+      if (typeVariables == null || typeVariables.length === 0)
+        mirror = classMirror;
+      else {
+        for (t1 = typeVariables.length, typeArguments = "dynamic", i = 1; i < t1; ++i)
+          typeArguments += ",dynamic";
+        mirror = new H.JsTypeBoundClassMirror(classMirror, typeArguments, null, null, null, null, null, null, null, null, null, null, null, classMirror.simpleName);
+      }
+    }
     $.classMirrors[mangledName] = mirror;
     return mirror;
   },
@@ -4710,14 +4721,10 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
     return result;
   },
   reflectMixinApplication: function(mixinNames, mangledName) {
-    var mixins, t1, mangledName0, t2, unmangledName, it, superclass;
+    var mixins, t1, it, superclass;
     mixins = [];
-    for (t1 = new H.ListIterator(mixinNames, mixinNames.length, 0, null), H.setRuntimeTypeInfo(t1, [H.getTypeArgumentByIndex(mixinNames, 0)]); t1.moveNext$0();) {
-      mangledName0 = t1._current;
-      t2 = $.get$mangledGlobalNames();
-      unmangledName = t2.$index(t2, mangledName0);
-      mixins.push(H.reflectClassByName(H.s(unmangledName == null ? mangledName0 : unmangledName), mangledName0));
-    }
+    for (t1 = new H.ListIterator(mixinNames, mixinNames.length, 0, null), H.setRuntimeTypeInfo(t1, [H.getTypeArgumentByIndex(mixinNames, 0)]); t1.moveNext$0();)
+      mixins.push(H.reflectClassByMangledName(t1._current));
     it = new H.ListIterator(mixins, mixins.length, 0, null);
     H.setRuntimeTypeInfo(it, [H.getTypeArgumentByIndex(mixins, 0)]);
     it.moveNext$0();
@@ -4733,7 +4740,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
     while (true) {
       t2 = t1.get$length(typeVariables);
       if (typeof t2 !== "number")
-        throw H.iae(t2);
+        return H.iae(t2);
       if (!(i < t2))
         break;
       if (J.$eq(t1.$index(typeVariables, i).get$simpleName(), H.s($name)))
@@ -4763,7 +4770,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       else if (t2.get$isOriginalDeclaration())
         if (typeof type === "number" && Math.floor(type) === type) {
           typeVariable = init.metadata[type];
-          typeVariables = t2.get$typeVariables();
+          typeVariables = t1.ownerClass_0.get$typeVariables();
           return J.$index$asx(typeVariables, H.findTypeVariableIndex(typeVariables, J.get$name$x(typeVariable)));
         } else
           representation = H.runtimeTypeToString(type, null);
@@ -4812,7 +4819,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       if (t2) {
         fieldNumber0 = fieldNumber + 1;
         if (fieldNumber >= fieldsMetadata.length)
-          throw H.ioore(fieldsMetadata, fieldNumber);
+          return H.ioore(fieldsMetadata, fieldNumber);
         metadata = fieldsMetadata[fieldNumber];
         fieldNumber = fieldNumber0;
       } else
@@ -4987,11 +4994,20 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       if (other == null)
         return false;
       t1 = J.getInterceptor(other);
-      return typeof other === "object" && other !== null && !!t1.$isJsTypeVariableMirror && J.$eq(this.simpleName, other.simpleName) && J.$eq(this.owner, other.owner);
+      if (typeof other === "object" && other !== null && !!t1.$isJsTypeVariableMirror)
+        if (J.$eq(this.simpleName, other.simpleName)) {
+          t1 = this.owner;
+          t1 = t1.$eq(t1, other.owner);
+        } else
+          t1 = false;
+      else
+        t1 = false;
+      return t1;
     },
     "+==:1:0": 0,
     get$hashCode: function(_) {
-      return (1073741823 & J.get$hashCode$(C.Type_AGr._typeName) ^ 17 * J.get$hashCode$(this.simpleName) ^ 19 * J.get$hashCode$(this.owner)) >>> 0;
+      var t1 = this.owner;
+      return (1073741823 & J.get$hashCode$(C.Type_AGr._typeName) ^ 17 * J.get$hashCode$(this.simpleName) ^ 19 * t1.get$hashCode(t1)) >>> 0;
     },
     "+hashCode": 0,
     get$_prettyName: function() {
@@ -5017,6 +5033,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
     get$typeVariables: function() {
       return C.List_empty0;
     },
+    "+typeVariables": 0,
     get$typeArguments: function() {
       return C.List_empty1;
     },
@@ -5042,20 +5059,20 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       return this.get$_functionMirrors();
     },
     get$classes: function(_) {
-      var t1, result, className, t2, unmangledName, cls;
+      var t1, result, cls, t2;
       t1 = this._cachedClasses;
       if (t1 != null)
         return t1;
       result = P.LinkedHashMap_LinkedHashMap(null, null, null, null, null);
       for (t1 = J.get$iterator$ax(this._classes); t1.moveNext$0();) {
-        className = t1.get$current();
-        t2 = $.get$mangledGlobalNames();
-        unmangledName = t2.$index(t2, className);
-        cls = H.reflectClassByName(H.s(unmangledName == null ? className : unmangledName), className);
+        cls = H.reflectClassByMangledName(t1.get$current());
         t2 = J.getInterceptor(cls);
-        if (typeof cls === "object" && cls !== null && !!t2.$isJsClassMirror) {
-          result.$indexSet(result, cls.simpleName, cls);
-          cls._owner = this;
+        if (typeof cls === "object" && cls !== null && !!t2.$isClassMirror) {
+          cls = cls.get$originalDeclaration();
+          if (!!cls.$isJsClassMirror) {
+            result.$indexSet(result, cls.simpleName, cls);
+            cls._owner = this;
+          }
         }
       }
       t1 = new H.UnmodifiableMapView0(result);
@@ -5122,7 +5139,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       while (true) {
         t4 = t2.get$length(t1);
         if (typeof t4 !== "number")
-          throw H.iae(t4);
+          return H.iae(t4);
         if (!(i < t4))
           break;
         c$0: {
@@ -5344,6 +5361,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
     get$typeVariables: function() {
       throw H.wrapException(P.UnimplementedError$(null));
     },
+    "+typeVariables": 0,
     get$typeArguments: function() {
       return C.List_empty1;
     },
@@ -5483,6 +5501,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
     get$typeVariables: function() {
       return this._class.get$typeVariables();
     },
+    "+typeVariables": 0,
     get$typeArguments: function() {
       var t1, result, t2, t3, level, currentTypeArgument, i, character;
       t1 = this._cachedTypeArguments;
@@ -5623,10 +5642,11 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       return t1;
     },
     get$isPrivate: function() {
-      return this._class.get$isPrivate();
+      return J.startsWith$1$s(J.get$_name$x(this._class.get$simpleName()), "_");
     },
     get$location: function(_) {
-      return J.get$location$x(this._class);
+      var t1 = this._class;
+      return t1.get$location(t1);
     },
     get$qualifiedName: function() {
       return this._class.get$qualifiedName();
@@ -5786,7 +5806,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       H.setRuntimeTypeInfo(result, [P.VariableMirror]);
       t1 = J.split$1$s(this._fieldsDescriptor, ";");
       if (1 >= t1.length)
-        throw H.ioore(t1, 1);
+        return H.ioore(t1, 1);
       instanceFieldSpecfication = t1[1];
       t1 = this._fieldsMetadata;
       if (t1 != null) {
@@ -5898,17 +5918,14 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
     },
     "+getField:1:0": 1,
     get$owner: function() {
-      var t1, t2, unmangledName, unmangledName0;
+      var t1, t2;
       t1 = this._owner;
       if (t1 == null) {
         t1 = this._jsConstructorOrInterceptor;
         t2 = J.getInterceptor(t1);
-        if (typeof t1 === "object" && t1 !== null && !!t2.$isInterceptor) {
-          unmangledName = C.Type_HqF._typeName;
-          t1 = $.get$mangledGlobalNames();
-          unmangledName0 = t1.$index(t1, unmangledName);
-          this._owner = H.reflectClassByName(H.s(unmangledName0 == null ? unmangledName : unmangledName0), unmangledName).get$owner();
-        } else {
+        if (typeof t1 === "object" && t1 !== null && !!t2.$isInterceptor)
+          this._owner = H.reflectClassByMangledName(C.Type_HqF._typeName).get$owner();
+        else {
           t1 = $.get$JsMirrorSystem_librariesByName();
           t1 = t1.get$values(t1);
           t2 = new H.MappedIterator(null, J.get$iterator$ax(t1._iterable), t1._f);
@@ -5953,7 +5970,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
           t1 = this._fieldsDescriptor;
           t2 = J.split$1$s(t1, ";");
           if (0 >= t2.length)
-            throw H.ioore(t2, 0);
+            return H.ioore(t2, 0);
           superclassName = t2[0];
           t2 = J.getInterceptor$s(superclassName);
           mixins = t2.split$1(superclassName, "+");
@@ -6140,7 +6157,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
         if (t1 === 1)
           return;
         if (0 >= t1)
-          throw H.ioore(fieldInformation, 0);
+          return H.ioore(fieldInformation, 0);
         field = fieldInformation[0];
         t1 = J.getInterceptor$asx(field);
         $length = t1.get$length(field);
@@ -6174,7 +6191,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
             }
         }
         if (1 >= fieldInformation.length)
-          throw H.ioore(fieldInformation, 1);
+          return H.ioore(fieldInformation, 1);
         return new H.JsVariableMirror(jsName, isFinal, isStatic, metadataFunction, owner, H.Primitives_parseInt(fieldInformation[1], null, null), null, H.s(unmangledName));
       }, JsVariableMirror_fieldCode: function(code) {
         if (code >= 60 && code <= 64)
@@ -6225,36 +6242,30 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       if (t1 == null) {
         raw = H.extractMetadata(this._jsFunction);
         t1 = this._parameterCount;
-        formals = P.List_List(t1, null);
+        if (typeof t1 !== "number")
+          return H.iae(t1);
+        formals = Array(t1);
         t2 = J.getInterceptor$asx(raw);
         if (t2.get$isEmpty(raw) !== true) {
           this._returnType = t2.$index(raw, 0);
-          t1 = J.$mul$n(t1, 2);
-          if (typeof t1 !== "number")
-            throw H.iae(t1);
-          parameterLength = 1 + t1;
+          parameterLength = 1 + t1 * 2;
           for (t1 = formals.length, formalsCount = 0, i = 1; i < parameterLength; i += 2, formalsCount = formalsCount0) {
             $name = t2.$index(raw, i);
             type = t2.$index(raw, i + 1);
             formalsCount0 = formalsCount + 1;
             t3 = H.s($name);
             if (formalsCount >= t1)
-              throw H.ioore(formals, formalsCount);
+              return H.ioore(formals, formalsCount);
             formals[formalsCount] = new H.JsParameterMirror(this, type, t3);
           }
           raw = t2.sublist$1(raw, parameterLength);
-        } else {
-          if (typeof t1 !== "number")
-            throw H.iae(t1);
-          t2 = formals.length;
-          i = 0;
-          for (; i < t1; ++i) {
+        } else
+          for (t2 = formals.length, i = 0; i < t1; ++i) {
             t3 = H.s("argument" + i);
             if (i >= t2)
-              throw H.ioore(formals, i);
+              return H.ioore(formals, i);
             formals[i] = new H.JsParameterMirror(this, null, t3);
           }
-        }
         t1 = new P.UnmodifiableListView(formals);
         H.setRuntimeTypeInfo(t1, [P.ParameterMirror]);
         this._parameters = t1;
@@ -6297,7 +6308,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
         var info, isOperator, isSetter, t1, requiredParameterCount, isGetter, optionalParameterCount;
         info = J.split$1$s($name, ":");
         if (0 >= info.length)
-          throw H.ioore(info, 0);
+          return H.ioore(info, 0);
         $name = info[0];
         isOperator = H.isOperatorName($name);
         isSetter = !isOperator && J.endsWith$1$s($name, "=");
@@ -6313,10 +6324,10 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
           optionalParameterCount = 0;
         } else {
           if (1 >= t1)
-            throw H.ioore(info, 1);
+            return H.ioore(info, 1);
           requiredParameterCount = H.Primitives_parseInt(info[1], null, null);
           if (2 >= info.length)
-            throw H.ioore(info, 2);
+            return H.ioore(info, 2);
           optionalParameterCount = H.Primitives_parseInt(info[2], null, null);
           isGetter = false;
         }
@@ -6518,9 +6529,6 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       return H.UnmodifiableMapView__throw0();
     },
     "+[]=:2:0": 0,
-    addAll$1: function(_, other) {
-      return H.UnmodifiableMapView__throw0();
-    },
     remove$1: function(_, key) {
       H.UnmodifiableMapView__throw0();
     },
@@ -6605,7 +6613,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       return zone.registerUnaryCallback$1(errorHandler);
   },
   Future_wait: function(futures, eagerError) {
-    var t1, t2, t3, future, pos, completer;
+    var t1, t2, t3, future, pos, values, completer;
     t1 = {};
     t1.completer_0 = null;
     t1.values_1 = null;
@@ -6622,7 +6630,9 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
     t2 = t1.remaining_2;
     if (t2 === 0)
       return P._Future$immediate(C.List_empty, null);
-    t1.values_1 = P.List_List(t2, null);
+    values = Array(t2);
+    values.fixed$length = init;
+    t1.values_1 = values;
     t2 = J.JSArray;
     t3 = P._Future$(t2);
     completer = new P._AsyncCompleter(t3);
@@ -6713,6 +6723,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
     $.Zone__current.handleUncaughtError$2(error, stackTrace);
   },
   _nullDoneHandler: function() {
+    return;
   },
   _runUserCode: function(userCode, onSuccess, onError) {
     var e, s, exception, t1;
@@ -6810,10 +6821,10 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
     return f;
   },
   _rootScheduleMicrotask: function($self, $parent, zone, f) {
-    P._scheduleAsyncCallback(f);
+    P._scheduleAsyncCallback(C.C__RootZone !== zone ? zone.bindCallback$1(f) : f);
   },
   _rootCreateTimer: function($self, $parent, zone, duration, callback) {
-    return P._createTimer(duration, callback);
+    return P._createTimer(duration, C.C__RootZone !== zone ? zone.bindCallback$1(callback) : callback);
   },
   _rootPrint: function($self, $parent, zone, line) {
     H.printString(H.S(line));
@@ -6853,39 +6864,41 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
     _expectsEvent$1: function(eventId) {
       var t1 = this._eventState;
       if (typeof t1 !== "number")
-        throw t1.$and();
+        return t1.$and();
       return (t1 & 1) === eventId;
     },
     _toggleEventId$0: function() {
       var t1 = this._eventState;
       if (typeof t1 !== "number")
-        throw t1.$xor();
-      this._eventState = (t1 ^ 1) >>> 0;
+        return t1.$xor();
+      this._eventState = t1 ^ 1;
     },
     get$_isFiring: function() {
       var t1 = this._eventState;
       if (typeof t1 !== "number")
-        throw t1.$and();
+        return t1.$and();
       return (t1 & 2) !== 0;
     },
     _setRemoveAfterFiring$0: function() {
       var t1 = this._eventState;
       if (typeof t1 !== "number")
-        throw t1.$or();
-      this._eventState = (t1 | 4) >>> 0;
+        return t1.$or();
+      this._eventState = t1 | 4;
     },
     get$_removeAfterFiring: function() {
       var t1 = this._eventState;
       if (typeof t1 !== "number")
-        throw t1.$and();
+        return t1.$and();
       return (t1 & 4) !== 0;
     },
     _onPause$0: function() {
+      return;
     },
     get$_onPause: function() {
       return new P.BoundClosure$0(this, P._BroadcastSubscription.prototype._onPause$0, null, "_onPause$0");
     },
     _onResume$0: function() {
+      return;
     },
     get$_onResume: function() {
       return new P.BoundClosure$0(this, P._BroadcastSubscription.prototype._onResume$0, null, "_onResume$0");
@@ -6979,7 +6992,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
         return this._doneFuture;
       if (t1 >= 4)
         throw H.wrapException(this._addEventError$0());
-      this._state = (t1 | 4) >>> 0;
+      this._state = t1 | 4;
       doneFuture = this._ensureDoneFuture$0();
       this._sendDone$0();
       return doneFuture;
@@ -6993,7 +7006,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
     _close$0: function() {
       var addState = this._addStreamState;
       this._addStreamState = null;
-      this._state = (this._state & 4294967287) >>> 0;
+      this._state = this._state & 4294967287;
       C.JSNull_methods.complete$0(addState);
     },
     _forEachListener$1: function(action) {
@@ -7005,13 +7018,13 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       if (link === this)
         return;
       id = t1 & 1;
-      this._state = (t1 ^ 3) >>> 0;
+      this._state = t1 ^ 3;
       for (; link !== this;)
         if (link._expectsEvent$1(id)) {
           t1 = link.get$_eventState();
           if (typeof t1 !== "number")
-            throw t1.$or();
-          link.set$_eventState((t1 | 2) >>> 0);
+            return t1.$or();
+          link.set$_eventState(t1 | 2);
           action.call$1(link);
           link._toggleEventId$0();
           link0 = link.get$_async$_next();
@@ -7019,12 +7032,12 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
             this._removeListener$1(link);
           t1 = link.get$_eventState();
           if (typeof t1 !== "number")
-            throw t1.$and();
-          link.set$_eventState((t1 & 4294967293) >>> 0);
+            return t1.$and();
+          link.set$_eventState(t1 & 4294967293);
           link = link0;
         } else
           link = link.get$_async$_next();
-      this._state = (this._state & 4294967293) >>> 0;
+      this._state = this._state & 4294967293;
       if (this._async$_next === this)
         this._callOnCancel$0();
     },
@@ -7147,7 +7160,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       if (t2 != null) {
         t3 = this.pos_3;
         if (t3 < 0 || t3 >= t2.length)
-          throw H.ioore(t2, t3);
+          return H.ioore(t2, t3);
         t2[t3] = value;
         if (remaining === 0) {
           t1 = t1.completer_0.future;
@@ -8028,7 +8041,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
         return this._doneFuture;
       if (t1 >= 4)
         throw H.wrapException(this._badEventState$0());
-      t1 = (t1 | 4) >>> 0;
+      t1 |= 4;
       this._state = t1;
       if (this._doneFuture == null) {
         t2 = P._Future$(null);
@@ -8069,7 +8082,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
     _close$0: function() {
       var addState = this._varData;
       this._varData = addState.get$varData();
-      this._state = (this._state & 4294967287) >>> 0;
+      this._state = this._state & 4294967287;
       addState.complete$0(addState);
     },
     _subscribe$1: function(cancelOnError) {
@@ -8081,7 +8094,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       subscription = new P._ControllerSubscription(this, null, null, null, t1, t2, null, null);
       H.setRuntimeTypeInfo(subscription, [null]);
       pendingEvents = this.get$_pendingEvents();
-      t2 = (this._state | 1) >>> 0;
+      t2 = this._state | 1;
       this._state = t2;
       if ((t2 & 8) !== 0) {
         addState = this._varData;
@@ -8098,7 +8111,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       if ((this._state & 8) !== 0)
         this._varData.cancel$0();
       this._varData = null;
-      this._state = (this._state & 4294967286 | 2) >>> 0;
+      this._state = this._state & 4294967286 | 2;
       t1 = new P._StreamController__recordCancel_complete(this);
       future = P._runGuarded(this.get$_onCancel());
       if (future != null)
@@ -8813,8 +8826,6 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       sink._async$_add$1(inputEvent);
     },
     _SkipStream$2: function(source, count, $T) {
-      if (count < 0)
-        throw H.wrapException(new P.ArgumentError(count));
     },
     $as_ForwardingStream: function($T) {
       return [$T, $T];
@@ -9004,6 +9015,9 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
         return new P._BaseZone_bindCallback_closure(this, registered);
       else
         return new P._BaseZone_bindCallback_closure0(this, registered);
+    },
+    bindCallback$1: function(f) {
+      return this.bindCallback$2$runGuarded(f, true);
     },
     bindUnaryCallback$2$runGuarded: function(f, runGuarded) {
       var registered = this.registerUnaryCallback$1(f);
@@ -9265,10 +9279,10 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       return f;
     },
     scheduleMicrotask$1: function(f) {
-      P._scheduleAsyncCallback(f);
+      P._rootScheduleMicrotask(this, null, this, f);
     },
     createTimer$2: function(duration, f) {
-      return P._createTimer(duration, f);
+      return P._rootCreateTimer(this, null, this, duration, f);
     },
     print$1: function(_, line) {
       H.printString(H.S(line));
@@ -9336,10 +9350,10 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       if (count <= 5)
         return;
       if (0 >= parts.length)
-        throw H.ioore(parts, 0);
+        return H.ioore(parts, 0);
       ultimateString = parts.pop();
       if (0 >= parts.length)
-        throw H.ioore(parts, 0);
+        return H.ioore(parts, 0);
       penultimateString = parts.pop();
     } else {
       penultimate = it.get$current();
@@ -9351,7 +9365,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
         }
         ultimateString = H.S(penultimate);
         if (0 >= parts.length)
-          throw H.ioore(parts, 0);
+          return H.ioore(parts, 0);
         penultimateString = parts.pop();
         $length += ultimateString.length + 2;
       } else {
@@ -9365,7 +9379,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
               if (!($length > 75 && count > 3))
                 break;
               if (0 >= parts.length)
-                throw H.ioore(parts, 0);
+                return H.ioore(parts, 0);
               $length -= parts.pop().length + 2;
               --count;
             }
@@ -9387,7 +9401,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       if (!($length > 80 && parts.length > 3))
         break;
       if (0 >= parts.length)
-        throw H.ioore(parts, 0);
+        return H.ioore(parts, 0);
       $length -= parts.pop().length + 2;
       if (elision == null) {
         $length += 5;
@@ -9440,7 +9454,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
     } finally {
       t1 = $.get$Maps__toStringList();
       if (0 >= t1.length)
-        throw H.ioore(t1, 0);
+        return H.ioore(t1, 0);
       t1.pop();
     }
     return result.get$_contents();
@@ -9493,9 +9507,6 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       return H.IterableMixinWorkaround_any(t1, new P._HashMap_containsValue_closure(this, value));
     },
     "+containsValue:1:0": 0,
-    addAll$1: function(_, other) {
-      other.forEach$1(other, new P._HashMap_addAll_closure(this));
-    },
     $index: function(_, key) {
       var strings, t1, entry, nums, rest, bucket, index;
       if (typeof key === "string" && key !== "__proto__") {
@@ -9637,7 +9648,8 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       t1 = this._collection$_keys;
       if (t1 != null)
         return t1;
-      result = P.List_List(this._collection$_length, null);
+      result = Array(this._collection$_length);
+      result.fixed$length = init;
       strings = this._strings;
       if (strings != null) {
         names = Object.getOwnPropertyNames(strings);
@@ -9724,16 +9736,6 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
     $isFunction: true,
     $is_Object__Object: true,
     $is_args1: true
-  },
-  _HashMap_addAll_closure: {
-    "": "Closure;this_0",
-    call$2: function(key, value) {
-      var t1 = this.this_0;
-      t1.$indexSet(t1, key, value);
-    },
-    "+call:2:0": 0,
-    $isFunction: true,
-    $is_args2: true
   },
   _CustomHashMap: {
     "": "_HashMap;_equals,_hashCode,_validKey,_collection$_length,_strings,_nums,_rest,_collection$_keys",
@@ -10375,11 +10377,6 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
         return true;
       }
     },
-    addAll$1: function(_, objects) {
-      var t1;
-      for (t1 = objects.get$iterator(objects), t1.moveNext$0(); false;)
-        this.add$1(this, t1.get$current());
-    },
     remove$1: function(_, object) {
       var rest, bucket, index;
       if (typeof object === "string" && object !== "__proto__")
@@ -10405,7 +10402,8 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       t1 = this._elements;
       if (t1 != null)
         return t1;
-      result = P.List_List(this._collection$_length, null);
+      result = Array(this._collection$_length);
+      result.fixed$length = init;
       strings = this._strings;
       if (strings != null) {
         names = Object.getOwnPropertyNames(strings);
@@ -10771,13 +10769,16 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       if (growable) {
         result = P.List_List(null, H.getTypeArgumentByIndex(this, 0));
         C.JSArray_methods.set$length(result, this.get$length(this));
-      } else
-        result = P.List_List(this.get$length(this), H.getTypeArgumentByIndex(this, 0));
+      } else {
+        result = Array(this.get$length(this));
+        result.fixed$length = init;
+        H.setRuntimeTypeInfo(result, [H.getTypeArgumentByIndex(this, 0)]);
+      }
       for (t1 = this.get$iterator(this), i = 0; t1.moveNext$0(); i = i0) {
         element = t1.get$current();
         i0 = i + 1;
         if (i >= result.length)
-          throw H.ioore(result, i);
+          return H.ioore(result, i);
         result[i] = element;
       }
       return result;
@@ -10939,7 +10940,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       var $length, i;
       $length = this.get$length(receiver);
       if (typeof $length !== "number")
-        throw H.iae($length);
+        return H.iae($length);
       i = 0;
       for (; i < $length; ++i) {
         action.call$1(this.$index(receiver, i));
@@ -10964,7 +10965,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       var $length, i;
       $length = this.get$length(receiver);
       if (typeof $length !== "number")
-        throw H.iae($length);
+        return H.iae($length);
       i = 0;
       for (; i < $length; ++i) {
         if (J.$eq(this.$index(receiver, i), element))
@@ -10978,7 +10979,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       var $length, i;
       $length = this.get$length(receiver);
       if (typeof $length !== "number")
-        throw H.iae($length);
+        return H.iae($length);
       i = 0;
       for (; i < $length; ++i) {
         if (test.call$1(this.$index(receiver, i)) === true)
@@ -11000,7 +11001,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
           throw H.wrapException(P.ConcurrentModificationError$(receiver));
         buffer = P.StringBuffer$(first);
         if (typeof $length !== "number")
-          throw H.iae($length);
+          return H.iae($length);
         i = 1;
         for (; i < $length; ++i) {
           buffer._contents = buffer._contents + separator;
@@ -11014,7 +11015,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       } else {
         buffer = P.StringBuffer$("");
         if (typeof $length !== "number")
-          throw H.iae($length);
+          return H.iae($length);
         i = 0;
         for (; i < $length; ++i) {
           str = this.$index(receiver, i);
@@ -11040,22 +11041,28 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       return H.SubListIterable$(receiver, count, null, null);
     },
     toList$1$growable: function(receiver, growable) {
-      var result, i, t1;
+      var result, t1, i;
       if (growable) {
         result = P.List_List(null, H.getRuntimeTypeArgument(receiver, "ListMixin", 0));
         C.JSArray_methods.set$length(result, this.get$length(receiver));
-      } else
-        result = P.List_List(this.get$length(receiver), H.getRuntimeTypeArgument(receiver, "ListMixin", 0));
+      } else {
+        t1 = this.get$length(receiver);
+        if (typeof t1 !== "number")
+          return H.iae(t1);
+        result = Array(t1);
+        result.fixed$length = init;
+        H.setRuntimeTypeInfo(result, [H.getRuntimeTypeArgument(receiver, "ListMixin", 0)]);
+      }
       i = 0;
       while (true) {
         t1 = this.get$length(receiver);
         if (typeof t1 !== "number")
-          throw H.iae(t1);
+          return H.iae(t1);
         if (!(i < t1))
           break;
         t1 = this.$index(receiver, i);
         if (i >= result.length)
-          throw H.ioore(result, i);
+          return H.ioore(result, i);
         result[i] = t1;
         ++i;
       }
@@ -11069,22 +11076,13 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       this.set$length(receiver, J.$add$ns(t1, 1));
       this.$indexSet(receiver, t1, element);
     },
-    addAll$1: function(receiver, iterable) {
-      var t1, element, t2;
-      for (t1 = iterable.get$iterator(iterable), t1.moveNext$0(); false;) {
-        element = t1.get$current();
-        t2 = this.get$length(receiver);
-        this.set$length(receiver, J.$add$ns(t2, 1));
-        this.$indexSet(receiver, t2, element);
-      }
-    },
     remove$1: function(receiver, element) {
       var i, t1;
       i = 0;
       while (true) {
         t1 = this.get$length(receiver);
         if (typeof t1 !== "number")
-          throw H.iae(t1);
+          return H.iae(t1);
         if (!(i < t1))
           break;
         if (J.$eq(this.$index(receiver, i), element)) {
@@ -11101,7 +11099,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       if (!(start < 0)) {
         t1 = this.get$length(receiver);
         if (typeof t1 !== "number")
-          throw H.iae(t1);
+          return H.iae(t1);
         t1 = start > t1;
       } else
         t1 = true;
@@ -11119,12 +11117,12 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       result = P.List_List(null, H.getRuntimeTypeArgument(receiver, "ListMixin", 0));
       C.JSArray_methods.set$length(result, $length);
       if (typeof $length !== "number")
-        throw H.iae($length);
+        return H.iae($length);
       i = 0;
       for (; i < $length; ++i) {
         t1 = this.$index(receiver, start + i);
         if (i >= result.length)
-          throw H.ioore(result, i);
+          return H.ioore(result, i);
         result[i] = t1;
       }
       return result;
@@ -11138,13 +11136,10 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
     },
     setRange$4: function(receiver, start, end, iterable, skipCount) {
       var t1, $length, t2, i;
-      if (start >= 0) {
-        t1 = this.get$length(receiver);
-        if (typeof t1 !== "number")
-          throw H.iae(t1);
-        t1 = start > t1;
-      } else
-        t1 = true;
+      t1 = this.get$length(receiver);
+      if (typeof t1 !== "number")
+        return H.iae(t1);
+      t1 = start > t1;
       if (t1)
         H.throwExpression(P.RangeError$range(start, 0, this.get$length(receiver)));
       t1 = J.getInterceptor$n(end);
@@ -11153,14 +11148,12 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       $length = t1.$sub(end, start);
       if (J.$eq($length, 0))
         return;
-      if (skipCount < 0)
-        throw H.wrapException(new P.ArgumentError(skipCount));
       if (typeof $length !== "number")
-        throw H.iae($length);
+        return H.iae($length);
       t1 = J.getInterceptor$asx(iterable);
       t2 = t1.get$length(iterable);
       if (typeof t2 !== "number")
-        throw H.iae(t2);
+        return H.iae(t2);
       if (skipCount + $length > t2)
         throw H.wrapException(new P.StateError("Not enough elements"));
       if (skipCount < start)
@@ -11174,7 +11167,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       var t1, i;
       t1 = this.get$length(receiver);
       if (typeof t1 !== "number")
-        throw H.iae(t1);
+        return H.iae(t1);
       if (startIndex >= t1)
         return -1;
       if (startIndex < 0)
@@ -11183,7 +11176,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       while (true) {
         t1 = this.get$length(receiver);
         if (typeof t1 !== "number")
-          throw H.iae(t1);
+          return H.iae(t1);
         if (!(i < t1))
           break;
         if (J.$eq(this.$index(receiver, i), element))
@@ -11260,7 +11253,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       for (i = this._head; i !== this._tail; i = (i + 1 & this._table.length - 1) >>> 0) {
         t1 = this._table;
         if (i < 0 || i >= t1.length)
-          throw H.ioore(t1, i);
+          return H.ioore(t1, i);
         action.call$1(t1[i]);
         if (modificationCount !== this._modificationCount)
           H.throwExpression(P.ConcurrentModificationError$(this));
@@ -11284,7 +11277,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       t3 = t1.length;
       t2 = (t2 - 1 & t3 - 1) >>> 0;
       if (t2 < 0 || t2 >= t3)
-        throw H.ioore(t1, t2);
+        return H.ioore(t1, t2);
       return t1[t2];
     },
     elementAt$1: function(_, index) {
@@ -11295,11 +11288,11 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       t1 = this._table;
       t2 = this._head;
       if (typeof index !== "number")
-        throw H.iae(index);
+        return H.iae(index);
       t3 = t1.length;
       t2 = (t2 + index & t3 - 1) >>> 0;
       if (t2 < 0 || t2 >= t3)
-        throw H.ioore(t1, t2);
+        return H.ioore(t1, t2);
       return t1[t2];
     },
     toList$1$growable: function(_, growable) {
@@ -11307,8 +11300,11 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       if (growable) {
         list = P.List_List(null, H.getTypeArgumentByIndex(this, 0));
         C.JSArray_methods.set$length(list, this.get$length(this));
-      } else
-        list = P.List_List(this.get$length(this), H.getTypeArgumentByIndex(this, 0));
+      } else {
+        list = Array(this.get$length(this));
+        list.fixed$length = init;
+        H.setRuntimeTypeInfo(list, [H.getTypeArgumentByIndex(this, 0)]);
+      }
       this._writeToList$1(list);
       return list;
     },
@@ -11318,27 +11314,12 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
     add$1: function(_, element) {
       this._add$1(element);
     },
-    addAll$1: function(_, elements) {
-      var addCount, t1, t2, endSpace, preSpace;
-      addCount = elements.get$length(elements);
-      C.JSInt_methods.$add(this.get$length(this), addCount);
-      t1 = this._table;
-      t2 = this._tail;
-      endSpace = t1.length - t2;
-      addCount.$lt(addCount, endSpace);
-      preSpace = addCount.$sub(addCount, endSpace);
-      H.IterableMixinWorkaround_setRangeList(t1, t2, t2 + endSpace, elements, 0);
-      t1 = this._table;
-      H.IterableMixinWorkaround_setRangeList(t1, 0, preSpace, elements, endSpace);
-      this._tail = preSpace;
-      this._modificationCount = this._modificationCount + 1;
-    },
     remove$1: function(_, object) {
       var i, t1;
       for (i = this._head; i !== this._tail; i = (i + 1 & this._table.length - 1) >>> 0) {
         t1 = this._table;
         if (i < 0 || i >= t1.length)
-          throw H.ioore(t1, i);
+          return H.ioore(t1, i);
         if (J.$eq(t1[i], object)) {
           this._remove$1(i);
           this._modificationCount = this._modificationCount + 1;
@@ -11359,8 +11340,8 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       this._modificationCount = this._modificationCount + 1;
       t2 = this._table;
       t3 = t2.length;
-      if (t1 < 0 || t1 >= t3)
-        throw H.ioore(t2, t1);
+      if (t1 >= t3)
+        return H.ioore(t2, t1);
       result = t2[t1];
       this._head = (t1 + 1 & t3 - 1) >>> 0;
       return result;
@@ -11371,12 +11352,14 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       t2 = this._tail;
       t3 = t1.length;
       if (t2 < 0 || t2 >= t3)
-        throw H.ioore(t1, t2);
+        return H.ioore(t1, t2);
       t1[t2] = element;
       t2 = (t2 + 1 & t3 - 1) >>> 0;
       this._tail = t2;
       if (this._head === t2) {
-        newTable = P.List_List(t3 * 2, H.getTypeArgumentByIndex(this, 0));
+        newTable = Array(t3 * 2);
+        newTable.fixed$length = init;
+        newTable.$builtinTypeInfo = [H.getTypeArgumentByIndex(this, 0)];
         t1 = this._table;
         t2 = this._head;
         split = t1.length - t2;
@@ -11401,14 +11384,14 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
         for (i = offset; i !== t3; i = prevOffset) {
           prevOffset = (i - 1 & mask) >>> 0;
           if (prevOffset < 0 || prevOffset >= t2)
-            throw H.ioore(t1, prevOffset);
+            return H.ioore(t1, prevOffset);
           t4 = t1[prevOffset];
           if (i < 0 || i >= t2)
-            throw H.ioore(t1, i);
+            return H.ioore(t1, i);
           t1[i] = t4;
         }
-        if (t3 < 0 || t3 >= t2)
-          throw H.ioore(t1, t3);
+        if (t3 >= t2)
+          return H.ioore(t1, t3);
         t1[t3] = null;
         this._head = (t3 + 1 & mask) >>> 0;
         return (offset + 1 & mask) >>> 0;
@@ -11418,14 +11401,14 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
         for (i = offset; i !== t3; i = nextOffset) {
           nextOffset = (i + 1 & mask) >>> 0;
           if (nextOffset < 0 || nextOffset >= t2)
-            throw H.ioore(t1, nextOffset);
+            return H.ioore(t1, nextOffset);
           t4 = t1[nextOffset];
           if (i < 0 || i >= t2)
-            throw H.ioore(t1, i);
+            return H.ioore(t1, i);
           t1[i] = t4;
         }
         if (t3 < 0 || t3 >= t2)
-          throw H.ioore(t1, t3);
+          return H.ioore(t1, t3);
         t1[t3] = null;
         return offset;
       }
@@ -11449,7 +11432,10 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       }
     },
     ListQueue$1: function(initialCapacity, $E) {
-      this._table = P.List_List(8, $E);
+      var t1 = Array(8);
+      t1.fixed$length = init;
+      H.setRuntimeTypeInfo(t1, [$E]);
+      this._table = t1;
     },
     $asIterableBase: null,
     $asIterable: null,
@@ -11475,8 +11461,8 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       }
       t1 = t1._table;
       t3 = t1.length;
-      if (t2 < 0 || t2 >= t3)
-        throw H.ioore(t1, t2);
+      if (t2 >= t3)
+        return H.ioore(t1, t2);
       this._collection$_current = t1[t2];
       this._collection$_position = (t2 + 1 & t3 - 1) >>> 0;
       return true;
@@ -11585,7 +11571,8 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
     convert$1: function(string) {
       var t1, t2, encoder;
       t1 = string.length;
-      t2 = P.List_List(t1 * 3, J.JSInt);
+      t2 = Array(t1 * 3);
+      H.setRuntimeTypeInfo(t2, [J.JSInt]);
       encoder = new P._Utf8Encoder(0, 0, t2);
       if (encoder._fillBuffer$3(string, 0, t1) !== t1)
         encoder._writeSurrogate$2(C.JSString_methods.codeUnitAt$1(string, t1 - 1), 0);
@@ -11602,49 +11589,46 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       t1 = this._buffer;
       t2 = this._bufferIndex;
       if ((nextCodeUnit & 64512) === 56320) {
-        rune = (65536 + ((leadingSurrogate & 1023) << 10 >>> 0) | nextCodeUnit & 1023) >>> 0;
+        rune = 65536 + ((leadingSurrogate & 1023) << 10 >>> 0) | nextCodeUnit & 1023;
         t3 = t2 + 1;
         this._bufferIndex = t3;
-        t4 = C.JSInt_methods.$shr(rune, 18);
-        t5 = t1.length;
-        if (t2 < 0 || t2 >= t5)
-          throw H.ioore(t1, t2);
-        t1[t2] = (240 | t4) >>> 0;
-        t4 = t3 + 1;
-        this._bufferIndex = t4;
-        t2 = C.JSInt_methods.$shr(rune, 12);
-        if (t3 < 0 || t3 >= t5)
-          throw H.ioore(t1, t3);
-        t1[t3] = (128 | t2 & 63) >>> 0;
-        t2 = t4 + 1;
+        t4 = t1.length;
+        if (t2 >= t4)
+          return H.ioore(t1, t2);
+        t1[t2] = (240 | rune >>> 18) >>> 0;
+        t2 = t3 + 1;
         this._bufferIndex = t2;
-        t3 = C.JSInt_methods.$shr(rune, 6);
-        if (t4 < 0 || t4 >= t5)
-          throw H.ioore(t1, t4);
-        t1[t4] = (128 | t3 & 63) >>> 0;
-        this._bufferIndex = t2 + 1;
-        if (t2 < 0 || t2 >= t5)
-          throw H.ioore(t1, t2);
-        t1[t2] = (128 | rune & 63) >>> 0;
+        if (t3 >= t4)
+          return H.ioore(t1, t3);
+        t1[t3] = 128 | rune >>> 12 & 63;
+        t3 = t2 + 1;
+        this._bufferIndex = t3;
+        if (t2 >= t4)
+          return H.ioore(t1, t2);
+        t1[t2] = 128 | rune >>> 6 & 63;
+        this._bufferIndex = t3 + 1;
+        if (t3 >= t4)
+          return H.ioore(t1, t3);
+        t1[t3] = 128 | rune & 63;
         return true;
       } else {
         t3 = t2 + 1;
         this._bufferIndex = t3;
         t4 = C.JSInt_methods.$shr(leadingSurrogate, 12);
         t5 = t1.length;
-        if (t2 < 0 || t2 >= t5)
-          throw H.ioore(t1, t2);
+        if (t2 >= t5)
+          return H.ioore(t1, t2);
         t1[t2] = (224 | t4) >>> 0;
         t4 = t3 + 1;
         this._bufferIndex = t4;
         t2 = C.JSInt_methods.$shr(leadingSurrogate, 6);
-        if (t3 < 0 || t3 >= t5)
-          throw H.ioore(t1, t3);
-        t1[t3] = (128 | t2 & 63) >>> 0;
+        if (t3 >= t5)
+          return H.ioore(t1, t3);
+        t1[t3] = 128 | t2 & 63;
         this._bufferIndex = t4 + 1;
-        if (t4 < 0 || t4 >= t5)
-          throw H.ioore(t1, t4);
-        t1[t4] = (128 | leadingSurrogate & 63) >>> 0;
+        if (t4 >= t5)
+          return H.ioore(t1, t4);
+        t1[t4] = 128 | leadingSurrogate & 63;
         return false;
       }
     },
@@ -11653,8 +11637,6 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       if (start !== end && (C.JSString_methods.codeUnitAt$1(str, end - 1) & 64512) === 55296)
         --end;
       for (t1 = this._buffer, t2 = t1.length, t3 = str.length, stringIndex = start; stringIndex < end; ++stringIndex) {
-        if (stringIndex < 0)
-          H.throwExpression(P.RangeError$value(stringIndex));
         if (stringIndex >= t3)
           H.throwExpression(P.RangeError$value(stringIndex));
         codeUnit = str.charCodeAt(stringIndex);
@@ -11663,15 +11645,11 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
           if (t4 >= t2)
             break;
           this._bufferIndex = t4 + 1;
-          if (t4 < 0)
-            throw H.ioore(t1, t4);
           t1[t4] = codeUnit;
         } else if ((codeUnit & 64512) === 55296) {
           if (this._bufferIndex + 3 >= t2)
             break;
           stringIndex0 = stringIndex + 1;
-          if (stringIndex0 < 0)
-            H.throwExpression(P.RangeError$value(stringIndex0));
           if (stringIndex0 >= t3)
             H.throwExpression(P.RangeError$value(stringIndex0));
           if (this._writeSurrogate$2(codeUnit, str.charCodeAt(stringIndex0)))
@@ -11683,13 +11661,11 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
             break;
           this._bufferIndex = t5;
           t6 = C.JSInt_methods.$shr(codeUnit, 6);
-          if (t4 < 0 || t4 >= t2)
-            throw H.ioore(t1, t4);
+          if (t4 >= t2)
+            return H.ioore(t1, t4);
           t1[t4] = (192 | t6) >>> 0;
           this._bufferIndex = t5 + 1;
-          if (t5 < 0)
-            throw H.ioore(t1, t5);
-          t1[t5] = (128 | codeUnit & 63) >>> 0;
+          t1[t5] = 128 | codeUnit & 63;
         } else {
           t4 = this._bufferIndex;
           if (t4 + 2 >= t2)
@@ -11697,19 +11673,19 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
           t5 = t4 + 1;
           this._bufferIndex = t5;
           t6 = C.JSInt_methods.$shr(codeUnit, 12);
-          if (t4 < 0 || t4 >= t2)
-            throw H.ioore(t1, t4);
+          if (t4 >= t2)
+            return H.ioore(t1, t4);
           t1[t4] = (224 | t6) >>> 0;
           t6 = t5 + 1;
           this._bufferIndex = t6;
           t4 = C.JSInt_methods.$shr(codeUnit, 6);
-          if (t5 < 0 || t5 >= t2)
-            throw H.ioore(t1, t5);
-          t1[t5] = (128 | t4 & 63) >>> 0;
+          if (t5 >= t2)
+            return H.ioore(t1, t5);
+          t1[t5] = 128 | t4 & 63;
           this._bufferIndex = t6 + 1;
-          if (t6 < 0 || t6 >= t2)
-            throw H.ioore(t1, t6);
-          t1[t6] = (128 | codeUnit & 63) >>> 0;
+          if (t6 >= t2)
+            return H.ioore(t1, t6);
+          t1[t6] = 128 | codeUnit & 63;
         }
       }
       return stringIndex;
@@ -11809,10 +11785,12 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
     if (growable)
       return list;
     $length = list.length;
-    fixedList = P.List_List($length, $E);
+    fixedList = Array($length);
+    fixedList.fixed$length = init;
+    H.setRuntimeTypeInfo(fixedList, [$E]);
     for (t1 = list.length, i = 0; i < $length; ++i) {
       if (i >= t1)
-        throw H.ioore(list, i);
+        return H.ioore(list, i);
       fixedList[i] = list[i];
     }
     return fixedList;
@@ -11926,25 +11904,25 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
           t1 = new P.DateTime_parse_parseIntOrZero();
           t2 = match._match;
           if (1 >= t2.length)
-            throw H.ioore(t2, 1);
+            return H.ioore(t2, 1);
           years = H.Primitives_parseInt(t2[1], null, null);
           if (2 >= t2.length)
-            throw H.ioore(t2, 2);
+            return H.ioore(t2, 2);
           month = H.Primitives_parseInt(t2[2], null, null);
           if (3 >= t2.length)
-            throw H.ioore(t2, 3);
+            return H.ioore(t2, 3);
           day = H.Primitives_parseInt(t2[3], null, null);
           if (4 >= t2.length)
-            throw H.ioore(t2, 4);
+            return H.ioore(t2, 4);
           hour = t1.call$1(t2[4]);
           if (5 >= t2.length)
-            throw H.ioore(t2, 5);
+            return H.ioore(t2, 5);
           minute = t1.call$1(t2[5]);
           if (6 >= t2.length)
-            throw H.ioore(t2, 6);
+            return H.ioore(t2, 6);
           second = t1.call$1(t2[6]);
           if (7 >= t2.length)
-            throw H.ioore(t2, 7);
+            return H.ioore(t2, 7);
           millisecond = J.round$0$n(J.$mul$n(new P.DateTime_parse_parseDoubleOrZero().call$1(t2[7]), 1000));
           if (millisecond === 1000) {
             addOneMillisecond = true;
@@ -11952,7 +11930,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
           } else
             addOneMillisecond = false;
           if (8 >= t2.length)
-            throw H.ioore(t2, 8);
+            return H.ioore(t2, 8);
           isUtc = t2[8] != null;
           millisecondsSinceEpoch = H.Primitives_valueFromDecomposedDate(years, month, day, hour, minute, second, millisecond, isUtc);
           return P.DateTime$fromMillisecondsSinceEpoch(addOneMillisecond ? millisecondsSinceEpoch + 1 : millisecondsSinceEpoch, isUtc);
@@ -12045,7 +12023,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
     },
     $mul: function(_, factor) {
       if (typeof factor !== "number")
-        throw H.iae(factor);
+        return H.iae(factor);
       return P.Duration$(0, 0, C.JSNumber_methods.toInt$0(C.JSNumber_methods.roundToDouble$0(this._duration * factor)), 0, 0, 0);
     },
     $lt: function(_, other) {
@@ -12061,7 +12039,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       return this._duration >= other.get$_duration();
     },
     get$inMilliseconds: function() {
-      return C.JSNumber_methods.$tdiv(this._duration, 1000);
+      return C.JSInt_methods.$tdiv(this._duration, 1000);
     },
     $eq: function(_, other) {
       var t1;
@@ -12083,10 +12061,10 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       t2 = this._duration;
       if (t2 < 0)
         return "-" + H.S(P.Duration$(0, 0, -t2, 0, 0, 0));
-      twoDigitMinutes = t1.call$1(C.JSNumber_methods.remainder$1(C.JSNumber_methods.$tdiv(t2, 60000000), 60));
-      twoDigitSeconds = t1.call$1(C.JSNumber_methods.remainder$1(C.JSNumber_methods.$tdiv(t2, 1000000), 60));
-      sixDigitUs = new P.Duration_toString_sixDigits().call$1(C.JSNumber_methods.remainder$1(t2, 1000000));
-      return H.S(C.JSNumber_methods.$tdiv(t2, 3600000000)) + ":" + H.S(twoDigitMinutes) + ":" + H.S(twoDigitSeconds) + "." + H.S(sixDigitUs);
+      twoDigitMinutes = t1.call$1(C.JSInt_methods.remainder$1(C.JSInt_methods.$tdiv(t2, 60000000), 60));
+      twoDigitSeconds = t1.call$1(C.JSInt_methods.remainder$1(C.JSInt_methods.$tdiv(t2, 1000000), 60));
+      sixDigitUs = new P.Duration_toString_sixDigits().call$1(C.JSInt_methods.remainder$1(t2, 1000000));
+      return "" + C.JSInt_methods.$tdiv(t2, 3600000000) + ":" + H.S(twoDigitMinutes) + ":" + H.S(twoDigitSeconds) + "." + H.S(sixDigitUs);
     },
     "+toString:0:0": 0,
     $isDuration: true,
@@ -12182,7 +12160,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
           t4 = t1.i_1;
           t5 = t3.get$length(t2);
           if (typeof t5 !== "number")
-            throw H.iae(t5);
+            return H.iae(t5);
           if (!(t4 < t5))
             break;
           t4 = t1.i_1;
@@ -12403,7 +12381,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       if ((codeUnit & 64512) === 55296) {
         t1 = t3.get$length(t2);
         if (typeof t1 !== "number")
-          throw H.iae(t1);
+          return H.iae(t1);
         t1 = nextPosition < t1;
       } else
         t1 = false;
@@ -12559,7 +12537,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
           if (t1 !== 0)
             if (t1 === 1) {
               if (0 >= t1)
-                throw H.ioore(output, 0);
+                return H.ioore(output, 0);
               t1 = !J.$eq(output[0], "");
             } else
               t1 = true;
@@ -12567,7 +12545,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
             t1 = false;
           if (t1) {
             if (0 >= output.length)
-              throw H.ioore(output, 0);
+              return H.ioore(output, 0);
             output.pop();
           }
           appendSlash = true;
@@ -12648,34 +12626,34 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
         var t1, t2, t3, t4, t5, t6, t7, t8;
         t1 = m._match;
         if (1 >= t1.length)
-          throw H.ioore(t1, 1);
+          return H.ioore(t1, 1);
         t2 = t1[1];
         t2 = P.Uri__makeScheme(t2 != null ? t2 : "");
         t3 = t1.length;
         if (2 >= t3)
-          throw H.ioore(t1, 2);
+          return H.ioore(t1, 2);
         t4 = t1[2];
         t4 = t4 != null ? t4 : "";
         if (3 >= t3)
-          throw H.ioore(t1, 3);
+          return H.ioore(t1, 3);
         t5 = t1[3];
         if (4 >= t3)
-          throw H.ioore(t1, 4);
+          return H.ioore(t1, 4);
         t5 = P.Uri__eitherOf(t5, t1[4]);
         if (5 >= t3)
-          throw H.ioore(t1, 5);
+          return H.ioore(t1, 5);
         t3 = P.Uri__parseIntOrZero(t1[5]);
         t6 = t1.length;
         if (6 >= t6)
-          throw H.ioore(t1, 6);
+          return H.ioore(t1, 6);
         t7 = t1[6];
         t7 = t7 != null ? t7 : "";
         if (7 >= t6)
-          throw H.ioore(t1, 7);
+          return H.ioore(t1, 7);
         t8 = t1[7];
         t8 = t8 != null ? t8 : "";
         if (8 >= t6)
-          throw H.ioore(t1, 8);
+          return H.ioore(t1, 8);
         t1 = t1[8];
         t1 = t1 != null ? t1 : "";
         t6 = P.Uri__makeScheme(t2);
@@ -12702,7 +12680,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
         while (true) {
           t2 = t1.get$length(host);
           if (typeof t2 !== "number")
-            throw H.iae(t2);
+            return H.iae(t2);
           if (!(i < t2))
             break;
           if (t1.codeUnitAt$1(host, i) === 58) {
@@ -12721,7 +12699,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
         t3 = J.getInterceptor$asx(scheme);
         $length = t3.get$length(scheme);
         if (typeof $length !== "number")
-          throw H.iae($length);
+          return H.iae($length);
         allLowercase = true;
         i = 0;
         for (; i < $length; ++i) {
@@ -12778,7 +12756,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
         t1.prevIndex_2 = 0;
         t7 = new P.Uri__normalize_fillResult(t1, component);
         if (typeof $length !== "number")
-          throw H.iae($length);
+          return H.iae($length);
         for (; t8 = t1.index_1, t8 < $length;)
           if (t6.codeUnitAt$1(component, t8) === 37) {
             t8 = t1.index_1;
@@ -12858,7 +12836,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
         while (true) {
           t1 = J.get$length$asx(host);
           if (typeof t1 !== "number")
-            throw H.iae(t1);
+            return H.iae(t1);
           if (!(i < t1))
             break;
           if (J.codeUnitAt$1$s(host, i) === 58) {
@@ -12895,12 +12873,12 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
               t1 = J.$shl$n(J.$index$asx(last, 0), 8);
               t2 = J.$index$asx(last, 1);
               if (typeof t2 !== "number")
-                throw H.iae(t2);
+                return H.iae(t2);
               J.add$1$ax(parts, (t1 | t2) >>> 0);
               t2 = J.$shl$n(J.$index$asx(last, 2), 8);
               t1 = J.$index$asx(last, 3);
               if (typeof t1 !== "number")
-                throw H.iae(t1);
+                return H.iae(t1);
               J.add$1$ax(parts, (t2 | t1) >>> 0);
             } catch (exception) {
               H.unwrapException(exception);
@@ -12926,15 +12904,15 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
         while (true) {
           t3 = t2.get$length(text);
           if (typeof t3 !== "number")
-            throw H.iae(t3);
+            return H.iae(t3);
           if (!(i < t3))
             break;
           ch = t2.codeUnitAt$1(text, i);
           if (ch < 128) {
             t3 = C.JSInt_methods.$shr(ch, 4);
-            if (t3 < 0 || t3 >= 8)
-              throw H.ioore(canonicalTable, t3);
-            t3 = (canonicalTable[t3] & C.JSInt_methods.$shl(1, ch & 15)) >>> 0 !== 0;
+            if (t3 >= 8)
+              return H.ioore(canonicalTable, t3);
+            t3 = (canonicalTable[t3] & C.JSInt_methods.$shl(1, ch & 15)) !== 0;
           } else
             t3 = false;
           if (t3) {
@@ -12973,9 +12951,9 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       t1 = J.getInterceptor$n(ch);
       if (t1.$lt(ch, 128)) {
         t2 = t1.$shr(ch, 4);
-        if (t2 < 0 || t2 >= 8)
-          throw H.ioore(C.List_6Pr, t2);
-        t1 = (C.List_6Pr[t2] & C.JSInt_methods.$shl(1, t1.$and(ch, 15))) >>> 0 !== 0;
+        if (t2 >= 8)
+          return H.ioore(C.List_6Pr, t2);
+        t1 = (C.List_6Pr[t2] & C.JSInt_methods.$shl(1, t1.$and(ch, 15))) !== 0;
       } else
         t1 = false;
       return t1;
@@ -12992,9 +12970,9 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       t1 = J.getInterceptor$n(ch);
       if (t1.$lt(ch, 128)) {
         t2 = t1.$shr(ch, 4);
-        if (t2 < 0 || t2 >= 8)
-          throw H.ioore(C.List_JYB, t2);
-        t1 = (C.List_JYB[t2] & C.JSInt_methods.$shl(1, t1.$and(ch, 15))) >>> 0 !== 0;
+        if (t2 >= 8)
+          return H.ioore(C.List_JYB, t2);
+        t1 = (C.List_JYB[t2] & C.JSInt_methods.$shl(1, t1.$and(ch, 15))) !== 0;
       } else
         t1 = false;
       return t1;
@@ -13037,7 +13015,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
     call$1: function(digit) {
       var t1;
       if (typeof digit !== "number")
-        throw H.iae(digit);
+        return H.iae(digit);
       if (!(48 <= digit && digit <= 57))
         t1 = 65 <= digit && digit <= 70;
       else
@@ -13053,7 +13031,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
     "": "Closure;",
     call$1: function(digit) {
       if (typeof digit !== "number")
-        throw H.iae(digit);
+        return H.iae(digit);
       return 97 <= digit && digit <= 102;
     },
     "+call:1:0": 0,
@@ -13068,9 +13046,9 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       t1 = J.getInterceptor$n(ch);
       if (t1.$lt(ch, 128)) {
         t2 = t1.$shr(ch, 4);
-        if (t2 < 0 || t2 >= 8)
-          throw H.ioore(C.List_nxB, t2);
-        t1 = (C.List_nxB[t2] & C.JSInt_methods.$shl(1, t1.$and(ch, 15))) >>> 0 !== 0;
+        if (t2 >= 8)
+          return H.ioore(C.List_nxB, t2);
+        t1 = (C.List_nxB[t2] & C.JSInt_methods.$shl(1, t1.$and(ch, 15))) !== 0;
       } else
         t1 = false;
       return t1;
@@ -13219,12 +13197,12 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       var t1, t2;
       t1 = J.getInterceptor$n(v);
       t2 = t1.$shr(v, 4);
-      if (t2 < 0 || t2 >= 16)
-        throw H.ioore("0123456789ABCDEF", t2);
+      if (t2 >= 16)
+        return H.ioore("0123456789ABCDEF", t2);
       t2 = "%" + "0123456789ABCDEF"[t2];
       t1 = t1.$and(v, 15);
-      if (t1 < 0 || t1 >= 16)
-        throw H.ioore("0123456789ABCDEF", t1);
+      if (t1 >= 16)
+        return H.ioore("0123456789ABCDEF", t1);
       return t2 + "0123456789ABCDEF"[t1];
     },
     "+call:1:0": 0,
@@ -13574,7 +13552,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
             if (receiver.childNodes.length > 0) {
               t2 = receiver.childNodes;
               if (0 >= t2.length)
-                throw H.ioore(t2, 0);
+                return H.ioore(t2, 0);
               first = t2[0];
             } else
               first = null;
@@ -13713,7 +13691,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
     },
     elementAt$1: function(receiver, index) {
       if (index >>> 0 !== index || index >= receiver.length)
-        throw H.ioore(receiver, index);
+        return H.ioore(receiver, index);
       return receiver[index];
     },
     $asList: function() {
@@ -13929,7 +13907,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
     },
     elementAt$1: function(receiver, index) {
       if (index >>> 0 !== index || index >= receiver.length)
-        throw H.ioore(receiver, index);
+        return H.ioore(receiver, index);
       return receiver[index];
     },
     $asList: function() {
@@ -14136,7 +14114,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
     },
     elementAt$1: function(receiver, index) {
       if (index >>> 0 !== index || index >= receiver.length)
-        throw H.ioore(receiver, index);
+        return H.ioore(receiver, index);
       return receiver[index];
     },
     $asList: function() {
@@ -14264,7 +14242,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
     $index: function(_, index) {
       var t1 = this._nodeList;
       if (index >>> 0 !== index || index >= t1.length)
-        throw H.ioore(t1, index);
+        return H.ioore(t1, index);
       return t1[index];
     },
     "+[]:1:0": 0,
@@ -14400,13 +14378,6 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
     add$1: function(_, value) {
       this._this.appendChild(value);
     },
-    addAll$1: function(_, iterable) {
-      var t1, len, t2, i;
-      t1 = iterable.get$_this();
-      for (len = iterable.get$length(iterable), t2 = this._this, i = 0; C.JSInt_methods.$lt(i, len); ++i)
-        t2.appendChild(t1.get$firstChild(t1));
-      return;
-    },
     remove$1: function(_, object) {
       return false;
     },
@@ -14415,7 +14386,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       t1 = this._this;
       t2 = t1.childNodes;
       if (index >>> 0 !== index || index >= t2.length)
-        throw H.ioore(t2, index);
+        return H.ioore(t2, index);
       t1.replaceChild(value, t2[index]);
     },
     "+[]=:2:0": 0,
@@ -14436,7 +14407,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
     $index: function(_, index) {
       var t1 = this._this.childNodes;
       if (index >>> 0 !== index || index >= t1.length)
-        throw H.ioore(t1, index);
+        return H.ioore(t1, index);
       return t1[index];
     },
     "+[]:1:0": 0,
@@ -14504,10 +14475,10 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       keys = P.List_List(null, J.JSString);
       for (len = attributes.length, i = 0; i < len; ++i) {
         if (i >= attributes.length)
-          throw H.ioore(attributes, i);
+          return H.ioore(attributes, i);
         if (this._matches$1(attributes[i])) {
           if (i >= attributes.length)
-            throw H.ioore(attributes, i);
+            return H.ioore(attributes, i);
           keys.push(J.get$name$x(attributes[i]));
         }
       }
@@ -14520,10 +14491,10 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       values = P.List_List(null, J.JSString);
       for (len = attributes.length, i = 0; i < len; ++i) {
         if (i >= attributes.length)
-          throw H.ioore(attributes, i);
+          return H.ioore(attributes, i);
         if (this._matches$1(attributes[i])) {
           if (i >= attributes.length)
-            throw H.ioore(attributes, i);
+            return H.ioore(attributes, i);
           values.push(J.get$value$x(attributes[i]));
         }
       }
@@ -14926,9 +14897,6 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       return t1;
     },
     add$1: function(receiver, value) {
-      throw H.wrapException(P.UnsupportedError$("Cannot add to immutable List."));
-    },
-    addAll$1: function(receiver, iterable) {
       throw H.wrapException(P.UnsupportedError$("Cannot add to immutable List."));
     },
     remove$1: function(receiver, object) {
@@ -15334,7 +15302,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
     t1 = $.RawReceivePortImpl__nextFreeId;
     $.RawReceivePortImpl__nextFreeId = t1 + 1;
     t2 = new H.RawReceivePortImpl(t1, null, false);
-    t3 = $globalState.currentContext;
+    t3 = init.globalState.currentContext;
     t3.register$2(t3, t1, t2);
     t1 = new H.ReceivePortImpl(t2, null);
     t1.ReceivePortImpl$fromRawReceivePort$1(t2);
@@ -15506,7 +15474,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
           if (!(index < 0)) {
             t1 = P.JsObject.prototype.$index.call(this, this, "length");
             if (typeof t1 !== "number")
-              throw H.iae(t1);
+              return H.iae(t1);
             t1 = index >= t1;
           } else
             t1 = true;
@@ -15525,7 +15493,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
           if (!(index < 0)) {
             t1 = P.JsObject.prototype.$index.call(this, this, "length");
             if (typeof t1 !== "number")
-              throw H.iae(t1);
+              return H.iae(t1);
             t1 = index >= t1;
           } else
             t1 = true;
@@ -15548,18 +15516,12 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
     add$1: function(_, value) {
       this.callMethod$2("push", [value]);
     },
-    addAll$1: function(_, iterable) {
-      this.callMethod$2("push", iterable instanceof Array ? iterable : P.List_List$from(iterable, true, null));
-    },
     setRange$4: function(_, start, end, iterable, skipCount) {
       var t1, $length, args;
-      if (start >= 0) {
-        t1 = P.JsObject.prototype.$index.call(this, this, "length");
-        if (typeof t1 !== "number")
-          throw H.iae(t1);
-        t1 = start > t1;
-      } else
-        t1 = true;
+      t1 = P.JsObject.prototype.$index.call(this, this, "length");
+      if (typeof t1 !== "number")
+        return H.iae(t1);
+      t1 = start > t1;
       if (t1)
         H.throwExpression(P.RangeError$range(start, 0, P.JsObject.prototype.$index.call(this, this, "length")));
       t1 = J.getInterceptor$n(end);
@@ -15568,8 +15530,6 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       $length = t1.$sub(end, start);
       if (J.$eq($length, 0))
         return;
-      if (skipCount < 0)
-        throw H.wrapException(new P.ArgumentError(skipCount));
       args = [start, $length];
       t1 = new H.SubListIterable(iterable, skipCount, null);
       t1.$builtinTypeInfo = [null];
@@ -16507,12 +16467,12 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       endValue = this.computePropertyValue$2(doingShow ? 1 : 0, element);
       if (doingShow) {
         if (typeof fractionComplete !== "number")
-          throw H.iae(fractionComplete);
+          return H.iae(fractionComplete);
         animationFractionLeft = 1 - fractionComplete;
       } else
         animationFractionLeft = fractionComplete;
       if (typeof animationFractionLeft !== "number")
-        throw H.iae(animationFractionLeft);
+        return H.iae(animationFractionLeft);
       actualDuration = C.JSNumber_methods.toInt$0(C.JSNumber_methods.roundToDouble$0(desiredDuration * animationFractionLeft));
       J.setProperty$2$x(t3.get$style(element), t1, startValue);
       Y._css3TransitionEffectValues_delayStart(element, localValues, new Y.Css3TransitionEffect__startAnimation_closure(this, element, timing, endValue, actualDuration));
@@ -16586,9 +16546,9 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       else {
         t1 = J.get$scrollHeight$x(element);
         if (typeof t1 !== "number")
-          throw t1.$mul();
+          return t1.$mul();
         if (typeof fractionComplete !== "number")
-          throw H.iae(fractionComplete);
+          return H.iae(fractionComplete);
         t1 = H.S(t1 * fractionComplete) + "px";
       }
       return t1;
@@ -16598,14 +16558,14 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       t1 = J.getInterceptor$x(element);
       scrollHeight = t1.get$scrollHeight(element);
       if (typeof scrollHeight !== "number")
-        throw scrollHeight.$gt();
+        return scrollHeight.$gt();
       if (scrollHeight > 0) {
         t2 = t1.get$clientHeight(element);
         t1 = t1.get$scrollHeight(element);
         if (typeof t2 !== "number")
-          throw t2.$div();
+          return t2.$div();
         if (typeof t1 !== "number")
-          throw H.iae(t1);
+          return H.iae(t1);
         return P.min(1, t2 / t1);
       }
     }
@@ -16638,7 +16598,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
     "": "Css3TransitionEffect;_property,_animatingOverrides",
     computePropertyValue$2: function(fractionComplete, element) {
       if (typeof fractionComplete !== "number")
-        throw H.iae(fractionComplete);
+        return H.iae(fractionComplete);
       return "perspective(600px) rotateX(" + H.S((1 - fractionComplete) * 90) + "deg)";
     }
   },
@@ -16646,7 +16606,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
     "": "Css3TransitionEffect;_property,_animatingOverrides",
     computePropertyValue$2: function(fractionComplete, element) {
       if (typeof fractionComplete !== "number")
-        throw H.iae(fractionComplete);
+        return H.iae(fractionComplete);
       return "perspective(600px) rotateX(" + H.S((1 - fractionComplete) * 90) + "deg)";
     }
   },
@@ -16832,7 +16792,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
     call$1: function(i) {
       var t1 = this.copies_2;
       if (i >>> 0 !== i || i >= t1.length)
-        throw H.ioore(t1, i);
+        return H.ioore(t1, i);
       return t1[i];
     },
     "+call:1:0": 0,
@@ -16845,7 +16805,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
     call$2: function(i, x) {
       var t1 = this.copies_3;
       if (i >>> 0 !== i || i >= t1.length)
-        throw H.ioore(t1, i);
+        return H.ioore(t1, i);
       t1[i] = x;
     },
     "+call:2:0": 0,
@@ -16891,7 +16851,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
         copy = this.mustCopy_4 ? new Array($length) : e;
         this.writeSlot_7.call$2(slot, copy);
         if (typeof $length !== "number")
-          throw H.iae($length);
+          return H.iae($length);
         t2 = J.getInterceptor$ax(copy);
         i = 0;
         for (; i < $length; ++i)
@@ -16973,9 +16933,6 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       this.writeClasses$1(s);
       return result;
     },
-    addAll$1: function(_, iterable) {
-      this.modify$1(new P.CssClassSetImpl_addAll_closure(iterable));
-    },
     get$last: function(_) {
       var t1 = this.readClasses$0()._last;
       if (t1 == null)
@@ -17014,16 +16971,6 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
     "": "Closure;value_0",
     call$1: function(s) {
       return J.add$1$ax(s, this.value_0);
-    },
-    "+call:1:0": 0,
-    $isFunction: true,
-    $is_Object__Object: true,
-    $is_args1: true
-  },
-  CssClassSetImpl_addAll_closure: {
-    "": "Closure;iterable_0",
-    call$1: function(s) {
-      return J.addAll$1$ax(s, this.iterable_0);
     },
     "+call:1:0": 0,
     $isFunction: true,
@@ -17147,25 +17094,25 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
     $lt: function(_, other) {
       var t1 = J.get$value$x(other);
       if (typeof t1 !== "number")
-        throw H.iae(t1);
+        return H.iae(t1);
       return this.value < t1;
     },
     $le: function(_, other) {
       var t1 = J.get$value$x(other);
       if (typeof t1 !== "number")
-        throw H.iae(t1);
+        return H.iae(t1);
       return this.value <= t1;
     },
     $gt: function(_, other) {
       var t1 = J.get$value$x(other);
       if (typeof t1 !== "number")
-        throw H.iae(t1);
+        return H.iae(t1);
       return this.value > t1;
     },
     $ge: function(_, other) {
       var t1 = J.get$value$x(other);
       if (typeof t1 !== "number")
-        throw H.iae(t1);
+        return H.iae(t1);
       return this.value >= t1;
     },
     get$hashCode: function(_) {
@@ -17188,7 +17135,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
     static: {"": "LogRecord__nextNumber"}
   }
 }],
-["metadata", "file:///usr/local/Cellar/dart-editor/30657/dart-sdk/lib/html/html_common/metadata.dart", , B, {
+["metadata", "file:///usr/local/Cellar/dart-editor/30821/dart-sdk/lib/html/html_common/metadata.dart", , B, {
   SupportedBrowser: {
     "": "Object;browserName,minimumVersion",
     static: {"": "SupportedBrowser_CHROME,SupportedBrowser_FIREFOX,SupportedBrowser_IE,SupportedBrowser_OPERA,SupportedBrowser_SAFARI"}
@@ -17510,29 +17457,30 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
     var rowCount, columnCount, distances, t1, i, t2, j, t3, t4, t5, t6, t7, t8, north, west;
     rowCount = J.$add$ns(J.$sub$n(oldEnd, oldStart), 1);
     columnCount = J.$add$ns(J.$sub$n(currentEnd, currentStart), 1);
-    distances = P.List_List(rowCount, null);
     if (typeof rowCount !== "number")
-      throw H.iae(rowCount);
-    t1 = distances.length;
-    i = 0;
-    for (; i < rowCount; ++i) {
-      t2 = P.List_List(columnCount, null);
+      return H.iae(rowCount);
+    distances = Array(rowCount);
+    for (t1 = distances.length, i = 0; i < rowCount; ++i) {
+      if (typeof columnCount !== "number")
+        return H.iae(columnCount);
+      t2 = Array(columnCount);
+      t2.fixed$length = init;
       if (i >= t1)
-        throw H.ioore(distances, i);
+        return H.ioore(distances, i);
       distances[i] = t2;
       if (0 >= t2.length)
-        throw H.ioore(t2, 0);
+        return H.ioore(t2, 0);
       t2[0] = i;
     }
     if (typeof columnCount !== "number")
-      throw H.iae(columnCount);
+      return H.iae(columnCount);
     j = 0;
     for (; j < columnCount; ++j) {
       if (0 >= t1)
-        throw H.ioore(distances, 0);
+        return H.ioore(distances, 0);
       t2 = distances[0];
       if (j >= t2.length)
-        throw H.ioore(t2, j);
+        return H.ioore(t2, j);
       t2[j] = j;
     }
     for (t2 = J.getInterceptor$asx(old), t3 = J.getInterceptor$asx(current), i = 1; i < rowCount; ++i)
@@ -17542,32 +17490,32 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
         t8 = j - 1;
         if (t6) {
           if (i >= t1)
-            throw H.ioore(distances, i);
+            return H.ioore(distances, i);
           t6 = distances[i];
           if (t4 >= t1)
-            throw H.ioore(distances, t4);
+            return H.ioore(distances, t4);
           if (t8 >= t7.length)
-            throw H.ioore(t7, t8);
+            return H.ioore(t7, t8);
           t8 = t7[t8];
           if (j >= t6.length)
-            throw H.ioore(t6, j);
+            return H.ioore(t6, j);
           t6[j] = t8;
         } else {
           if (t4 >= t1)
-            throw H.ioore(distances, t4);
+            return H.ioore(distances, t4);
           if (j >= t7.length)
-            throw H.ioore(t7, j);
+            return H.ioore(t7, j);
           north = J.$add$ns(t7[j], 1);
           if (i >= t1)
-            throw H.ioore(distances, i);
+            return H.ioore(distances, i);
           t6 = distances[i];
           if (t8 >= t6.length)
-            throw H.ioore(t6, t8);
+            return H.ioore(t6, t8);
           west = J.$add$ns(t6[t8], 1);
           t8 = distances[i];
           t6 = P.min(north, west);
           if (j >= t8.length)
-            throw H.ioore(t8, j);
+            return H.ioore(t8, j);
           t8[j] = t6;
         }
       }
@@ -17578,13 +17526,13 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
     t1 = distances.length;
     i = t1 - 1;
     if (0 >= t1)
-      throw H.ioore(distances, 0);
+      return H.ioore(distances, 0);
     j = distances[0].length - 1;
     if (i < 0)
-      throw H.ioore(distances, i);
+      return H.ioore(distances, i);
     t2 = distances[i];
     if (j < 0 || j >= t2.length)
-      throw H.ioore(t2, j);
+      return H.ioore(t2, j);
     current = t2[j];
     edits = [];
     while (true) {
@@ -17603,21 +17551,21 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
         }
         t2 = i - 1;
         if (t2 < 0)
-          throw H.ioore(distances, t2);
+          return H.ioore(distances, t2);
         t3 = distances[t2];
         t4 = j - 1;
         t5 = t3.length;
         if (t4 < 0 || t4 >= t5)
-          throw H.ioore(t3, t4);
+          return H.ioore(t3, t4);
         northWest = t3[t4];
         if (j < 0 || j >= t5)
-          throw H.ioore(t3, j);
+          return H.ioore(t3, j);
         west = t3[j];
         if (i < 0)
-          throw H.ioore(distances, i);
+          return H.ioore(distances, i);
         t3 = distances[i];
         if (t4 >= t3.length)
-          throw H.ioore(t3, t4);
+          return H.ioore(t3, t4);
         north = t3[t4];
         min = P.min(P.min(west, north), northWest);
         if (min === northWest) {
@@ -17689,7 +17637,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
     if (currentStart === currentEnd) {
       splice = G.ListChangeRecord_ListChangeRecord(current, currentStart, null, null);
       if (typeof oldEnd !== "number")
-        throw H.iae(oldEnd);
+        return H.iae(oldEnd);
       t1 = splice._removed;
       t2 = J.getInterceptor$asx(old);
       for (; oldStart < oldEnd; oldStart = oldStart0) {
@@ -17770,7 +17718,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
         return true;
       t1 = this._addedCount;
       if (typeof t1 !== "number")
-        throw H.iae(t1);
+        return H.iae(t1);
       return key < this._list_diff$_index + t1;
     },
     toString$0: function(_) {
@@ -17991,7 +17939,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
           result = new V.ObservableMap(P.HashMap_HashMap(null, null, null, $K, $V), null, null);
           H.setRuntimeTypeInfo(result, [$K, $V]);
         }
-        J.addAll$1$ax(result, other);
+        result.addAll$1(result, other);
         return result;
       }}
   },
@@ -18020,7 +17968,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
     return false;
   },
   _getObjectProperty: function(object, property) {
-    var mirror, type, t1, t2, unmangledName, unmangledName0, exception;
+    var mirror, type, t1, t2, exception;
     if (object == null)
       return;
     t1 = property;
@@ -18034,10 +17982,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       t2 = J.getInterceptor(t1);
       if (typeof t1 === "object" && t1 !== null && !!t2.$isSymbol) {
         mirror = H.reflect(object);
-        unmangledName = J.get$runtimeType$(mirror.get$reflectee())._typeName;
-        t1 = $.get$mangledGlobalNames();
-        unmangledName0 = t1.$index(t1, unmangledName);
-        type = H.reflectClassByName(H.s(unmangledName0 == null ? unmangledName : unmangledName0), unmangledName);
+        type = H.reflectClassByMangledName(J.get$runtimeType$(mirror.get$reflectee())._typeName);
         try {
           if (L._maybeHasGetter(type, property)) {
             t1 = property;
@@ -18169,7 +18114,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
     if (s === "")
       return true;
     if (0 >= s.length)
-      throw H.ioore(s, 0);
+      return H.ioore(s, 0);
     if (s[0] === ".")
       return false;
     return $.get$_pathRegExp().hasMatch$1(s);
@@ -18212,14 +18157,14 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       t2 = this._values;
       t3 = len - 1;
       if (t3 < 0 || t3 >= t2.length)
-        throw H.ioore(t2, t3);
+        return H.ioore(t2, t3);
       t2 = t2[t3];
       if (t3 >= t1.length)
-        throw H.ioore(t1, t3);
+        return H.ioore(t1, t3);
       if (L._setObjectProperty(t2, t1[t3], newValue)) {
         t1 = this._values;
         if (len >= t1.length)
-          throw H.ioore(t1, len);
+          return H.ioore(t1, len);
         t1[len] = newValue;
       }
       "14,56,0,54";
@@ -18241,7 +18186,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
           t1.cancel$0();
           t1 = this._subs;
           if (i >= t1.length)
-            throw H.ioore(t1, i);
+            return H.ioore(t1, i);
           t1[i] = null;
         }
       }
@@ -18257,23 +18202,23 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       t1 = this._segments;
       last = t1.length - 1;
       if (typeof end !== "number")
-        throw H.iae(end);
+        return H.iae(end);
       t2 = this._computeValue != null;
       i = 0;
       for (; i < end;) {
         t3 = this._values;
         if (i >= t3.length)
-          throw H.ioore(t3, i);
+          return H.ioore(t3, i);
         t3 = t3[i];
         if (i >= t1.length)
-          throw H.ioore(t1, i);
+          return H.ioore(t1, i);
         newValue = L._getObjectProperty(t3, t1[i]);
         if (i === last && t2)
           newValue = this._computeValue$1(newValue);
         t3 = this._values;
         ++i;
         if (i >= t3.length)
-          throw H.ioore(t3, i);
+          return H.ioore(t3, i);
         t3[i] = newValue;
       }
     },
@@ -18286,14 +18231,14 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
         t3 = this._values;
         i0 = i + 1;
         t4 = t3.length;
-        if (i0 < 0 || i0 >= t4)
-          throw H.ioore(t3, i0);
+        if (i0 >= t4)
+          return H.ioore(t3, i0);
         oldValue = t3[i0];
-        if (i < 0 || i >= t4)
-          throw H.ioore(t3, i);
+        if (i >= t4)
+          return H.ioore(t3, i);
         t3 = t3[i];
         if (i >= t1.length)
-          throw H.ioore(t1, i);
+          return H.ioore(t1, i);
         newValue = L._getObjectProperty(t3, t1[i]);
         if (i === last && t2)
           newValue = this._computeValue$1(newValue);
@@ -18303,7 +18248,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
         }
         t3 = this._values;
         if (i0 >= t3.length)
-          throw H.ioore(t3, i0);
+          return H.ioore(t3, i0);
         t3[i0] = newValue;
       }
       this._observePath$1(start);
@@ -18318,12 +18263,12 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       if (end == null)
         end = this._segments.length;
       if (typeof end !== "number")
-        throw H.iae(end);
+        return H.iae(end);
       i = start;
       for (; i < end; ++i) {
         t1 = this._subs;
-        if (i < 0 || i >= t1.length)
-          throw H.ioore(t1, i);
+        if (i >= t1.length)
+          return H.ioore(t1, i);
         t1 = t1[i];
         if (t1 != null)
           t1.cancel$0();
@@ -18339,12 +18284,12 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
     _observeIndex$1: function(i) {
       var t1, object, segment, t2, subscription, handleError, handleDone;
       t1 = this._values;
-      if (i < 0 || i >= t1.length)
-        throw H.ioore(t1, i);
+      if (i >= t1.length)
+        return H.ioore(t1, i);
       object = t1[i];
       t1 = this._segments;
       if (i >= t1.length)
-        throw H.ioore(t1, i);
+        return H.ioore(t1, i);
       segment = t1[i];
       if (typeof segment === "number" && Math.floor(segment) === segment)
         ;
@@ -18359,7 +18304,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
           handleDone = P._nullDoneHandler$closure;
           subscription._onDone = $.Zone__current.registerCallback$1(handleDone);
           if (i >= t2.length)
-            throw H.ioore(t2, i);
+            return H.ioore(t2, i);
           t2[i] = subscription;
         }
       }
@@ -18375,14 +18320,18 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
           t1.push(index != null ? index : new H.Symbol0(H.Symbol_validate(segment)));
         }
       t1 = this._segments;
-      this._values = P.List_List(t1.length + 1, P.Object);
+      t2 = Array(t1.length + 1);
+      H.setRuntimeTypeInfo(t2, [P.Object]);
+      this._values = t2;
       if (t1.length === 0 && computeValue != null)
         object = computeValue.call$1(object);
       t2 = this._values;
       if (0 >= t2.length)
-        throw H.ioore(t2, 0);
+        return H.ioore(t2, 0);
       t2[0] = object;
-      this._subs = P.List_List(t1.length, P.StreamSubscription);
+      t1 = Array(t1.length);
+      H.setRuntimeTypeInfo(t1, [P.StreamSubscription]);
+      this._subs = t1;
     },
     $isPathObserver: true,
     static: {PathObserver$: function(object, path, computeValue) {
@@ -18549,7 +18498,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       C.JSArray_methods.removeLast$0(t1);
       t1 = parsed.separators;
       if (0 >= t1.length)
-        throw H.ioore(t1, 0);
+        return H.ioore(t1, 0);
       t1.pop();
       parsed.removeTrailingSeparators$0();
       return parsed.toString$0(parsed);
@@ -18627,10 +18576,10 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       if (firstSeparator != null) {
         t4 = firstSeparator._match;
         if (0 >= t4.length)
-          throw H.ioore(t4, 0);
+          return H.ioore(t4, 0);
         separators.push(t4[0]);
         if (0 >= t4.length)
-          throw H.ioore(t4, 0);
+          return H.ioore(t4, 0);
         path = J.substring$1$s(path, J.get$length$asx(t4[0]));
       } else
         separators.push("");
@@ -18643,19 +18592,19 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
         t5 = t3.__js_helper$_current._match;
         parts.push(t4.substring$2(path, start, t5.index));
         if (0 >= t5.length)
-          throw H.ioore(t5, 0);
+          return H.ioore(t5, 0);
         separators.push(t5[0]);
         t6 = t5.index;
         if (0 >= t5.length)
-          throw H.ioore(t5, 0);
+          return H.ioore(t5, 0);
         t5 = J.get$length$asx(t5[0]);
         if (typeof t5 !== "number")
-          throw H.iae(t5);
+          return H.iae(t5);
         start = t6 + t5;
       }
       t3 = t4.get$length(path);
       if (typeof t3 !== "number")
-        throw H.iae(t3);
+        return H.iae(t3);
       if (start < t3) {
         parts.push(t4.substring$1(path, start));
         separators.push("");
@@ -18743,7 +18692,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
           break;
         C.JSArray_methods.removeLast$0(this.parts);
         if (0 >= t1.length)
-          throw H.ioore(t1, 0);
+          return H.ioore(t1, 0);
         t1.pop();
       }
       t2 = t1.length;
@@ -18758,13 +18707,13 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
         builder.write$1(t1);
       for (t1 = this.separators, i = 0; i < this.parts.length; ++i) {
         if (i >= t1.length)
-          throw H.ioore(t1, i);
+          return H.ioore(t1, i);
         str = t1[i];
         str = typeof str === "string" ? str : H.S(str);
         builder._contents = builder._contents + str;
         t2 = this.parts;
         if (i >= t2.length)
-          throw H.ioore(t2, i);
+          return H.ioore(t2, i);
         str = t2[i];
         str = typeof str === "string" ? str : H.S(str);
         builder._contents = builder._contents + str;
@@ -19462,7 +19411,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
     "": "Closure;this_0",
     call$2: function($name, value) {
       var t1;
-      if (!C.Map_c94aj.containsKey$1($name) && !J.startsWith$1$s($name, "on-")) {
+      if (C.Map_c94aj.containsKey$1($name) !== true && !J.startsWith$1$s($name, "on-")) {
         t1 = this.this_0._instanceAttributes;
         t1.$indexSet(t1, $name, value);
       }
@@ -20017,7 +19966,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
         return;
       method = this.path_2;
       if (0 >= method.length)
-        throw H.ioore(method, 0);
+        return H.ioore(method, 0);
       if (method[0] === "@") {
         obj = this.model_3;
         t3 = L.PathObserver$(obj, C.JSString_methods.substring$1(method, 1), null);
@@ -20833,7 +20782,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       return t1;
     },
     $index: function(_, $name) {
-      var t1, symbol, unmangledName, t2, unmangledName0, memberMirror, t3;
+      var t1, symbol, memberMirror, t2, t3;
       if (J.$eq($name, "this"))
         return this.model;
       else {
@@ -20843,10 +20792,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
         else if (this.model != null) {
           t1 = H.Symbol_validate($name);
           symbol = new H.Symbol0(t1);
-          unmangledName = J.get$runtimeType$(this.get$_modelMirror().reflectee)._typeName;
-          t2 = $.get$mangledGlobalNames();
-          unmangledName0 = t2.$index(t2, unmangledName);
-          memberMirror = Z.getMemberMirror(H.reflectClassByName(H.s(unmangledName0 == null ? unmangledName : unmangledName0), unmangledName), symbol);
+          memberMirror = Z.getMemberMirror(H.reflectClassByMangledName(J.get$runtimeType$(this.get$_modelMirror().reflectee)._typeName), symbol);
           t2 = J.getInterceptor(memberMirror);
           if (typeof memberMirror !== "object" || memberMirror === null || !t2.$isVariableMirror)
             t3 = typeof memberMirror === "object" && memberMirror !== null && !!t2.$isMethodMirror && memberMirror.get$isGetter();
@@ -21512,12 +21458,12 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
     while (true) {
       t2 = t1.get$length(a);
       if (typeof t2 !== "number")
-        throw H.iae(t2);
+        return H.iae(t2);
       if (!(i < t2))
         break;
       t2 = t1.$index(a, i);
       if (i >= b.length)
-        throw H.ioore(b, i);
+        return H.ioore(b, i);
       if (!J.$eq(t2, b[i]))
         return false;
       ++i;
@@ -21531,16 +21477,16 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
   _JenkinsSmiHash_combine: function(hash, value) {
     var t1 = J.$add$ns(hash, value);
     if (typeof t1 !== "number")
-      throw H.iae(t1);
+      return H.iae(t1);
     hash = 536870911 & t1;
     hash = 536870911 & hash + ((524287 & hash) << 10 >>> 0);
-    return (hash ^ C.JSInt_methods.$shr(hash, 6)) >>> 0;
+    return hash ^ hash >>> 6;
   },
   _JenkinsSmiHash_finish: function(hash) {
     if (typeof hash !== "number")
-      throw H.iae(hash);
+      return H.iae(hash);
     hash = 536870911 & hash + ((67108863 & hash) << 3 >>> 0);
-    hash = (hash ^ C.JSInt_methods.$shr(hash, 11)) >>> 0;
+    hash = (hash ^ hash >>> 11) >>> 0;
     return 536870911 & hash + ((16383 & hash) << 15 >>> 0);
   },
   AstFactory: {
@@ -22306,7 +22252,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
           this.tokenizeString$0();
         else {
           if (typeof t3 !== "number")
-            throw H.iae(t3);
+            return H.iae(t3);
           if (!(97 <= t3 && t3 <= 122))
             t4 = 65 <= t3 && t3 <= 90 || t3 === 95 || t3 === 36 || t3 > 127;
           else
@@ -22319,7 +22265,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
             t3 = t1.moveNext$0() ? t1._currentCodePoint : null;
             this._tokenizer$_next = t3;
             if (typeof t3 !== "number")
-              throw H.iae(t3);
+              return H.iae(t3);
             if (48 <= t3 && t3 <= 57)
               this.tokenizeFraction$0();
             else
@@ -22394,7 +22340,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
         t3 = this._tokenizer$_next;
         if (t3 != null) {
           if (typeof t3 !== "number")
-            throw H.iae(t3);
+            return H.iae(t3);
           if (!(97 <= t3 && t3 <= 122))
             if (!(65 <= t3 && t3 <= 90))
               t4 = 48 <= t3 && t3 <= 57 || t3 === 95 || t3 === 36 || t3 > 127;
@@ -22427,7 +22373,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
         t3 = this._tokenizer$_next;
         if (t3 != null) {
           if (typeof t3 !== "number")
-            throw H.iae(t3);
+            return H.iae(t3);
           t4 = 48 <= t3 && t3 <= 57;
         } else
           t4 = false;
@@ -22442,7 +22388,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
         t1 = t1.moveNext$0() ? t1._currentCodePoint : null;
         this._tokenizer$_next = t1;
         if (typeof t1 !== "number")
-          throw H.iae(t1);
+          return H.iae(t1);
         if (48 <= t1 && t1 <= 57)
           this.tokenizeFraction$0();
         else
@@ -22461,7 +22407,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
         t3 = this._tokenizer$_next;
         if (t3 != null) {
           if (typeof t3 !== "number")
-            throw H.iae(t3);
+            return H.iae(t3);
           t4 = 48 <= t3 && t3 <= 57;
         } else
           t4 = false;
@@ -22593,7 +22539,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
     for (c = node.firstChild, i = 0; c != null; c = c.nextSibling, i = i0) {
       i0 = i + 1;
       if (i >= t1.length)
-        throw H.ioore(t1, i);
+        return H.ioore(t1, i);
       M._addMapBindings(c, t1[i], model, delegate, bound);
     }
   },
@@ -22643,16 +22589,16 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       $name = bindings[i];
       t4 = i + 1;
       if (t4 >= t3)
-        throw H.ioore(bindings, t4);
+        return H.ioore(bindings, t4);
       tokens = bindings[t4];
       t4 = tokens.get$tokens();
       if (1 >= t4.length)
-        throw H.ioore(t4, 1);
+        return H.ioore(t4, 1);
       bindingPath = t4[1];
       if (tokens.get$hasOnePath()) {
         t3 = tokens.get$tokens();
         if (2 >= t3.length)
-          throw H.ioore(t3, 2);
+          return H.ioore(t3, 2);
         delegateFn = t3[2];
         if (delegateFn != null) {
           delegateBinding = delegateFn.call$2(model, node);
@@ -22673,12 +22619,12 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
         for (j = 1; j < tokens.get$tokens().length; j += 3) {
           t4 = tokens.get$tokens();
           if (j >= t4.length)
-            throw H.ioore(t4, j);
+            return H.ioore(t4, j);
           subPath = t4[j];
           t4 = tokens.get$tokens();
           t5 = j + 1;
           if (t5 >= t4.length)
-            throw H.ioore(t4, t5);
+            return H.ioore(t4, t5);
           delegateFn = t4[t5];
           delegateBinding = delegateFn != null ? delegateFn.call$2(model, node) : null;
           if (delegateBinding != null) {
@@ -22706,7 +22652,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       return;
     $length = t1.get$length(s);
     if (typeof $length !== "number")
-      throw H.iae($length);
+      return H.iae($length);
     t2 = delegate == null;
     tokens = null;
     lastIndex = 0;
@@ -23156,9 +23102,9 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
         for (c = t1.get$firstChild(node), children = null, i = 0; c != null; c = c.nextSibling, ++i) {
           childMap = M._InstanceBindingMap__InstanceBindingMap(c, delegate);
           if (children == null)
-            children = P.List_List(t1.get$nodes(node)._this.childNodes.length, null);
+            children = Array(t1.get$nodes(node)._this.childNodes.length);
           if (i >= children.length)
-            throw H.ioore(children, i);
+            return H.ioore(children, i);
           children[i] = childMap;
           if (childMap.hasSubTemplate)
             hasSubTemplate = true;
@@ -23615,10 +23561,10 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       t2 = t1.length;
       if (t2 === 4) {
         if (0 >= t2)
-          throw H.ioore(t1, 0);
+          return H.ioore(t1, 0);
         if (J.$eq(t1[0], "")) {
           if (3 >= t1.length)
-            throw H.ioore(t1, 3);
+            return H.ioore(t1, 3);
           t1 = J.$eq(t1[3], "");
         } else
           t1 = false;
@@ -23635,10 +23581,10 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
         value = "";
       t1 = this.tokens;
       if (0 >= t1.length)
-        throw H.ioore(t1, 0);
+        return H.ioore(t1, 0);
       t2 = H.S(t1[0]) + H.S(value);
       if (3 >= t1.length)
-        throw H.ioore(t1, 3);
+        return H.ioore(t1, 3);
       return t2 + H.S(t1[3]);
     },
     get$_singleCombinator: function() {
@@ -23648,7 +23594,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       var t1, newValue, t2, i, value, str, t3;
       t1 = this.tokens;
       if (0 >= t1.length)
-        throw H.ioore(t1, 0);
+        return H.ioore(t1, 0);
       newValue = P.StringBuffer$(t1[0]);
       for (t2 = J.getInterceptor$asx(values), i = 1; i < t1.length; i += 3) {
         value = t2.$index(values, C.JSInt_methods.$tdiv(i - 1, 3));
@@ -23658,7 +23604,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
         }
         t3 = i + 2;
         if (t3 >= t1.length)
-          throw H.ioore(t1, t3);
+          return H.ioore(t1, t3);
         str = t1[t3];
         str = typeof str === "string" ? str : H.S(str);
         newValue._contents = newValue._contents + str;
@@ -23741,7 +23687,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       t2 = this.terminators;
       t1 = t1.$mul(index, 2);
       if (t1 >>> 0 !== t1 || t1 >= t2.length)
-        throw H.ioore(t2, t1);
+        return H.ioore(t2, t1);
       terminator = t2[t1];
       if (M.isSemanticTemplate(terminator)) {
         t1 = this._templateExt._template_binding$_node;
@@ -23786,7 +23732,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       t2 = this.terminators;
       t3 = J.$add$ns(t1.$mul(index, 2), 1);
       if (t3 >>> 0 !== t3 || t3 >= t2.length)
-        throw H.ioore(t2, t3);
+        return H.ioore(t2, t3);
       bound = t2[t3];
       t3 = t1.$mul(index, 2);
       t1 = J.$add$ns(t1.$mul(index, 2), 2);
@@ -23798,10 +23744,10 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       if (t4.$lt(t1, t3) || t4.$gt(t1, receiverLength))
         H.throwExpression(P.RangeError$range(t1, t3, receiverLength));
       if (typeof t1 !== "number")
-        throw H.iae(t1);
+        return H.iae(t1);
       H.Arrays_copy(t2, t1, t2, t3, receiverLength - t1);
       if (typeof t3 !== "number")
-        throw H.iae(t3);
+        return H.iae(t3);
       C.JSArray_methods.set$length(t2, receiverLength - (t1 - t3));
       J.get$parentNode$x(this._templateExt._template_binding$_node);
       for (t1 = J.getInterceptor$x(previousTerminator); !J.$eq(terminator, previousTerminator);) {
@@ -23843,7 +23789,7 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
           instanceCache.$indexSet(instanceCache, t4._current, this.extractInstanceAt$1(J.$add$ns(t5.get$index(splice), removeDelta)));
         t4 = splice.get$addedCount();
         if (typeof t4 !== "number")
-          throw H.iae(t4);
+          return H.iae(t4);
         removeDelta -= t4;
       }
       for (t2 = t2.get$iterator(splices); t2.moveNext$0();) {
@@ -24092,9 +24038,6 @@ init.mangledNames = {get$$$: "$", get$_cachedConstructors: "_cachedConstructors"
       return F.UnmodifiableMapView__throw();
     },
     "+[]=:2:0": 0,
-    addAll$1: function(_, other) {
-      return F.UnmodifiableMapView__throw();
-    },
     remove$1: function(_, key) {
       F.UnmodifiableMapView__throw();
     },
@@ -24155,6 +24098,7 @@ init.globalFunctions.enumerate$closure = K.enumerate$closure = new H.Closure$1(K
 // Runtime type support
 J.JSString.$isString = true;
 J.JSString.$isObject = true;
+J.JSNumber.$isObject = true;
 J.JSInt.$isint = true;
 J.JSInt.$isObject = true;
 W.Node.$isNode = true;
@@ -24163,7 +24107,6 @@ W.Node.$isObject = true;
 J.JSDouble.$isdouble = true;
 J.JSDouble.$isObject = true;
 W.Entry.$isObject = true;
-J.JSNumber.$isObject = true;
 P.Duration.$isDuration = true;
 P.Duration.$isObject = true;
 P.Match.$isObject = true;
@@ -24493,9 +24436,6 @@ J.accept$1$x = function(receiver, a0) {
 };
 J.add$1$ax = function(receiver, a0) {
   return J.getInterceptor$ax(receiver).add$1(receiver, a0);
-};
-J.addAll$1$ax = function(receiver, a0) {
-  return J.getInterceptor$ax(receiver).addAll$1(receiver, a0);
 };
 J.addEventListener$3$x = function(receiver, a0, a1, a2) {
   return J.getInterceptor$x(receiver).addEventListener$3(receiver, a0, a1, a2);
@@ -24874,29 +24814,12 @@ C.JS_CONST_0 = function(hooks) {
   if (typeof dartExperimentalFixupGetTag != "function") return hooks;
   hooks.getTag = dartExperimentalFixupGetTag(hooks.getTag);
 };
-C.JS_CONST_6qb = function(hooks) {
-  var userAgent = typeof navigator == "object" ? navigator.userAgent : "";
-  if (userAgent.indexOf("Firefox") == -1) return hooks;
-  var getTag = hooks.getTag;
-  var quickMap = {
-    "BeforeUnloadEvent": "Event",
-    "DataTransfer": "Clipboard",
-    "GeoGeolocation": "Geolocation",
-    "WorkerMessageEvent": "MessageEvent",
-    "XMLDocument": "Document"};
-  function getTagFirefox(o) {
-    var tag = getTag(o);
-    return quickMap[tag] || tag;
-  }
-  hooks.getTag = getTagFirefox;
-};
-C.JS_CONST_86y = function getTagFallback(o) {
-  if (o == null) return "Null";
+C.JS_CONST_Fs4 = function(hooks) { return hooks; }
+;
+C.JS_CONST_IX5 = function getTagFallback(o) {
   var constructor = o.constructor;
   if (typeof constructor == "function") {
-    var name = constructor.builtin$cls;
-    if (typeof name == "string") return name;
-    name = constructor.name;
+    var name = constructor.name;
     if (typeof name == "string"
         && name !== ""
         && name !== "Object"
@@ -24907,19 +24830,20 @@ C.JS_CONST_86y = function getTagFallback(o) {
   var s = Object.prototype.toString.call(o);
   return s.substring(8, s.length - 1);
 };
-C.JS_CONST_Cbr = function(getTagFallback) {
+C.JS_CONST_QJm = function(getTagFallback) {
   return function(hooks) {
     if (typeof navigator != "object") return hooks;
-    var userAgent = navigator.userAgent;
-    if (userAgent.indexOf("Chrome") >= 0 ||
-        userAgent.indexOf("DumpRenderTree") >= 0) {
-      return hooks;
+    var ua = navigator.userAgent;
+    if (ua.indexOf("DumpRenderTree") >= 0) return hooks;
+    if (ua.indexOf("Chrome") >= 0) {
+      function confirm(p) {
+        return typeof window == "object" && window[p] && window[p].name == p;
+      }
+      if (confirm("Window") && confirm("HTMLElement")) return hooks;
     }
     hooks.getTag = getTagFallback;
   };
 };
-C.JS_CONST_Fs4 = function(hooks) { return hooks; }
-;
 C.JS_CONST_TtD = function() {
   function typeNameInChrome(obj) { return obj.constructor.name; }
   function getUnknownTag(object, tag) {
@@ -24948,7 +24872,23 @@ C.JS_CONST_TtD = function() {
     prototypeForTag: prototypeForTag,
     discriminator: discriminator };
 };
-C.JS_CONST_rD3 = function(hooks) {
+C.JS_CONST_U4w = function(hooks) {
+  var userAgent = typeof navigator == "object" ? navigator.userAgent : "";
+  if (userAgent.indexOf("Firefox") == -1) return hooks;
+  var getTag = hooks.getTag;
+  var quickMap = {
+    "BeforeUnloadEvent": "Event",
+    "DataTransfer": "Clipboard",
+    "GeoGeolocation": "Geolocation",
+    "WorkerMessageEvent": "MessageEvent",
+    "XMLDocument": "!Document"};
+  function getTagFirefox(o) {
+    var tag = getTag(o);
+    return quickMap[tag] || tag;
+  }
+  hooks.getTag = getTagFirefox;
+};
+C.JS_CONST_gkc = function(hooks) {
   var userAgent = typeof navigator == "object" ? navigator.userAgent : "";
   if (userAgent.indexOf("Trident/") == -1) return hooks;
   var getTag = hooks.getTag;
@@ -24964,23 +24904,36 @@ C.JS_CONST_rD3 = function(hooks) {
     var tag = getTag(o);
     var newTag = quickMap[tag];
     if (newTag) return newTag;
-    if (tag == "Document") {
-      if (!!o.xmlVersion) return "!Document";
-      return "!HTMLDocument";
-    }
     if (tag == "Object") {
       if (window.DataView && (o instanceof window.DataView)) return "DataView";
     }
     return tag;
   }
   function prototypeForTagIE(tag) {
-    if (tag == "Document") return null;
     var constructor = window[tag];
     if (constructor == null) return null;
     return constructor.prototype;
   }
   hooks.getTag = getTagIE;
   hooks.prototypeForTag = prototypeForTagIE;
+};
+C.JS_CONST_rr7 = function(hooks) {
+  var getTag = hooks.getTag;
+  var prototypeForTag = hooks.prototypeForTag;
+  function getTagFixed(o) {
+    var tag = getTag(o);
+    if (tag == "Document") {
+      if (!!o.xmlVersion) return "!Document";
+      return "!HTMLDocument";
+    }
+    return tag;
+  }
+  function prototypeForTagFixed(tag) {
+    if (tag == "Document") return null;
+    return prototypeForTag(tag);
+  }
+  hooks.getTag = getTagFixed;
+  hooks.prototypeForTag = prototypeForTagFixed;
 };
 C.JsonDecoder_null = new P.JsonDecoder(null);
 C.Level_FINER_400 = new N.Level("FINER", 400);
@@ -25015,9 +24968,12 @@ C.Map_c94aj = new H.ConstantStringMap(5, {name: 1, extends: 1, constructor: 1, n
 C.List_enumerate = Isolate.makeConstantList(["enumerate"]);
 C.Map_wgEsG = new H.ConstantStringMap(1, {enumerate: K.enumerate$closure}, C.List_enumerate);
 C.NodeList_methods = W.NodeList.prototype;
+C.Orientation_horizontal = new Y.Orientation("horizontal");
 C.Orientation_vertical = new Y.Orientation("vertical");
 C.PolymerDeclaration_methods = A.PolymerDeclaration.prototype;
 C.PolymerElement_methods = A.PolymerElement.prototype;
+C.ShowHideAction_hide = new Y.ShowHideAction("hide");
+C.ShowHideAction_show = new Y.ShowHideAction("show");
 C.ShowHideAction_toggle = new Y.ShowHideAction("toggle");
 C.ShowHideResult_Pkw = new Y.ShowHideResult("no-op");
 C.ShowHideResult_animated = new Y.ShowHideResult("animated");
@@ -25202,7 +25158,7 @@ Isolate.$lazy($, "librariesByName", "JsMirrorSystem_librariesByName", "get$JsMir
   return H.JsMirrorSystem_computeLibrariesByName();
 });
 Isolate.$lazy($, "currentJsMirrorSystem", "currentJsMirrorSystem", "get$currentJsMirrorSystem", function() {
-  return new H.JsMirrorSystem(null, new H.JsIsolateMirror($globalState.currentContext));
+  return new H.JsMirrorSystem(null, new H.JsIsolateMirror(init.globalState.currentContext));
 });
 Isolate.$lazy($, "mangledNames", "mangledNames", "get$mangledNames", function() {
   return H.computeMangledNames(init.mangledNames, false);
