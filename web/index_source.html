@@ -40,14 +40,14 @@
         <h1>Components</h1>
         <blockquote>
           <p>Reusable elements. Based on the <a href="https://www.dartlang.org/polymer-dart/">Polymer.dart</a>.</p>
-          <p>Read more about <strong>Polymer</strong> on the <a href='http://www.polymer-project.org/'>project page</a>.</p>
+          <p>Read more about <strong>Polymer</strong> on the <a href="http://www.polymer-project.org/">project page</a>.</p>
         </blockquote>
       </header>
       <section class="component">
-        <h2>Accordion</h2>
-        <blockquote class="comments"><p><strong>Accordion</strong> wraps a set of <a href="#collapse">Collapse</a> elements and ensures only one is visible
-at a time.</p>
-<p>See <a href="#collapse">Collapse</a> for details on how content is interpreted.</p></blockquote>
+        <h2>AccordionWidget</h2>
+        <blockquote class="comments"><p><strong>AccordionWidget</strong> wraps a set of <a href="#collapsewidget">CollapseWidget</a> elements and ensures only one is
+visible at a time.</p>
+<p>See <a href="#collapsewidget">CollapseWidget</a> for details on how content is interpreted.</p></blockquote>
 
         <div class="demo">
           <accordion-widget>
@@ -76,9 +76,11 @@ at a time.</p>
       </section>
 
       <section class="component">
-        <h2>Alert</h2>
-        <blockquote class="comments"><p><strong>Alert</strong> follows the same convention as <a href="http://getbootstrap.com/javascript/#alerts">its inspiration</a> in Bootstrap.</p>
-<p>Clicking on a nested element with the attribute <code>data-dismiss='alert'</code> will cause <strong>Alert</strong> to close.</p></blockquote>
+        <h2>AlertWidget</h2>
+        <blockquote class="comments"><p><strong>AlertWidget</strong> follows the same convention as
+<a href="http://getbootstrap.com/javascript/#alerts">its inspiration</a> in Bootstrap.</p>
+<p>Clicking on a nested element with the attribute <code>data-dismiss='alert'</code> will
+cause <strong>AlertWidget</strong> to close.</p></blockquote>
         <div class="demo">
           <alert-widget>
             <button type="button" class="close" data-dismiss="alert">×</button>
@@ -91,11 +93,13 @@ at a time.</p>
       </section>
 
       <section class="component">
-        <h2>Carousel</h2>
-        <blockquote class="comments"><p><strong>Carousel</strong> allows moving back and forth through a set of child elements.</p>
+        <h2>CarouselWidget</h2>
+        <blockquote class="comments"><p><strong>CarouselWidget</strong> allows moving back and forth through a set of child
+elements.</p>
 <p>It is based on a <a href="http://getbootstrap.com/javascript/#carousel">similar component</a>
 in Bootstrap.</p>
-<p><strong>Carousel</strong> leverages the <a href="#swap">Swap</a> component to render the transition between items.</p></blockquote>
+<p><strong>CarouselWidget</strong> leverages the <a href="#swapwidget">SwapWidget</a> to render the transition
+between items.</p></blockquote>
 
         <div class="demo">
           <carousel-widget>
@@ -121,12 +125,15 @@ in Bootstrap.</p>
       </section>
 
       <section class="component">
-        <h2>Collapse</h2>
-        <blockquote class="comments"><p><strong>Collapse</strong> uses a content model similar to <a href="http://getbootstrap.com/javascript/#collapse">collapse functionality</a> in Bootstrap.</p>
-<p>The header element for <strong>Collapse</strong> is a child element with class <code>accordion-heading</code>.</p>
+        <h2>CollapseWidget</h2>
+        <blockquote class="comments"><p><strong>CollapseWidget</strong> uses a content model similar to
+<a href="http://getbootstrap.com/javascript/#collapse">collapse functionality</a>
+in Bootstrap.</p>
+<p>The header element for <strong>CollapseWidget</strong> is a child element with class
+<code>accordion-heading</code>.</p>
 <p>The rest of the children are rendered as content.</p>
-<p><strong>Collapse</strong> listens for <code>click</code> events and toggles visibility of content if the
-click target has attribute <code>data-toggle="collapse"</code>.</p></blockquote>
+<p><strong>CollapseWidget</strong> listens for <code>click</code> events and toggles visibility of content
+if the click target has attribute <code>data-toggle="collapse"</code>.</p></blockquote>
 
         <div class="demo">
           <collapse-widget>
@@ -144,19 +151,19 @@ click target has attribute <code>data-toggle="collapse"</code>.</p></blockquote>
       </section>
 
       <section class="component">
-        <h2>Dropdown</h2>
-        <blockquote class="comments"><p><strong>Dropdown</strong> aligns closely with the model provided by the
+        <h2>DropdownWidget</h2>
+        <blockquote class="comments"><p><strong>DropdownWidget</strong> aligns closely with the model provided by the
 <a href="http://getbootstrap.com/javascript/#dropdowns">dropdown functionality</a>
 in Bootstrap.</p>
-<p><strong>Dropdown</strong> content is inferred from all child elements that have
+<p><strong>DropdownWidget</strong> content is inferred from all child elements that have
 class <code>dropdown-menu</code>. Bootstrap defines a CSS selector for <code>.dropdown-menu</code>
 with an initial display of <code>none</code>.</p>
-<p><strong>Dropdown</strong> listens for <code>click</code> events and toggles visibility of content if the
-click target has attribute <code>data-toggle="dropdown"</code>.</p>
-<p>Bootstrap also defines a CSS selector which sets <code>display: block;</code> for elements
-matching <code>.open &gt; .dropdown-menu</code>. When <strong>Dropdown</strong> opens, the class <code>open</code> is
-added to the inner element wrapping all content. Causing child elements with
-class <code>dropdown-menu</code> to become visible.</p></blockquote>
+<p><strong>DropdownWidget</strong> listens for <code>click</code> events and toggles visibility of content
+if the click target has attribute <code>data-toggle="dropdown"</code>.</p>
+<p>Bootstrap also defines a CSS selector which sets <code>display: block;</code> for
+elements matching <code>.open &gt; .dropdown-menu</code>. When <strong>DropdownWidget</strong> opens, the
+class <code>open</code> is added to the inner element wrapping all content. Causing
+child elements with class <code>dropdown-menu</code> to become visible.</p></blockquote>
 
         <div class="demo">
           <h3>A a button</h3>
@@ -211,11 +218,14 @@ class <code>dropdown-menu</code> to become visible.</p></blockquote>
       </section>
 
       <section class="component">
-        <h2>Modal</h2>
-        <blockquote class="comments"><p>When added to a page, <strong>Modal</strong> is hidden. It can be displayed by calling the <code>show</code> method.</p>
-<p>Similar to <a href="#alert">Alert</a>, elements with the attribute <code>data-dismiss="modal"</code> will close <strong>Modal</strong> when clicked.</p>
-<p>Content within <strong>Modal</strong> is placed in a div with class <code>modal</code> so related styles from Bootstrap are applied.</p>
-<p>The <strong>Modal</strong> component leverages the <a href="#modalmanager">ModalManager</a> effect.</p></blockquote>
+        <h2>ModalWidget</h2>
+        <blockquote class="comments"><p>When added to a page, <strong>ModalWidget</strong> is hidden. It can be displayed by calling
+the <code>show</code> method.</p>
+<p>Similar to <a href="#alertwidget">AlertWidget</a>, elements with the attribute <code>data-dismiss="modal"</code>
+will close <strong>ModalWidget</strong> when clicked.</p>
+<p>Content within <strong>ModalWidget</strong> is placed in a div with class <code>modal</code> so related
+styles from Bootstrap are applied.</p>
+<p>The <strong>ModalWidget</strong> component leverages the <a href="#modalmanager">ModalManager</a> effect.</p></blockquote>
         <div class="demo">
           <!-- Button to trigger modal -->
           <a role="button" class="btn btn-primary" id="modalOpenButton">Launch demo modal</a>
@@ -240,21 +250,24 @@ class <code>dropdown-menu</code> to become visible.</p></blockquote>
       </section>
 
       <section class="component">
-        <h2>Swap</h2>
-        <blockquote class="comments"><p><strong>Swap</strong> is a low-level component designed to be composed by other components.
-It exposes the functionality of the <a href="#swapper">Swapper</a> effect as a simple container element with corresponding methods to
+        <h2>SwapWidget</h2>
+        <blockquote class="comments"><p><strong>SwapWidget</strong> is a low-level component designed to be composed by other
+components. It exposes the functionality of the <a href="#swapper">Swapper</a> effect as a simple
+container element with corresponding methods to
 <code>swap</code> between child elements via code.</p>
-<p><a href="#tabs">Tabs</a> and <a href="#carousel">Carousel</a> both use this component.</p></blockquote>
+<p><a href="#tabswidget">TabsWidget</a> and <a href="#carouselwidget">CarouselWidget</a> both use this component.</p></blockquote>
       </section>
 
       <section class="component">
-        <h2>Tabs</h2>
-        <blockquote class="comments"><p><strong>Tabs</strong> is based on the <a href="http://getbootstrap.com/javascript/#tabs">analogous feature</a> in Bootstrap.</p>
-<p>The tab headers are processed as all child <code>&lt;li&gt;</code> elements in content.
-The rest of the child elements are considered tab content.</p>
-<p><strong>Tabs</strong> responds to click events from any child with <code>data-toggle="tab"</code> or <code>data-toggle="pill"</code>.</p>
-<p>The target content id is either the value of <code>data-target</code> on the clicked element or the anchor
-in <code>href</code>.</p></blockquote>
+        <h2>TabsWidget</h2>
+        <blockquote class="comments"><p><strong>TabsWidget</strong> is based on the
+<a href="http://getbootstrap.com/javascript/#tabs">analogous feature</a> in Bootstrap.</p>
+<p>The tab headers are processed as all child <code>&lt;li&gt;</code> elements in content. The
+rest of the child elements are considered tab content.</p>
+<p><strong>TabsWidget</strong> responds to click events from any child with <code>data-toggle="tab"</code>
+or <code>data-toggle="pill"</code>.</p>
+<p>The target content id is either the value of <code>data-target</code> on the clicked
+element or the anchor in <code>href</code>.</p></blockquote>
 
         <div class="demo">
           <tabs-widget>
@@ -289,20 +302,26 @@ in <code>href</code>.</p></blockquote>
 
       <section class="effect">
         <h2>ModalManager</h2>
-        <blockquote class="comments"><p><strong>ModalManager</strong> is inspired by the <a href="http://getbootstrap.com/javascript/#modals">modal helper</a> in Bootstrap.</p>
-<p>It has two static methods <code>show</code> and <code>hide</code> that both take the same parameters as corresponding methods in <a href="#showhide">ShowHide</a>.</p>
-<p><strong>ModalManager</strong> controls the display of the provided element while also creating a dark backdrop on the page.
-Any element used should have a fixed position, a z-index greater than 1040, and an initial display of none.</p></blockquote>
+        <blockquote class="comments"><p><strong>ModalManager</strong> is inspired by the
+<a href="http://getbootstrap.com/javascript/#modals">modal helper</a> in Bootstrap.</p>
+<p>It has two static methods <code>show</code> and <code>hide</code> that both take the same
+parameters as corresponding methods in <a href="#showhide">ShowHide</a>.</p>
+<p><strong>ModalManager</strong> controls the display of the provided element while also
+creating a dark backdrop on the page. Any element used should have a fixed
+position, a z-index greater than 1040, and an initial display of none.</p></blockquote>
       </section>
 
       <section class="effect">
         <h2>ShowHide</h2>
-        <blockquote class="comments"><p><strong>ShowHide</strong> is an effect inspired by the <a href="http://api.jquery.com/category/effects/basics/">basic effects in jQuery</a>.
-Provide an element and an action--show, hide, toggle--and the element's display will change accordingly.
-Custom effects, duration, and easing values can also be provided.</p>
-<p>At the moment, all of the provided effects leverage CSS3 transitions. Creating new effects is easy.</p>
-<p><strong>ShowHide</strong> is used by <a href="#collapse">Collapse</a> and <a href="#dropdown">DropDown</a> to animate their content.
-It is also used by <a href="#swapper">Swapper</a>.</p></blockquote>
+        <blockquote class="comments"><p><strong>ShowHide</strong> is an effect inspired by the
+<a href="http://api.jquery.com/category/effects/basics/">basic effects in jQuery</a>.
+Provide an element and an action--show, hide, toggle--and the element's
+display will change accordingly. Custom effects, duration, and easing values
+can also be provided.</p>
+<p>At the moment, all of the provided effects leverage CSS3 transitions.
+Creating new effects is easy.</p>
+<p><strong>ShowHide</strong> is used by <a href="#collapsewidget">CollapseWidget</a> and <a href="#dropdownwidget">DropDownWidget</a> to animate their
+content. It is also used by <a href="#swapper">Swapper</a>.</p></blockquote>
         <div class="demo showhide">
           <div class="effects btn-group btn-group"></div>
           <div class="logo_wrapper">
