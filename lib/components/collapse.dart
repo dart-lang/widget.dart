@@ -18,7 +18,7 @@ import 'package:widget/widget.dart';
  */
 @CustomTag('collapse-widget')
 class CollapseWidget extends PolymerElement implements ShowHideComponent {
-  static const String _collapseDivSelector = '.collapse-body-x';
+  static const String _COLLAPSE_DIV_SELECTOR = '.collapse-body-x';
   static final ShowHideEffect _effect = new ShrinkEffect();
 
   bool get applyAuthorStyles => true;
@@ -81,10 +81,11 @@ class CollapseWidget extends PolymerElement implements ShowHideComponent {
   }
 
   void _updateElements([bool skipAnimation = false]) {
-    final collapseDiv = getShadowRoot('collapse-widget').querySelector(_collapseDivSelector);
+    var collapseDiv = getShadowRoot('collapse-widget')
+        .querySelector(_COLLAPSE_DIV_SELECTOR);
     if(collapseDiv != null) {
-      final action = _isShown ? ShowHideAction.SHOW : ShowHideAction.HIDE;
-      final effect = skipAnimation ? null : _effect;
+      var action = _isShown ? ShowHideAction.SHOW : ShowHideAction.HIDE;
+      var effect = skipAnimation ? null : _effect;
       ShowHide.begin(action, collapseDiv, effect: effect);
     }
   }
