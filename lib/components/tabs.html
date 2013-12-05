@@ -19,14 +19,25 @@
       border-radius: 4px 4px 0 0;
     }
 
+    content[select="li"]::content > li > a:hover {
+      border-color: #eeeeee #eeeeee #dddddd;
+    }
+
     content[select="li"]::content > li.active > a,
     content[select="li"]::content > li.active > a:hover,
     content[select="li"]::content > li.active > a:focus {
       color: #555555;
+      cursor: default;
       background-color: #ffffff;
       border: 1px solid #dddddd;
       border-bottom-color: transparent;
-      cursor: default;
+    }
+
+    /*
+     *  Custom bottom margin
+     */
+    ul.nav.nav-tabs {
+      margin-bottom: 15px;
     }
 
     /* @polyfill :host > swap-widget > .content > * */
