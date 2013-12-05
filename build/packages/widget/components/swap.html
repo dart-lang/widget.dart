@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <body>
+<polymer-element name="swap-widget">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+
+      .content {
+        position: relative;
+        overflow: hidden;
+      }
+
+      .content > content::content > * {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: none;
+        margin: 0 auto;
+      }
+
+      .content > content::content > .active {
+        position: relative;
+        display: block;
+      }
+
+      .content > content::content > .prev {
+        display: block;
+      }
+
+    </style>
+    <div class='content'>
+      <content></content>
+    </div>
+  </template>
+  <script type="application/dart" src='swap.dart'></script>
+</polymer-element>
+  </body>
+</html>

@@ -1,18 +1,15 @@
-<!DOCTYPE html><html lang="en"><head><script src="packages/shadow_dom/shadow_dom.debug.js"></script>
-<script src="packages/custom_element/custom-elements.debug.js"></script>
-<script src="packages/browser/interop.js"></script>
-
+<!DOCTYPE html><html lang="en"><head>
     <meta charset="utf-8">
     <title>Dart Widgets</title>
-    
-    
-    
-    
-    
-    
-    
+    <link rel="import" href="packages/widget/components/accordion.html">
+    <link rel="import" href="packages/widget/components/alert.html">
+    <link rel="import" href="packages/widget/components/carousel.html">
+    <link rel="import" href="packages/widget/components/collapse.html">
+    <link rel="import" href="packages/widget/components/dropdown.html">
+    <link rel="import" href="packages/widget/components/modal.html">
+    <link rel="import" href="packages/widget/components/tabs.html">
 
-    <script type="application/dart" src="index.html_bootstrap.dart"></script>
+    <script type="application/dart" src="app.dart"></script>
     <script src="packages/browser/dart.js"></script>
 
     <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap.min.css" rel="stylesheet">
@@ -21,170 +18,10 @@
 
     <link rel="stylesheet" href="style.css">
   </head>
-  <body><polymer-element name="accordion-widget" apply-author-styles="">
-  <template>
-    <content select="collapse-widget"></content>
-  </template>
-  
-</polymer-element>
-<polymer-element name="alert-widget">
-  <template>
-    <div class="alert">
-      <content></content>
-    </div>
-  </template>
-  
-</polymer-element>
-<polymer-element name="carousel-widget">
-  <template>
-    <style>
-      .carousel > a.carousel-control {
-        cursor: pointer;
-        z-index: 5;
-        -webkit-touch-callout: none;
-        -webkit-user-select: none;
-        -khtml-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-      }
-    </style>
-    <div class="carousel">
-      <swap-widget>
-        <content></content>
-      </swap-widget>
-      <a class="left carousel-control" on-click="{{onPrevious}}">‹</a>
-      <a class="right carousel-control" on-click="{{onNext}}">›</a>
-    </div>
-  </template>
-  
-</polymer-element>
-<polymer-element name="collapse-widget">
-  <template>
-    <div class="accordion-group">
-      <content select=".accordion-heading"></content>
-      <div class="collapse-body-x">
-        <div class="accordion-inner">
-          <content></content>
-        </div>
-      </div>
-    </div>
-  </template>
-  
-</polymer-element>
-<polymer-element name="dropdown-widget" apply-author-styles="">
-  <template>
-    <style>
-      @host {
-        :scope {
-          position: relative;
-        }
-      }
-    </style>
-    <div class="dropdown">
-      <content></content>
-    </div>
-  </template>
-  
-</polymer-element>
-<polymer-element name="modal-widget">
-  <template>
-    <div class="modal">
-      <content></content>
-    </div>
-  </template>
-  
-</polymer-element>
-
-<polymer-element name="swap-widget">
-  <template>
-    <style>
-      :host {
-        display: block;
-      }
-
-      .content {
-        position: relative;
-        overflow: hidden;
-      }
-
-      .content > content::content > * {
-        position: absolute;
-        top: 0;
-        left: 0;
-        display: none;
-        margin: 0 auto;
-      }
-
-      .content > content::content > .active {
-        position: relative;
-        display: block;
-      }
-
-      .content > content::content > .prev {
-        display: block;
-      }
-
-    </style>
-    <div class="content">
-      <content></content>
-    </div>
-  </template>
-  
-</polymer-element>
-  
-
-<polymer-element name="tabs-widget">
-  <template>
-    <style>
-    content[select="li"]::content > li {
-      position: relative;
-      display: block;
-      float: left;
-      margin-bottom: -1px;
-    }
-
-    content[select="li"]::content > li > a {
-      position: relative;
-      display: block;
-      padding: 10px 15px;
-      margin-right: 2px;
-      line-height: 1.428571429;
-      border: 1px solid transparent;
-      border-radius: 4px 4px 0 0;
-    }
-
-    content[select="li"]::content > li.active > a,
-    content[select="li"]::content > li.active > a:hover,
-    content[select="li"]::content > li.active > a:focus {
-      color: #555555;
-      background-color: #ffffff;
-      border: 1px solid #dddddd;
-      border-bottom-color: transparent;
-      cursor: default;
-    }
-
-    swap-widget > content::content > * {
-      display: none;
-    }    
-
-    swap-widget > content::content > .active {
-      display: block;
-    }    
-    </style>
-    <ul class="nav nav-tabs">
-      <content select="li"></content>
-    </ul>
-    <swap-widget>
-      <content></content>
-    </swap-widget>
-  </template>
-  
-</polymer-element>
-
+  <body>
     <div class="container">
       <header class="mainhead">
-        <h1 id="dart_widgets">Dart Widgets</h1>
+        <h1>Dart Widgets</h1>
         <p>A collection of <a href="#components">Components</a> and <a href="#effects">Effects</a>, written in <a href="http://www.dartlang.org/">Dart</a>, designed to make it easier to build rich web applications.</p>
         <div class="icons">
           <a href="https://github.com/dart-lang/widget.dart" title="dart-lang/widget.dart"><i class="icon-github"></i></a>
@@ -195,19 +32,19 @@
       <div class="row">
         <div class="span3">
           <ul class="nav nav-list affix">
-          <li><a href="#dart_widgets" class="h1">Dart Widgets</a></li><li><a href="#components" class="h1">Components</a></li><li><a href="#accordion" class="h2">Accordion</a></li><li><a href="#alert" class="h2">Alert</a></li><li><a href="#carousel" class="h2">Carousel</a></li><li><a href="#collapse" class="h2">Collapse</a></li><li><a href="#dropdown" class="h2">Dropdown</a></li><li><a href="#modal" class="h2">Modal</a></li><li><a href="#swap" class="h2">Swap</a></li><li><a href="#tabs" class="h2">Tabs</a></li><li><a href="#effects" class="h1">Effects</a></li><li><a href="#modalmanager" class="h2">ModalManager</a></li><li><a href="#showhide" class="h2">ShowHide</a></li><li><a href="#swapper" class="h2">Swapper</a></li></ul>
+          </ul>
         </div>
 
     <div class="span9">
       <header>
-        <h1 id="components">Components</h1>
+        <h1>Components</h1>
         <blockquote>
           <p>Reusable elements. Based on the <a href="https://www.dartlang.org/polymer-dart/">Polymer.dart</a>.</p>
-          <p>Read more about <strong>Polymer</strong> on the <a href="http://www.polymer-project.org/">project page</a>.</p>
+          <p>Read more about <strong>Polymer</strong> on the <a href='http://www.polymer-project.org/'>project page</a>.</p>
         </blockquote>
       </header>
       <section class="component">
-        <h2 id="accordion">Accordion</h2>
+        <h2>Accordion</h2>
         <blockquote class="comments"><p><strong>Accordion</strong> wraps a set of <a href="#collapse">Collapse</a> elements and ensures only one is visible
 at a time.</p>
 <p>See <a href="#collapse">Collapse</a> for details on how content is interpreted.</p></blockquote>
@@ -235,30 +72,11 @@ at a time.</p>
           </accordion-widget>
         </div>
 
-        <pre class="code">&lt;accordion-widget&gt;
-  &lt;collapse-widget&gt;
-    &lt;div class="accordion-heading"&gt;
-      &lt;a class="accordion-toggle" data-toggle="collapse"&gt;Item 1&lt;/a&gt;
-    &lt;/div&gt;
-    &lt;p&gt;Item 1 content - Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&lt;/p&gt;
-  &lt;/collapse-widget&gt;
-  &lt;collapse-widget&gt;
-    &lt;div class="accordion-heading"&gt;
-      &lt;a class="accordion-toggle" data-toggle="collapse"&gt;Item 2&lt;/a&gt;
-    &lt;/div&gt;
-    &lt;p&gt;Item 2 content - Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.&lt;/p&gt;
-  &lt;/collapse-widget&gt;
-  &lt;collapse-widget&gt;
-    &lt;div class="accordion-heading"&gt;
-      &lt;a class="accordion-toggle" data-toggle="collapse"&gt;Item 3&lt;/a&gt;
-    &lt;/div&gt;
-    &lt;p&gt;Item 3 content - Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.&lt;/p&gt;
-  &lt;/collapse-widget&gt;
-&lt;/accordion-widget&gt;</pre>
+        <pre class="code"></pre>
       </section>
 
       <section class="component">
-        <h2 id="alert">Alert</h2>
+        <h2>Alert</h2>
         <blockquote class="comments"><p><strong>Alert</strong> follows the same convention as <a href="http://getbootstrap.com/javascript/#alerts">its inspiration</a> in Bootstrap.</p>
 <p>Clicking on a nested element with the attribute <code>data-dismiss='alert'</code> will cause <strong>Alert</strong> to close.</p></blockquote>
         <div class="demo">
@@ -268,15 +86,12 @@ at a time.</p>
           </alert-widget>
         </div>
 
-        <pre class="code">&lt;alert-widget&gt;
-  &lt;button type="button" class="close" data-dismiss="alert"&gt;×&lt;/button&gt;
-  &lt;strong&gt;Holy guacamole!&lt;/strong&gt; Best check yo self, you're not looking too good.
-&lt;/alert-widget&gt;</pre>
+        <pre class="code"></pre>
 
       </section>
 
       <section class="component">
-        <h2 id="carousel">Carousel</h2>
+        <h2>Carousel</h2>
         <blockquote class="comments"><p><strong>Carousel</strong> allows moving back and forth through a set of child elements.</p>
 <p>It is based on a <a href="http://getbootstrap.com/javascript/#carousel">similar component</a>
 in Bootstrap.</p>
@@ -302,24 +117,11 @@ in Bootstrap.</p>
           </carousel-widget>
         </div>
 
-        <pre class="code">&lt;carousel-widget&gt;
-  &lt;figure&gt;
-    &lt;img src="//getbootstrap.com/2.3.2/assets/img/bootstrap-mdo-sfmoma-01.jpg"&gt;
-    &lt;figcaption&gt;A description of the first image.&lt;/figcaption&gt;
-  &lt;/figure&gt;
-  &lt;figure class="active"&gt;
-    &lt;img src="//getbootstrap.com/2.3.2/assets/img/bootstrap-mdo-sfmoma-02.jpg"&gt;
-    &lt;figcaption&gt;A description of the second image.&lt;/figcaption&gt;
-  &lt;/figure&gt;
-  &lt;figure&gt;
-    &lt;img src="//getbootstrap.com/2.3.2/assets/img/bootstrap-mdo-sfmoma-03.jpg"&gt;
-    &lt;figcaption&gt;A description of the third image.&lt;/figcaption&gt;
-  &lt;/figure&gt;
-&lt;/carousel-widget&gt;</pre>
+        <pre class="code"></pre>
       </section>
 
       <section class="component">
-        <h2 id="collapse">Collapse</h2>
+        <h2>Collapse</h2>
         <blockquote class="comments"><p><strong>Collapse</strong> uses a content model similar to <a href="http://getbootstrap.com/javascript/#collapse">collapse functionality</a> in Bootstrap.</p>
 <p>The header element for <strong>Collapse</strong> is a child element with class <code>accordion-heading</code>.</p>
 <p>The rest of the children are rendered as content.</p>
@@ -338,19 +140,11 @@ click target has attribute <code>data-toggle="collapse"</code>.</p></blockquote>
           </collapse-widget>
         </div>
 
-        <pre class="code">&lt;collapse-widget&gt;
-  &lt;div class="accordion-heading"&gt;
-    &lt;a class="accordion-toggle" data-toggle="collapse"&gt;Click to toggle expand/collapse&lt;/a&gt;
-  &lt;/div&gt;
-  &lt;ul&gt;
-    &lt;li&gt;This is some&lt;/li&gt;
-    &lt;li&gt;content&lt;/li&gt;
-  &lt;/ul&gt;
-&lt;/collapse-widget&gt;</pre>
+        <pre class="code"></pre>
       </section>
 
       <section class="component">
-        <h2 id="dropdown">Dropdown</h2>
+        <h2>Dropdown</h2>
         <blockquote class="comments"><p><strong>Dropdown</strong> aligns closely with the model provided by the
 <a href="http://getbootstrap.com/javascript/#dropdowns">dropdown functionality</a>
 in Bootstrap.</p>
@@ -413,53 +207,11 @@ class <code>dropdown-menu</code> to become visible.</p></blockquote>
 
         </div>
 
-        <pre class="code">&lt;h3&gt;A a button&lt;/h3&gt;
-&lt;dropdown-widget&gt;
-  &lt;button class="btn" data-toggle="dropdown"&gt;Click me!&lt;/button&gt;
-  &lt;ul class="dropdown-menu"&gt;
-    &lt;li&gt;&lt;a&gt;Action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a&gt;Another action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a&gt;Something else here&lt;/a&gt;&lt;/li&gt;
-    &lt;li class="divider"&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a&gt;Separated link&lt;/a&gt;&lt;/li&gt;
-  &lt;/ul&gt;
-&lt;/dropdown-widget&gt;
-&lt;h3&gt;In a nav&lt;/h3&gt;
-&lt;!-- Because Bootstrap css assumes a certain hierarchy of items in a nav
-.navbar .nav &gt; li &gt; a
-To use a DropDown element, one has to copy and modify Bootstrap styles to
-apply to x-dropdown
---&gt;
-&lt;div class="navbar"&gt;
-  &lt;div class="navbar-inner"&gt;
-    &lt;div class="container"&gt;
-      &lt;div class="nav"&gt;
-        &lt;dropdown-widget&gt;
-          &lt;a href="#" class="dropdown-toggle" data-toggle="dropdown"&gt;Nav Menu 1&lt;b class="caret"&gt;&lt;/b&gt;&lt;/a&gt;
-          &lt;ul class="dropdown-menu"&gt;
-            &lt;li&gt;&lt;a href="#"&gt;Item 1&lt;/a&gt;&lt;/li&gt;
-            &lt;li&gt;&lt;a href="#"&gt;Item 2&lt;/a&gt;&lt;/li&gt;
-          &lt;/ul&gt;
-        &lt;/dropdown-widget&gt;
-        &lt;dropdown-widget&gt;
-          &lt;a href="#" class="dropdown-toggle" data-toggle="dropdown"&gt;Nav Menu 2&lt;b class="caret"&gt;&lt;/b&gt;&lt;/a&gt;
-          &lt;ul class="dropdown-menu"&gt;
-            &lt;li class="nav-header"&gt;Header 1&lt;/li&gt;
-            &lt;li&gt;&lt;a href="#"&gt;Item 1&lt;/a&gt;&lt;/li&gt;
-            &lt;li&gt;&lt;a href="#"&gt;Item 2&lt;/a&gt;&lt;/li&gt;
-            &lt;li class="nav-header"&gt;Header 2&lt;/li&gt;
-            &lt;li&gt;&lt;a href="#"&gt;Item 3&lt;/a&gt;&lt;/li&gt;
-            &lt;li&gt;&lt;a href="#"&gt;Item 4&lt;/a&gt;&lt;/li&gt;
-          &lt;/ul&gt;
-        &lt;/dropdown-widget&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;</pre>
+        <pre class="code"></pre>
       </section>
 
       <section class="component">
-        <h2 id="modal">Modal</h2>
+        <h2>Modal</h2>
         <blockquote class="comments"><p>When added to a page, <strong>Modal</strong> is hidden. It can be displayed by calling the <code>show</code> method.</p>
 <p>Similar to <a href="#alert">Alert</a>, elements with the attribute <code>data-dismiss="modal"</code> will close <strong>Modal</strong> when clicked.</p>
 <p>Content within <strong>Modal</strong> is placed in a div with class <code>modal</code> so related styles from Bootstrap are applied.</p>
@@ -484,26 +236,11 @@ apply to x-dropdown
           </modal-widget>
         </div>
 
-        <pre class="code">&lt;!-- Button to trigger modal --&gt;
-&lt;a role="button" class="btn btn-primary" id="modalOpenButton"&gt;Launch demo modal&lt;/a&gt;
-&lt;!-- Modal --&gt;
-&lt;modal-widget id="modal_example"&gt;
-  &lt;div class="modal-header"&gt;
-    &lt;button type="button" class="close" data-dismiss="modal" aria-hidden="true"&gt;×&lt;/button&gt;
-    &lt;h3 id="myModalLabel"&gt;Modal header&lt;/h3&gt;
-  &lt;/div&gt;
-  &lt;div class="modal-body"&gt;
-    &lt;p&gt;One fine body…&lt;/p&gt;
-  &lt;/div&gt;
-  &lt;div class="modal-footer"&gt;
-    &lt;button class="btn" data-dismiss="modal" aria-hidden="true"&gt;Close&lt;/button&gt;
-    &lt;button class="btn btn-primary"&gt;Save changes&lt;/button&gt;
-  &lt;/div&gt;
-&lt;/modal-widget&gt;</pre>
+        <pre class="code"></pre>
       </section>
 
       <section class="component">
-        <h2 id="swap">Swap</h2>
+        <h2>Swap</h2>
         <blockquote class="comments"><p><strong>Swap</strong> is a low-level component designed to be composed by other components.
 It exposes the functionality of the <a href="#swapper">Swapper</a> effect as a simple container element with corresponding methods to
 <code>swap</code> between child elements via code.</p>
@@ -511,7 +248,7 @@ It exposes the functionality of the <a href="#swapper">Swapper</a> effect as a s
       </section>
 
       <section class="component">
-        <h2 id="tabs">Tabs</h2>
+        <h2>Tabs</h2>
         <blockquote class="comments"><p><strong>Tabs</strong> is based on the <a href="http://getbootstrap.com/javascript/#tabs">analogous feature</a> in Bootstrap.</p>
 <p>The tab headers are processed as all child <code>&lt;li&gt;</code> elements in content.
 The rest of the child elements are considered tab content.</p>
@@ -537,25 +274,12 @@ in <code>href</code>.</p></blockquote>
           </tabs-widget>
         </div>
 
-        <pre class="code">&lt;tabs-widget&gt;
-  &lt;li class="active"&gt;
-    &lt;a href="#tab1" data-toggle="tab"&gt;Tab 1&lt;/a&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;a href="#tab2" data-toggle="tab"&gt;Tab 2&lt;/a&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;a href="#tab3" data-toggle="tab"&gt;Tab 3&lt;/a&gt;
-  &lt;/li&gt;
-  &lt;p id="tab1" class="active"&gt;Tab 1 content - Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&lt;/p&gt;
-  &lt;p id="tab2"&gt;Tab 2 content - Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.&lt;/p&gt;
-  &lt;p id="tab3"&gt;Tab 3 content - Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.&lt;/p&gt;
-&lt;/tabs-widget&gt;</pre>
+        <pre class="code"></pre>
 
       </section>
 
       <header>
-        <h1 id="effects">Effects</h1>
+        <h1>Effects</h1>
         <blockquote>
           <p>A set of behaviors that can be used directly with elements on a web page.</p>
           <p>Effects are used by <a href="#components">Components</a> to offer easy,
@@ -564,7 +288,7 @@ in <code>href</code>.</p></blockquote>
       </header>
 
       <section class="effect">
-        <h2 id="modalmanager">ModalManager</h2>
+        <h2>ModalManager</h2>
         <blockquote class="comments"><p><strong>ModalManager</strong> is inspired by the <a href="http://getbootstrap.com/javascript/#modals">modal helper</a> in Bootstrap.</p>
 <p>It has two static methods <code>show</code> and <code>hide</code> that both take the same parameters as corresponding methods in <a href="#showhide">ShowHide</a>.</p>
 <p><strong>ModalManager</strong> controls the display of the provided element while also creating a dark backdrop on the page.
@@ -572,7 +296,7 @@ Any element used should have a fixed position, a z-index greater than 1040, and 
       </section>
 
       <section class="effect">
-        <h2 id="showhide">ShowHide</h2>
+        <h2>ShowHide</h2>
         <blockquote class="comments"><p><strong>ShowHide</strong> is an effect inspired by the <a href="http://api.jquery.com/category/effects/basics/">basic effects in jQuery</a>.
 Provide an element and an action--show, hide, toggle--and the element's display will change accordingly.
 Custom effects, duration, and easing values can also be provided.</p>
@@ -587,7 +311,7 @@ It is also used by <a href="#swapper">Swapper</a>.</p></blockquote>
         </div>
       </section>
       <section class="effect">
-        <h2 id="swapper">Swapper</h2>
+        <h2>Swapper</h2>
         <blockquote class="comments"><p><strong>Swapper</strong> is an effect that builds on top of <a href="#showhide">ShowHide</a> to manage the visibility
 of a number of children contained in a parent element.</p>
 <p>Provide a parent element and either a target child element or an index to a
