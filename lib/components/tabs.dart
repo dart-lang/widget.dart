@@ -14,15 +14,17 @@ import 'package:widget/widget.dart';
 // TODO: support click on child elements with data-toggle="tab"
 
 /**
- * [TabsWidget] is based on the [analogous feature](http://twitter.github.com/bootstrap/javascript.html#tabs) in Bootstrap.
+ * [TabsWidget] is based on the
+ * [analogous feature](http://getbootstrap.com/javascript/#tabs) in Bootstrap.
  *
- * The tab headers are processed as all child `<li>` elements in content.
- * The rest of the child elements are considered tab content.
+ * The tab headers are processed as all child `<li>` elements in content. The
+ * rest of the child elements are considered tab content.
  *
- * [TabsWidget] responds to click events from any child with `data-toggle="tab"` or `data-toggle="pill"`.
+ * [TabsWidget] responds to click events from any child with `data-toggle="tab"`
+ * or `data-toggle="pill"`.
  *
- * The target content id is either the value of `data-target` on the clicked element or the anchor
- * in `href`.
+ * The target content id is either the value of `data-target` on the clicked
+ * element or the anchor in `href`.
  */
 @CustomTag('tabs-widget')
 class TabsWidget extends PolymerElement {

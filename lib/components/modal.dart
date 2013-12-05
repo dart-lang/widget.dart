@@ -9,11 +9,14 @@ import 'package:widget/widget.dart';
 // TODO: ESC to close: https://github.com/kevmoo/widget.dart/issues/17
 
 /**
- * When added to a page, [ModalWidget] is hidden. It can be displayed by calling the `show` method.
+ * When added to a page, [ModalWidget] is hidden. It can be displayed by calling
+ * the `show` method.
  *
- * Similar to [Alert], elements with the attribute `data-dismiss="modal"` will close [ModalWidget] when clicked.
+ * Similar to [AlertWidget], elements with the attribute `data-dismiss="modal"`
+ * will close [ModalWidget] when clicked.
  *
- * Content within [ModalWidget] is placed in a div with class `modal` so related styles from Bootstrap are applied.
+ * Content within [ModalWidget] is placed in a div with class `modal` so related
+ * styles from Bootstrap are applied.
  *
  * The [ModalWidget] component leverages the [ModalManager] effect.
  */

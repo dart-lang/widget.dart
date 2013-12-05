@@ -11,20 +11,20 @@ import 'package:widget/widget.dart';
 
 /**
  * [DropdownWidget] aligns closely with the model provided by the
- * [dropdown functionality](http://twitter.github.com/bootstrap/javascript.html#dropdowns)
+ * [dropdown functionality](http://getbootstrap.com/javascript/#dropdowns)
  * in Bootstrap.
  *
  * [DropdownWidget] content is inferred from all child elements that have
  * class `dropdown-menu`. Bootstrap defines a CSS selector for `.dropdown-menu`
  * with an initial display of `none`.
  *
- * [DropdownWidget] listens for `click` events and toggles visibility of content if the
- * click target has attribute `data-toggle="dropdown"`.
+ * [DropdownWidget] listens for `click` events and toggles visibility of content
+ * if the click target has attribute `data-toggle="dropdown"`.
  *
- * Bootstrap also defines a CSS selector which sets `display: block;` for elements
- * matching `.open > .dropdown-menu`. When [DropdownWidget] opens, the class `open` is
- * added to the inner element wrapping all content. Causing child elements with
- * class `dropdown-menu` to become visible.
+ * Bootstrap also defines a CSS selector which sets `display: block;` for
+ * elements matching `.open > .dropdown-menu`. When [DropdownWidget] opens, the
+ * class `open` is added to the inner element wrapping all content. Causing
+ * child elements with class `dropdown-menu` to become visible.
  */
 @CustomTag('dropdown-widget')
 class DropdownWidget extends PolymerElement implements ShowHideComponent {

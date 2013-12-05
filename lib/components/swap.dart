@@ -9,11 +9,12 @@ import 'package:widget/widget.dart';
 // TODO: cleaner about having requests pile up...handle the pending change cleanly
 
 /**
- * [SwapWidget] is a low-level component designed to be composed by other components.
- * It exposes the functionality of the [Swapper] effect as a simple container element with corresponding methods to
+ * [SwapWidget] is a low-level component designed to be composed by other
+ * components. It exposes the functionality of the [Swapper] effect as a simple
+ * container element with corresponding methods to
  * `swap` between child elements via code.
  *
- * [Tabs] and [Carousel] both use this component.
+ * [TabsWidget] and [CarouselWidget] both use this component.
  */
 @CustomTag('swap-widget')
 class SwapWidget extends PolymerElement implements SwapComponent {

@@ -1,12 +1,15 @@
 part of effects;
 
 /**
- * [ModalManager] is inspired by the [modal helper](http://twitter.github.com/bootstrap/javascript.html#modals) in Bootstrap.
+ * [ModalManager] is inspired by the
+ * [modal helper](http://getbootstrap.com/javascript/#modals) in Bootstrap.
  *
- * It has two static methods `show` and `hide` that both take the same parameters as corresponding methods in [ShowHide].
+ * It has two static methods `show` and `hide` that both take the same
+ * parameters as corresponding methods in [ShowHide].
  *
- * [ModalManager] controls the display of the provided element while also creating a dark backdrop on the page.
- * Any element used should have a fixed position, a z-index greater than 1040, and an initial display of none.
+ * [ModalManager] controls the display of the provided element while also
+ * creating a dark backdrop on the page. Any element used should have a fixed
+ * position, a z-index greater than 1040, and an initial display of none.
  */
 class ModalManager {
   static const _backdropClass = 'modal-backdrop';

@@ -7,14 +7,17 @@ import 'package:widget/effects.dart';
 import 'package:widget/widget.dart';
 
 /**
- * [CollapseWidget] uses a content model similar to [collapse functionality](http://twitter.github.com/bootstrap/javascript.html#collapse) in Bootstrap.
+ * [CollapseWidget] uses a content model similar to
+ * [collapse functionality](http://getbootstrap.com/javascript/#collapse)
+ * in Bootstrap.
  *
- * The header element for [CollapseWidget] is a child element with class `accordion-heading`.
+ * The header element for [CollapseWidget] is a child element with class
+ * `accordion-heading`.
  *
  * The rest of the children are rendered as content.
  *
- * [CollapseWidget] listens for `click` events and toggles visibility of content if the
- * click target has attribute `data-toggle="collapse"`.
+ * [CollapseWidget] listens for `click` events and toggles visibility of content
+ * if the click target has attribute `data-toggle="collapse"`.
  */
 @CustomTag('collapse-widget')
 class CollapseWidget extends PolymerElement implements ShowHideComponent {

@@ -20,14 +20,17 @@ class ShowHideResult extends _Enum {
 }
 
 /**
- * [ShowHide] is an effect inspired by the [basic effects in jQuery](http://api.jquery.com/category/effects/basics/).
- * Provide an element and an action--show, hide, toggle--and the element's display will change accordingly.
- * Custom effects, duration, and easing values can also be provided.
+ * [ShowHide] is an effect inspired by the
+ * [basic effects in jQuery](http://api.jquery.com/category/effects/basics/).
+ * Provide an element and an action--show, hide, toggle--and the element's
+ * display will change accordingly. Custom effects, duration, and easing values
+ * can also be provided.
  *
- * At the moment, all of the provided effects leverage CSS3 transitions. Creating new effects is easy.
+ * At the moment, all of the provided effects leverage CSS3 transitions.
+ * Creating new effects is easy.
  *
- * [ShowHide] is used by [Collapse] and [DropDown] to animate their content.
- * It is also used by [Swapper].
+ * [ShowHide] is used by [CollapseWidget] and [DropDownWidget] to animate their
+ * content. It is also used by [Swapper].
  */
 class ShowHide {
   static const int _defaultDuration = 218;

@@ -5,10 +5,10 @@ import 'package:polymer/polymer.dart';
 import 'package:widget/widget.dart';
 
 /**
- * [AccordionWidget] wraps a set of [Collapse] elements and ensures only one is visible
- * at a time.
+ * [AccordionWidget] wraps a set of [CollapseWidget] elements and ensures only one is
+ * visible at a time.
  *
- * See [Collapse] for details on how content is interpreted.
+ * See [CollapseWidget] for details on how content is interpreted.
  */
 @CustomTag('accordion-widget')
 class AccordionWidget extends PolymerElement {

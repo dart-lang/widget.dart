@@ -8,12 +8,14 @@ import 'package:widget/widget.dart';
 // TODO: option to enable/disable wrapping. Disable buttons if the end is hit...
 
 /**
- * [CarouselWidget] allows moving back and forth through a set of child elements.
+ * [CarouselWidget] allows moving back and forth through a set of child
+ * elements.
  *
- * It is based on a [similar component](http://twitter.github.com/bootstrap/javascript.html#carousel)
+ * It is based on a [similar component](http://getbootstrap.com/javascript/#carousel)
  * in Bootstrap.
  *
- * [CarouselWidget] leverages the [Swap] component to render the transition between items.
+ * [CarouselWidget] leverages the [SwapWidget] to render the transition
+ * between items.
  */
 @CustomTag('carousel-widget')
 class CarouselWidget extends PolymerElement {
