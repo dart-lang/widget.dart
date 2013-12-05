@@ -17,6 +17,6 @@ Task getBuildTask() =>
 
       return startProcess(ctx, 'pub', args);
     }, config: (ArgParser parser) {
-      parser.addOption(_MODE, abbr: 'm', allowed: ['release', 'debug'], defaultsTo: 'debug');
+      parser.addOption(_MODE, abbr: 'm', allowed: ['release', 'debug'], defaultsTo: 'release');
       parser.addFlag(_VERBOSE, abbr: 'v', defaultsTo: false);
     });
