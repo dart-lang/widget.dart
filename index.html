@@ -1,6 +1,6 @@
-<!DOCTYPE html><html lang="en"><head><script src="script/shadow_dom.debug.js"></script>
-<script src="script/custom-elements.debug.js"></script>
-<script src="script/interop.js"></script>
+<!DOCTYPE html><html lang="en"><head><script src="packages/shadow_dom/shadow_dom.debug.js"></script>
+<script src="packages/custom_element/custom-elements.debug.js"></script>
+<script src="packages/browser/interop.js"></script>
 
     <meta charset="utf-8">
     <title>Dart Widgets</title>
@@ -13,7 +13,7 @@
     
 
     <script type="application/dart" src="index.html_bootstrap.dart"></script>
-    <script src="script/dart.js"></script>
+    <script src="packages/browser/dart.js"></script>
 
     <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap-responsive.min.css" rel="stylesheet">
@@ -164,13 +164,15 @@
       cursor: default;
     }
 
+    /* @polyfill :host > swap-widget > .content > * */
     swap-widget > content::content > * {
       display: none;
-    }    
+    }
 
+    /* @polyfill :host > swap-widget > .content > .active */
     swap-widget > content::content > .active {
       display: block;
-    }    
+    }
     </style>
     <ul class="nav nav-tabs">
       <content select="li"></content>
