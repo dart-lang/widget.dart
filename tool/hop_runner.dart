@@ -7,8 +7,6 @@ import '../test/harness_console.dart' as test;
 void main(List<String> args) {
   addTask('build', tasks.getBuildTask());
 
-  addTask('clean', tasks.cleanHtml);
-
   addTask('test_dart2js',
       createDartCompilerTask(['test/browser_test_harness.dart']));
 
