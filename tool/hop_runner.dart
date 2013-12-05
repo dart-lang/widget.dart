@@ -14,10 +14,6 @@ void main(List<String> args) {
 
   addTask('pages', (ctx) => branchForDir(ctx, 'master', 'build', 'gh-pages'));
 
-  addTask('update_js', createCopyJSTask('build',
-      browserDart: true,
-      browserInterop: true));
-
   runHop(args);
 }
 
