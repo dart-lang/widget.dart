@@ -21,7 +21,7 @@ import 'package:widget/widget.dart';
  */
 @CustomTag('collapse-widget')
 class CollapseWidget extends PolymerElement implements ShowHideComponent {
-  static const String _COLLAPSE_DIV_SELECTOR = '.collapse-body-x';
+  static const String _COLLAPSE_DIV_SELECTOR = '.panel-collapse';
   static final ShowHideEffect _effect = new ShrinkEffect();
 
   bool get applyAuthorStyles => true;
