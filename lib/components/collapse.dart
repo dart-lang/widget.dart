@@ -84,12 +84,11 @@ class CollapseWidget extends PolymerElement implements ShowHideComponent {
   }
 
   void _updateElements([bool skipAnimation = false]) {
-    var collapseDiv = getShadowRoot('collapse-widget')
-        .querySelector(_COLLAPSE_DIV_SELECTOR);
-    if(collapseDiv != null) {
-      var action = _isShown ? ShowHideAction.SHOW : ShowHideAction.HIDE;
-      var effect = skipAnimation ? null : _effect;
-      ShowHide.begin(action, collapseDiv, effect: effect);
-    }
+    if(shadowRoot == null) return;
+
+    var collapseDiv = shadowRoot.querySelector(_COLLAPSE_DIV_SELECTOR);
+    var action = _isShown ? ShowHideAction.SHOW : ShowHideAction.HIDE;
+    var effect = skipAnimation ? null : _effect;
+    ShowHide.begin(action, collapseDiv, effect: effect);
   }
 }
