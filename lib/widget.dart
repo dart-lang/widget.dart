@@ -10,15 +10,19 @@ abstract class SwapComponent {
   Element get activeItem;
   List<Element> get items;
 
-  Future<bool> showItemAtIndex(int index, {ShowHideEffect effect, int duration, EffectTiming effectTiming, ShowHideEffect hideEffect});
-  Future<bool> showItem(Element item, {ShowHideEffect effect, int duration, EffectTiming effectTiming, ShowHideEffect hideEffect});
+  Future<bool> showItemAtIndex(int index, {ShowHideEffect effect, int duration,
+    EffectTiming effectTiming, ShowHideEffect hideEffect});
+
+  Future<bool> showItem(Element item, {ShowHideEffect effect, int duration,
+    EffectTiming effectTiming, ShowHideEffect hideEffect});
   // TODO: showItem with id?
 }
 
 abstract class ShowHideComponent {
-  static const String _toggleEventName = 'toggle';
+  static const String _TOGGLE_EVENT_NAME = 'toggle';
 
-  static const EventStreamProvider<Event> toggleEvent = const EventStreamProvider<Event>(_toggleEventName);
+  static const EventStreamProvider<Event> toggleEvent =
+      const EventStreamProvider<Event>(_TOGGLE_EVENT_NAME);
 
   void show();
 
@@ -33,6 +37,6 @@ abstract class ShowHideComponent {
   Stream<Event> get onToggle;
 
   static void dispatchToggleEvent(Element element) {
-    element.dispatchEvent(new Event(ShowHideComponent._toggleEventName));
+    element.dispatchEvent(new Event(ShowHideComponent._TOGGLE_EVENT_NAME));
   }
 }
