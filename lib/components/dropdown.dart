@@ -82,6 +82,7 @@ class DropdownWidget extends PolymerElement implements ShowHideComponent {
     isShown = !isShown;
   }
 
+  // TODO: this is broken. The selector won't work. Fix!
   static void closeDropdowns() {
     document.querySelectorAll('[is=x-dropdown]')
       .where((e) => e.xtag is DropdownWidget)
