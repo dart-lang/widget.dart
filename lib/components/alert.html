@@ -1,6 +1,19 @@
 <polymer-element name="alert-widget">
   <template>
-    <div class='alert'>
+    <style>
+      /* TODO: create a common subclass that handles this */
+      :host {
+        display: block;
+
+        /* Stolen from .panel style in bootstrap */
+        margin-bottom: 20px;
+      }
+
+      .alert {
+        margin-bottom: 0;
+      }
+    </style>
+    <div id='_alertDiv' class='alert'>
       <content></content>
     </div>
   </template>

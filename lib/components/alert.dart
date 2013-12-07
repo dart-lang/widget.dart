@@ -12,6 +12,10 @@ import 'package:widget/widget.dart';
  *
  * Clicking on a nested element with the attribute `data-dismiss='alert'` will
  * cause [AlertWidget] to close.
+ *
+ * Adding an `alert-*` class to [AlertWidget] will apply the associated
+ * Boostrap style. These include `alert-success`, `alert-info`, `alert-warning`,
+ * and `alert-danger`.
  */
 @CustomTag('alert-widget')
 class AlertWidget extends PolymerElement implements ShowHideComponent {
@@ -49,6 +53,22 @@ class AlertWidget extends PolymerElement implements ShowHideComponent {
 
   void toggle() {
     isShown = !isShown;
+  }
+
+  @override
+  void enteredView() {
+    super.enteredView();
+    _updateAlertClasses();
+  }
+
+  void _updateAlertClasses() {
+    var alertClasses = this.classes
+        .where((c) => c.startsWith('alert-'));
+
+    var alertDiv = shadowRoot.querySelector('.alert');
+
+    alertDiv.classes.retainWhere((s) => s == 'alert');
+    alertDiv.classes.addAll(alertClasses);
   }
 
   void _onClick(MouseEvent event) {
