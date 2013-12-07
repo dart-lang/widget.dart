@@ -27,31 +27,17 @@ header.mainhead p {
 /* Navigation
 -------------------------------------------------- */
 
-ul.nav-list {
+.list-group {
   padding: 0;
   width: 228px;
   margin-top: 20px;
 }
 
-ul.nav-list > li {
-  border: 1px solid #ddd;
-  padding: 3px 15px;
-  margin-bottom: -1px;
-}
-
-ul.nav-list > li:first-child {
-  border-radius: 6px 6px 0 0;
-}
-
-ul.nav-list > li:last-child {
-  border-radius: 0 0 6px 6px;
-}
-
-ul.nav-list > li > a.h1 {
+.list-group > a.level-h1 {
   font-weight: bold;
 }
 
-ul.nav-list > li > a.h2 {
+.list-group > a.level-h2 {
   padding-left: 25px;
 }
 

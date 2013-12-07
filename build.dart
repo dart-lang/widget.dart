@@ -127,8 +127,11 @@ void _tweakDocument(Document document) {
   //
   // TOC fun!
   //
-  final tocUls = document.queryAll('ul')
-      .where((e) => e.attributes['class'] != null && e.attributes['class'].contains('nav-list')).toList();
+  final tocUls = document.queryAll('div')
+      .where((e) {
+        return e.attributes['class'] != null &&
+            e.attributes['class'].contains('list-group');
+      });
 
   assert(tocUls.length == 1);
   final Element tocUl = $(tocUls).first;
@@ -139,14 +142,10 @@ void _tweakDocument(Document document) {
 
     final link = new Element.tag('a')
       ..attributes['href'] = '#$headerId'
-      ..attributes['class'] = h.tagName
+      ..attributes['class'] = 'level-${h.tagName} list-group-item'
       ..innerHtml = headerText;
 
-    final li = new Element.tag('li')
-      ..children.add(link);
-
-    tocUl.children.add(li);
-
+    tocUl.children.add(link);
 
     h.attributes['id'] = headerId;
   });
