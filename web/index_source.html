@@ -12,7 +12,7 @@
     <script type="application/dart" src="app.dart"></script>
     <script src="packages/browser/dart.js"></script>
 
-    <link rel='stylesheet' href='//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.3/css/bootstrap.css'>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.3/css/bootstrap.css">
     <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
@@ -51,7 +51,7 @@ visible at a time.</p>
           <accordion-widget>
             <collapse-widget>
               <div class="panel-heading">
-                <h4 class='panel-title'>
+                <h4 class="panel-title">
                   <a data-toggle="collapse">Item 1</a>
                 </h4>
               </div>
@@ -59,7 +59,7 @@ visible at a time.</p>
             </collapse-widget>
             <collapse-widget>
               <div class="panel-heading">
-                <h4 class='panel-title'>
+                <h4 class="panel-title">
                   <a data-toggle="collapse">Item 2</a>
                 </h4>
               </div>
@@ -67,7 +67,7 @@ visible at a time.</p>
             </collapse-widget>
             <collapse-widget>
               <div class="panel-heading">
-                <h4 class='panel-title'>
+                <h4 class="panel-title">
                   <a data-toggle="collapse">Item 3</a>
                 </h4>
               </div>
@@ -84,9 +84,12 @@ visible at a time.</p>
         <blockquote class="comments"><p><strong>AlertWidget</strong> follows the same convention as
 <a href="http://getbootstrap.com/javascript/#alerts">its inspiration</a> in Bootstrap.</p>
 <p>Clicking on a nested element with the attribute <code>data-dismiss='alert'</code> will
-cause <strong>AlertWidget</strong> to close.</p></blockquote>
+cause <strong>AlertWidget</strong> to close.</p>
+<p>Adding an <code>alert-*</code> class to <strong>AlertWidget</strong> will apply the associated
+Boostrap style. These include <code>alert-success</code>, <code>alert-info</code>, <code>alert-warning</code>,
+and <code>alert-danger</code>.</p></blockquote>
         <div class="demo">
-          <alert-widget>
+          <alert-widget class="alert-warning">
             <button type="button" class="close" data-dismiss="alert">×</button>
             <strong>Holy guacamole!</strong> Best check yo self, you're not looking too good.
           </alert-widget>
@@ -142,7 +145,7 @@ if the click target has attribute <code>data-toggle="collapse"</code>.</p></bloc
         <div class="demo">
           <collapse-widget>
             <div class="panel-heading">
-              <h4 class='panel-title'>
+              <h4 class="panel-title">
                 <a data-toggle="collapse">Click to toggle expand/collapse</a>
               </h4>
             </div>

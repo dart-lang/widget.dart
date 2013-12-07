@@ -133,6 +133,10 @@ div.demo::after {
   content: 'Example';
 }
 
+div.demo > * {
+  margin-bottom: 0;
+}
+
 pre.code {
   word-wrap: normal;
   word-break: normal;

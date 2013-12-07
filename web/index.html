@@ -109,15 +109,18 @@ visible at a time.</p>
         <blockquote class="comments"><p><strong>AlertWidget</strong> follows the same convention as
 <a href="http://getbootstrap.com/javascript/#alerts">its inspiration</a> in Bootstrap.</p>
 <p>Clicking on a nested element with the attribute <code>data-dismiss='alert'</code> will
-cause <strong>AlertWidget</strong> to close.</p></blockquote>
+cause <strong>AlertWidget</strong> to close.</p>
+<p>Adding an <code>alert-*</code> class to <strong>AlertWidget</strong> will apply the associated
+Boostrap style. These include <code>alert-success</code>, <code>alert-info</code>, <code>alert-warning</code>,
+and <code>alert-danger</code>.</p></blockquote>
         <div class="demo">
-          <alert-widget>
+          <alert-widget class="alert-warning">
             <button type="button" class="close" data-dismiss="alert">×</button>
             <strong>Holy guacamole!</strong> Best check yo self, you're not looking too good.
           </alert-widget>
         </div>
 
-        <pre class="code">&lt;alert-widget&gt;
+        <pre class="code">&lt;alert-widget class="alert-warning"&gt;
   &lt;button type="button" class="close" data-dismiss="alert"&gt;×&lt;/button&gt;
   &lt;strong&gt;Holy guacamole!&lt;/strong&gt; Best check yo self, you're not looking too good.
 &lt;/alert-widget&gt;</pre>
