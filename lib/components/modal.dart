@@ -7,6 +7,7 @@ import 'package:widget/effects.dart';
 import 'package:widget/widget.dart';
 
 // TODO: ESC to close: https://github.com/kevmoo/widget.dart/issues/17
+// TODO: clicking on background to close is broken - fix it!
 
 /**
  * When added to a page, [ModalWidget] is hidden. It can be displayed by calling
@@ -39,11 +40,12 @@ class ModalWidget extends PolymerElement implements ShowHideComponent {
     if(value != _isShown) {
       _isShown = value;
 
-      final modal = _getModalElement();
+      var modal = _modalElement;
       if(modal != null) {
 
         if(_isShown) {
-          ModalManager.show(modal, effect: effect, backdropClickHandler: _onBackdropClicked);
+          ModalManager.show(modal, effect: effect,
+              backdropClickHandler: _onBackdropClicked);
         } else {
           ModalManager.hide(modal, effect: effect);
         }
@@ -74,15 +76,14 @@ class ModalWidget extends PolymerElement implements ShowHideComponent {
   @override
   void enteredView() {
     super.enteredView();
-    final modal = _getModalElement();
+    var modal = _modalElement;
 
     if(modal != null && !isShown) {
       ModalManager.hide(modal);
     }
   }
 
-  Element _getModalElement() => getShadowRoot('modal-widget')
-      .querySelector('.modal');
+  Element get _modalElement => shadowRoot.querySelector('.modal');
 
   void _onClick(MouseEvent event) {
 
