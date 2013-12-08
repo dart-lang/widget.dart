@@ -4,7 +4,7 @@ import 'dart:async';
 import 'dart:html';
 import 'package:polymer/polymer.dart';
 import 'package:widget/effects.dart';
-import 'package:widget/widget.dart';
+import 'show_hide.dart';
 
 // TODO: ESC to close: https://github.com/kevmoo/widget.dart/issues/17
 // TODO: clicking on background to close is broken - fix it!
@@ -22,52 +22,14 @@ import 'package:widget/widget.dart';
  * The [ModalWidget] component leverages the [ModalManager] effect.
  */
 @CustomTag('modal-widget')
-class ModalWidget extends PolymerElement implements ShowHideComponent {
+class ModalWidget extends ShowHideWidget {
 
   bool get applyAuthorStyles => true;
 
   /** If false, clicking the backdrop closes the dialog. */
   bool staticBackdrop = false;
 
-  bool _isShown = false;
-
-  bool get isShown => _isShown;
-
   ShowHideEffect effect = new ScaleEffect();
-
-  void set isShown(bool value) {
-    assert(value != null);
-    if(value != _isShown) {
-      _isShown = value;
-
-      var modal = _modalElement;
-      if(modal != null) {
-
-        if(_isShown) {
-          ModalManager.show(modal, effect: effect,
-              backdropClickHandler: _onBackdropClicked);
-        } else {
-          ModalManager.hide(modal, effect: effect);
-        }
-      }
-
-      ShowHideComponent.dispatchToggleEvent(this);
-    }
-  }
-
-  Stream<Event> get onToggle => ShowHideComponent.toggleEvent.forTarget(this);
-
-  void hide() {
-    isShown = false;
-  }
-
-  void show() {
-    isShown = true;
-  }
-
-  void toggle() {
-    isShown = !isShown;
-  }
 
   ModalWidget.created() : super.created() {
     this.onClick.listen(_onClick);
@@ -80,6 +42,22 @@ class ModalWidget extends PolymerElement implements ShowHideComponent {
 
     if(modal != null && !isShown) {
       ModalManager.hide(modal);
+    }
+  }
+
+  @override
+  void isShownChanged() {
+    super.isShownChanged();
+
+    var modal = _modalElement;
+    if(modal != null) {
+
+      if(isShown) {
+        ModalManager.show(modal, effect: effect,
+            backdropClickHandler: _onBackdropClicked);
+      } else {
+        ModalManager.hide(modal, effect: effect);
+      }
     }
   }
 
