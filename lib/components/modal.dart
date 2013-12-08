@@ -45,9 +45,12 @@ class ModalWidget extends ShowHideWidget {
     }
   }
 
-  @override
-  void isShownChanged() {
-    super.isShownChanged();
+  void set isShown(bool value) {
+    super.isShown = value;
+    _shown_changed();
+  }
+
+  void _shown_changed() {
 
     var modal = _modalElement;
     if(modal != null) {
