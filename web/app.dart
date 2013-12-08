@@ -26,7 +26,7 @@ void main() {
   effects.forEach((name, effect) {
     var button = new ButtonElement()
       ..appendText(name)
-      ..classes.add('btn')
+      ..classes.add('btn btn-default')
       ..onClick.listen((_) => _showHideDemo_toggle(effect));
     effectsDiv.append(button);
   });
