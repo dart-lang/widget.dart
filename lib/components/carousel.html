@@ -16,8 +16,12 @@
       <swap-widget>
         <content></content>
       </swap-widget>
-      <a class="left carousel-control" on-click='{{onPrevious}}'>&lsaquo;</a>
-      <a class="right carousel-control" on-click='{{onNext}}'>&rsaquo;</a>
+      <a class="left carousel-control" on-click='{{onPrevious}}'>
+         <span class="glyphicon glyphicon-chevron-left"></span>
+      </a>
+      <a class="right carousel-control" on-click='{{onNext}}'>
+        <span class="glyphicon glyphicon-chevron-right"></span>
+      </a>
     </div>
   </template>
   <script type="application/dart" src='carousel.dart'></script>
