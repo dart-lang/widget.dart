@@ -15,11 +15,9 @@
 
 ## Running in Dartium
 
-* At the moment, a Chrome flag must be set to enable some features
+* A Chrome flag must be set to enable features that are not yet polyfilled
     * <chrome://flags/#enable-experimental-web-platform-features>
-    * Needed for Chrome 31. Not sure when this will be mainstreamed.
-    * Used for `::content` style selectors in:
-        * Tab
+    * [Issue Tracking polyfill fixes](https://github.com/dart-lang/widget.dart/issues/12)
 
 ## Versioning
 
