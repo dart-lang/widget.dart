@@ -4,7 +4,6 @@ import 'dart:async';
 import 'dart:html';
 import 'package:polymer/polymer.dart';
 import 'package:widget/effects.dart';
-import 'package:widget/widget.dart';
 
 // TODO: cleaner about having requests pile up...handle the pending change cleanly
 
@@ -17,7 +16,7 @@ import 'package:widget/widget.dart';
  * [TabsWidget] and [CarouselWidget] both use this component.
  */
 @CustomTag('swap-widget')
-class SwapWidget extends PolymerElement implements SwapComponent {
+class SwapWidget extends PolymerElement {
   static const _ACTIVE_CLASS = 'active';
   static const _DIR_CLASS_PREV = 'prev';
 

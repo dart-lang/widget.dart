@@ -4,7 +4,7 @@ import 'dart:html';
 import 'package:polymer/polymer.dart';
 import 'package:bot/bot.dart';
 import 'package:widget/effects.dart';
-import 'package:widget/widget.dart';
+import 'swap.dart';
 
 // TODO:TEST: no active tabs -> first is active
 // TODO:TEST: 2+ active tabs -> all but first is active
@@ -123,8 +123,8 @@ class TabsWidget extends PolymerElement {
     }
   }
 
-  SwapComponent _getSwap() =>
-      shadowRoot.querySelector('swap-widget') as SwapComponent;
+  SwapWidget _getSwap() =>
+      shadowRoot.querySelector('swap-widget');
 
   void _updateContent(String target) {
     final swap = _getSwap();

@@ -3,7 +3,7 @@ library widget.carousel;
 import 'dart:async';
 import 'package:polymer/polymer.dart';
 import 'package:widget/effects.dart';
-import 'package:widget/widget.dart';
+import 'swap.dart';
 
 // TODO: option to enable/disable wrapping. Disable buttons if the end is hit...
 
@@ -46,7 +46,7 @@ class CarouselWidget extends PolymerElement {
     previous();
   }
 
-  SwapComponent get _swap =>
+  SwapWidget get _swap =>
       shadowRoot.querySelector('.carousel > swap-widget').xtag;
 
   Future<bool> _moveDelta(bool doNext) {
