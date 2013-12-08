@@ -7,6 +7,10 @@ class ShowHideWidget extends PolymerElement {
 
   ShowHideWidget.created() : super.created();
 
+  ShowHideWidget.createdWithValue(bool isShown) :
+    this._isShown = isShown,
+    super.created();
+
   bool _isShown = false;
 
   bool get isShown => _isShown;

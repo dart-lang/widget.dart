@@ -4,7 +4,7 @@ import 'dart:async';
 import 'dart:html';
 import 'package:polymer/polymer.dart';
 import 'package:widget/effects.dart';
-import 'package:widget/widget.dart';
+import 'show_hide.dart';
 
 // TODO: esc and click outside to collapse
 // https://github.com/kevmoo/widget.dart/issues/14
@@ -27,66 +27,39 @@ import 'package:widget/widget.dart';
  * child elements with class `dropdown-menu` to become visible.
  */
 @CustomTag('dropdown-widget')
-class DropdownWidget extends PolymerElement implements ShowHideComponent {
+class DropdownWidget extends ShowHideWidget {
   static final ShowHideEffect _effect = new FadeEffect();
   static const int _duration = 100;
 
-  bool _isShown = false;
-
-  DropdownWidget.created() : super.created() {
+  DropdownWidget.created() : super.createdWithValue(false) {
     this.querySelectorAll('[data-toggle=dropdown]').onClick.listen(_onClick);
     this.onKeyDown.listen(_onKeyDown);
   }
 
-  bool get isShown => _isShown;
-
   void set isShown(bool value) {
-    assert(value != null);
-    if(value != _isShown) {
+    if(value) {
+      // before we set the local shown value, ensure
+      // all of the other dropdowns are closed
+      closeDropdowns();
+    }
 
-      if(value) {
-        // before we set the local shown value, ensure
-        // all of the other dropdowns are closed
-        closeDropdowns();
-      }
+    super.isShown = value;
 
-      _isShown = value;
+    if(value) {
+      this.classes.add('open');
+    } else {
+      this.classes.remove('open');
+    }
 
-      final action = _isShown ? ShowHideAction.SHOW : ShowHideAction.HIDE;
-
-      if(_isShown) {
-        this.classes.add('open');
-      } else {
-        this.classes.remove('open');
-      }
-
-      final contentDiv = this.querySelector('[is=x-dropdown] > .dropdown-menu');
-      if(contentDiv != null) {
-        ShowHide.begin(action, contentDiv, effect: _effect);
-      }
-      ShowHideComponent.dispatchToggleEvent(this);
+    final action = value ? ShowHideAction.SHOW : ShowHideAction.HIDE;
+    final contentDiv = this.querySelector('.dropdown-menu');
+    if(contentDiv != null) {
+      ShowHide.begin(action, contentDiv, effect: _effect);
     }
   }
 
-  Stream<Event> get onToggle => ShowHideComponent.toggleEvent.forTarget(this);
-
-  void hide() {
-    isShown = false;
-  }
-
-  void show() {
-    isShown = true;
-  }
-
-  void toggle() {
-    isShown = !isShown;
-  }
-
-  // TODO: this is broken. The selector won't work. Fix!
   static void closeDropdowns() {
-    document.querySelectorAll('[is=x-dropdown]')
-      .where((e) => e.xtag is DropdownWidget)
-      .map((e) => e.xtag as DropdownWidget)
+    document.querySelectorAll('dropdown-widget')
       .forEach((dd) => dd.hide());
   }
 

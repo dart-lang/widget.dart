@@ -226,97 +226,84 @@ class <code>open</code> is added to the inner element wrapping all content. Caus
 child elements with class <code>dropdown-menu</code> to become visible.</p></blockquote>
 
         <div class="demo">
-          <h3>A a button</h3>
-          <dropdown-widget>
-            <button class="btn" data-toggle="dropdown">Click me!</button>
-            <ul class="dropdown-menu">
-              <li><a>Action</a></li>
-              <li><a>Another action</a></li>
-              <li><a>Something else here</a></li>
-              <li class="divider"></li>
-              <li><a>Separated link</a></li>
-            </ul>
-          </dropdown-widget>
-
-          <h3>In a nav</h3>
-          <!-- Because Bootstrap css assumes a certain hierarchy of items in a nav
-          .navbar .nav > li > a
-          To use a DropDown element, one has to copy and modify Bootstrap styles to
-          apply to x-dropdown
-          -->
-
-          <div class="navbar">
-            <div class="navbar-inner">
-              <div class="container">
-                <div class="nav">
-                  <dropdown-widget>
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Nav Menu 1<b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                      <li><a href="#">Item 1</a></li>
-                      <li><a href="#">Item 2</a></li>
-                    </ul>
-                  </dropdown-widget>
-                  <dropdown-widget>
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Nav Menu 2<b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                      <li class="nav-header">Header 1</li>
-                      <li><a href="#">Item 1</a></li>
-                      <li><a href="#">Item 2</a></li>
-                      <li class="nav-header">Header 2</li>
-                      <li><a href="#">Item 3</a></li>
-                      <li><a href="#">Item 4</a></li>
-                    </ul>
-                  </dropdown-widget>
-                </div>
-              </div>
-            </div>
-          </div>
-
+          <nav id="navbar-example" class="navbar navbar-default navbar-static" role="navigation">
+            <div class="collapse navbar-collapse bs-js-navbar-collapse">
+              <ul class="nav navbar-nav">
+                <dropdown-widget>
+                  <a id="drop1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Action</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Another action</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Something else here</a></li>
+                    <li role="presentation" class="divider"></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Separated link</a></li>
+                  </ul>
+                </dropdown-widget>
+                <dropdown-widget>
+                  <a href="#" id="drop2" role="button" class="dropdown-toggle" data-toggle="dropdown">Dropdown 2 <b class="caret"></b></a>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="drop2">
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Action</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Another action</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Something else here</a></li>
+                    <li role="presentation" class="divider"></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Separated link</a></li>
+                  </ul>
+                </dropdown-widget>
+              </ul>
+              <ul class="nav navbar-nav navbar-right">
+                <dropdown-widget>
+                  <a href="#" id="drop3" role="button" class="dropdown-toggle" data-toggle="dropdown">Dropdown 3 <b class="caret"></b></a>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="drop3">
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Action</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Another action</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Something else here</a></li>
+                    <li role="presentation" class="divider"></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Separated link</a></li>
+                  </ul>
+                </dropdown-widget>
+              </ul>
+            </div><!-- /.nav-collapse -->
+          </nav> <!-- /navbar-example -->
         </div>
 
-        <pre class="code">&lt;h3&gt;A a button&lt;/h3&gt;
-&lt;dropdown-widget&gt;
-  &lt;button class="btn" data-toggle="dropdown"&gt;Click me!&lt;/button&gt;
-  &lt;ul class="dropdown-menu"&gt;
-    &lt;li&gt;&lt;a&gt;Action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a&gt;Another action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a&gt;Something else here&lt;/a&gt;&lt;/li&gt;
-    &lt;li class="divider"&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a&gt;Separated link&lt;/a&gt;&lt;/li&gt;
-  &lt;/ul&gt;
-&lt;/dropdown-widget&gt;
-&lt;h3&gt;In a nav&lt;/h3&gt;
-&lt;!-- Because Bootstrap css assumes a certain hierarchy of items in a nav
-.navbar .nav &gt; li &gt; a
-To use a DropDown element, one has to copy and modify Bootstrap styles to
-apply to x-dropdown
---&gt;
-&lt;div class="navbar"&gt;
-  &lt;div class="navbar-inner"&gt;
-    &lt;div class="container"&gt;
-      &lt;div class="nav"&gt;
-        &lt;dropdown-widget&gt;
-          &lt;a href="#" class="dropdown-toggle" data-toggle="dropdown"&gt;Nav Menu 1&lt;b class="caret"&gt;&lt;/b&gt;&lt;/a&gt;
-          &lt;ul class="dropdown-menu"&gt;
-            &lt;li&gt;&lt;a href="#"&gt;Item 1&lt;/a&gt;&lt;/li&gt;
-            &lt;li&gt;&lt;a href="#"&gt;Item 2&lt;/a&gt;&lt;/li&gt;
-          &lt;/ul&gt;
-        &lt;/dropdown-widget&gt;
-        &lt;dropdown-widget&gt;
-          &lt;a href="#" class="dropdown-toggle" data-toggle="dropdown"&gt;Nav Menu 2&lt;b class="caret"&gt;&lt;/b&gt;&lt;/a&gt;
-          &lt;ul class="dropdown-menu"&gt;
-            &lt;li class="nav-header"&gt;Header 1&lt;/li&gt;
-            &lt;li&gt;&lt;a href="#"&gt;Item 1&lt;/a&gt;&lt;/li&gt;
-            &lt;li&gt;&lt;a href="#"&gt;Item 2&lt;/a&gt;&lt;/li&gt;
-            &lt;li class="nav-header"&gt;Header 2&lt;/li&gt;
-            &lt;li&gt;&lt;a href="#"&gt;Item 3&lt;/a&gt;&lt;/li&gt;
-            &lt;li&gt;&lt;a href="#"&gt;Item 4&lt;/a&gt;&lt;/li&gt;
-          &lt;/ul&gt;
-        &lt;/dropdown-widget&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;</pre>
+        <pre class="code">&lt;nav id="navbar-example" class="navbar navbar-default navbar-static" role="navigation"&gt;
+  &lt;div class="collapse navbar-collapse bs-js-navbar-collapse"&gt;
+    &lt;ul class="nav navbar-nav"&gt;
+      &lt;dropdown-widget&gt;
+        &lt;a id="drop1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"&gt;Dropdown &lt;b class="caret"&gt;&lt;/b&gt;&lt;/a&gt;
+        &lt;ul class="dropdown-menu" role="menu" aria-labelledby="drop1"&gt;
+          &lt;li role="presentation"&gt;&lt;a role="menuitem" tabindex="-1" href="http://twitter.com/fat"&gt;Action&lt;/a&gt;&lt;/li&gt;
+          &lt;li role="presentation"&gt;&lt;a role="menuitem" tabindex="-1" href="http://twitter.com/fat"&gt;Another action&lt;/a&gt;&lt;/li&gt;
+          &lt;li role="presentation"&gt;&lt;a role="menuitem" tabindex="-1" href="http://twitter.com/fat"&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+          &lt;li role="presentation" class="divider"&gt;&lt;/li&gt;
+          &lt;li role="presentation"&gt;&lt;a role="menuitem" tabindex="-1" href="http://twitter.com/fat"&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/dropdown-widget&gt;
+      &lt;dropdown-widget&gt;
+        &lt;a href="#" id="drop2" role="button" class="dropdown-toggle" data-toggle="dropdown"&gt;Dropdown 2 &lt;b class="caret"&gt;&lt;/b&gt;&lt;/a&gt;
+        &lt;ul class="dropdown-menu" role="menu" aria-labelledby="drop2"&gt;
+          &lt;li role="presentation"&gt;&lt;a role="menuitem" tabindex="-1" href="http://twitter.com/fat"&gt;Action&lt;/a&gt;&lt;/li&gt;
+          &lt;li role="presentation"&gt;&lt;a role="menuitem" tabindex="-1" href="http://twitter.com/fat"&gt;Another action&lt;/a&gt;&lt;/li&gt;
+          &lt;li role="presentation"&gt;&lt;a role="menuitem" tabindex="-1" href="http://twitter.com/fat"&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+          &lt;li role="presentation" class="divider"&gt;&lt;/li&gt;
+          &lt;li role="presentation"&gt;&lt;a role="menuitem" tabindex="-1" href="http://twitter.com/fat"&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/dropdown-widget&gt;
+    &lt;/ul&gt;
+    &lt;ul class="nav navbar-nav navbar-right"&gt;
+      &lt;dropdown-widget&gt;
+        &lt;a href="#" id="drop3" role="button" class="dropdown-toggle" data-toggle="dropdown"&gt;Dropdown 3 &lt;b class="caret"&gt;&lt;/b&gt;&lt;/a&gt;
+        &lt;ul class="dropdown-menu" role="menu" aria-labelledby="drop3"&gt;
+          &lt;li role="presentation"&gt;&lt;a role="menuitem" tabindex="-1" href="http://twitter.com/fat"&gt;Action&lt;/a&gt;&lt;/li&gt;
+          &lt;li role="presentation"&gt;&lt;a role="menuitem" tabindex="-1" href="http://twitter.com/fat"&gt;Another action&lt;/a&gt;&lt;/li&gt;
+          &lt;li role="presentation"&gt;&lt;a role="menuitem" tabindex="-1" href="http://twitter.com/fat"&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+          &lt;li role="presentation" class="divider"&gt;&lt;/li&gt;
+          &lt;li role="presentation"&gt;&lt;a role="menuitem" tabindex="-1" href="http://twitter.com/fat"&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/dropdown-widget&gt;
+    &lt;/ul&gt;
+  &lt;/div&gt;&lt;!-- /.nav-collapse --&gt;
+&lt;/nav&gt; &lt;!-- /navbar-example --&gt;</pre>
       </section>
 
       <section class="component">
