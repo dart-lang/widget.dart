@@ -17,26 +17,3 @@ abstract class SwapComponent {
     EffectTiming effectTiming, ShowHideEffect hideEffect});
   // TODO: showItem with id?
 }
-
-abstract class ShowHideComponent {
-  static const String _TOGGLE_EVENT_NAME = 'toggle';
-
-  static const EventStreamProvider<Event> toggleEvent =
-      const EventStreamProvider<Event>(_TOGGLE_EVENT_NAME);
-
-  void show();
-
-  void hide();
-
-  void toggle();
-
-  bool get isShown;
-
-  void set isShown(bool value);
-
-  Stream<Event> get onToggle;
-
-  static void dispatchToggleEvent(Element element) {
-    element.dispatchEvent(new Event(ShowHideComponent._TOGGLE_EVENT_NAME));
-  }
-}

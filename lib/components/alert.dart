@@ -4,7 +4,7 @@ import 'dart:async';
 import 'dart:html';
 import 'package:polymer/polymer.dart';
 import 'package:widget/effects.dart';
-import 'package:widget/widget.dart';
+import 'show_hide.dart';
 
 /**
  * [AlertWidget] follows the same convention as
@@ -18,7 +18,7 @@ import 'package:widget/widget.dart';
  * and `alert-danger`.
  */
 @CustomTag('alert-widget')
-class AlertWidget extends PolymerElement implements ShowHideComponent {
+class AlertWidget extends ShowHideWidget {
 
   AlertWidget.created(): super.created()  {
     this.onClick.listen(_onClick);
@@ -26,33 +26,13 @@ class AlertWidget extends PolymerElement implements ShowHideComponent {
 
   bool get applyAuthorStyles => true;
 
-  bool _isShown = true;
-
-  bool get isShown => _isShown;
 
   void set isShown(bool value) {
+    super.isShown = value;
     assert(value != null);
-    if(value != _isShown) {
-      _isShown = value;
-      final action = _isShown ? ShowHideAction.SHOW : ShowHideAction.HIDE;
-      ShowHide.begin(action, this, effect: new ScaleEffect());
 
-      ShowHideComponent.dispatchToggleEvent(this);
-    }
-  }
-
-  Stream<Event> get onToggle => ShowHideComponent.toggleEvent.forTarget(this);
-
-  void hide() {
-    isShown = false;
-  }
-
-  void show() {
-    isShown = true;
-  }
-
-  void toggle() {
-    isShown = !isShown;
+    final action = value ? ShowHideAction.SHOW : ShowHideAction.HIDE;
+    ShowHide.begin(action, this, effect: new ScaleEffect());
   }
 
   @override
