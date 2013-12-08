@@ -1,9 +1,14 @@
 library widget.tabs;
 
+import 'dart:html';
 import 'package:polymer/polymer.dart';
 
 @CustomTag('show-hide-widget')
 class ShowHideWidget extends PolymerElement {
+  static const String _TOGGLE_EVENT_NAME = 'toggle';
+
+  static const EventStreamProvider<Event> toggleEvent =
+      const EventStreamProvider<Event>(_TOGGLE_EVENT_NAME);
 
   ShowHideWidget.created() : super.created();
 
@@ -20,6 +25,7 @@ class ShowHideWidget extends PolymerElement {
     if(value != _isShown) {
       _isShown = value;
       notifyPropertyChange(#isShown, !isShown, isShown);
+      dispatchEvent(new Event(_TOGGLE_EVENT_NAME));
     }
   }
 

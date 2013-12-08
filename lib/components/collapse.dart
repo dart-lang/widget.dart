@@ -4,7 +4,7 @@ import 'dart:async';
 import 'dart:html';
 import 'package:polymer/polymer.dart';
 import 'package:widget/effects.dart';
-import 'package:widget/widget.dart';
+import 'show_hide.dart';
 
 /**
  * [CollapseWidget] uses a content model similar to
@@ -20,44 +20,21 @@ import 'package:widget/widget.dart';
  * if the click target has attribute `data-toggle="collapse"`.
  */
 @CustomTag('collapse-widget')
-class CollapseWidget extends PolymerElement implements ShowHideComponent {
+class CollapseWidget extends ShowHideWidget {
   static const String _COLLAPSE_DIV_SELECTOR = '.panel-collapse';
   static final ShowHideEffect _effect = new ShrinkEffect();
 
   bool get applyAuthorStyles => true;
 
-  bool _isShown = false;
-
-  bool get isShown => _isShown;
-
   bool _insertedCalled = false;
 
   void set isShown(bool value) {
-    assert(value != null);
-    if(value != _isShown) {
-      _isShown = value;
-      _updateElements(!_insertedCalled);
-
-      ShowHideComponent.dispatchToggleEvent(this);
-    }
+    super.isShown = value;
+    _updateElements(!_insertedCalled);
   }
 
   CollapseWidget.created() : super.created() {
     this.onClick.listen(_onClick);
-  }
-
-  Stream<Event> get onToggle => ShowHideComponent.toggleEvent.forTarget(this);
-
-  void hide() {
-    isShown = false;
-  }
-
-  void show() {
-    isShown = true;
-  }
-
-  void toggle() {
-    isShown = !isShown;
   }
 
   @override
@@ -87,7 +64,7 @@ class CollapseWidget extends PolymerElement implements ShowHideComponent {
     if(shadowRoot == null) return;
 
     var collapseDiv = shadowRoot.querySelector(_COLLAPSE_DIV_SELECTOR);
-    var action = _isShown ? ShowHideAction.SHOW : ShowHideAction.HIDE;
+    var action = isShown ? ShowHideAction.SHOW : ShowHideAction.HIDE;
     var effect = skipAnimation ? null : _effect;
     ShowHide.begin(action, collapseDiv, effect: effect);
   }

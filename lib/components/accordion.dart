@@ -2,7 +2,8 @@ library widget.accordion;
 
 import 'dart:html';
 import 'package:polymer/polymer.dart';
-import 'package:widget/widget.dart';
+import 'collapse.dart';
+import 'show_hide.dart';
 
 /**
  * [AccordionWidget] wraps a set of [CollapseWidget] elements and ensures only one is
@@ -14,27 +15,15 @@ import 'package:widget/widget.dart';
 class AccordionWidget extends PolymerElement {
 
   AccordionWidget.created() : super.created() {
-    ShowHideComponent.toggleEvent.forTarget(this).listen(_onOpen);
+    ShowHideWidget.toggleEvent.forTarget(this).listen(_onOpen);
   }
-
-  List<Element> _getAllCollapseElements() =>
-      this.querySelectorAll('collapse-widget');
 
   void _onOpen(Event openEvent) {
     Element target = openEvent.target;
-    if (target.xtag is ShowHideComponent) {
-      _onShowHideToggle(target.xtag);
-    }
-  }
-
-  void _onShowHideToggle(ShowHideComponent shc) {
-    if (shc.isShown) {
-      _getAllCollapseElements()
-        .map((Element e) => e.xtag)
-        .where((e) => e != shc)
-        .forEach((ShowHideComponent e) {
-          e.hide();
-        });
+    if (target is CollapseWidget && target.parent == this && target.isShown) {
+      children.where((c) => c is CollapseWidget)
+        .where((e) => e != target)
+        .forEach((e) => e.hide());
     }
   }
 }
