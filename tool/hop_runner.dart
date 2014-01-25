@@ -29,7 +29,7 @@ Task _getBuildTask() =>
       }
 
       return startProcess(ctx, 'pub', args);
-    }, config: (ArgParser parser) {
-      parser.addOption(_MODE, abbr: 'm', allowed: ['release', 'debug'], defaultsTo: 'debug');
-      parser.addFlag(_VERBOSE, abbr: 'v', defaultsTo: false);
-    });
+    }, argParser: new ArgParser()
+        ..addOption(_MODE, abbr: 'm', allowed: ['release', 'debug'], defaultsTo: 'debug')
+        ..addFlag(_VERBOSE, abbr: 'v', defaultsTo: false)
+    );
